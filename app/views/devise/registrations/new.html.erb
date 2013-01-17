@@ -1,0 +1,40 @@
+<h2>Sign up</h2>
+
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div><%= f.label :name %><br />
+  <%= f.text_field :name %></div>
+
+  <div><%= f.label :email %><br />
+  <%= f.email_field :email, :autofocus => true %></div>
+
+
+  <div><%= f.label :tlf %><br />
+  <%= f.text_field :tlf %></div>
+
+  <div><%= f.label :password %><br />
+  <%= f.password_field :password %></div>
+
+  <div><%= f.label :password_confirmation %><br />
+  <%= f.password_field :password_confirmation %></div>
+
+  <div><%= f.label :company %><br />
+  <%= f.text_field :company %></div>
+
+  <div><%= f.label :twitter %><br />
+  <%= f.text_field :twitter %></div>
+
+
+  <div><%= f.label :accepted_optional_email, "Jeg ønsker epost om tilsvarende arrangementer"%><br />
+  <%= f.check_box :accepted_optional_email %></div>
+
+
+  <div><%= f.label :accepcted_privacy, "Jeg aksepterer vilkårene"%><br />
+  <%= f.check_box :accepcted_privacy %></div>
+
+
+  <div><%= f.submit "Sign up" %></div>
+<% end %>
+
+<%= render "devise/shared/links" %>
