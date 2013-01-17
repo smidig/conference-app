@@ -1,3 +1,5 @@
+*.sublime-project
+*.sublime-workspace
 *.rbc
 *.sassc
 .sass-cache
@@ -14,3 +16,7 @@ capybara-*.html
 **.orig
 rerun.txt
 pickle-email-*.html
+.DS_Store
+*.lock
+
+*.lock
