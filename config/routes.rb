@@ -1,7 +1,9 @@
 ConferenceApp::Application.routes.draw do
-  devise_for :users
+  
 
   root :to => "home#index"
+  devise_for :users, :controllers => { :registrations => "registrations"}
+  devise_for :users
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
