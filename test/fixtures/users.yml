@@ -6,4 +6,7 @@
 #
 user1:
   email: "user1@mail.com"
-  name: "Name"
+  name: "Name 1"
+user2:
+  email: "user2@mail.com"
+  name: "Name 2"
