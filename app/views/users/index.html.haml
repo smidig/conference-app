@@ -1,0 +1,12 @@
+%table{:class => 'table'}
+  %thead
+    %tr
+      %th= 'Navn'
+      %th= 'Email'
+      %th= 'Handling'
+  %tbody
+    - for user in @users
+      %tr
+        %td= user.name
+        %td= user.email
+        %td= link_to 'Delete', {:action => 'destroy', :id => user.id }, :confirm =>"Are you sure", :method=>:delete, :class => 'btn btn-danger'

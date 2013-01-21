@@ -9,7 +9,7 @@ gem 'devise'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
-
+gem "haml-rails"
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -18,6 +18,9 @@ group :assets do
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
 
+  gem 'sass-rails'
+  gem 'simple_form'
+  gem 'bootstrap-sass'
   gem 'uglifier', '>= 1.0.3'
 end
 
