@@ -1,9 +1,7 @@
 ConferenceApp::Application.routes.draw do
-  
-
   get "home/index"
-
   root :to => "home#index"
+  resources :tickets
   devise_for :users, :controllers => { :registrations => "registrations"}
   match "/users" => "users#index"
   match "/users/:id" => "users#destroy"
