@@ -26,7 +26,23 @@ end
 
 gem 'jquery-rails'
 
+# We should discuss this on next meeting
+group :linux_development do
+  gem 'libnotify' # Guard notifications for Linux
+end
+
+group :mac_development do
+  gem 'growl' # Guard notifications for OS X
+end
+
 group :test, :development do
+  gem 'guard'
+  gem 'guard-rspec'
+  gem 'guard-spork'
+  gem 'guard-test'
+  gem 'spork'
+  gem 'spork-testunit'
+  gem 'rb-fsevent'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
 end
