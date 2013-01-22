@@ -25,7 +25,7 @@ guard :test do
   watch('app/controllers/application_controller.rb') { ["test/functional", "test/integration"] }
 end
 
-guard :rspec, :version => 2, :cli => "--color --drb" do
+guard :rspec, :cli => "--color --drb" do
   watch(%r{^spec/.+_spec\.rb})
   watch(%r{^lib/(.+)\.rb})     { |m| "spec/#{m[1]}_spec.rb" }
   watch('spec/spec_helper.rb') { "spec" }
