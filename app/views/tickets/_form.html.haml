@@ -1,0 +1,22 @@
+=if @ticket.errors.any?
+  #error_explanation
+    %h2 Form is invalid
+    %ul
+      -for message in  @ticket.errors.full_messages
+        %li= message
+
+=form_for @ticket  do |f|
+  %div{:class => "field"}
+    =f.label :name
+    =f.text_field :name
+  %div{:class => "field"}
+    =f.label :price
+    =f.text_field :price
+  %div{:class => "field"}
+    =f.label :active
+    =f.check_box :active
+  %div{:class => "field"}
+    =f.label :visible
+    =f.check_box :visible
+  %div{:class => "actions"}
+    =f.submit

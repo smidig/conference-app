@@ -1,0 +1,17 @@
+%p
+  %b Name:
+  = @ticket.name
+%p
+  %b Price:
+  = @ticket.price
+%p
+  %b Active:
+  = @ticket.active
+%p
+  %b Visible:
+  = @ticket.visible
+
+
+= link_to 'Edit', edit_ticket_path(@ticket)
+|
+= link_to 'Back', tickets_path
