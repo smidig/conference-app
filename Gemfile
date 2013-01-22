@@ -45,6 +45,7 @@ group :test, :development do
   gem 'rb-fsevent'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
+  gem 'rb-inotify', '~> 0.8.8'
 end
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
