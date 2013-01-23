@@ -1,0 +1,24 @@
+%h1 Available tickets
+
+%table{:class => 'table'}
+  %thead
+    %tr
+      %th= 'Navn'
+      %th= 'Price'
+      %th= 'Active'
+      %th= 'Visible'
+      %th= ''
+      %th= ''
+      %th= ''
+  %tbody
+    - for ticket in @tickets
+      %tr
+        %td= ticket.name
+        %td= ticket.price
+        %td= ticket.active
+        %td= ticket.visible
+        %td= link_to 'Show', ticket
+        %td= link_to 'Edit', edit_ticket_path(ticket)
+        %td= link_to 'Delete', ticket, :confirm =>"Are you sure", :method=>:delete, :class => 'btn btn-danger'
+
+= link_to 'New Ticket', new_ticket_path
