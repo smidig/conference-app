@@ -1,0 +1,6 @@
+=simple_form_for @talk do |f|
+  =f.input :title
+  =f.input :description
+  =f.association :talk_type
+  =f.association :talk_category
+  =f.button :submit
