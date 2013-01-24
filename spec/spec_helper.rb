@@ -1,4 +1,6 @@
 require 'spork'
+require 'factory_girl_rails'
+
 #uncomment the following line to use spork with the debugger
 #require 'spork/ext/ruby-debug'
 
@@ -17,6 +19,7 @@ Spork.prefork do
   Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
   RSpec.configure do |config|
+
     config.extend ControllerMacros, :type => :controller
     # == Mock Framework
     #

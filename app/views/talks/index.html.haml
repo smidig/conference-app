@@ -1,0 +1,5 @@
+%h1 Talks
+= link_to('Create new', new_talk_path)
+%ul
+  - for talk in @talks
+    = render :partial => "talk", :locals => { :talk => talk }

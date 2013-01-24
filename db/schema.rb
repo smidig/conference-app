@@ -11,7 +11,30 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130121193146) do
+ActiveRecord::Schema.define(:version => 20130124183110) do
+
+  create_table "talk_categories", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "talk_types", :force => true do |t|
+    t.string   "name"
+    t.integer  "duration"
+    t.boolean  "visible"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "talks", :force => true do |t|
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+    t.string   "title"
+    t.text     "description"
+    t.integer  "talk_type_id"
+    t.integer  "talk_category_id"
+  end
 
   create_table "tickets", :force => true do |t|
     t.string   "name"

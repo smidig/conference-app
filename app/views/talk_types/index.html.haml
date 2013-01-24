@@ -1,0 +1,23 @@
+%h1 Listing talk_types
+
+%table
+  %tr
+    %th Name
+    %th Duration
+    %th Visible
+    %th
+    %th
+    %th
+
+  - @talk_types.each do |talk_type|
+    %tr
+      %td= talk_type.name
+      %td= talk_type.duration
+      %td= talk_type.visible
+      %td= link_to 'Show', talk_type
+      %td= link_to 'Edit', edit_talk_type_path(talk_type)
+      %td= link_to 'Destroy', talk_type, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Talk type', new_talk_type_path
