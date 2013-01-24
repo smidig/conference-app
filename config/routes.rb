@@ -1,7 +1,19 @@
 ConferenceApp::Application.routes.draw do
+  resources :talk_categories
+
+
+  resources :talk_types
+
+
+  get "talk/index"
+
+  get "talk/destroy"
+
   get "home/index"
   root :to => "home#index"
   resources :tickets
+  resources :talks
+  
   devise_for :users, :controllers => { :registrations => "registrations"}
   match "/users" => "users#index"
   match "/users/:id" => "users#destroy"

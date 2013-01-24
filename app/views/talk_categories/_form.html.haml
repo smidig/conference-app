@@ -1,0 +1,13 @@
+= form_for @talk_category do |f|
+  - if @talk_category.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@talk_category.errors.count, "error")} prohibited this talk_category from being saved:"
+      %ul
+        - @talk_category.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .actions
+    = f.submit 'Save'

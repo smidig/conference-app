@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @talk_type.name
+%p
+  %b Duration:
+  = @talk_type.duration
+%p
+  %b Visible:
+  = @talk_type.visible
+
+= link_to 'Edit', edit_talk_type_path(@talk_type)
+\|
+= link_to 'Back', talk_types_path

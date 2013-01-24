@@ -28,10 +28,12 @@ gem 'jquery-rails'
 
 # We should discuss this on next meeting
 group :linux_development do
+  gem 'rb-inotify', '~> 0.8.8' # File watcher
   gem 'libnotify' # Guard notifications for Linux
 end
 
 group :mac_development do
+  gem 'rb-fsevent' # File watcher
   gem 'growl' # Guard notifications for OS X
 end
 
@@ -42,11 +44,10 @@ group :test, :development do
   gem 'guard-test'
   gem 'spork'
   gem 'spork-testunit'
-  gem 'rb-fsevent'
   gem 'rspec-rails'
-  gem 'factory_girl_rails'
-  gem 'rb-inotify', '~> 0.8.8'
+  gem 'factory_girl_rails', :require => false
 end
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
