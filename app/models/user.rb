@@ -13,4 +13,5 @@ class User < ActiveRecord::Base
   validates_presence_of :name, :tlf
   validates_inclusion_of :accepcted_privacy, :in => [true]
 
+  belongs_to :ticket
 end
