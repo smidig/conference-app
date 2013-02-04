@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(:version => 20130204214122) do
     t.boolean  "accepted_optional_email"
     t.string   "twitter"
     t.string   "allergies"
-    t.integer  "ticked_id"
+    t.integer  "ticket_id"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
