@@ -1,0 +1,8 @@
+%h2 Forgot your password?
+
+= simple_form_for resource, :as => resource_name, :url => password_path(resource_name), :html => { :class => 'form-horizontal' } do |f|
+  = f.input :email, :autofocus => true
+  .form-actions
+    = f.button :submit, :class => 'btn-primary', :value => "Send me reset password instructions"
+
+=render "devise/shared/links"
