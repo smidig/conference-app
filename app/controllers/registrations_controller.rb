@@ -7,6 +7,13 @@ class RegistrationsController < Devise::RegistrationsController
   def create
   	puts "Overridden create method in devise"
   	super
-    # add custom create logic here
   end
-end 
+
+  def after_sign_up_path_for(user)
+    if(user.ticket.price > 0)
+      "https://www.sandbox.paypal.com/cgi-bin/webscr"
+    else
+      edit_user_registration_path
+    end
+  end
+end
