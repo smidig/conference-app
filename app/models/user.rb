@@ -7,10 +7,11 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
-  attr_accessible :name, :tlf, :company, :accepcted_privacy, :twitter, :accepted_optional_email
+  attr_accessible :name, :tlf, :company, :accepcted_privacy, :twitter, :accepted_optional_email, :allergies
 
   # validations
   validates_presence_of :name, :tlf
   validates_inclusion_of :accepcted_privacy, :in => [true]
 
+  belongs_to :ticket
 end

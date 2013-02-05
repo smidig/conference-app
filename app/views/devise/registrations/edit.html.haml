@@ -1,0 +1,8 @@
+%h2 Endre konto
+
+= simple_form_for resource, :as => resource_name, :url => registration_path(resource_name), :html => { :class => 'form-horizontal', :method => :put } do |f|
+  = render "form_common", :f => f
+  = f.input :current_password, :hint => "We need your current password to confirm your changes"
+  .form-actions
+    = f.button :submit, :class => 'btn-primary'
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), users_path, :class => 'btn'
