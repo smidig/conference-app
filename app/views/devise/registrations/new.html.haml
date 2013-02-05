@@ -1,6 +1,6 @@
 %h2 Registrer deg!
 = simple_form_for @user, :html => { :class => 'form-horizontal' } do |f|
-
+  = f.association :ticket, :label_method => :display
   = render "form_common", :f => f
 
   .form-actions

@@ -3,4 +3,8 @@ class Ticket < ActiveRecord::Base
   validates_presence_of :name, :price
 
   has_many :users
+
+  def display
+    name.to_s + " - (kr " + price.to_s + ",-)"
+  end
 end
