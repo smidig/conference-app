@@ -28,6 +28,7 @@ GEM
     activesupport (3.2.11)
       i18n (~> 0.6)
       multi_json (~> 1.0)
+    addressable (2.3.2)
     arel (3.0.2)
     bcrypt-ruby (3.0.1)
     bootstrap-sass (2.2.2.0)
@@ -36,6 +37,7 @@ GEM
     childprocess (0.3.7)
       ffi (~> 1.0, >= 1.0.6)
     coderay (1.0.8)
+    crack (0.3.2)
     devise (2.2.2)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
@@ -170,6 +172,9 @@ GEM
       multi_json (~> 1.0, >= 1.0.2)
     warden (1.2.1)
       rack (>= 1.0)
+    webmock (1.9.0)
+      addressable (>= 2.2.7)
+      crack (>= 0.1.7)
 
 PLATFORMS
   ruby
@@ -196,3 +201,4 @@ DEPENDENCIES
   spork-testunit
   sqlite3
   uglifier (>= 1.0.3)
+  webmock

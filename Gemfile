@@ -46,6 +46,7 @@ group :test, :development do
   gem 'spork-testunit'
   gem 'rspec-rails'
   gem 'factory_girl_rails', :require => false
+  gem 'webmock'
 end
 
 # To use ActiveModel has_secure_password

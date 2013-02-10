@@ -13,7 +13,8 @@ ConferenceApp::Application.routes.draw do
   root :to => "home#index"
   resources :tickets
   resources :talks
-  
+  resources :payment_notifications
+
   devise_for :users, :controllers => { :registrations => "registrations"}
   match "/users" => "users#index"
   match "/users/:id" => "users#destroy"
