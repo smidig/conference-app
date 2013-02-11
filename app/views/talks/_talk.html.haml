@@ -2,3 +2,7 @@
   =talk.title
 %p.description
   =talk.description
+  =link_to "Destroy", talk, confirm: 'Are you sure you want to delete this talk?', :method => :delete
+  =link_to "Edit", edit_talk_path(talk)
+-if talk.presentation.file?
+  =link_to "Presentation", talk.presentation.url

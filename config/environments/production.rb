@@ -66,4 +66,14 @@ ConferenceApp::Application.configure do
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
   config.assets.initialize_on_precompile = false
+
+  config.paperclip_defaults = {
+    :storage => ENV['PAPERCLIP_STORAGE'] || :s3,
+    :path => ':class/:attachment/:id-:filename',
+    :s3_credentials => {
+      :bucket => ENV['AWS_BUCKET'],
+      :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+      :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+    }
+  }
 end
