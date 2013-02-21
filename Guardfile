@@ -30,3 +30,9 @@ guard :rspec, :cli => "--color --drb" do
   watch(%r{^lib/(.+)\.rb})     { |m| "spec/#{m[1]}_spec.rb" }
   watch('spec/spec_helper.rb') { "spec" }
 end
+
+guard 'migrate' , :run_on_start => true do
+  watch(%r{^db/migrate/(\d+).+\.rb})
+  watch('db/seeds.rb')
+end
+
