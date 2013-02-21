@@ -4,10 +4,12 @@ class Order < ActiveRecord::Base
   belongs_to :user, class_name: "User", foreign_key: "owner_user_id"
 
   def price
-    sum = 0
+    totalSum = 0
     self.users.each do |u|
-      sum += u.ticket.price
+      unless u.ticket.nil?
+        totalSum += u.ticket.price
+      end
     end
-    sum
+    totalSum
   end
 end
