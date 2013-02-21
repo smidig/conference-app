@@ -1,4 +1,10 @@
 ConferenceApp::Application.routes.draw do
+  get "administration/registrations"
+
+  get "administration/send_mail"
+
+  get "administration/statistics"
+
   get "info/about"
 
   get "info/sponsor"
