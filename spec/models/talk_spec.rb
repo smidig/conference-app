@@ -15,10 +15,4 @@ describe Talk do
       talk.valid?.should be_true
     end
   end
-
-  describe ".file" do
-    it "presentation should have a url" do
-      talk = FactoryGirl.create(:talk)
-    end
-  end  
 end
