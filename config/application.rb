@@ -58,5 +58,14 @@ module ConferenceApp
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    config.paperclip_defaults = {
+        :storage => ENV['PAPERCLIP_STORAGE'] ? ENV['PAPERCLIP_STORAGE'] : "filesystem",
+        :s3_credentials => {
+            :bucket => ENV['AWS_BUCKET'],
+            :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+            :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+        }
+    }
   end
 end

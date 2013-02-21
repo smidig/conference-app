@@ -76,11 +76,12 @@ class TalksController < ApplicationController
   def destroy
     @talk = Talk.find(params[:id])
     @talk.destroy
+    flash[:notice] = "Talk has been deleted."
 
     respond_to do |format|
       format.html { redirect_to talks_url }
       format.json { head :no_content }
     end
   end
-
+  
 end

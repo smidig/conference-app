@@ -1,5 +1,8 @@
-%h1 Talks
-= link_to('Create new', new_talk_path)
-%ul
-  - for talk in @talks
-    = render :partial => "talk", :locals => { :talk => talk }
+%header.clearfix
+  %h1.pull-left
+    Talks
+  = link_to 'Create new', new_talk_path, :class => 'pull-right btn btn-success'
+%article.main  
+  %ul
+    - for talk in @talks
+      = render :partial => "talk", :locals => { :talk => talk }

@@ -1,6 +1,10 @@
-=simple_form_for @talk do |f|
+=simple_form_for @talk, :html => {:multipart => true} do |f|
   =f.input :title
   =f.input :description
   =f.association :talk_type
   =f.association :talk_category
+  - if @talk.presentation.file?
+    Opplasted presentasjon:
+    =link_to @talk.presentation.original_filename, @talk.presentation.url
+  =f.input :presentation, :as => :file, :label => 'Last opp ny presentation'
   =f.button :submit
