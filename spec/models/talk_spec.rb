@@ -11,12 +11,14 @@ describe Talk do
       talk.errors[:description].should be_true
     end
     it "should be valid with required fields" do
-      talk = Talk.new({
-        :title => "Test talk",
-        :description => "Test description",
-        :talk_type => FactoryGirl.create(:talk_type),
-        :talk_category => FactoryGirl.create(:talk_category)})
+      talk = FactoryGirl.create(:talk)
       talk.valid?.should be_true
     end
   end
+
+  describe ".file" do
+    it "presentation should have a url" do
+      talk = FactoryGirl.create(:talk)
+    end
+  end  
 end

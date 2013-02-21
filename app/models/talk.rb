@@ -6,5 +6,7 @@ class Talk < ActiveRecord::Base
 
   has_attached_file :presentation
 
+  validates_attachment_size :presentation, :less_than => 10.megabytes
+
   validates_presence_of :title, :description, :talk_type, :talk_category
 end
