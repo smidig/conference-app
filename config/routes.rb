@@ -1,4 +1,8 @@
 ConferenceApp::Application.routes.draw do
+  get "info/about"
+
+  get "info/sponsor"
+
   resources :talk_categories
 
 
