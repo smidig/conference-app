@@ -44,6 +44,7 @@ group :test, :development do
   gem 'guard-rspec'
   gem 'guard-spork'
   gem 'guard-test'
+  gem 'guard-migrate'
   gem 'spork'
   gem 'spork-testunit'
   gem 'rspec-rails'
