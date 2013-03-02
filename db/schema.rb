@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130221163034) do
+ActiveRecord::Schema.define(:version => 20130302112411) do
 
   create_table "orders", :force => true do |t|
     t.string   "comment"
@@ -19,6 +19,29 @@ ActiveRecord::Schema.define(:version => 20130221163034) do
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
     t.integer  "owner_user_id"
+  end
+
+  create_table "payments", :force => true do |t|
+    t.integer  "price"
+    t.integer  "paid_amount"
+    t.boolean  "completed"
+    t.datetime "completed_at"
+    t.text     "paypal_params"
+    t.string   "paypal_tx_id"
+    t.string   "paypal_tx_type"
+    t.string   "paypal_currency"
+    t.string   "paypal_status"
+    t.string   "paypal_payer_email"
+    t.string   "manual_company_name"
+    t.string   "manual_company_email"
+    t.string   "manual_contact_person"
+    t.string   "manual_street_address"
+    t.string   "manual_post_code"
+    t.boolean  "manual_invoice_sent"
+    t.integer  "order_id"
+    t.string   "type"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
   end
 
   create_table "talk_categories", :force => true do |t|

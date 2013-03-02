@@ -1,6 +1,7 @@
 class Order < ActiveRecord::Base
   attr_accessible :comment, :completed, :owner_user_id
   has_many :users
+  has_one :payment
   belongs_to :user, class_name: "User", foreign_key: "owner_user_id"
 
   def price
