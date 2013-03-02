@@ -16,7 +16,7 @@ describe TicketsController, :type => :controller do
     it "assigns all tickets as @tickets" do
       ticket = Ticket.create! valid_attributes
       get :index, {}
-      assigns(:tickets).should eq([ticket])
+      assigns(:tickets).should eq(Ticket.all)
     end
   end
 
