@@ -46,6 +46,9 @@ group :test, :development do
   gem 'spork-testunit'
   gem 'rspec-rails'
   gem 'factory_girl_rails', :require => false
+end
+
+group :test do
   gem 'webmock'
 end
 

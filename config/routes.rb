@@ -1,4 +1,10 @@
 ConferenceApp::Application.routes.draw do
+  get "orders/index"
+
+  get "orders/show"
+
+  get "orders/complete"
+
   resources :talk_categories
 
 

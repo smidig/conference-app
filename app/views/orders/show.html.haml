@@ -1,0 +1,31 @@
+%h2 Din bestilling:
+
+%dl.dl-horizontal
+  %dt Date:
+  %dd #{@order.created_at}
+  %dt Owner:
+  %dd #{@order.owner.name} (#{@order.owner.email})
+  %dt Total price:
+  %dd #{@order.price}
+
+%h3 Users in order:
+%table{:class => 'table table-striped'}
+  %thead
+    %tr
+      %th= 'Name'
+      %th= 'Email'
+      %th= 'Billett'
+      %th= 'Price'
+  %tbody
+    - for user in @order.users
+      %tr
+        %td #{user.name}
+        %td #{user.email}
+        %td= user.ticket.display
+        %td= user.ticket.price
+    %tr.success.strong
+      %td{:colspan => 3} Total price:
+      %td #{@order.price}
+
+#{link_to 'Fullfør med Paypal', orders_complete_path(:type => 'paypal'), :class => 'btn btn-large btn-primary'}
+#{link_to 'Fullfør med Faktura', orders_complete_path(:type => 'invoice'), :class => 'btn btn-large'}

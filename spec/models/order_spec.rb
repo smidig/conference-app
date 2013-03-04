@@ -21,6 +21,7 @@ describe Order do
     order.users.size.should == 1
     order.users.first.id.should == @user.id
     order.owner_user_id.should == @user.id
+    order.owner.should == @user
   end
   it "should sum prices based on users tickets" do
 

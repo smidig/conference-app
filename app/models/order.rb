@@ -13,4 +13,9 @@ class Order < ActiveRecord::Base
     end
     totalSum
   end
+
+  def owner
+    User.find(self.owner_user_id)
+  end
+
 end

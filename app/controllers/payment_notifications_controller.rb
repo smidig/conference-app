@@ -2,9 +2,26 @@ require "net/http"
 class PaymentNotificationsController < ApplicationController
   def create
     isValid = validate(request.raw_post)
+    payment = Payment.find_by_invoice_id(params[:invoice])
+    unless payment.nil?
+      payment.paid_amount = params[:mc_gross].to_i
+      payment.paypal_currency = params[:mc_currency]
+      payment.paypal_tx_id = params[:txn_id]
+      payment.paypal_tx_type = params[:txn_type]
+      payment.paypal_status = params[:payment_status]
+      payment.paypal_payer_email = params[:payer_email]
+      payment.paypal_params = params
 
-    puts "isValid: #{isValid}"
-    puts "using create"
+      # TODO: verify that it is actually is correct amount!
+      payment.completed_at = Time.now
+      payment.completed = true
+
+
+      puts "isValid: #{isValid}"
+      puts "using create"
+      payment.save!
+    end
+
     render :nothing => true
   end
 

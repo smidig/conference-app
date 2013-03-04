@@ -23,4 +23,14 @@ describe Payment do
     payment.save!
     @order.payment.should eq(payment)
   end
+
+  it "should generate and set invoice_id after create" do
+    payment = ManualPayment.new({
+        :price => @order.price,
+        :order_id => @order.id
+      })
+    payment.save!
+    time = Time.new
+    payment.invoice_id.should eq("#{time.year}t#{payment.id}")
+  end
 end
