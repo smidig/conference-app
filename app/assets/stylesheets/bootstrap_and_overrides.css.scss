@@ -1,3 +1,7 @@
 @import "bootstrap";
 body { padding-top: 60px; }
 @import "bootstrap-responsive";
+
+.table .text-right   { text-align: right; }
+.table .text-left    { text-align: left; }
+.table .text-center  { text-align: center; }

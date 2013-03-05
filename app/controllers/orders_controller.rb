@@ -25,6 +25,32 @@ class OrdersController < ApplicationController
     end
   end
 
+  def add_user
+    @order = Order.find_by_owner_user_id(current_user.id)
+    @user = User.create({
+      :name => params[:user][:name],
+      :email => params[:user][:email],
+      :tlf => params[:user][:tlf],
+      :ticket_id => params[:user][:ticket_id],
+      :password => Devise.friendly_token.first(9),
+      :company => @order.owner.company,
+      :accepcted_privacy => true
+    })
+
+    @user.order_id = @order.id
+
+    if @user.save
+      redirect_to :action => "show"
+    else
+      render action: "new_user"
+    end
+  end
+
+  def new_user
+    @order = Order.find_by_owner_user_id(current_user.id)
+    @user = User.new
+  end
+
   private
 
   def complete_with_paypal(order)

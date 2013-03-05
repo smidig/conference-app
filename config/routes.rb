@@ -1,5 +1,7 @@
 ConferenceApp::Application.routes.draw do
   get "orders/index"
+  get "orders/new_user"
+  post "orders/add_user"
 
   get "orders/show"
 
