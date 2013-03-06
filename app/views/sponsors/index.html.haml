@@ -1,0 +1,27 @@
+%h1 Listing sponsors
+
+%table.table.table-striped
+  %tr
+    %th Name
+    %th Url
+    %th Imageurl
+    %th Description
+    %th
+    %th
+    %th
+
+  - @sponsors.each do |sponsor|
+    %tr
+      %td= sponsor.name
+      %td= sponsor.url
+      %td= sponsor.imageUrl
+      %td= sponsor.description
+      %td= link_to 'Show', sponsor
+      %td= link_to 'Edit', edit_sponsor_path(sponsor)
+      %td= link_to 'Destroy', sponsor, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Sponsor', new_sponsor_path
+
+= render 'list'
