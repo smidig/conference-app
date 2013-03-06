@@ -3,16 +3,14 @@
     %tr
       %th= 'Navn'
       %th= 'Email'
-      %th= 'payment id'
       %th= 'ticket type'
-      %th= 'ticket prixe'
+      %th= 'ticket price'
       %th= 'Handling'
   %tbody
     - for user in @users
       %tr
         %td= user.name
         %td= user.email
-        %td= user.invoice_id
         %td= user.ticket.name if user.ticket
         %td= user.ticket.price if user.ticket
         %td= link_to 'Delete', {:action => 'destroy', :id => user.id }, :confirm =>"Are you sure", :method=>:delete, :class => 'btn btn-danger'
