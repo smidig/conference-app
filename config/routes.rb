@@ -1,4 +1,7 @@
 ConferenceApp::Application.routes.draw do
+  resources :sponsors
+
+
   get "info/about"
 
   get "info/sponsor"
