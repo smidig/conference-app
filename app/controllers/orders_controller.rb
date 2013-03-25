@@ -1,4 +1,6 @@
 class OrdersController < ApplicationController
+  before_filter :redirect_if_order_completed, :only => [:complete, :add_user, :new_user]
+
   def index
     @orders = Order.all
   end
@@ -20,10 +22,8 @@ class OrdersController < ApplicationController
   end
 
   def complete
-    @order = Order.find_by_owner_user_id(current_user.id)
-    type = params[:type]
-
-    if(type == "invoice")
+    #@order set by filter
+    if(params[:type] == "invoice")
       complete_with_invoice(@order)
     else
       complete_with_paypal(@order)
@@ -31,7 +31,7 @@ class OrdersController < ApplicationController
   end
 
   def add_user
-    @order = Order.find_by_owner_user_id(current_user.id)
+    #@order set by filter
     @user = User.create({
       :name => params[:user][:name],
       :email => params[:user][:email],
@@ -52,7 +52,7 @@ class OrdersController < ApplicationController
   end
 
   def new_user
-    @order = Order.find_by_owner_user_id(current_user.id)
+    #@order set by filter
     @user = User.new
   end
 
@@ -78,5 +78,18 @@ class OrdersController < ApplicationController
     # verify order contains atleast 3 users
     # create invoice payment
     # send emails to admins
+  end
+
+  def redirect_if_order_completed
+    if current_user.admin && params[:id]
+      @order = Order.find(params[:id])
+    else
+      @order = Order.find_by_owner_user_id(current_user.id)
+    end
+
+    if @order.completed
+      flash[:warning] = 'Cannot perform actions on a completed order!'
+      redirect_to :action => :show, :id => @order.id
+    end
   end
 end

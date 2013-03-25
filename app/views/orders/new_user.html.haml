@@ -6,4 +6,4 @@
 
   .form-actions
     = f.button :submit, :class => 'btn-primary', :value => "Legg til bruker"
-    = link_to t('.cancel', :default => t("helpers.links.cancel")), users_path, :class => 'btn'
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), {:action => "show", :id => @order.id}, :class => 'btn'

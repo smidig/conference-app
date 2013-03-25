@@ -4,8 +4,8 @@ ConferenceApp::Application.routes.draw do
   get "orders/new_user"
   post "orders/add_user"
   get "orders/show"
-  get "orders/:id" => "orders#show"
   get "orders/complete"
+  get "orders/:id" => "orders#show"
   #map.conect "orders/:id", :controller => "orders", :action => "show"
 
   resources :talk_categories

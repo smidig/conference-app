@@ -1,12 +1,18 @@
 %h2 Din bestilling:
 
 %dl.dl-horizontal
+  %dt Id:
+  %dd #{@order.id}
   %dt Dato:
   %dd #{@order.created_at}
   %dt Påmelder:
   %dd #{@order.owner.name}
-  %dt Pris:
+  %dt Total pris:
   %dd #{@order.price},-
+  %dt Betalt:
+  %dd
+    = 'Ja' if @order.completed
+    = 'nei' unless @order.completed
 
 %h3 Påmeldte deltakere:
 %table{:class => 'table table-striped'}
@@ -25,13 +31,17 @@
         %td #{user.ticket.price},-
     %tr
       %td{:colspan => 3}
-      %td #{@order.price},-
+      %td
+        %strong #{@order.price},-
     %tr
       %td{:colspan => 4, :class => "text-right"}
-        %a{:href => "new_user"}
-          %i.icon-plus-sign
-          Legg til deltaker
+        - if @order.completed?
+          %a{:href => "new_user"}
+            %i.icon-plus-sign
+            Legg til deltaker
 
-.form-actions
-  #{link_to 'Fullfør med Paypal', orders_complete_path(:type => 'paypal'), :class => 'btn btn-large btn-primary'}
-  #{link_to 'Fullfør med Faktura', orders_complete_path(:type => 'invoice'), :class => 'btn btn-large'}
+
+- if @order.completed?
+  .form-actions
+    #{link_to 'Fullfør med Paypal', orders_complete_path(:type => 'paypal'), :class => 'btn btn-large btn-primary'}
+    #{link_to 'Fullfør med Faktura', orders_complete_path(:type => 'invoice'), :class => 'btn btn-large'}
