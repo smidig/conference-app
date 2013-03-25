@@ -36,9 +36,9 @@ describe TalkCategoriesController do
 
   describe "GET index" do
     it "assigns all talk_categories as @talk_categories" do
-      talk_category = TalkCategory.create! valid_attributes
+      talk_category = TalkCategory.all
       get :index, {}, valid_session
-      assigns(:talk_categories).should eq([talk_category])
+      assigns(:talk_categories).should eq(talk_category)
     end
   end
 

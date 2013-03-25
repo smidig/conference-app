@@ -36,9 +36,9 @@ describe TalkTypesController do
 
   describe "GET index" do
     it "assigns all talk_types as @talk_types" do
-      talk_type = TalkType.create! valid_attributes
+      talk_type = TalkType.all
       get :index, {}, valid_session
-      assigns(:talk_types).should eq([talk_type])
+      assigns(:talk_types).should eq(talk_type)
     end
   end
 
