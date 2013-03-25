@@ -4,7 +4,12 @@ class OrdersController < ApplicationController
   end
 
   def show
-    @order = Order.find_by_owner_user_id(current_user.id)
+    if(current_user.admin && params[:id])
+      @order = Order.find(params[:id])
+    else
+      @order = Order.find_by_owner_user_id(current_user.id)
+    end
+
     if(@order.nil?)
       @order = Order.create({:owner_user_id => current_user.id})
       @order.save

@@ -5,6 +5,7 @@
       %th= 'Email'
       %th= 'ticket type'
       %th= 'ticket price'
+      %th= 'Order'
       %th= 'Handling'
   %tbody
     - for user in @users
@@ -13,4 +14,5 @@
         %td= user.email
         %td= user.ticket.name if user.ticket
         %td= user.ticket.price if user.ticket
+        %td= link_to 'Order', {:controller => :orders, :action => 'show', :id => user.order.id} if user.order
         %td= link_to 'Delete', {:action => 'destroy', :id => user.id }, :confirm =>"Are you sure", :method=>:delete, :class => 'btn btn-danger'
