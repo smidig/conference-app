@@ -1,3 +1,66 @@
 @import "bootstrap";
 body { padding-top: 60px; }
 @import "bootstrap-responsive";
+
+#main {
+	min-height: 600px;
+}
+
+/* Footer */
+
+footer{
+background:#222;
+margin-top:10px;
+font-size:13px;
+padding-top:10px;
+color:#ddd;
+}
+
+footer hr{
+border-top:1px solid #333;
+padding:0px;
+border-bottom:1px solid #111;
+}
+
+footer h4{
+font-size:15px;
+padding-bottom:6px;
+border-bottom:1px solid #313131;
+margin-bottom:4px;
+color:#ccc;
+}
+
+footer a, footer a:visited{
+color:#bbb;
+}
+
+footer a:hover{
+color:#888;
+text-decoration:none;
+}
+
+footer ul{
+list-style-type: none !important;
+padding: 0px;
+margin: 0px;
+}
+
+footer{
+border-top:3px solid #30add1;
+}
+
+footer ul li{
+background-image:image-url('list-b.png');
+}
+
+footer ul li{
+background-repeat: no-repeat;
+background-position: 2px 7px; 
+background-size:13px 13px;
+padding:4px 0px;
+padding-left: 21px; 
+}
+
+footer .widget{
+margin-bottom:10px;
+}

@@ -21,8 +21,7 @@ ConferenceApp::Application.routes.draw do
 
   get "talk/destroy"
 
-  get "home/index"
-  root :to => "home#index"
+  root :to => "info#index"
   resources :tickets
   resources :talks
   

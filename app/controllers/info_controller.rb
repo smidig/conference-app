@@ -1,5 +1,8 @@
 class InfoController < ApplicationController
-  def about
+  def index
+  end
+
+	def about
   end
 
   def sponsor
