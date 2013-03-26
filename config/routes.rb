@@ -1,6 +1,11 @@
 ConferenceApp::Application.routes.draw do
   resources :sponsors
 
+  get "administration/registrations"
+
+  get "administration/send_mail"
+
+  get "administration/statistics"
 
   get "info/about"
 
