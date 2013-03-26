@@ -23,4 +23,12 @@ class UsersController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+  def complete
+    @user = User.find(params[:id])
+    @user.completed = params[:completed] == "true" ? true : nil
+    @user.save!
+
+    redirect_to :action => :index
+  end
 end

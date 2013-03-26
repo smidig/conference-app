@@ -27,6 +27,7 @@ ConferenceApp::Application.routes.draw do
   devise_for :users, :controllers => { :registrations => "registrations"}
   match "/users" => "users#index"
   match "/users/:id" => "users#destroy"
+  match "users/complete/:id" => "users#complete"
   devise_for :users
   # The priority is based upon order of creation:
   # first created -> highest priority.

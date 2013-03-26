@@ -3,9 +3,10 @@
     %tr
       %th= 'Navn'
       %th= 'Email'
-      %th= 'ticket type'
-      %th= 'ticket price'
+      %th= 'Ticket'
+      %th= 'Price'
       %th= 'Order'
+      %th= 'Completed'
       %th= 'Handling'
   %tbody
     - for user in @users
@@ -15,4 +16,9 @@
         %td= user.ticket.name if user.ticket
         %td= user.ticket.price if user.ticket
         %td= link_to 'Order', {:controller => :orders, :action => 'show', :id => user.order.id} if user.order
+        %td
+          - if user.completed
+            = link_to 'Ja', {:action => 'complete', :id => user.id, :completed => false}, :title => "Sett ikke fullfør"
+          - else
+            = link_to 'Nei', {:action => 'complete', :id => user.id, :completed => true}, :title => "Sett fullført"
         %td= link_to 'Delete', {:action => 'destroy', :id => user.id }, :confirm =>"Are you sure", :method=>:delete, :class => 'btn btn-danger'

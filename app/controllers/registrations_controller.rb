@@ -22,8 +22,8 @@ class RegistrationsController < Devise::RegistrationsController
     if(user.ticket.price > 0)
       orders_show_path
     else
-      user.completed = true
-      user.save!
+      # TODO: send user to my-profile if sponsor or organizer
+      # TODO: Send user to add talk if speaker
       edit_user_registration_path
     end
   end

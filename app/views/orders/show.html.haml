@@ -9,7 +9,7 @@
   %dd #{@order.owner.name}
   %dt Total pris:
   %dd #{@order.price},-
-  %dt Betalt:
+  %dt Fullført:
   %dd
     = 'Ja' if @order.completed
     = 'nei' unless @order.completed
@@ -35,13 +35,13 @@
         %strong #{@order.price},-
     %tr
       %td{:colspan => 4, :class => "text-right"}
-        - if @order.completed?
+        - unless @order.completed?
           %a{:href => "new_user"}
             %i.icon-plus-sign
             Legg til deltaker
 
 
-- if @order.completed?
+- unless @order.completed?
   .form-actions
     #{link_to 'Fullfør med Paypal', orders_complete_path(:type => 'paypal'), :class => 'btn btn-large btn-primary'}
     #{link_to 'Fullfør med Faktura', orders_complete_path(:type => 'invoice'), :class => 'btn btn-large'}
