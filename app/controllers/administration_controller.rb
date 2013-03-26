@@ -1,4 +1,6 @@
 class AdministrationController < ApplicationController
+	before_filter :require_admin
+	
   def registrations
   end
 
