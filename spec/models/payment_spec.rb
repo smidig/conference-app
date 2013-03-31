@@ -33,4 +33,18 @@ describe Payment do
     time = Time.new
     payment.invoice_id.should eq("#{time.year}t#{payment.id}")
   end
+
+  it "should finish payment" do
+    payment = PaypalPayment.new({
+        :price => @order.price,
+        :order_id => @order.id
+      })
+    payment.save!
+
+    payment.finish
+    @order.reload
+
+    payment.completed.should be_true
+    @order.completed.should be_true
+  end
 end

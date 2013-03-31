@@ -38,4 +38,26 @@ describe Order do
 
     order.price.should == 500
   end
+   it "should complete all users" do
+
+    order = Order.new({
+        :completed => false,
+        :owner_user_id => @user.id
+      })
+
+    order.save!
+    @user.order_id = order.id
+    @user2.order_id = order.id
+    @user.save!
+    @user2.save!
+
+    order.finish
+
+    @user.reload
+    @user2.reload
+
+    @user.completed.should be_true
+    @user2.completed.should be_true
+    order.completed.should be_true
+  end
 end

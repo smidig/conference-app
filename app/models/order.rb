@@ -18,4 +18,15 @@ class Order < ActiveRecord::Base
     User.find(self.owner_user_id)
   end
 
+  def finish
+    self.transaction do
+      self.users.each do |user|
+        user.completed=true
+        user.save!
+      end
+      self.completed=true
+      self.save!
+    end
+  end
+
 end

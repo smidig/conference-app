@@ -17,4 +17,13 @@ class Payment < ActiveRecord::Base
     end
     self.save!
   end
+
+  def finish
+    self.transaction do
+      self.completed_at = Time.now
+      self.completed = true
+      self.order.finish
+      self.save!
+    end
+  end
 end

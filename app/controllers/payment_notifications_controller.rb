@@ -11,15 +11,15 @@ class PaymentNotificationsController < ApplicationController
       payment.paypal_status = params[:payment_status]
       payment.paypal_payer_email = params[:payer_email]
       payment.paypal_params = params
-
-      # TODO: verify that it is actually is correct amount!
-      payment.completed_at = Time.now
-      payment.completed = true
-
-
-      puts "isValid: #{isValid}"
-      puts "using create"
       payment.save!
+
+      if payment.paid_amount == payment.price
+        payment.finish
+      else
+        # email warning
+      end
+
+      puts "Payment id=#{payment.invoice_id} and isValid=#{isValid}"
     end
 
     render :nothing => true
