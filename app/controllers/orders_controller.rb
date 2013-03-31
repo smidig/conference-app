@@ -56,6 +56,10 @@ class OrdersController < ApplicationController
     @user = User.new
   end
 
+  def paypal_completed
+    #@order set by filter
+  end
+
   private
 
   def complete_with_paypal(order)
@@ -68,9 +72,7 @@ class OrdersController < ApplicationController
     else
       payment = order.payment
     end
-    order.completed = true
-    order.save!
-    redirect_to payment.payment_url(payment_notifications_url, home_index_url)
+    redirect_to payment.payment_url(payment_notifications_url, orders_paypal_completed_url)
   end
 
   def complete_with_invoice(order)

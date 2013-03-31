@@ -5,6 +5,7 @@ ConferenceApp::Application.routes.draw do
   post "orders/add_user"
   get "orders/show"
   get "orders/complete"
+  get "orders/paypal_completed"
   get "orders/:id" => "orders#show"
   #map.conect "orders/:id", :controller => "orders", :action => "show"
 
