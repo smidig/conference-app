@@ -21,15 +21,6 @@ class OrdersController < ApplicationController
     puts "Order: #{@order}"
   end
 
-  def complete
-    #@order set by filter
-    if(params[:type] == "invoice")
-      complete_with_invoice(@order)
-    else
-      complete_with_paypal(@order)
-    end
-  end
-
   def add_user
     #@order set by filter
     @user = User.create({
@@ -56,31 +47,22 @@ class OrdersController < ApplicationController
     @user = User.new
   end
 
-  def paypal_completed
+  def complete
     #@order set by filter
+    @order.transaction do
+      @order.completed = true
+      @order.save!
+    end
+
+    if(params[:type] == "invoice")
+      redirect_to :controller=>'payments', :action => 'create_manual', :order_id => @order.id
+    else
+      redirect_to :controller=>'payments', :action => 'create_paypal', :order_id => @order.id
+    end
   end
+
 
   private
-
-  def complete_with_paypal(order)
-    if(order.payment.nil?)
-      payment = PaypalPayment.new({
-          :price => order.price,
-          :order_id => order.id
-        })
-      payment.save!
-    else
-      payment = order.payment
-    end
-    redirect_to payment.payment_url(payment_notifications_url, orders_paypal_completed_url)
-  end
-
-  def complete_with_invoice(order)
-    #TODO:
-    # verify order contains atleast 3 users
-    # create invoice payment
-    # send emails to admins
-  end
 
   def redirect_if_order_completed
     if current_user.admin && params[:id]

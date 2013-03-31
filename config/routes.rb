@@ -5,7 +5,7 @@ ConferenceApp::Application.routes.draw do
   post "orders/add_user"
   get "orders/show"
   get "orders/complete"
-  get "orders/paypal_completed"
+
   get "orders/:id" => "orders#show"
   #map.conect "orders/:id", :controller => "orders", :action => "show"
 
@@ -24,6 +24,11 @@ ConferenceApp::Application.routes.draw do
   resources :tickets
   resources :talks
   resources :payment_notifications
+
+  get "payments/paypal_completed"
+  get "payments/create_paypal"
+  get "payments/create_manual"
+  get "payments/complete"
   resources :payments
 
   devise_for :users, :controllers => { :registrations => "registrations"}

@@ -9,6 +9,7 @@
       %th= 'Price'
       %th= 'Comment'
       %th= 'Completed'
+      %th= 'status'
       %th= ''
       %th= ''
   %tbody
@@ -19,5 +20,6 @@
         %td= order.owner.email
         %td= order.price
         %td= order.comment
-        %td= order.completed
+        %td= order.completed ? "J" : "N"
+        %td= order.status
         %td= link_to 'Show', orders_show_path(:id => order.id)

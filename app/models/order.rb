@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class Order < ActiveRecord::Base
   attr_accessible :comment, :completed, :owner_user_id
   has_many :users
@@ -12,6 +13,20 @@ class Order < ActiveRecord::Base
       end
     end
     totalSum
+  end
+
+  def status
+    if self.payment && self.payment.completed
+      'Betalt'
+    elsif self.payment && !self.payment.completed
+      'Betaling påbegynt'
+    else
+      'Avventer betalingsinfo'
+    end
+  end
+
+  def payment_created
+    return self.payment != nil
   end
 
   def owner

@@ -9,10 +9,8 @@
   %dd #{@order.owner.name}
   %dt Total pris:
   %dd #{@order.price},-
-  %dt Fullført:
-  %dd
-    = 'Ja' if @order.completed
-    = 'nei' unless @order.completed
+  %dt Status:
+  %dd #{@order.status}
 
 %h3 Påmeldte deltakere:
 %table{:class => 'table table-striped'}
@@ -35,13 +33,19 @@
         %strong #{@order.price},-
     %tr
       %td{:colspan => 4, :class => "text-right"}
-        - unless @order.completed?
+        - unless @order.payment
           %a{:href => "new_user"}
             %i.icon-plus-sign
             Legg til deltaker
 
 
-- unless @order.completed?
+PS! Det er ikke mulig å legge til flere deltakere etter at du har startet en betalingsprosess!
+
+- unless @order.payment
   .form-actions
-    #{link_to 'Fullfør med Paypal', orders_complete_path(:type => 'paypal'), :class => 'btn btn-large btn-primary'}
-    #{link_to 'Fullfør med Faktura', orders_complete_path(:type => 'invoice'), :class => 'btn btn-large'}
+    #{link_to 'Fullfør med Paypal', payments_create_paypal_path(:order_id => @order.id), :class => 'btn btn-large btn-primary'}
+    #{link_to 'Fullfør med Faktura', payments_create_manual_path(:order_id => @order.id), :class => 'btn btn-large'}
+
+- if @order.payment && !@order.payment.completed?
+  .form-actions
+    #{link_to 'Fullfør betaling', payments_complete_path(:id => @order.payment.id), :class => 'btn btn-large btn-primary'}
