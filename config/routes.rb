@@ -24,6 +24,7 @@ ConferenceApp::Application.routes.draw do
   resources :tickets
   resources :talks
   resources :payment_notifications
+  resources :payments
 
   devise_for :users, :controllers => { :registrations => "registrations"}
   match "/users" => "users#index"
