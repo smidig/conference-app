@@ -26,8 +26,10 @@ ConferenceApp::Application.routes.draw do
   resources :payment_notifications
 
   get "payments/paypal_completed"
-  get "payments/create_paypal"
-  get "payments/create_manual"
+  get "payments/manual_completed"
+  get "payments/new_paypal"
+  get "payments/new_manual"
+  post "payments/create_manual"
   get "payments/complete"
   resources :payments
 

@@ -47,21 +47,6 @@ class OrdersController < ApplicationController
     @user = User.new
   end
 
-  def complete
-    #@order set by filter
-    @order.transaction do
-      @order.completed = true
-      @order.save!
-    end
-
-    if(params[:type] == "invoice")
-      redirect_to :controller=>'payments', :action => 'create_manual', :order_id => @order.id
-    else
-      redirect_to :controller=>'payments', :action => 'create_paypal', :order_id => @order.id
-    end
-  end
-
-
   private
 
   def redirect_if_order_completed

@@ -18,9 +18,14 @@ class PaymentsController < ApplicationController
   end
 
   def paypal_completed
+    # congrat user!
   end
 
-  def create_paypal
+  def manual_completed
+    # congrat user!
+  end
+
+  def new_paypal
     order = Order.find(params[:order_id])
 
     if order.payment.nil?
@@ -37,11 +42,31 @@ class PaymentsController < ApplicationController
     else
       complete_with_invoice(order.payment)
     end
+  end
 
-
+  def new_manual
+    order = Order.find(params[:order_id])
+    if order.payment.nil?
+      @manual_payment = ManualPayment.new
+      @manual_payment.order_id = params[:order_id]
+    else
+      manual_exists(order)
+    end
   end
 
   def create_manual
+    @manual_payment = ManualPayment.new(params[:manual_payment])
+    order = Order.find(@manual_payment.order_id)
+
+    if !order.payment.nil?
+      manual_exists(@order)
+    else
+      if @manual_payment.save
+        redirect_to :action=> :manual_completed, :id=> @manual_payment.id
+      else
+        render action: "new_manual"
+      end
+    end
   end
 
   # Complete an existing payment
@@ -50,7 +75,7 @@ class PaymentsController < ApplicationController
     if payment.type == 'PaypalPayment'
       complete_with_paypal(payment)
     else
-      redirect_to :action => :create_manual_payment, :id => @create_manual_payment.id
+      manual_exists(payment.order)
     end
   end
 
@@ -61,10 +86,8 @@ class PaymentsController < ApplicationController
     redirect_to payment.payment_url(payment_notifications_url, payments_paypal_completed_url)
   end
 
-  def complete_with_invoice(order)
-    #TODO:
-    # verify order contains atleast 3 users
-    # create invoice payment
-    # send emails to admins
+  def manual_exists(order)
+    flash[:info] = 'Kan maks registrere en betaling per bestilling'
+    redirect_to :controller => :orders, :action=> :show, :id => order.id
   end
 end
