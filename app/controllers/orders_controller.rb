@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  before_filter :require_admin, :only => [:index]
   before_filter :redirect_if_order_completed, :only => [:complete, :add_user, :new_user]
 
   def index

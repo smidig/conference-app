@@ -1,4 +1,7 @@
 class PaymentsController < ApplicationController
+  before_filter :require_admin, :only => [:index, :show, :destroy]
+  before_filter :require_admin_or_order_owner, :only => [:new_paypal]
+
   def index
     @payments = Payment.all
   end
@@ -81,6 +84,14 @@ class PaymentsController < ApplicationController
 
 
   private
+
+  def require_admin_or_order_owner
+    order = Order.find(params[:order_id])
+    unless current_user.admin or order.owner == current_user
+      flash[:info] = 'Du er ikke eier av bestillingen'
+      redirect_to home_index_url
+    end
+  end
 
   def complete_with_paypal(payment)
     redirect_to payment.payment_url(payment_notifications_url, payments_paypal_completed_url)
