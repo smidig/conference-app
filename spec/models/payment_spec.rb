@@ -18,7 +18,10 @@ describe Payment do
   it "should be possible to manual payment for order" do
     payment = ManualPayment.new({
         :price => @order.price,
-        :order_id => @order.id
+        :order_id => @order.id,
+        :manual_company_name=> 'company',
+        :manual_contact_person => 'Ola',
+        :manual_company_email => 'me@email.com'
       })
     payment.save!
     @order.payment.should eq(payment)
@@ -27,7 +30,10 @@ describe Payment do
   it "should generate and set invoice_id after create" do
     payment = ManualPayment.new({
         :price => @order.price,
-        :order_id => @order.id
+        :order_id => @order.id,
+        :manual_company_name=> 'company',
+        :manual_contact_person => 'Ola',
+        :manual_company_email => 'me@email.com'
       })
     payment.save!
     time = Time.new
