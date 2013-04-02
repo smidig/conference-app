@@ -5,6 +5,15 @@ class ManualPayment < Payment
   validates_presence_of :manual_company_name, :manual_contact_person
   validate :has_a_place_to_send_invoice
 
+  def status
+    if self.completed?
+      "Betalt"
+    elsif self.manual_invoice_sent?
+      "Faktura sent. Venter på betaling."
+    else
+      "Fakura opprettet. Ikke sendt."
+    end
+  end
 
   private
   def has_a_place_to_send_invoice

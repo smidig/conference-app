@@ -16,12 +16,10 @@ class Order < ActiveRecord::Base
   end
 
   def status
-    if self.payment && self.payment.completed
-      'Betalt'
-    elsif self.payment && !self.payment.completed
-      'Betaling påbegynt'
+    if self.payment
+      self.payment.status
     else
-      'Avventer betalingsinfo'
+      "Ingen betaling startet"
     end
   end
 

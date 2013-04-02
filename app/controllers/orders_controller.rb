@@ -1,6 +1,7 @@
+# encoding: UTF-8
 class OrdersController < ApplicationController
   before_filter :require_admin, :only => [:index]
-  before_filter :redirect_if_order_completed, :only => [:complete, :add_user, :new_user]
+  before_filter :redirect_if_order_completed, :only => [:add_user, :new_user]
 
   def index
     @orders = Order.all
@@ -57,8 +58,8 @@ class OrdersController < ApplicationController
       @order = Order.find_by_owner_user_id(current_user.id)
     end
 
-    if @order.completed
-      flash[:warning] = 'Cannot perform actions on a completed order!'
+    if @order.completed or @order.payment
+      flash[:warning] = 'Kan ikke legge til brukere på din bestilling etter at en betaling er startet.'
       redirect_to :action => :show, :id => @order.id
     end
   end

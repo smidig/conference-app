@@ -1,6 +1,7 @@
 class PaymentsController < ApplicationController
   before_filter :require_admin, :only => [:index, :show, :destroy]
-  before_filter :require_admin_or_order_owner, :only => [:new_paypal]
+  before_filter :max_one_payment_per_order, :only => [:new_paypal, :new_manual, :create_manual]
+  before_filter :require_admin_or_order_owner, :only => [:new_paypal, :new_manual, :create_manual]
 
   def index
     @payments = Payment.all
@@ -21,54 +22,38 @@ class PaymentsController < ApplicationController
   end
 
   def paypal_completed
-    # congrat user!
+    # congrat user, open for all!
   end
 
   def manual_completed
-    # congrat user!
+    # congrat user, open for all!
   end
 
   def new_paypal
     order = Order.find(params[:order_id])
-
-    if order.payment.nil?
-      order.transaction do
-        payment = PaypalPayment.new({
-            :price => order.price,
-            :order_id => order.id
-          })
-        payment.save!
-        complete_with_paypal(payment)
-      end
-    elsif order.payment.type == 'PaypalPayment'
-      complete_with_paypal(order.payment)
-    else
-      complete_with_invoice(order.payment)
+    order.transaction do
+      payment = PaypalPayment.new({
+          :price => order.price,
+          :order_id => order.id
+        })
+      payment.save!
+      complete_with_paypal(payment)
     end
   end
 
   def new_manual
-    order = Order.find(params[:order_id])
-    if order.payment.nil?
-      @manual_payment = ManualPayment.new
-      @manual_payment.order_id = params[:order_id]
-    else
-      manual_exists(order)
-    end
+    @manual_payment = ManualPayment.new
+    @manual_payment.order_id = params[:order_id]
   end
 
+  # Expects manual_order to have order_id set.
   def create_manual
     @manual_payment = ManualPayment.new(params[:manual_payment])
-    order = Order.find(@manual_payment.order_id)
 
-    if !order.payment.nil?
-      manual_exists(@order)
+    if @manual_payment.save
+      redirect_to :action=> :manual_completed, :id=> @manual_payment.id
     else
-      if @manual_payment.save
-        redirect_to :action=> :manual_completed, :id=> @manual_payment.id
-      else
-        render action: "new_manual"
-      end
+      render action: "new_manual"
     end
   end
 
@@ -78,15 +63,33 @@ class PaymentsController < ApplicationController
     if payment.type == 'PaypalPayment'
       complete_with_paypal(payment)
     else
-      manual_exists(payment.order)
+      max_one payment.order
     end
   end
 
 
   private
 
+  def max_one_payment_per_order
+    if params[:order_id]
+      order = Order.find(params[:order_id])
+    elsif params[:manual_payment][:order_id]
+      order = Order.find(params[:manual_payment][:order_id])
+    end
+    if order.payment and order.payment.type == 'PaypalPayment'
+      complete_with_paypal(order.payment)
+    elsif order.payment
+      max_one order
+    end
+  end
+
   def require_admin_or_order_owner
-    order = Order.find(params[:order_id])
+    if params[:order_id]
+      order = Order.find(params[:order_id])
+    elsif params[:manual_payment][:order_id]
+      order = Order.find(params[:manual_payment][:order_id])
+    end
+
     unless current_user.admin or order.owner == current_user
       flash[:info] = 'Du er ikke eier av bestillingen'
       redirect_to home_index_url
@@ -97,8 +100,8 @@ class PaymentsController < ApplicationController
     redirect_to payment.payment_url(payment_notifications_url, payments_paypal_completed_url)
   end
 
-  def manual_exists(order)
-    flash[:info] = 'Kan maks registrere en betaling per bestilling'
+  def max_one(order)
+    flash[:info] = 'Kan maks registrere en betaling per bestilling.'
     redirect_to :controller => :orders, :action=> :show, :id => order.id
   end
 end

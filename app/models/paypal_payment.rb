@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class PaypalPayment < Payment
   attr_accessible :completed, :completed_at, :paid_amount, :paypal_currency, :paypal_params, :paypal_payer_email, :paypal_status, :paypal_tx_id, :paypal_tx_type, :price
 
@@ -19,5 +20,13 @@ class PaypalPayment < Payment
     PAYMENT_CONFIG[:paypal_url] + "?"+values.map do
           |k,v| "#{k}=#{CGI::escape(v.to_s)}"
     end.join("&")
+  end
+
+  def status
+    if self.completed?
+      "Betalt"
+    else
+      "Venter på betaling hos paypal"
+    end
   end
 end

@@ -1,15 +1,17 @@
 %h2 Din bestilling:
 
 %dl.dl-horizontal
-  %dt Id:
+  %dt BestillingsID:
   %dd #{@order.id}
   %dt Dato:
   %dd #{@order.created_at}
   %dt Påmelder:
   %dd #{@order.owner.name}
+  %dt Selskap:
+  %dd #{@order.owner.company}
   %dt Total pris:
   %dd #{@order.price},-
-  %dt Status:
+  %dt Betalingsstatus:
   %dd #{@order.status}
 
 %h3 Påmeldte deltakere:
@@ -44,8 +46,9 @@ PS! Det er ikke mulig å legge til flere deltakere etter at du har startet en be
 - unless @order.payment
   .form-actions
     #{link_to 'Fullfør med Paypal', payments_new_paypal_path(:order_id => @order.id), :class => 'btn btn-large btn-primary'}
-    #{link_to 'Fullfør med Faktura', payments_new_manual_path(:order_id => @order.id), :class => 'btn btn-large'}
+    - if @order.users.size > 2
+      #{link_to 'Fullfør med Faktura', payments_new_manual_path(:order_id => @order.id), :class => 'btn btn-large'}
 
-- if @order.payment && !@order.payment.completed?
+- if @order.payment && !@order.payment.completed? && @order.payment.type == 'PaypalPayment'
   .form-actions
     #{link_to 'Fullfør betaling', payments_complete_path(:id => @order.payment.id), :class => 'btn btn-large btn-primary'}
