@@ -92,7 +92,7 @@ class PaymentsController < ApplicationController
 
     unless current_user.admin or order.owner == current_user
       flash[:info] = 'Du er ikke eier av bestillingen'
-      redirect_to home_index_url
+      redirect_to info_index_url
     end
   end
 

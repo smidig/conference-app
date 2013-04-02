@@ -15,6 +15,7 @@ ConferenceApp::Application.routes.draw do
 
   get "info/about"
   get "info/sponsor"
+  get "info/index"
 
   resources :talk_categories
   resources :talk_types
