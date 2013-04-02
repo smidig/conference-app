@@ -45,6 +45,15 @@ ActiveRecord::Schema.define(:version => 20130325055758) do
     t.string   "invoice_id"
   end
 
+  create_table "sponsors", :force => true do |t|
+    t.string   "name"
+    t.string   "url"
+    t.string   "imageUrl"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
   create_table "talk_categories", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
@@ -60,12 +69,16 @@ ActiveRecord::Schema.define(:version => 20130325055758) do
   end
 
   create_table "talks", :force => true do |t|
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
     t.string   "title"
     t.text     "description"
     t.integer  "talk_type_id"
     t.integer  "talk_category_id"
+    t.string   "presentation_file_name"
+    t.string   "presentation_content_type"
+    t.integer  "presentation_file_size"
+    t.datetime "presentation_updated_at"
   end
 
   create_table "tickets", :force => true do |t|

@@ -9,7 +9,9 @@ gem 'devise'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
-gem "haml-rails"
+gem 'haml-rails'
+gem 'paperclip'
+gem 'aws-sdk'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -42,6 +44,7 @@ group :test, :development do
   gem 'guard-rspec'
   gem 'guard-spork'
   gem 'guard-test'
+  gem 'guard-migrate'
   gem 'spork'
   gem 'spork-testunit'
   gem 'rspec-rails'

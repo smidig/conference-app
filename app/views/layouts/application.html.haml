@@ -3,23 +3,79 @@
   %head
     %meta{:charset => "utf-8"}
     %meta{:name => "viewport", :content => "width=device-width, initial-scale=1, maximum-scale=1"}
-    %title= content_for?(:title) ? yield(:title) : "Myapp"
+    %title= content_for?(:title) ? yield(:title) : "Smidig 2013"
     %meta{:content => "", :name => "description"}
     %meta{:content => "", :name => "author"}
+    %link{:href => "http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic", :rel=>"stylesheet", :type=>"text/css"}
+    %link{:href => "http://fonts.googleapis.com/css?family=Oswald:400,700", :rel => "stylesheet", :type => "text/css"}
     = stylesheet_link_tag "application", :media => "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
     = yield(:head)
   %body
-    %header.navbar.navbar-fixed-top
-      %nav.navbar-inner
+    .navbar.navbar-fixed-top
+      .navbar-inner
         .container
-          = render 'layouts/navigation'
+          %a.brand{:href=>"/"}    
+            Smidig 2013       
+          %a.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse"}
+            Menu
+          .nav-collapse.collapse
+            = render 'layouts/navigation'
+
+
     #main{:role => "main"}
       .container
         .content
           .row
             .span12
-              = render 'layouts/messages'
-              = yield
-          %footer
+              .main-content
+                .row
+                  .span12
+                    = render 'layouts/messages'
+                    = yield
+    / Footer
+    %footer
+      .container
+        .row
+          .span4
+            / Widget 1
+            .widget
+              %h4 Twitter
+              / Too add twitter widget, goto "js" folder and open "custom.js" file and search for the word "ashokramesh90". This is my twitter username. Just replace the word with your twitter username. You are done.
+              .tweet
+          .span4
+            / widget 2
+            .widget
+              %h4 Recent Posts
+              %ul
+                %li
+                  %a{:href => "#"} Sed eu leo orci, in rhoncus puru condimentum gravida metus
+                %li
+                  %a{:href => "#"} Etiam at in rhoncus puru nulla ipsum, in rhoncus purus
+                %li
+                  %a{:href => "#"} Fusce vel magnain rhoncus puru faucibus felis dapibus facilisis
+          .span4
+            / Widget 3
+            .widget
+              %h4 Categories
+              %ul
+                %li
+                  %a{:href => "#"} Condimentum
+                %li
+                  %a{:href => "#"} Etiam at
+                %li
+                  %a{:href => "#"} Fusce vel
+                %li
+                  %a{:href => "#"} Vivamus
+                %li
+                  %a{:href => "#"} Pellentesque
+          .span12
+            %hr/
+            %p.copy
+              / Copyright information. You can remove my site link.
+              Copyright ©
+              %a{:href => "#"} Smidig 2013
+                
+    / Navigation Ends
+    / Content strats

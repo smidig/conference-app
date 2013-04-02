@@ -4,23 +4,26 @@ ConferenceApp::Application.routes.draw do
   get "orders/new_user"
   post "orders/add_user"
   get "orders/show"
-  get "orders/complete"
 
   get "orders/:id" => "orders#show"
-  #map.conect "orders/:id", :controller => "orders", :action => "show"
+
+  resources :sponsors
+
+  get "administration/registrations"
+  get "administration/send_mail"
+  get "administration/statistics"
+
+  get "info/about"
+  get "info/sponsor"
 
   resources :talk_categories
-
-
   resources :talk_types
 
 
   get "talk/index"
-
   get "talk/destroy"
 
-  get "home/index"
-  root :to => "home#index"
+  root :to => "info#index"
   resources :tickets
   resources :talks
   resources :payment_notifications
@@ -38,6 +41,9 @@ ConferenceApp::Application.routes.draw do
   match "/users/:id" => "users#destroy"
   match "users/complete/:id" => "users#complete"
   devise_for :users
+
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
