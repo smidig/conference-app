@@ -102,3 +102,5 @@ To merge a feature back to master you have multiple options
     $ git checkout master
     $ git merge feature
     $ git push origin master
+
+## Heroku
