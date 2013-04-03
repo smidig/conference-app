@@ -94,6 +94,7 @@ To merge a feature back to master you have multiple options
 2. Merge locally:
 
 
+
     $ git checkout feature
     $ git fetch origin
     $ git merge master
