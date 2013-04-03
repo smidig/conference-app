@@ -7,12 +7,11 @@ gem 'devise'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
-
-
 gem 'haml-rails'
 gem 'paperclip'
 gem 'aws-sdk'
 gem 'jquery-rails'
+gem 'simple_form'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -22,7 +21,6 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'sass-rails'
-  gem 'simple_form'
   gem 'bootstrap-sass'
   gem 'uglifier', '>= 1.0.3'
 end
