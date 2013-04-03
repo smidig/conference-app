@@ -108,6 +108,7 @@ GEM
       activesupport (>= 3.0.0)
       cocaine (~> 0.4.0)
       mime-types
+    pg (0.15.0)
     polyglot (0.3.3)
     pry (0.9.11.4)
       coderay (~> 1.0.5)
@@ -209,6 +210,7 @@ DEPENDENCIES
   jquery-rails
   libnotify
   paperclip
+  pg
   rails (= 3.2.11)
   rb-fsevent
   rb-inotify (~> 0.8.8)

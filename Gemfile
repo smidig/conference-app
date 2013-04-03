@@ -8,10 +8,11 @@ gem 'devise'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
+
 gem 'haml-rails'
 gem 'paperclip'
 gem 'aws-sdk'
+gem 'jquery-rails'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -26,7 +27,9 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails'
+group :production do
+  gem 'pg'
+end
 
 # We should discuss this on next meeting
 group :linux_development do
@@ -40,6 +43,7 @@ group :mac_development do
 end
 
 group :test, :development do
+  gem 'sqlite3'
   gem 'guard'
   gem 'guard-rspec'
   gem 'guard-spork'
