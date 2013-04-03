@@ -86,13 +86,13 @@ describe PaymentsController do
     it "should not create new manual" do
       user = admin_user()
       sign_in user
-      order = create_order_for(user)
+      order = FactoryGirl.create(:order, owner_user_id: user.id)
       expect {get :new_manual, {:order_id => order.id}}.to change(Payment, :count).by(0)
     end
     it "should allow order.owner to get new_manual template" do
       user = FactoryGirl.create(:user)
       sign_in user
-      order = create_order_for(user)
+      order = FactoryGirl.create(:order, owner_user_id: user.id)
       get 'new_manual', {:order_id => order.id}
       expect(response.code).to eq("200")
       expect(response).to render_template("new_manual")
@@ -107,7 +107,7 @@ describe PaymentsController do
     it "should redirect if order already has payment" do
       user = FactoryGirl.create(:user)
       sign_in user
-      order = create_order_for(user)
+      order = FactoryGirl.create(:order, owner_user_id: user.id)
       payment = ManualPayment.create({
         :manual_company_name => 'company',
         :manual_contact_person => 'Ola',
@@ -134,7 +134,7 @@ describe PaymentsController do
     it "should create new ManualPayment for user which owns the order" do
       user = FactoryGirl.create(:user)
       sign_in user
-      order = create_order_for(user)
+      order = FactoryGirl.create(:order, owner_user_id: user.id)
 
       expect {post :create_manual, {:manual_payment => {
         :manual_company_name => 'company',
@@ -156,21 +156,12 @@ describe PaymentsController do
 
   end
 
-
-
-
   def admin_user
-    user = FactoryGirl.create(:user)
-    user.admin = true
-    user.save!
-    return user
+    FactoryGirl.create(:admin)
   end
 
   def create_order_for(user)
-    order = FactoryGirl.create(:order)
-    order.owner_user_id = user.id
-    order.save!
-    return order
+    FactoryGirl.create(:order, owner_user_id: user.id)
   end
 
 
