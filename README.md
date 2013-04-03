@@ -89,10 +89,7 @@ Create a new branch (assuming you are on master branch):
 
 ### Merge feature back to master
 To merge a feature back to master you have multiple options
-1. Push branch to github and make a pull-request on githu.
-The main benefit of this approach is that we get code review
-with an easy way to inspect / comment / discuss the code beeing
-merged back to master.
+1. Push branch to github and make a pull-request on githu. The main benefit of this approach is that we get code review with an easy way to inspect / comment / discuss the code beeing merged back to master.
 2. Merge locally:
 
     $ git checkout feature
