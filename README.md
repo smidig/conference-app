@@ -43,6 +43,11 @@ Solution:
 
 ## Getting Started
 
+### Checkout the project from github:
+Start in the folder where you want to checkout the code to. Run the following command:
+
+    $ git clone git@github.com:smidig/conference-app.git
+
 ### Initialize you local environment
     
     $ bundle install 
