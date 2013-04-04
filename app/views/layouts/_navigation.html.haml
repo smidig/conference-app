@@ -3,7 +3,7 @@
     = link_to('Om konferansen', info_about_path)
   %li
     = link_to('Sponse', info_sponsor_path)
-  - if Rails.env.production?
+  - if Rails.env.development?
     %li
       = link_to('Talks', talks_path)
     - if user_signed_in?
