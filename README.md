@@ -43,7 +43,13 @@ Solution:
 
 ## Getting Started
 
-### Servere
+### Initialize you local environment
+    
+    $ bundle install 
+    $ rake db:migrate
+    $ rake db:seed
+
+### Server
 You can start the server with the following command:
 
     $ rails server
@@ -93,7 +99,7 @@ To merge a feature back to master you have multiple options
 1. Push branch to github and make a pull-request on githu. The main benefit of this approach is that we get code review with an easy way to inspect / comment / discuss the code beeing merged back to master.
 2. Merge locally:
 
-
+How to merge locally:
 
     $ git checkout feature
     $ git fetch origin
@@ -102,5 +108,6 @@ To merge a feature back to master you have multiple options
     $ git checkout master
     $ git merge feature
     $ git push origin master
+
 
 ## Heroku
