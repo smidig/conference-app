@@ -12,5 +12,7 @@ TalkType.create(name: 'Lang workshop', duration: 90, visible: true)
 
 TalkCategory.create(name: 'Annet')
 TalkCategory.create(name: 'Smidig programmering')
+TalkCategory.create(name: 'Lean startup')
 
 Ticket.create(name: 'Early Bird', price: 1750, active: true, visible: true)
+Ticket.create(name: 'Organizer', price: 0, active: true, visible: false)
