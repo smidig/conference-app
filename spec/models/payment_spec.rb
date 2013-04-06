@@ -1,3 +1,31 @@
+# == Schema Information
+#
+# Table name: payments
+#
+#  id                    :integer          not null, primary key
+#  price                 :integer
+#  paid_amount           :integer
+#  completed             :boolean
+#  completed_at          :datetime
+#  paypal_params         :text
+#  paypal_tx_id          :string(255)
+#  paypal_tx_type        :string(255)
+#  paypal_currency       :string(255)
+#  paypal_status         :string(255)
+#  paypal_payer_email    :string(255)
+#  manual_company_name   :string(255)
+#  manual_company_email  :string(255)
+#  manual_contact_person :string(255)
+#  manual_street_address :string(255)
+#  manual_post_code      :string(255)
+#  manual_invoice_sent   :boolean
+#  order_id              :integer
+#  type                  :string(255)
+#  created_at            :datetime         not null
+#  updated_at            :datetime         not null
+#  invoice_id            :string(255)
+#
+
 require 'spec_helper'
 
 describe Payment do

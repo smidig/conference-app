@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: tickets
+#
+#  id         :integer          not null, primary key
+#  name       :string(255)
+#  price      :integer
+#  active     :boolean
+#  visible    :boolean
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 require 'spec_helper'
 
 describe Ticket do
