@@ -1,4 +1,16 @@
 # encoding: UTF-8
+# == Schema Information
+#
+# Table name: orders
+#
+#  id            :integer          not null, primary key
+#  comment       :string(255)
+#  completed     :boolean
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  owner_user_id :integer
+#
+
 class Order < ActiveRecord::Base
   attr_accessible :comment, :completed, :owner_user_id
   has_many :users

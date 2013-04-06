@@ -54,6 +54,10 @@ group :test, :development do
   gem 'factory_girl_rails', :require => false
 end
 
+group :development do
+  gem 'annotate'
+end
+
 group :test do
   gem 'webmock'
 end
