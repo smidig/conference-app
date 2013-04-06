@@ -12,6 +12,7 @@ gem 'paperclip'
 gem 'aws-sdk'
 gem 'jquery-rails'
 gem 'simple_form'
+gem 'rdiscount'
 
 # Gems used only for assets and not required
 # in production environments by default.
