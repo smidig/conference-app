@@ -1,10 +1,23 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+# encoding: utf-8
+
+# This will seed administrators with their appropriate names and email addresses. Their password is 'password'.
+administrators = [
+    {:name => "Jonas Amundsen",      :email => "jonasba@gmail.com"},
+    {:name => "Ivar Conradi Østhus", :email => "ivarconr@gmail.com"}
+]
+
+administrators.each do |user_data|
+  user_data.merge!({
+      :tlf => "12345678",
+      :password => 'password',
+      :password_confirmation => 'password',
+      :accepted_privacy => "1",
+  })
+
+  user = User.new user_data
+  user.admin = true
+  user.save!
+end
 
 TalkType.create(name: 'Lyntale', duration: 10, visible: true)
 TalkType.create(name: 'Kort workshop', duration: 45, visible: true)
