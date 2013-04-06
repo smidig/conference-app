@@ -32,7 +32,7 @@ class OrdersController < ApplicationController
       :ticket_id => params[:user][:ticket_id],
       :password => Devise.friendly_token.first(9),
       :company => @order.owner.company,
-      :accepcted_privacy => true
+      :accepted_privacy => "1"
     })
 
     @user.order_id = @order.id

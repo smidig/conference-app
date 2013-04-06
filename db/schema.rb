@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130325055758) do
+ActiveRecord::Schema.define(:version => 20130406193005) do
 
   create_table "orders", :force => true do |t|
     t.string   "comment"
@@ -107,7 +107,6 @@ ActiveRecord::Schema.define(:version => 20130325055758) do
     t.string   "name"
     t.string   "tlf"
     t.string   "company"
-    t.boolean  "accepcted_privacy"
     t.boolean  "accepted_optional_email"
     t.string   "twitter"
     t.string   "allergies"
