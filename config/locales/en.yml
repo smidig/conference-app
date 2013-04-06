@@ -8,10 +8,10 @@ en:
     attributes:
       user:
         email: "Email address"
-        accepcted_privacy: ""
+        accepted_privacy: ""
     errors:
       models:
         user:
           attributes:
-            accepcted_privacy:
-              inclusion: "You must accept."
+            accepted_privacy:
+              accepted: "You must accept."

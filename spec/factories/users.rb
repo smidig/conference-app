@@ -4,7 +4,7 @@ FactoryGirl.define do
     u.sequence(:email) { |n| "test#{n}@awesome.com"}
     u.password 'please123445'
     u.tlf '99900999'
-    u.accepcted_privacy true
+    u.accepted_privacy "1"
     u.ticket { FactoryGirl.create(:ticket) }
   end
 
@@ -13,7 +13,7 @@ FactoryGirl.define do
     u.sequence(:email) { |n| "test#{n}@awesome.com"}
     u.password 'please123445'
     u.tlf '99900999'
-    u.accepcted_privacy true
+    u.accepted_privacy "1"
     u.ticket { FactoryGirl.create(:ticket) }
     u.admin true
   end
