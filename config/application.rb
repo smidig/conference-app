@@ -67,5 +67,9 @@ module ConferenceApp
             :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
         }
     }
+
+    # Prevent app to connecto to database during initialization.
+    # https://devcenter.heroku.com/articles/rails-asset-pipeline#troubleshooting
+    config.assets.initialize_on_precompile = false
   end
 end
