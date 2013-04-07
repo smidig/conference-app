@@ -16,6 +16,13 @@ body {
   padding-top: 60px;
 }
 
+.brand {
+  img {
+    margin-top: -4px;
+  }
+}
+
+
 @media (max-width: 767px) {
   footer {
     margin: 0 -20px;
