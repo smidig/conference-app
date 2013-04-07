@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130406193005) do
+ActiveRecord::Schema.define(:version => 20130407095946) do
 
   create_table "orders", :force => true do |t|
     t.string   "comment"
@@ -113,6 +113,7 @@ ActiveRecord::Schema.define(:version => 20130406193005) do
     t.integer  "ticket_id"
     t.integer  "order_id"
     t.boolean  "completed"
+    t.boolean  "includes_dinner"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

@@ -3,6 +3,7 @@
   = f.input :email, :autofocus => true, :required => true
   = f.input :name
   = f.input :tlf
+  = f.input :includes_dinner, :ad => :boolean, :inline_label=> 'Deltar på konferansemiddagen', :label => false
 
   .form-actions
     = f.button :submit, :class => 'btn-primary', :value => "Legg til bruker"
