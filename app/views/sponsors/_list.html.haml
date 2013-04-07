@@ -1,4 +1,7 @@
-%ul.sponsors
-	- @sponsors.each do |sponsor|
-		%li 
-			= link_to image_tag( "#{sponsor.imageUrl}"), "#{sponsor.url}"
+- if Sponsor.all.size > 0
+  %h4 Våre sponsorer:
+  .row-fluid.sponsors
+    - Sponsor.all.shuffle.each do |sponsor|
+      .span3.sponsor
+        %a{:href => "#{sponsor.url}", :title => "#{sponsor.name}"}
+          %img{:src => "#{sponsor.imageUrl}"}
