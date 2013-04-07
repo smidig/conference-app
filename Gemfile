@@ -1,18 +1,13 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.11'
-
-# Authentication
-gem 'devise'
-
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
+gem 'rails', '3.2.13'
 gem 'haml-rails'
 gem 'paperclip'
 gem 'aws-sdk'
 gem 'jquery-rails'
 gem 'simple_form'
 gem 'rdiscount'
+gem 'devise'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -30,9 +25,8 @@ group :production do
   gem 'pg'
 end
 
-# We should discuss this on next meeting
 group :linux_development do
-  gem 'rb-inotify', '~> 0.8.8' # File watcher
+  gem 'rb-inotify', '~> 0.9' # File watcher
   gem 'libnotify' # Guard notifications for Linux
 end
 
@@ -57,18 +51,6 @@ end
 group :test do
   gem 'webmock'
 end
-
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
-
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
 
 # To use debugger
 # gem 'debugger'
