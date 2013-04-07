@@ -119,3 +119,9 @@ How to merge locally:
 
 
 ## Heroku
+
+## Issue tracker
+
+We use Trello.com as [our kanban board](https://trello.com/board/smidig-app-2013/515daaeba00d423573004a20) to manage our user stories.
+
+For bugs and feature request we use the GitHub issue tracker. 
