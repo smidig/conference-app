@@ -52,6 +52,7 @@ end
 group :test do
   gem 'webmock'
   gem 'cucumber-rails'
+  gem 'database_cleaner'
 end
 
 # To use debugger
