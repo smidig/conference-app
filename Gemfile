@@ -40,7 +40,7 @@ group :tools do
   gem 'guard-test'
 end
 
-group :test, :development do
+group :development do
   gem 'sqlite3'
   gem 'guard'
   gem 'guard-rspec'
@@ -48,12 +48,13 @@ group :test, :development do
   gem 'guard-migrate'
   gem 'spork'
   gem 'spork-testunit'
-  gem 'rspec-rails'
-  gem 'factory_girl_rails', :require => false
 end
 
 group :test do
+  gem 'sqlite3'
   gem 'webmock'
+  gem 'rspec-rails'
+  gem 'factory_girl_rails', :require => false
 end
 
 # To use debugger
