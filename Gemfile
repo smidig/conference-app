@@ -36,12 +36,15 @@ group :mac_development do
   gem 'growl' # Guard notifications for OS X
 end
 
+group :tools do
+  gem 'guard-test'
+end
+
 group :test, :development do
   gem 'sqlite3'
   gem 'guard'
   gem 'guard-rspec'
   gem 'guard-spork'
-  gem 'guard-test'
   gem 'guard-migrate'
   gem 'spork'
   gem 'spork-testunit'
