@@ -51,6 +51,7 @@ end
 
 group :test do
   gem 'webmock'
+  gem 'cucumber-rails'
 end
 
 # To use debugger
