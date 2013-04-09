@@ -52,6 +52,7 @@ end
 group :test do
   gem 'webmock'
   gem 'cucumber-rails'
+  gem 'launchy'
   gem 'database_cleaner'
 end
 
