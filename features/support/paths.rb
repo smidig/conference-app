@@ -9,6 +9,8 @@ module NavigationHelpers
     case page_name
       when /^the home\s?page$/
         '/'
+      when /^the registration page$/
+        new_user_registration_path
       else
         raise "Can't find mapping from \"#{page_name}\" to a path.\n" +
                   "Now, go and add a mapping in #{__FILE__}"
