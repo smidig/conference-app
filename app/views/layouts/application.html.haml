@@ -24,17 +24,11 @@
           .nav-collapse.collapse
             = render 'layouts/navigation'
 
-
-    #main{:role => "main"}
-      .container
-        .content
-          .row
-            .span12
-              .main-content
-                .row
-                  .span12
-                    = render 'layouts/messages'
-                    = yield
+    #main.container
+      .row
+        .span12
+          = render 'layouts/messages'
+          = yield
     / Footer
     %footer
       .container
