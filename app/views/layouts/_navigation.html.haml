@@ -18,24 +18,24 @@
   - else
     %li
       = link_to('Sign up', new_user_registration_path)
-- if user_signed_in? and current_user.admin
+  - if user_signed_in? and current_user.admin
 
-  %li.dropdown
-    %a.dropdown-toggle{:href => "#", "data-toggle" => "dropdown"}
-      Admin
-      %b.caret
-    %ul.dropdown-menu
-      %li
-        %a{:href => "#{users_path}"} Deltakere
-      %li
-        %a{:href => "#{orders_path}"} Bestillinger
-      %li
-        %a{:href => "#{payments_path}"} Betalinger
-      %li
-        %a{:href => "#{tickets_path}"} Billetter
-      %li
-        %a{:href => "#{talk_types_path}"} Foredragstyper
-      %li
-        %a{:href => "#{talk_categories_path}"} Foredragskategorier
-      %li
-        = link_to("Statistikk", administration_statistics_path)
+    %li.dropdown
+      %a.dropdown-toggle{:href => "#", "data-toggle" => "dropdown"}
+        Admin
+        %b.caret
+      %ul.dropdown-menu
+        %li
+          %a{:href => "#{users_path}"} Deltakere
+        %li
+          %a{:href => "#{orders_path}"} Bestillinger
+        %li
+          %a{:href => "#{payments_path}"} Betalinger
+        %li
+          %a{:href => "#{tickets_path}"} Billetter
+        %li
+          %a{:href => "#{talk_types_path}"} Foredragstyper
+        %li
+          %a{:href => "#{talk_categories_path}"} Foredragskategorier
+        %li
+          = link_to("Statistikk", administration_statistics_path)
