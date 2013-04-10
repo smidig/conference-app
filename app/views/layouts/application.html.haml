@@ -24,17 +24,11 @@
           .nav-collapse.collapse
             = render 'layouts/navigation'
 
-
-    #main{:role => "main"}
-      .container
-        .content
-          .row
-            .span12
-              .main-content
-                .row
-                  .span12
-                    = render 'layouts/messages'
-                    = yield
+    #main.container
+      .row
+        .span12
+          = render 'layouts/messages'
+          = yield
     / Footer
     %footer
       .container
@@ -70,8 +64,7 @@
                   %a{:href => "http://www.facebook.com/smidig"} facebook.com
                 %li
                   %a{:href => "http://lanyrd.com/2013/smidig2013/"} lanyrd.com
-          .span12
-            %hr/
-            %p.copy
-              Copyright ©
-              %a{:href => "http://smidig2013.no"} Smidig 2013
+        %hr/
+        %p.copy
+          Copyright ©
+          %a{:href => "http://smidig2013.no"} Smidig 2013
