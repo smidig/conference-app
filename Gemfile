@@ -55,6 +55,9 @@ group :test do
   gem 'webmock'
   gem 'rspec-rails'
   gem 'factory_girl_rails', :require => false
+  gem 'cucumber-rails'
+  gem 'launchy'
+  gem 'database_cleaner'
 end
 
 # To use debugger
