@@ -26,3 +26,4 @@ Feature: User registration
     And check "Jeg aksepterer vilkårene"
     And I press "Create Customer"
     Then I should see a flash message saying "Welcome!"
+    And I should be on the order page

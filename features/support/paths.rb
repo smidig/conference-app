@@ -13,6 +13,8 @@ module NavigationHelpers
         new_user_registration_path
       when /^the login page$/
         new_user_session_path
+      when /^the order page$/
+        orders_show_path
       else
         raise "Can't find mapping from \"#{page_name}\" to a path.\n" +
                   "Now, go and add a mapping in #{__FILE__}"
