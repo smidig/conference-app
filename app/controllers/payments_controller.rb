@@ -49,6 +49,7 @@ class PaymentsController < ApplicationController
   # Expects manual_order to have order_id set.
   def create_manual
     @manual_payment = ManualPayment.new(params[:manual_payment])
+    @manual_payment.price = @manual_payment.order.price
 
     if @manual_payment.save
       redirect_to :action=> :manual_completed, :id=> @manual_payment.id
