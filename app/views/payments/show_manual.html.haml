@@ -1,0 +1,12 @@
+=render 'show_common'
+
+:markdown
+  ## ManualPayment info:
+  - **manual_company_name:** #{@payment.manual_company_name}
+  - **manual_company_email:** #{@payment.manual_company_email}
+  - **manual_contact_person:** #{@payment.manual_contact_person}
+  - **manual_street_address:** #{@payment.manual_street_address}
+  - **manual_post_code:** #{@payment.manual_post_code}
+  - **manual_invoice_sent:** #{@payment.manual_invoice_sent ? "Ja" : "Nei"}
+
+= link_to 'Vis alle betalinger', payments_path

@@ -9,6 +9,11 @@ class PaymentsController < ApplicationController
 
   def show
     @payment = Payment.find(params[:id])
+    if @payment.type == 'PaypalPayment'
+      render "show_paypal"
+    else
+      render "show_manual"
+    end
   end
 
   def destroy
