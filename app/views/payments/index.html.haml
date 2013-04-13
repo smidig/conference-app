@@ -1,15 +1,19 @@
+%a{:href => "#{payments_manual_path}"}
+  Følge opp manuelle fakturaer
+
+%h2 Alle betalinger
 %table{:class => 'table'}
   %thead
     %tr
-      %th= 'Id'
-      %th= 'Type'
-      %th= 'Created'
-      %th= 'Price'
-      %th= 'Completed'
-      %th= 'Completed at'
-      %th= 'Paid amount'
-      %th= 'Order'
-      %th= 'Handling'
+      %th Id
+      %th Type
+      %th Opprettet
+      %th Pris
+      %th Fullført
+      %th FullførtDato
+      %th Betalt
+      %th Bestilling
+      %th
   %tbody
     - for payment in @payments
       %tr
@@ -17,7 +21,7 @@
         %td= payment.type
         %td= payment.created_at
         %td= payment.price
-        %td= payment.completed ? "Yes" : "No"
+        %td= payment.completed ? "Ja" : "Nei"
         %td= payment.completed_at
         %td= payment.paid_amount
         %td= link_to '#'+payment.order.id.to_s, {:controller => :orders, :action => 'show', :id => payment.order.id} if payment.order
