@@ -53,6 +53,7 @@ end
 group :test do
   gem 'sqlite3'
   gem 'webmock'
+  gem 'mocha'
   gem 'rspec-rails'
   gem 'factory_girl_rails', :require => false
   gem 'cucumber-rails'

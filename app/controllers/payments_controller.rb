@@ -37,7 +37,7 @@ class PaymentsController < ApplicationController
           :order_id => order.id
         })
       payment.save!
-      complete_with_paypal(payment)
+      redirect_to get_paypal_url(payment)
     end
   end
 
@@ -61,7 +61,7 @@ class PaymentsController < ApplicationController
   def complete
     payment = Payment.find(params[:id])
     if payment.type == 'PaypalPayment'
-      complete_with_paypal(payment)
+      redirect_to get_paypal_url(payment)
     else
       max_one payment.order
     end
@@ -77,7 +77,7 @@ class PaymentsController < ApplicationController
       order = Order.find(params[:manual_payment][:order_id])
     end
     if order.payment and order.payment.type == 'PaypalPayment'
-      complete_with_paypal(order.payment)
+      redirect_to get_paypal_url(order.payment)
     elsif order.payment
       max_one order
     end
@@ -96,8 +96,8 @@ class PaymentsController < ApplicationController
     end
   end
 
-  def complete_with_paypal(payment)
-    redirect_to payment.payment_url(payment_notifications_url, payments_paypal_completed_url)
+  def get_paypal_url(payment)
+    payment.payment_url(payment_notifications_url, payments_paypal_completed_url)
   end
 
   def max_one(order)
