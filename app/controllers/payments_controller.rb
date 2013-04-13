@@ -1,5 +1,5 @@
 class PaymentsController < ApplicationController
-  before_filter :require_admin, :only => [:index, :show, :destroy]
+  before_filter :require_admin, :only => [:index, :show, :destroy, :manual, :invoice_sent, :finish]
   before_filter :max_one_payment_per_order, :only => [:new_paypal, :new_manual, :create_manual]
   before_filter :require_admin_or_order_owner, :only => [:new_paypal, :new_manual, :create_manual]
 
@@ -7,8 +7,19 @@ class PaymentsController < ApplicationController
     @payments = Payment.all
   end
 
+  def manual
+    @uncomplete =ManualPayment.all(:conditions => {:manual_invoice_sent => [nil, false]})
+    @invoiced = ManualPayment.all(:conditions => {:manual_invoice_sent => true, :completed => [nil, false]})
+    @completed = ManualPayment.all(:conditions => {:completed => true})
+  end
+
   def show
     @payment = Payment.find(params[:id])
+    if @payment.type == 'PaypalPayment'
+      render "show_paypal"
+    else
+      render "show_manual"
+    end
   end
 
   def destroy
@@ -20,6 +31,37 @@ class PaymentsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def invoice_sent
+    payment = Payment.find(params[:id])
+    invoice_id = params[:manual_payment][:manual_invoice_id]
+    unless invoice_id.blank?
+      payment.manual_invoice_sent = true
+      payment.manual_invoice_id = invoice_id
+      payment.save
+    else
+      flash[:alert] = "Du mangler fakturaid for faktura #{payment.id}"
+    end
+
+    respond_to do |format|
+      format.html { redirect_to payments_manual_url }
+      format.json { head :no_content }
+    end
+  end
+
+  def finish
+    @payment = Payment.find(params[:id])
+    @payment.paid_amount = @payment.price
+    @payment.save!
+    @payment.finish
+
+    respond_to do |format|
+      format.html { redirect_to payments_manual_url }
+      format.json { head :no_content }
+    end
+  end
+
+
 
   def paypal_completed
     # congrat user, open for all!
@@ -49,6 +91,7 @@ class PaymentsController < ApplicationController
   # Expects manual_order to have order_id set.
   def create_manual
     @manual_payment = ManualPayment.new(params[:manual_payment])
+    @manual_payment.price = @manual_payment.order.price
 
     if @manual_payment.save
       redirect_to :action=> :manual_completed, :id=> @manual_payment.id
