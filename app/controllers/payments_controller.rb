@@ -1,5 +1,5 @@
 class PaymentsController < ApplicationController
-  before_filter :require_admin, :only => [:index, :show, :destroy, :manual]
+  before_filter :require_admin, :only => [:index, :show, :destroy, :manual, :invoice_sent, :finish]
   before_filter :max_one_payment_per_order, :only => [:new_paypal, :new_manual, :create_manual]
   before_filter :require_admin_or_order_owner, :only => [:new_paypal, :new_manual, :create_manual]
 
@@ -9,8 +9,8 @@ class PaymentsController < ApplicationController
 
   def manual
     @uncomplete =ManualPayment.all(:conditions => {:manual_invoice_sent => [nil, false]})
-    @invoiced = ManualPayment.where(:manual_invoice_sent => true)
-    @completed = ManualPayment.where(:completed => true)
+    @invoiced = ManualPayment.all(:conditions => {:manual_invoice_sent => true, :completed => [nil, false]})
+    @completed = ManualPayment.all(:conditions => {:completed => true})
   end
 
   def show
@@ -33,15 +33,35 @@ class PaymentsController < ApplicationController
   end
 
   def invoice_sent
-    @payment = Payment.find(params[:id])
-    @payment.manual_invoice_sent = @payment.manual_invoice_sent ? false : true
-    @payment.save
+    payment = Payment.find(params[:id])
+    invoice_id = params[:manual_payment][:manual_invoice_id]
+    unless invoice_id.blank?
+      payment.manual_invoice_sent = true
+      payment.manual_invoice_id = invoice_id
+      payment.save
+    else
+      flash[:alert] = "Du mangler fakturaid for faktura #{payment.id}"
+    end
 
     respond_to do |format|
       format.html { redirect_to payments_manual_url }
       format.json { head :no_content }
     end
   end
+
+  def finish
+    @payment = Payment.find(params[:id])
+    @payment.paid_amount = @payment.price
+    @payment.save!
+    @payment.finish
+
+    respond_to do |format|
+      format.html { redirect_to payments_manual_url }
+      format.json { head :no_content }
+    end
+  end
+
+
 
   def paypal_completed
     # congrat user, open for all!
