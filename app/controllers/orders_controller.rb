@@ -59,7 +59,7 @@ class OrdersController < ApplicationController
     end
 
     if @order.completed or @order.payment
-      flash[:warning] = 'Kan ikke legge til brukere på din bestilling etter at en betaling er startet.'
+      flash[:alert] = 'Kan ikke legge til brukere på din bestilling etter at en betaling er startet.'
       redirect_to :action => :show, :id => @order.id
     end
   end
