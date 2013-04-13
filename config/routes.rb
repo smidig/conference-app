@@ -35,6 +35,8 @@ ConferenceApp::Application.routes.draw do
   get "payments/new_manual"
   post "payments/create_manual"
   get "payments/complete"
+  get "payments/manual"
+  get "payments/invoice_sent"
   resources :payments
 
   devise_for :users, :controllers => { :registrations => "registrations"}

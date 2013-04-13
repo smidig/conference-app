@@ -1,0 +1,16 @@
+%tr
+  %td{:colspan => 8}
+    %strong #{title}
+- if payments
+  - for payment in payments
+    %tr
+      %td= link_to '#' + payment.id.to_s, {:action => 'show', :id=>payment.id}
+      %td= payment.created_at
+      %td= payment.price
+      %td= payment.completed ? "Yes" : "No"
+      %td= payment.completed_at
+      %td= payment.paid_amount
+      %td= link_to '#'+payment.order.id.to_s, {:controller => :orders, :action => 'show', :id => payment.order.id} if payment.order
+      %td
+        = link_to 'D', {:action => 'destroy', :id => payment.id }, :confirm =>"Are you sure", :method=>:delete, :class => 'btn btn-danger'
+        = link_to 'C', {:action => 'invoice_sent', :id => payment.id }, :class => 'btn btn-success'

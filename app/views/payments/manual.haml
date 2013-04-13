@@ -1,0 +1,15 @@
+%table{:class => 'table'}
+  %thead
+    %tr
+      %th= 'Id'
+      %th= 'Created'
+      %th= 'Price'
+      %th= 'Completed'
+      %th= 'Completed at'
+      %th= 'Paid amount'
+      %th= 'Order'
+      %th= 'Handling'
+  %tbody
+    =render 'manual_group', :payments => @uncomplete, :title => "Nye registeringer"
+    =render 'manual_group', :payments => @invoiced, :title => "Faktura sent"
+    =render 'manual_group', :payments => @complete, :title => "Fullført"

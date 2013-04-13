@@ -1,10 +1,16 @@
 class PaymentsController < ApplicationController
-  before_filter :require_admin, :only => [:index, :show, :destroy]
+  before_filter :require_admin, :only => [:index, :show, :destroy, :manual]
   before_filter :max_one_payment_per_order, :only => [:new_paypal, :new_manual, :create_manual]
   before_filter :require_admin_or_order_owner, :only => [:new_paypal, :new_manual, :create_manual]
 
   def index
     @payments = Payment.all
+  end
+
+  def manual
+    @uncomplete =ManualPayment.all(:conditions => {:manual_invoice_sent => [nil, false]})
+    @invoiced = ManualPayment.where(:manual_invoice_sent => true)
+    @completed = ManualPayment.where(:completed => true)
   end
 
   def show
@@ -22,6 +28,17 @@ class PaymentsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to payments_url }
+      format.json { head :no_content }
+    end
+  end
+
+  def invoice_sent
+    @payment = Payment.find(params[:id])
+    @payment.manual_invoice_sent = @payment.manual_invoice_sent ? false : true
+    @payment.save
+
+    respond_to do |format|
+      format.html { redirect_to payments_manual_url }
       format.json { head :no_content }
     end
   end
