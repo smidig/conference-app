@@ -1,2 +1,9 @@
 @import "bootstrap";
 @import "bootstrap-responsive";
+
+.alert-alert {
+  @extend .alert-error
+}
+.alert-notice {
+  @extend .alert-success
+}
