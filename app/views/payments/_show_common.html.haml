@@ -1,0 +1,10 @@
+:markdown
+  ## Generell info:
+  - **ID:** #{@payment.id}
+  - **Faktura-ID:** #{@payment.invoice_id}
+  - **Ordre-ID:** #{@payment.invoice_id}
+  - **Opprettet Dato:** #{@payment.created_at}
+  - **Pris:** #{@payment.price}
+  - **Innbetalt sum:** #{@payment.paid_amount}
+  - **Fullført:** #{@payment.completed ? "Ja" : "Nei"}
+  - **Fullført Dato:** #{@payment.completed_at}
