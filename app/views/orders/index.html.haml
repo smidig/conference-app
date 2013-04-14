@@ -18,7 +18,7 @@
       %tr
         %td= order.id
         %td= order.created_at
-        %td= order.owner.email
+        %td= order.owner.email if order.owner
         %td= order.price
         %td= order.comment
         %td= order.completed ? "J" : "N"

@@ -4,7 +4,7 @@
   %dt BestillingsID:
   %dd #{@manual_payment.order.id}
   %dt Dato:
-  %dd #{@manual_payment.order.created_at}
+  %dd #{@manual_payment.order.created_at.to_formatted_s(:long)}
   %dt Påmelder:
   %dd #{@manual_payment.order.owner.name}
   %dt Total pris:

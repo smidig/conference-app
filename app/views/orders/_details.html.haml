@@ -1,0 +1,9 @@
+%h4 Bestillingsdetaljer
+
+:markdown
+  - **ID**: #{@order.id}
+  - **Dato**: #{@order.created_at.to_formatted_s(:long)}
+  - **Påmelder**: #{@order.owner.name}
+  - **Selskap**: #{@order.owner.company}
+  - **Total pris**: #{@order.price},-
+  - **Betalingsstatus**: #{@order.status}

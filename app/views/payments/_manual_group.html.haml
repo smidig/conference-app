@@ -4,7 +4,7 @@
 - for payment in payments
   %tr
     %td= link_to '#' + payment.id.to_s, {:action => 'show', :id=>payment.id}
-    %td= payment.created_at
+    %td= payment.created_at.to_formatted_s(:long)
     %td= "#{payment.price},-"
     %td= "#{payment.paid_amount},-" if payment.paid_amount
     %td= participants(payment)
