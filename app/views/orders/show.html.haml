@@ -4,7 +4,7 @@
   %dt BestillingsID:
   %dd #{@order.id}
   %dt Dato:
-  %dd #{@order.created_at}
+  %dd #{@order.created_at.to_formatted_s(:long)}
   %dt Påmelder:
   %dd #{@order.owner.name}
   %dt Selskap:
