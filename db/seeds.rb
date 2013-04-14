@@ -29,3 +29,5 @@ TalkCategory.create(name: 'Lean startup')
 
 Ticket.create(name: 'Early Bird', price: 1750, active: true, visible: true)
 Ticket.create(name: 'Organizer', price: 0, active: true, visible: false)
+Ticket.create(name: 'Sponsor', price: 0, active: true, visible: false)
+Ticket.create(name: 'Speaker', price: 0, active: true, visible: false)
