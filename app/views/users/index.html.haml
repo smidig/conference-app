@@ -26,7 +26,7 @@
           = link_to({:action => 'complete', :id => user.id}, :title => "Toggle fullført") do
             = user.completed ? "Ja" : "Nei"
 
-        %td= link_to '#'+user.order.id.to_s, orders_path(user.order.id) if user.order
+        %td= link_to '#'+user.order.id.to_s, {:controller => :orders, :action => 'show', :id => user.order.id}  if user.order
         %td
           = link_to({:action => 'make_admin', :id => user.id}, :title => "Toggle Admin", :class => 'btn btn-primary') do
             %i{:class => "icon-user icon-user"}
