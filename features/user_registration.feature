@@ -9,21 +9,21 @@ Feature: User registration
   Scenario: User must accept the terms
     Given I am on the registration page
     When I fill in the following:
-      | Email address   | jane.doe@gmail.com               |
-      | Name            | Jane Doe                         |
+      | Epostadresse    | jane.doe@gmail.com               |
+      | Navn            | Jane Doe                         |
       | Telefon         | 22222222                         |
       | Password        | password                         |
-    And I press "Create Customer"
-    Then I should see an error in the form saying "You must accept"
+    And I press "Meld meg på!"
+    Then I should see an error in the form saying "Du må godta vilkårene"
 
   Scenario: Successful registration:
     Given I am on the registration page
     When I fill in the following:
-      | Email address   | jane.doe@gmail.com               |
-      | Name            | Jane Doe                         |
+      | Epostadresse    | jane.doe@gmail.com               |
+      | Navn            | Jane Doe                         |
       | Telefon         | 22222222                         |
       | Password        | password                         |
     And check "Jeg aksepterer vilkårene"
-    And I press "Create Customer"
+    And I press "Meld meg på!"
     Then I should see a flash message saying "Welcome!"
     And I should be on the order page

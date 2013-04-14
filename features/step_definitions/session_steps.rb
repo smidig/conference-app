@@ -14,12 +14,12 @@ end
 
 Given /^I register as a participant with email "([^"]*)" and password "([^"]*)"$/i do |email, password|
   step %(I am on the registration page)
-  step %(I fill in "#{email}" for "Email address")
-  step %(I fill in "Name" for "Name")
+  step %(I fill in "#{email}" for "Epostadresse")
+  step %(I fill in "Name" for "Navn")
   step %(I fill in "99009900" for "Telefon")
   step %(I fill in "#{password}" for "Password")
   step %(I check "Jeg aksepterer vilkårene")
-  step %(I press "Create Customer")
+  step %(I press "Meld meg på!")
   step %(show me the page)
   step %(I should be logged in)
 end

@@ -22,5 +22,5 @@ Feature: User authentication
     Then I should be on the login page
     And show me the page
     And I should not be logged in
-    And the "Email address" field should contain "invalid@user.com"
+    And the "Epostadresse" field should contain "invalid@user.com"
     And I should see a flash message saying "Invalid email or password"
