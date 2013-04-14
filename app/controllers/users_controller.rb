@@ -12,6 +12,17 @@ class UsersController < ApplicationController
     end
   end
 
+  # GET /users
+  # GET /users.xml
+  def show
+    @user = User.find(params[:id])
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @user }
+    end
+  end
+
   # DELETE /users/1
   # DELETE /users/1.xml
   def destroy
@@ -26,9 +37,23 @@ class UsersController < ApplicationController
 
   def complete
     @user = User.find(params[:id])
-    @user.completed = params[:completed] == "true" ? true : nil
+    @user.completed = @user.completed ? nil : true
     @user.save!
 
-    redirect_to :action => :index
+    respond_to do |format|
+      format.html { redirect_to :action => :index}
+      format.json { head :no_content }
+    end
+  end
+
+  def make_admin
+    @user = User.find(params[:id])
+    @user.admin = @user.admin ? false : true
+    @user.save!
+
+    respond_to do |format|
+      format.html { redirect_to :action => :index}
+      format.json { head :no_content }
+    end
   end
 end

@@ -1,24 +1,38 @@
-%table{:class => 'table'}
+%table{:class => 'table table-striped'}
   %thead
     %tr
-      %th= 'Navn'
-      %th= 'Email'
-      %th= 'Ticket'
-      %th= 'Price'
-      %th= 'User complete'
-      %th= 'Order'
-      %th= 'Handling'
+      %th ID
+      %th Navn
+      %th Epost
+      %th Firma
+      %th Billett
+      %th Pris
+      %th Fullført
+      %th Bestilling
+      %th
   %tbody
     - for user in @users
       %tr
-        %td= user.name
+        %td= user.id
+        %td
+
+        %td
+          - if user.admin
+            %i{:class => "icon-user icon-user", :title => "Admin"}
+          = user.name
         %td= user.email
+        %td= user.company
         %td= user.ticket.name if user.ticket
         %td= user.ticket.price if user.ticket
         %td
-          - if user.completed
-            = link_to 'Ja', {:action => 'complete', :id => user.id, :completed => false}, :title => "Sett ikke fullfør"
-          - else
-            = link_to 'Nei', {:action => 'complete', :id => user.id, :completed => true}, :title => "Sett fullført"
-        %td= link_to '#'+user.order.id.to_s, {:controller => :orders, :action => 'show', :id => user.order.id} if user.order
-        %td= link_to 'Delete', {:action => 'destroy', :id => user.id }, :confirm =>"Are you sure", :method=>:delete, :class => 'btn btn-danger'
+          = link_to({:action => 'complete', :id => user.id}, :title => "Toggle fullført") do
+            = user.completed ? "Ja" : "Nei"
+
+        %td= link_to '#'+user.order.id.to_s, orders_path(user.order.id) if user.order
+        %td
+          = link_to({:action => 'make_admin', :id => user.id}, :title => "Toggle Admin", :class => 'btn btn-primary') do
+            %i{:class => "icon-user icon-user"}
+
+          = link_to(user, :confirm =>"Er du sikker på at du vil slette #{user.name}?", :method=>:delete, :class => 'btn btn-danger', :title => "Slett bruker") do
+            %i{:class => "icon-user icon-remove"}
+
