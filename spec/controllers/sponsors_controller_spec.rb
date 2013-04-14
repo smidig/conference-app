@@ -18,7 +18,7 @@ require 'spec_helper'
 # Message expectations are only used when there is no simpler way to specify
 # that an instance is receiving a specific message.
 
-describe SponsorsController do
+describe SponsorsController, :type => :controller do
 
   # This should return the minimal set of attributes required to create a valid
   # Sponsor. As you add validations to Sponsor, be sure to
@@ -27,17 +27,12 @@ describe SponsorsController do
     { "name" => "MyString" }
   end
 
-  # This should return the minimal set of values that should be in the session
-  # in order to pass any filters (e.g. authentication) defined in
-  # SponsorsController. Be sure to keep this updated too.
-  def valid_session
-    {}
-  end
+  login_admin
 
   describe "GET index" do
     it "assigns all sponsors as @sponsors" do
       sponsor = Sponsor.create! valid_attributes
-      get :index, {}, valid_session
+      get :index, {}
       assigns(:sponsors).should eq([sponsor])
     end
   end
@@ -45,14 +40,14 @@ describe SponsorsController do
   describe "GET show" do
     it "assigns the requested sponsor as @sponsor" do
       sponsor = Sponsor.create! valid_attributes
-      get :show, {:id => sponsor.to_param}, valid_session
+      get :show, {:id => sponsor.to_param}
       assigns(:sponsor).should eq(sponsor)
     end
   end
 
   describe "GET new" do
     it "assigns a new sponsor as @sponsor" do
-      get :new, {}, valid_session
+      get :new, {}
       assigns(:sponsor).should be_a_new(Sponsor)
     end
   end
@@ -60,7 +55,7 @@ describe SponsorsController do
   describe "GET edit" do
     it "assigns the requested sponsor as @sponsor" do
       sponsor = Sponsor.create! valid_attributes
-      get :edit, {:id => sponsor.to_param}, valid_session
+      get :edit, {:id => sponsor.to_param}
       assigns(:sponsor).should eq(sponsor)
     end
   end
@@ -69,18 +64,18 @@ describe SponsorsController do
     describe "with valid params" do
       it "creates a new Sponsor" do
         expect {
-          post :create, {:sponsor => valid_attributes}, valid_session
+          post :create, {:sponsor => valid_attributes}
         }.to change(Sponsor, :count).by(1)
       end
 
       it "assigns a newly created sponsor as @sponsor" do
-        post :create, {:sponsor => valid_attributes}, valid_session
+        post :create, {:sponsor => valid_attributes}
         assigns(:sponsor).should be_a(Sponsor)
         assigns(:sponsor).should be_persisted
       end
 
       it "redirects to the created sponsor" do
-        post :create, {:sponsor => valid_attributes}, valid_session
+        post :create, {:sponsor => valid_attributes}
         response.should redirect_to(Sponsor.last)
       end
     end
@@ -89,14 +84,14 @@ describe SponsorsController do
       it "assigns a newly created but unsaved sponsor as @sponsor" do
         # Trigger the behavior that occurs when invalid params are submitted
         Sponsor.any_instance.stub(:save).and_return(false)
-        post :create, {:sponsor => { "name" => "invalid value" }}, valid_session
+        post :create, {:sponsor => { "name" => "invalid value" }}
         assigns(:sponsor).should be_a_new(Sponsor)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         Sponsor.any_instance.stub(:save).and_return(false)
-        post :create, {:sponsor => { "name" => "invalid value" }}, valid_session
+        post :create, {:sponsor => { "name" => "invalid value" }}
         response.should render_template("new")
       end
     end
@@ -111,18 +106,18 @@ describe SponsorsController do
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
         Sponsor.any_instance.should_receive(:update_attributes).with({ "name" => "MyString" })
-        put :update, {:id => sponsor.to_param, :sponsor => { "name" => "MyString" }}, valid_session
+        put :update, {:id => sponsor.to_param, :sponsor => { "name" => "MyString" }}
       end
 
       it "assigns the requested sponsor as @sponsor" do
         sponsor = Sponsor.create! valid_attributes
-        put :update, {:id => sponsor.to_param, :sponsor => valid_attributes}, valid_session
+        put :update, {:id => sponsor.to_param, :sponsor => valid_attributes}
         assigns(:sponsor).should eq(sponsor)
       end
 
       it "redirects to the sponsor" do
         sponsor = Sponsor.create! valid_attributes
-        put :update, {:id => sponsor.to_param, :sponsor => valid_attributes}, valid_session
+        put :update, {:id => sponsor.to_param, :sponsor => valid_attributes}
         response.should redirect_to(sponsor)
       end
     end
@@ -132,7 +127,7 @@ describe SponsorsController do
         sponsor = Sponsor.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Sponsor.any_instance.stub(:save).and_return(false)
-        put :update, {:id => sponsor.to_param, :sponsor => { "name" => "invalid value" }}, valid_session
+        put :update, {:id => sponsor.to_param, :sponsor => { "name" => "invalid value" }}
         assigns(:sponsor).should eq(sponsor)
       end
 
@@ -140,7 +135,7 @@ describe SponsorsController do
         sponsor = Sponsor.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Sponsor.any_instance.stub(:save).and_return(false)
-        put :update, {:id => sponsor.to_param, :sponsor => { "name" => "invalid value" }}, valid_session
+        put :update, {:id => sponsor.to_param, :sponsor => { "name" => "invalid value" }}
         response.should render_template("edit")
       end
     end
@@ -150,13 +145,13 @@ describe SponsorsController do
     it "destroys the requested sponsor" do
       sponsor = Sponsor.create! valid_attributes
       expect {
-        delete :destroy, {:id => sponsor.to_param}, valid_session
+        delete :destroy, {:id => sponsor.to_param}
       }.to change(Sponsor, :count).by(-1)
     end
 
     it "redirects to the sponsors list" do
       sponsor = Sponsor.create! valid_attributes
-      delete :destroy, {:id => sponsor.to_param}, valid_session
+      delete :destroy, {:id => sponsor.to_param}
       response.should redirect_to(sponsors_url)
     end
   end
