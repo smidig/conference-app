@@ -24,3 +24,9 @@ Given /^there is a user with ((?:(?:[^ ]+) "(?:[^"]+)")(?:(?:, | and )(?:(?:[^ ]
     user.save!
   end
 end
+
+Given /^user with email "(.*?)" is admin$/i do |email|
+  u = User.find_by_email(email)
+  u.admin = true
+  u.save!
+end
