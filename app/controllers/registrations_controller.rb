@@ -10,6 +10,8 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def after_sign_up_path_for(user)
+    #TODO: find a better method to override for mail confirmations
+    SmidigMailer.registration_confirmation(@user).deliver
     if(user.ticket.price > 0)
       orders_show_path
     else
