@@ -2,6 +2,7 @@
   %thead
     %tr
       %th ID
+      %th Dato
       %th Navn
       %th Epost
       %th Firma
@@ -14,6 +15,7 @@
     - for user in @users
       %tr
         %td= user.id
+        %td= user.created_at.to_formatted_s(:short)
         %td
           - if user.admin
             %i{:class => "icon-user icon-user", :title => "Admin"}
