@@ -11,6 +11,14 @@ class PaymentsController < ApplicationController
     @uncomplete =ManualPayment.all(:conditions => {:manual_invoice_sent => [nil, false]})
     @invoiced = ManualPayment.all(:conditions => {:manual_invoice_sent => true, :completed => [nil, false]})
     @completed = ManualPayment.all(:conditions => {:completed => true})
+
+    respond_to do |format|
+      format.html #manual.html.haml
+      format.csv  {
+        #manual.csv.shaper
+        @filename = "Smidig_faktura_#{Date.today.to_formatted_s(:db)}.csv"
+      }
+    end
   end
 
   def show
