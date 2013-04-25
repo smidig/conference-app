@@ -12,12 +12,14 @@
 
 = simple_form_for @manual_payment, :url => {:action => :create_manual}, :html => { :class => 'form-horizontal'} do |f|
   = f.input :order_id, :as => 'hidden'
-  = f.input :manual_company_name, :label => 'Firmanavn'
   = f.input :manual_contact_person, :label => 'Kontaktperson'
+  = f.input :manual_company_name, :label => 'Firmanavn'
+  = f.input :manual_organization_number, :label => 'Organisasjonsnummer'
   = f.input :manual_company_email, :label => 'Epost for faktura', :type => "email", :hint => "Dersom du oppgir epost benyttes denne for å sende faktura."
 
   = f.input :manual_street_address, :label => 'Gateadresse (valgfri)'
   = f.input :manual_post_code, :label => "Postnr (valgfri)", :type => "number"
+  = f.input :manual_city, :label => "By (valgfri)"
 
   %p
     PS! Dette er en manuell prosess. Det kan ta noen dager før du får tilsendt en faktura!
