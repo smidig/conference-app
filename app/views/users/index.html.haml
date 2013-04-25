@@ -2,6 +2,7 @@
   %thead
     %tr
       %th ID
+      %th Dato
       %th Navn
       %th Epost
       %th Firma
@@ -14,6 +15,7 @@
     - for user in @users
       %tr
         %td= user.id
+        %td= user.created_at.to_formatted_s(:short)
         %td
           - if user.admin
             %i{:class => "icon-user icon-user", :title => "Admin"}
@@ -28,7 +30,7 @@
 
         %td= link_to '#'+user.order.id.to_s, {:controller => :orders, :action => 'show', :id => user.order.id}  if user.order
         %td
-          = link_to({:action => 'make_admin', :id => user.id}, :title => "Toggle Admin", :class => 'btn btn-primary') do
+          = link_to({:action => 'make_admin', :id => user.id}, :title => "Toggle Admin", :class => 'btn btn-primary', :confirm => "#{admin_toggle_confirm_msg(user)}") do
             %i{:class => "icon-user icon-user"}
 
           = link_to(user, :confirm =>"Er du sikker på at du vil slette #{user.name}?", :method=>:delete, :class => 'btn btn-danger', :title => "Slett bruker") do
