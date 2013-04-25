@@ -12,4 +12,13 @@ class SmidigMailer < ActionMailer::Base
     mail(:to => user.email,
          :subject => "#{SUBJECT_PREFIX} Bruker #{user.email} er registrert")
   end
+
+  def payment_confirmation(user)
+    @name = user.name
+    @payment_text = user.ticket.name
+    @amount = user.ticket.price.to_i
+    @mva = user.ticket.mva
+    mail(:to => user.email,
+   :subject => "#{SUBJECT_PREFIX} Betalingskvittering for #{user.email}")
+  end
 end
