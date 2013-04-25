@@ -30,6 +30,7 @@ class Order < ActiveRecord::Base
       self.users.each do |user|
         user.completed=true
         user.save!
+        SmidigMailer.payment_confirmation(user).deliver
       end
       self.completed=true
       self.save!
