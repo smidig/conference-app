@@ -23,3 +23,11 @@ Given /^I register as a participant with email "([^"]*)" and password "([^"]*)"$
   step %(show me the page)
   step %(I should be logged in)
 end
+
+Given(/^I am logged in as a user with email "(.*?)" and password "(.*?)"$/) do |email, password|
+  step %{I am on the login page}
+  step %{I fill in "#{email}" for "user_email"}
+  step %{I fill in "#{password}" for "user_password"}
+  step %{I press "Sign in"}
+  step %(I should be logged in)
+end
