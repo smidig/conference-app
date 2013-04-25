@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130413104013) do
+ActiveRecord::Schema.define(:version => 20130425191129) do
 
   create_table "orders", :force => true do |t|
     t.string   "comment"
@@ -40,10 +40,12 @@ ActiveRecord::Schema.define(:version => 20130413104013) do
     t.boolean  "manual_invoice_sent"
     t.integer  "order_id"
     t.string   "type"
-    t.datetime "created_at",            :null => false
-    t.datetime "updated_at",            :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
     t.string   "invoice_id"
     t.string   "manual_invoice_id"
+    t.string   "manual_city"
+    t.integer  "manual_organization_number"
   end
 
   create_table "sponsors", :force => true do |t|
