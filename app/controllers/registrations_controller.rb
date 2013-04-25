@@ -9,15 +9,17 @@ class RegistrationsController < Devise::RegistrationsController
   	super
   end
 
-  def after_sign_up_path_for(user)
-    #TODO: find a better method to override for mail confirmations
+  def sign_up(resource_name, resource)
     SmidigMailer.registration_confirmation(@user).deliver
+    sign_in(resource_name, resource)
+  end
+
+  def after_sign_up_path_for(user)
+    # TODO: Send user to add talk if speaker
     if(user.ticket.price > 0)
       orders_show_path
     else
-      # TODO: send user to my-profile if sponsor or organizer
-      # TODO: Send user to add talk if speaker
-      edit_user_registration_path
+      root_path
     end
   end
 
