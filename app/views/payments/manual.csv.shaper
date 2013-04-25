@@ -1,0 +1,27 @@
+#Kundenr;Navn;Adresse1;Postnr;Poststed;Telefon;Epost;Orgnr;Kontaktperson
+
+csv.headers do |csv|
+  csv.columns :id, :status, :created_at,:price, :manual_company_name, :manual_organization_number,  :manual_street_address, :manual_post_code, :manual_city, :manual_contact_person, :manual_company_email, :manual_invoice_id
+
+  csv.mappings :manual_street_address => "Adresse1", :manual_post_code => "Postnr",:price => "Pris", :manual_contact_person => "Kontaktperson", :manual_company_email => "Epost", :manual_company_name => "Firmanavn", :manual_invoice_id => "Fakturaid", :manual_city => "By", :manual_organization_number => "Organisasjonsnummer"
+end
+
+#Ubehandlet
+csv.rows @uncomplete do |csv, invoice|
+  csv.cells :id, :created_at,:price, :manual_company_name, :manual_organization_number, :manual_street_address, :manual_post_code, :manual_city, :manual_contact_person, :manual_company_email
+  csv.cell :status, "Ubehandlet"
+end
+
+#Fakturert
+csv.rows @invoiced do |csv, invoice|
+  csv.cells :id, :created_at,:price, :manual_company_name, :manual_organization_number, :manual_street_address, :manual_post_code, :manual_city, :manual_contact_person, :manual_company_email
+  csv.cell :status, "Fakturert"
+  csv.cell :manual_invoice_id
+end
+
+#Betalt
+csv.rows @completed do |csv, invoice|
+  csv.cells :id, :created_at,:price, :manual_company_name, :manual_organization_number, :manual_street_address, :manual_post_code, :manual_city, :manual_contact_person, :manual_company_email
+  csv.cell :status, "Betalt"
+  csv.cell :manual_invoice_id
+end
