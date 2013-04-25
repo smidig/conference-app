@@ -17,7 +17,7 @@ Given /^I register as a participant with email "([^"]*)" and password "([^"]*)"$
   step %(I fill in "#{email}" for "Epostadresse")
   step %(I fill in "Name" for "Navn")
   step %(I fill in "99009900" for "Telefon")
-  step %(I fill in "#{password}" for "Password")
+  step %(I fill in "#{password}" for "Passord")
   step %(I check "Jeg aksepterer vilkårene")
   step %(I press "Meld meg på!")
   step %(show me the page)

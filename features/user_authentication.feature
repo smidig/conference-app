@@ -23,4 +23,4 @@ Feature: User authentication
     And show me the page
     And I should not be logged in
     And the "Epostadresse" field should contain "invalid@user.com"
-    And I should see a flash message saying "Invalid email or password"
+    And I should see a flash message saying "Ugyldig epost eller passord"

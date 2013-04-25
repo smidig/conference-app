@@ -12,7 +12,7 @@ Feature: User registration
       | Epostadresse    | jane.doe@gmail.com               |
       | Navn            | Jane Doe                         |
       | Telefon         | 22222222                         |
-      | Password        | password                         |
+      | Passord         | password                         |
     And I press "Meld meg på!"
     Then I should see an error in the form saying "Du må godta vilkårene"
 
@@ -22,8 +22,8 @@ Feature: User registration
       | Epostadresse    | jane.doe@gmail.com               |
       | Navn            | Jane Doe                         |
       | Telefon         | 22222222                         |
-      | Password        | password                         |
+      | Passord         | password                         |
     And check "Jeg aksepterer vilkårene"
     And I press "Meld meg på!"
-    Then I should see a flash message saying "Welcome!"
+    Then I should see a flash message saying "Velkommen!"
     And I should be on the order page
