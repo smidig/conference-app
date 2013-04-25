@@ -1,9 +1,10 @@
-%h2 Registrer deg!
+%h2
+  =t("general.register")
 = simple_form_for @user, :html => { :class => 'form-horizontal' } do |f|
   %input{:type => "hidden", :name => "ticket_name", :value => "#{@ticket_default.name}"}
   = f.association :ticket, :collection => @tickets, :label_method => :display, :selected => @ticket_default.id
   = render "form_common", :f => f
 
   .form-actions
-    = f.button :submit, :class => 'btn-primary', :value => "Meld meg på!"
+    = f.button :submit, :class => 'btn-primary'
     = link_to t('.cancel', :default => t("helpers.links.cancel")), users_path, :class => 'btn'
