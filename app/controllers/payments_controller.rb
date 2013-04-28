@@ -1,5 +1,5 @@
 class PaymentsController < ApplicationController
-  before_filter :require_admin, :only => [:index, :show, :destroy]
+  before_filter :require_admin, :only => [:index, :show, :destroy, :manual, :invoice_sent, :finish]
   before_filter :max_one_payment_per_order, :only => [:new_paypal, :new_manual, :create_manual]
   before_filter :require_admin_or_order_owner, :only => [:new_paypal, :new_manual, :create_manual]
 
@@ -7,8 +7,27 @@ class PaymentsController < ApplicationController
     @payments = Payment.all
   end
 
+  def manual
+    @uncomplete =ManualPayment.all(:conditions => {:manual_invoice_sent => [nil, false]})
+    @invoiced = ManualPayment.all(:conditions => {:manual_invoice_sent => true, :completed => [nil, false]})
+    @completed = ManualPayment.all(:conditions => {:completed => true})
+
+    respond_to do |format|
+      format.html #manual.html.haml
+      format.csv  {
+        #manual.csv.shaper
+        @filename = "Smidig_faktura_#{Date.today.to_formatted_s(:db)}.csv"
+      }
+    end
+  end
+
   def show
     @payment = Payment.find(params[:id])
+    if @payment.type == 'PaypalPayment'
+      render "show_paypal"
+    else
+      render "show_manual"
+    end
   end
 
   def destroy
@@ -20,6 +39,37 @@ class PaymentsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def invoice_sent
+    payment = Payment.find(params[:id])
+    invoice_id = params[:manual_payment][:manual_invoice_id]
+    unless invoice_id.blank?
+      payment.manual_invoice_sent = true
+      payment.manual_invoice_id = invoice_id
+      payment.save
+    else
+      flash[:alert] = "Du mangler fakturaid for faktura #{payment.id}"
+    end
+
+    respond_to do |format|
+      format.html { redirect_to payments_manual_url }
+      format.json { head :no_content }
+    end
+  end
+
+  def finish
+    @payment = Payment.find(params[:id])
+    @payment.paid_amount = @payment.price
+    @payment.save!
+    @payment.finish
+
+    respond_to do |format|
+      format.html { redirect_to payments_manual_url }
+      format.json { head :no_content }
+    end
+  end
+
+
 
   def paypal_completed
     # congrat user, open for all!
@@ -37,7 +87,7 @@ class PaymentsController < ApplicationController
           :order_id => order.id
         })
       payment.save!
-      complete_with_paypal(payment)
+      redirect_to get_paypal_url(payment)
     end
   end
 
@@ -49,6 +99,7 @@ class PaymentsController < ApplicationController
   # Expects manual_order to have order_id set.
   def create_manual
     @manual_payment = ManualPayment.new(params[:manual_payment])
+    @manual_payment.price = @manual_payment.order.price
 
     if @manual_payment.save
       redirect_to :action=> :manual_completed, :id=> @manual_payment.id
@@ -61,7 +112,7 @@ class PaymentsController < ApplicationController
   def complete
     payment = Payment.find(params[:id])
     if payment.type == 'PaypalPayment'
-      complete_with_paypal(payment)
+      redirect_to get_paypal_url(payment)
     else
       max_one payment.order
     end
@@ -77,7 +128,7 @@ class PaymentsController < ApplicationController
       order = Order.find(params[:manual_payment][:order_id])
     end
     if order.payment and order.payment.type == 'PaypalPayment'
-      complete_with_paypal(order.payment)
+      redirect_to get_paypal_url(order.payment)
     elsif order.payment
       max_one order
     end
@@ -91,17 +142,17 @@ class PaymentsController < ApplicationController
     end
 
     unless current_user.admin or order.owner == current_user
-      flash[:info] = 'Du er ikke eier av bestillingen'
+      flash[:notice] = 'Du er ikke eier av bestillingen'
       redirect_to info_index_url
     end
   end
 
-  def complete_with_paypal(payment)
-    redirect_to payment.payment_url(payment_notifications_url, payments_paypal_completed_url)
+  def get_paypal_url(payment)
+    payment.payment_url(payment_notifications_url, payments_paypal_completed_url)
   end
 
   def max_one(order)
-    flash[:info] = 'Kan maks registrere en betaling per bestilling.'
+    flash[:notice] = 'Kan maks registrere en betaling per bestilling.'
     redirect_to :controller => :orders, :action=> :show, :id => order.id
   end
 end

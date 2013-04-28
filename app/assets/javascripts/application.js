@@ -14,3 +14,8 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require_tree .
+
+$(function() {
+  //Workaround for dropdown not initializing correctly.
+  $('.dropdown-toggle').dropdown();
+});

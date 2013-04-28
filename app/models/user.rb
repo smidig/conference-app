@@ -5,13 +5,15 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  attr_accessor :accepted_privacy
+
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
-  attr_accessible :name, :tlf, :company, :accepcted_privacy, :twitter, :accepted_optional_email, :allergies, :ticket_id, :order
+  attr_accessible :name, :tlf, :company, :accepted_privacy, :twitter, :accepted_optional_email, :allergies, :ticket_id, :order, :includes_dinner
 
   # validations
   validates_presence_of :name, :tlf
-  validates_inclusion_of :accepcted_privacy, :in => [true]
+  validates_acceptance_of :accepted_privacy
 
   belongs_to :ticket
   belongs_to :order

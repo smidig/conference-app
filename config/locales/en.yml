@@ -1,17 +1,20 @@
 # Sample localization file for English. Add more files in this directory for other locales.
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
-en:  
+en:
   activerecord:
-    models: 
+    models:
       user: "Customer"
     attributes:
       user:
-        email: "Email address"
-        accepcted_privacy: ""
+        ticket: "Billett"
+        email: "Epostadresse"
+        name: "Navn"
+        tlf: "Telefon"
+        accepted_privacy: ""
     errors:
       models:
         user:
           attributes:
-            accepcted_privacy:
-              inclusion: "You must accept."
+            accepted_privacy:
+              accepted: "Du må godta vilkårene"

@@ -19,7 +19,7 @@ describe User do
         :email => "me@mail.com",
         :tlf => "92043382",
         :password => "lala12345",
-        :accepcted_privacy => true})
+        :accepted_privacy => "1"})
       user.valid?.should be_true
     end
   end

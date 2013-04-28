@@ -1,6 +1,6 @@
 # encoding: UTF-8
 class ManualPayment < Payment
-  attr_accessible :completed, :completed_at, :manual_company_email, :manual_company_name, :manual_contact_person, :manual_invoice_sent, :manual_post_code, :manual_street_address, :paid_amount, :price
+  attr_accessible :completed, :completed_at, :manual_company_email, :manual_company_name, :manual_contact_person, :manual_invoice_sent, :manual_post_code, :manual_street_address, :manual_invoice_id, :paid_amount, :price, :manual_city, :manual_organization_number
 
   validates_presence_of :manual_company_name, :manual_contact_person
   validate :has_a_place_to_send_invoice

@@ -31,7 +31,7 @@ module ConferenceApp
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
-    # config.i18n.default_locale = :de
+    config.i18n.default_locale = :no
 
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
@@ -67,5 +67,9 @@ module ConferenceApp
             :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
         }
     }
+
+    # Prevent app to connecto to database during initialization.
+    # https://devcenter.heroku.com/articles/rails-asset-pipeline#troubleshooting
+    config.assets.initialize_on_precompile = false
   end
 end

@@ -1,0 +1,26 @@
+%tr.info
+  %td{:colspan => 9}
+    %strong &gt; #{title}
+- for payment in payments
+  %tr
+    %td= link_to '#' + payment.id.to_s, {:action => 'show', :id=>payment.id}
+    %td= payment.created_at.to_formatted_s(:long)
+    %td= "#{payment.price},-"
+    %td= "#{payment.paid_amount},-" if payment.paid_amount
+    %td= participants(payment)
+    %td= payment.manual_contact_person
+    %td= manual_adress(payment)
+    %td= link_to '#'+payment.order.id.to_s, {:controller => :orders, :action => 'show', :id => payment.order.id} if payment.order
+    %td.text-right
+      - unless payment.manual_invoice_sent
+        = simple_form_for payment, :html => {:class => "form-inline"}, :url => "#{payments_invoice_sent_path}" do |f|
+          %input{:type => "hidden", :name=>"id", :value => "#{payment.id}"}
+          = f.input :manual_invoice_id, :label => false, input_html: { :class => "manual_invoice_id"}
+          = f.button :submit, :class => 'btn btn-primary', :value => "Faktura sent"
+
+      - else
+        = payment.manual_invoice_id
+
+      - if payment.manual_invoice_sent and not payment.completed
+        %br
+        = link_to 'Betalt!', {:action => 'finish', :id => payment.id }, :class => 'btn btn-success', :title => "Fullfør betaling"

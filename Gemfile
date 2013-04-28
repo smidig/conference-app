@@ -1,17 +1,15 @@
 source 'https://rubygems.org'
+ruby "1.9.3"
 
-gem 'rails', '3.2.11'
-
-# Authentication
-gem 'devise'
-
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
+gem 'rails', '3.2.13'
 gem 'haml-rails'
 gem 'paperclip'
 gem 'aws-sdk'
 gem 'jquery-rails'
 gem 'simple_form'
+gem 'rdiscount'
+gem 'devise'
+gem 'csv_shaper'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -29,9 +27,8 @@ group :production do
   gem 'pg'
 end
 
-# We should discuss this on next meeting
 group :linux_development do
-  gem 'rb-inotify', '~> 0.8.8' # File watcher
+  gem 'rb-inotify', '~> 0.9' # File watcher
   gem 'libnotify' # Guard notifications for Linux
 end
 
@@ -40,34 +37,30 @@ group :mac_development do
   gem 'growl' # Guard notifications for OS X
 end
 
-group :test, :development do
+group :tools do
+  gem 'guard-test'
+end
+
+group :development do
   gem 'sqlite3'
   gem 'guard'
   gem 'guard-rspec'
   gem 'guard-spork'
-  gem 'guard-test'
   gem 'guard-migrate'
   gem 'spork'
   gem 'spork-testunit'
-  gem 'rspec-rails'
-  gem 'factory_girl_rails', :require => false
 end
 
 group :test do
+  gem 'sqlite3'
   gem 'webmock'
+  gem 'mocha'
+  gem 'rspec-rails'
+  gem 'factory_girl_rails', :require => false
+  gem 'cucumber-rails'
+  gem 'launchy'
+  gem 'database_cleaner'
 end
-
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
-
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
 
 # To use debugger
 # gem 'debugger'

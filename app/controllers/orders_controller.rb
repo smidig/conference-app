@@ -32,7 +32,7 @@ class OrdersController < ApplicationController
       :ticket_id => params[:user][:ticket_id],
       :password => Devise.friendly_token.first(9),
       :company => @order.owner.company,
-      :accepcted_privacy => true
+      :accepted_privacy => "1"
     })
 
     @user.order_id = @order.id
@@ -59,7 +59,7 @@ class OrdersController < ApplicationController
     end
 
     if @order.completed or @order.payment
-      flash[:warning] = 'Kan ikke legge til brukere på din bestilling etter at en betaling er startet.'
+      flash[:alert] = 'Kan ikke legge til brukere på din bestilling etter at en betaling er startet.'
       redirect_to :action => :show, :id => @order.id
     end
   end

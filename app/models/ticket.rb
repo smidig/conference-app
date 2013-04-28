@@ -12,6 +12,10 @@ class Ticket < ActiveRecord::Base
     Ticket.find(:all, :conditions => { :visible => true, :active => true })
   end
 
+  def mva
+    self.price - (self.price / 1.25)
+  end
+
   def display
     name.to_s + " - (kr " + price.to_s + ",-)"
   end
