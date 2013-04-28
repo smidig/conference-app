@@ -6,13 +6,7 @@ class Order < ActiveRecord::Base
   belongs_to :user, class_name: "User", foreign_key: "owner_user_id"
 
   def price
-    totalSum = 0
-    self.users.each do |u|
-      unless u.ticket.nil?
-        totalSum += u.ticket.price
-      end
-    end
-    totalSum
+    users.map { |u| u.ticket and u.ticket.price }.compact.sum
   end
 
   def status
@@ -36,6 +30,7 @@ class Order < ActiveRecord::Base
       self.users.each do |user|
         user.completed=true
         user.save!
+        SmidigMailer.payment_confirmation(user).deliver
       end
       self.completed=true
       self.save!

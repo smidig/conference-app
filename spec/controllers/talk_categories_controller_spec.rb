@@ -18,7 +18,7 @@ require 'spec_helper'
 # Message expectations are only used when there is no simpler way to specify
 # that an instance is receiving a specific message.
 
-describe TalkCategoriesController do
+describe TalkCategoriesController, :type => :controller do
 
   # This should return the minimal set of attributes required to create a valid
   # TalkCategory. As you add validations to TalkCategory, be sure to
@@ -27,17 +27,12 @@ describe TalkCategoriesController do
     { "name" => "MyString" }
   end
 
-  # This should return the minimal set of values that should be in the session
-  # in order to pass any filters (e.g. authentication) defined in
-  # TalkCategoriesController. Be sure to keep this updated too.
-  def valid_session
-    {}
-  end
+  login_admin
 
   describe "GET index" do
     it "assigns all talk_categories as @talk_categories" do
       talk_category = TalkCategory.all
-      get :index, {}, valid_session
+      get :index, {}
       assigns(:talk_categories).should eq(talk_category)
     end
   end
@@ -45,14 +40,14 @@ describe TalkCategoriesController do
   describe "GET show" do
     it "assigns the requested talk_category as @talk_category" do
       talk_category = TalkCategory.create! valid_attributes
-      get :show, {:id => talk_category.to_param}, valid_session
+      get :show, {:id => talk_category.to_param}
       assigns(:talk_category).should eq(talk_category)
     end
   end
 
   describe "GET new" do
     it "assigns a new talk_category as @talk_category" do
-      get :new, {}, valid_session
+      get :new, {}
       assigns(:talk_category).should be_a_new(TalkCategory)
     end
   end
@@ -60,7 +55,7 @@ describe TalkCategoriesController do
   describe "GET edit" do
     it "assigns the requested talk_category as @talk_category" do
       talk_category = TalkCategory.create! valid_attributes
-      get :edit, {:id => talk_category.to_param}, valid_session
+      get :edit, {:id => talk_category.to_param}
       assigns(:talk_category).should eq(talk_category)
     end
   end
@@ -69,18 +64,18 @@ describe TalkCategoriesController do
     describe "with valid params" do
       it "creates a new TalkCategory" do
         expect {
-          post :create, {:talk_category => valid_attributes}, valid_session
+          post :create, {:talk_category => valid_attributes}
         }.to change(TalkCategory, :count).by(1)
       end
 
       it "assigns a newly created talk_category as @talk_category" do
-        post :create, {:talk_category => valid_attributes}, valid_session
+        post :create, {:talk_category => valid_attributes}
         assigns(:talk_category).should be_a(TalkCategory)
         assigns(:talk_category).should be_persisted
       end
 
       it "redirects to the created talk_category" do
-        post :create, {:talk_category => valid_attributes}, valid_session
+        post :create, {:talk_category => valid_attributes}
         response.should redirect_to(TalkCategory.last)
       end
     end
@@ -89,14 +84,14 @@ describe TalkCategoriesController do
       it "assigns a newly created but unsaved talk_category as @talk_category" do
         # Trigger the behavior that occurs when invalid params are submitted
         TalkCategory.any_instance.stub(:save).and_return(false)
-        post :create, {:talk_category => { "name" => "invalid value" }}, valid_session
+        post :create, {:talk_category => { "name" => "invalid value" }}
         assigns(:talk_category).should be_a_new(TalkCategory)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         TalkCategory.any_instance.stub(:save).and_return(false)
-        post :create, {:talk_category => { "name" => "invalid value" }}, valid_session
+        post :create, {:talk_category => { "name" => "invalid value" }}
         response.should render_template("new")
       end
     end
@@ -111,18 +106,18 @@ describe TalkCategoriesController do
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
         TalkCategory.any_instance.should_receive(:update_attributes).with({ "name" => "MyString" })
-        put :update, {:id => talk_category.to_param, :talk_category => { "name" => "MyString" }}, valid_session
+        put :update, {:id => talk_category.to_param, :talk_category => { "name" => "MyString" }}
       end
 
       it "assigns the requested talk_category as @talk_category" do
         talk_category = TalkCategory.create! valid_attributes
-        put :update, {:id => talk_category.to_param, :talk_category => valid_attributes}, valid_session
+        put :update, {:id => talk_category.to_param, :talk_category => valid_attributes}
         assigns(:talk_category).should eq(talk_category)
       end
 
       it "redirects to the talk_category" do
         talk_category = TalkCategory.create! valid_attributes
-        put :update, {:id => talk_category.to_param, :talk_category => valid_attributes}, valid_session
+        put :update, {:id => talk_category.to_param, :talk_category => valid_attributes}
         response.should redirect_to(talk_category)
       end
     end
@@ -132,7 +127,7 @@ describe TalkCategoriesController do
         talk_category = TalkCategory.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         TalkCategory.any_instance.stub(:save).and_return(false)
-        put :update, {:id => talk_category.to_param, :talk_category => { "name" => "invalid value" }}, valid_session
+        put :update, {:id => talk_category.to_param, :talk_category => { "name" => "invalid value" }}
         assigns(:talk_category).should eq(talk_category)
       end
 
@@ -140,7 +135,7 @@ describe TalkCategoriesController do
         talk_category = TalkCategory.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         TalkCategory.any_instance.stub(:save).and_return(false)
-        put :update, {:id => talk_category.to_param, :talk_category => { "name" => "invalid value" }}, valid_session
+        put :update, {:id => talk_category.to_param, :talk_category => { "name" => "invalid value" }}
         response.should render_template("edit")
       end
     end
@@ -150,13 +145,13 @@ describe TalkCategoriesController do
     it "destroys the requested talk_category" do
       talk_category = TalkCategory.create! valid_attributes
       expect {
-        delete :destroy, {:id => talk_category.to_param}, valid_session
+        delete :destroy, {:id => talk_category.to_param}
       }.to change(TalkCategory, :count).by(-1)
     end
 
     it "redirects to the talk_categories list" do
       talk_category = TalkCategory.create! valid_attributes
-      delete :destroy, {:id => talk_category.to_param}, valid_session
+      delete :destroy, {:id => talk_category.to_param}
       response.should redirect_to(talk_categories_url)
     end
   end

@@ -3,23 +3,25 @@
 %table{:class => 'table'}
   %thead
     %tr
-      %th= 'Id'
-      %th= 'Date'
-      %th= 'Owner'
-      %th= 'Price'
-      %th= 'Comment'
-      %th= 'Completed'
-      %th= 'status'
-      %th= ''
-      %th= ''
+      %th ID
+      %th Dato
+      %th Eier
+      %th Pris
+      %th Kommentar
+      %th Fullført
+      %th Betaling
+      %th Status
+      %th
+      %th
   %tbody
     - for order in @orders
       %tr
         %td= order.id
         %td= order.created_at
-        %td= order.owner.email
+        %td= order.owner.email if order.owner
         %td= order.price
         %td= order.comment
         %td= order.completed ? "J" : "N"
+        %td= link_to '#'+order.payment.id.to_s, {:controller => :payments, :action => 'show', :id => order.payment.id} if order.payment
         %td= order.status
         %td= link_to 'Show', orders_show_path(:id => order.id)

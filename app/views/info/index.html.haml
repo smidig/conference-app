@@ -1,7 +1,37 @@
 .hero-unit
-	%h1 Smidig 2013
-	%p
-		Lorem ipsum
-	%p 
-		%a{:href => "meldegpå", :class => "btn btn-primary btn-large"}
-			Meld deg på
+  :markdown
+    # Smidig 2013
+
+    *Arrangeres i Oslo, November 2013.* Mer info kommer.
+
+.row-fluid
+  .span4
+    :markdown
+      ## Om konferansen
+
+      Ut vitae purus velit, in mollis purus. Etiam purus massa, viverra vitae faucibus id, pulvinar et urna.
+      Pellentesque ullamcorper, massa id mattis accumsan, purus tellus eleifend lorem, quis sagittis purus mi et lorem.
+      Lorem ipsum dolor sit amet, consectetur adipiscing.
+
+      [Les mer om smidig](#{info_about_path})
+  .span4
+    :markdown
+      ## Sponse smidig?
+
+      Pellentesque ultrices eleifend vestibulum. In hac habitasse platea dictumst. Nunc nulla eros, pulvinar et mollis
+      nec, viverra eget neque. Sed vel felis eget sem sagittis consequat. Vestibulum ante ipsum primis in faucibus orci
+      luctus et ultrices posuere cubilia Curae; Suspendisse.
+
+      [read more](#{info_sponsor_path})
+  .span4
+    %h2 Følg med
+    .fb-like{:data => { |
+          :href=>"http://facebook.com/smidig", |
+          :send=>"false", |
+          :width=>"350", |
+          :show_faces=>"true", |
+          :font=>"verdana"}}
+.row-fluid
+  .span12
+    %hr
+    =render :partial => '/sponsors/list'

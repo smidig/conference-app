@@ -1,5 +1,5 @@
 class AddCompletedToUsers < ActiveRecord::Migration
   def change
-    add_column :users, :completed, :bool
+    add_column :users, :completed, :boolean
   end
 end

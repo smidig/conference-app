@@ -5,10 +5,11 @@ The conference-app
 
 ### Development environment
 * Ruby: ruby-1.9.3-p362
-* Rails: rails-3.2.10
+* Rails: rails-3.2.13
 
 ### Ruby Version Manager (RVM)
-We expects all the user's to use rvm to handle their ruby version and
+We expects all the user's to use rvm to handle their ruby version, rails and gems. Check out
+[https://rvm.io](https://rvm.io) for all the details. 
 
 #### Installation of rvm
 The easy way to set up rvm with correct ruby and rails:
@@ -16,8 +17,8 @@ The easy way to set up rvm with correct ruby and rails:
     $ \curl -L https://get.rvm.io | bash -s stable --rails --autolibs=enabled # Or, --ruby=1.9.3
 
 #### Create a gemset for smidig
-It is recommended to have a separate gemset for each ruby project.
-To create a new gemset for *smidig* use the following commands:
+It is recommended to have a separate gemset for each ruby project.  To create a new gemset for *smidig* use the
+following commands:
 
     $ rvm use 1.9.3
     $ $ rvm gemset create smidig
@@ -31,7 +32,7 @@ After creating the gemset you can qickly select correct ruby and gemset with the
 Som may experience problems with dependencies required by rvm, rails or ruby.
 
 *Ex: "cannot load such file -- openssl"*
-Read more: [https://rvm.io/packages/openssl]
+Read more: [https://rvm.io/packages/openssl](https://rvm.io/packages/openssl)
 
 Solution:
 
@@ -42,6 +43,11 @@ Solution:
 
 
 ## Getting Started
+
+### Checkout the project from github:
+Start in the folder where you want to checkout the code to. Clone the project from GitHub:
+
+    $ git clone git@github.com:smidig/conference-app.git
 
 ### Initialize you local environment
     
@@ -54,10 +60,12 @@ You can start the server with the following command:
 
     $ rails server
 
-The server should then be available at [http://localhost:3000]
+The server should then be available at [http://localhost:3000](http://localhost:3000)
 
 ### Console
-The console command lets you interact with your Rails application from the command line. On the underside, rails console uses IRB, so if you’ve ever used it, you’ll be right at home. This is useful for testing out quick ideas with code and changing data server-side without touching the website.
+The console command lets you interact with your Rails application from the command line. On the underside, rails console
+uses IRB, so if you’ve ever used it, you’ll be right at home. This is useful for testing out quick ideas with code and
+changing data server-side without touching the website.
 
     $ rails console
 
@@ -66,17 +74,23 @@ The console command lets you interact with your Rails application from the comma
 We use RSPEC to do Behaviour-Driven Development (BDD), a fun way to perform Test-Driven Development.
 
 Run an indivdual spec:
+
     $ rspec spec/controllers/users_controller_spec.rb
 
 #### Forever running tests
-To further improve our development speed we have set up *guard* [https://github.com/guard/guard]  (with Growl/Libnotify/Notifu for notifications) and (guard-rspec plugin)[https://github.com/guard/guard-rspec]. RSpec guard allows us to automatically launch specs when files are modified.
+To further improve our development speed we have set up *guard*,
+[github.com/guard/guard](https://github.com/guard/guard)  (with Growl/Libnotify/Notifu for notifications) and
+(guard-rspec plugin)[https://github.com/guard/guard-rspec]. RSpec guard allows us to automatically launch specs when
+files are modified.
 
 To start guard:
     $ guard
 
 
 ## Git workflow
-We have chosen to have a *stable master* approach. This means that all new developments must be done in a feature branch, and be merged back to master when they are complete. This means that the master branch is always safe to deploy from or to create new branches off.
+We have chosen to have a *stable master* approach. This means that all new developments must be done in a feature
+branch, and be merged back to master when they are complete. This means that the master branch is always safe to deploy
+from or to create new branches off.
 
 
 ### Start working on new feature
@@ -91,13 +105,16 @@ Create a new branch (assuming you are on master branch):
     $ git commit -m "What a is in this commit"
 
 ### Push branch to remote origin (github)
+
     $ git push origin "name of branch"
 
 ### Merge feature back to master
 To merge a feature back to master you have multiple options
 
-1. Push branch to github and make a pull-request on githu. The main benefit of this approach is that we get code review with an easy way to inspect / comment / discuss the code beeing merged back to master.
-2. Merge locally:
+1.  Push branch to github and make a pull-request on githu. The main benefit of this approach is that we get code review
+    with an easy way to inspect / comment / discuss the code beeing merged back to master.
+
+2.  Merge locally:
 
 How to merge locally:
 
@@ -111,3 +128,9 @@ How to merge locally:
 
 
 ## Heroku
+
+## Issue tracker
+
+We use Trello.com as [our kanban board](https://trello.com/board/smidig-app-2013/515daaeba00d423573004a20) to manage our user stories.
+
+For bugs and feature request we use the GitHub issue tracker. 

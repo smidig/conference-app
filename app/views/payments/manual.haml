@@ -1,0 +1,27 @@
+%a.pull-right{:href => "#{payments_manual_path}.csv"}
+  %i.icon-th
+  CSV
+
+%a{:href => "#{payments_path}"}
+  %i.icon-list
+  Alle betalinger
+
+
+
+
+%table{:class => 'table'}
+  %thead
+    %tr
+      %th Id
+      %th Opprettet
+      %th Pris
+      %th Betalt sum
+      %th Deltakere
+      %th Kontaktperson
+      %th Fakturaadresse
+      %th Bestilling
+      %th.text-right FakturaID
+  %tbody
+    =render 'manual_group', :payments => @uncomplete, :title => "Nye registeringer"
+    =render 'manual_group', :payments => @invoiced, :title => "Faktura sent"
+    =render 'manual_group', :payments => @completed, :title => "Betalt"

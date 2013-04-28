@@ -1,12 +1,11 @@
 %ul.nav
   %li
-    = link_to('Om Smidig', info_about_path)
+    %a{:href => "#{info_about_path}"}
+      Om konferansen
   %li
     = link_to('Sponse', info_sponsor_path)
   %li
     = link_to('Talks', talks_path)
-  %li
-    = link_to('Users', users_path)
   - if user_signed_in?
     %li
       = link_to('Logout', destroy_user_session_path, :method=>'delete')
@@ -19,16 +18,24 @@
   - else
     %li
       = link_to('Sign up', new_user_registration_path)
-  - if user_signed_in? # bare adminbrukere som bør få se disse
-    %ul{:class => "nav secondary-nav"}
-      %li.dropdown
-        = link_to 'Admin', '#', {:class => 'dropdown-toggle', "data-toggle" => "dropdown"}
-        %ul.dropdown-menu
-          %li
-            = link_to("Registreringer", users_path)
-          %li
-            = link_to("Statistikk", administration_statistics_path)
+  - if user_signed_in? and current_user.admin
 
-
-
-
+    %li.dropdown
+      %a.dropdown-toggle{:href => "#", "data-toggle" => "dropdown"}
+        Admin
+        %b.caret
+      %ul.dropdown-menu
+        %li
+          %a{:href => "#{users_path}"} Deltakere
+        %li
+          %a{:href => "#{orders_path}"} Bestillinger
+        %li
+          %a{:href => "#{payments_path}"} Betalinger
+        %li
+          %a{:href => "#{tickets_path}"} Billetter
+        %li
+          %a{:href => "#{talk_types_path}"} Foredragstyper
+        %li
+          %a{:href => "#{talk_categories_path}"} Foredragskategorier
+        %li
+          = link_to("Statistikk", administration_statistics_path)
