@@ -1,5 +1,6 @@
 class TalksController < ApplicationController
   before_filter :authenticate_user! , :except => [:index, :show]
+  before_filter :require_admin_or_talk_owner, :only => [:destroy]
 
   # GET /talks
   # GET /talks.json
@@ -42,10 +43,12 @@ class TalksController < ApplicationController
   # POST /talks
   # POST /talks.json
   def create
-    @talk = Talk.new(params[:talk])
+    @talk = Talk.new(params[:talk], :as => admin? ? :admin : :default)
+    @talk.user = current_user
+    @talks.cospeakers = User.find(:all)
 
     respond_to do |format|
-      if @talk.save
+      if @talk.save()
         format.html { redirect_to @talk, notice: 'Talk was successfully created.' }
         format.json { render json: @talk, status: :created, location: @talk }
       else
@@ -61,12 +64,13 @@ class TalksController < ApplicationController
     @talk = Talk.find(params[:id])
 
     respond_to do |format|
-      if @talk.update_attributes(params[:talk])
-        format.html { redirect_to @talk, notice: 'Talk was successfully updated.' }
+      #if @talk.update_attributes(params[:talk], :as => :admin)
+      if @talk.update_attributes(params[:talk], :as => admin? ? :admin : :default)
+        format.html { redirect_to @talk, notice: "Talk was successfully updated." }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
-        format.json { render json: @talk.errors, status: :unprocessable_entity }
+        format.json { render json: @talk.errors, status: :unprocessable_entity, notice: 'Failed' }
       end
     end
   end
@@ -81,6 +85,17 @@ class TalksController < ApplicationController
     respond_to do |format|
       format.html { redirect_to talks_url }
       format.json { head :no_content }
+    end
+  end
+
+  def require_admin_or_talk_owner
+    if params[:talk_id]
+      talk = Talk.find(params[:talk_id])
+    end
+
+    unless current_user.admin? or talk.users == current_user
+      flash[:notice] = 'Du er ikke taleren som opprettet denne talk'
+      redirect_to talks_path
     end
   end
   

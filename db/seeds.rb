@@ -3,7 +3,8 @@
 # This will seed administrators with their appropriate names and email addresses. Their password is 'password'.
 administrators = [
     {:name => "Jonas Amundsen",      :email => "jonasba@gmail.com"},
-    {:name => "Ivar Conradi Østhus", :email => "ivarconr@gmail.com"}
+    {:name => "Ivar Conradi Østhus", :email => "ivarconr@gmail.com"},
+    {:name => "Edward Grönroos", :email => "edward@gronroos.se"}
 ]
 
 administrators.each do |user_data|

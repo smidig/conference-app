@@ -72,8 +72,8 @@ ActiveRecord::Schema.define(:version => 20130425191129) do
   end
 
   create_table "talks", :force => true do |t|
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
+    t.datetime "created_at",                                       :null => false
+    t.datetime "updated_at",                                       :null => false
     t.string   "title"
     t.text     "description"
     t.integer  "talk_type_id"
@@ -82,6 +82,7 @@ ActiveRecord::Schema.define(:version => 20130425191129) do
     t.string   "presentation_content_type"
     t.integer  "presentation_file_size"
     t.datetime "presentation_updated_at"
+    t.string   "status",                    :default => "pending"
   end
 
   create_table "tickets", :force => true do |t|

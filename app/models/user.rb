@@ -17,5 +17,6 @@ class User < ActiveRecord::Base
 
   belongs_to :ticket
   belongs_to :order
+  belongs_to :talk
 
 end
