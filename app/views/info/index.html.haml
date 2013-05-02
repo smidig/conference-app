@@ -1,4 +1,4 @@
-.carousel.slide
+#frontslide.carousel.slide
   .carousel-inner
     .active.item
       %img(src="http://kvener.no/wp-content/blogs.dir/1/files/2011/05/samarbeid.jpg")
@@ -16,10 +16,10 @@
             # Smidig 2013
 
             Smidig 2013 vil inspirere og presentere nye trender i en sosial atmosfære. Konferansen arrangeres i Oslo, 5. -6. november 2013. Påmelding starter snart.
-  %a.carousel-control.left
-    <
-  %a.carousel-control.right
-    >
+  %a.carousel-control.left{:href => "#frontslide", :data => {:slide=>"prev"}}
+    &lsaquo;
+  %a.carousel-control.right{:href => "#frontslide", :data => {:slide=>"next"}}
+    &rsaquo;
 
 //.hero-unit
 //  :markdown

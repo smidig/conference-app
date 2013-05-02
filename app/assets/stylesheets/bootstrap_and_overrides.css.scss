@@ -1,6 +1,5 @@
 $linkColor: #00a4e3;
 $linkColorHover: #00c2ef;
-
 $navbarBackground: $linkColor;
 $navbarBackgroundHighlight: $linkColorHover;
 $navbarText: white;
@@ -22,7 +21,8 @@ $dropdownBorder: $navbarBackground;
 	.item {
 		height: 300px;
 		img {
-			min-width: 100%;
+			
+			max-width: 100%;
 		}
 
 		.overlay {

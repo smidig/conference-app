@@ -18,5 +18,4 @@
 $(function() {
   //Workaround for dropdown not initializing correctly.
   $('.dropdown-toggle').dropdown();
-  $('.carousel').carousel();
 });
