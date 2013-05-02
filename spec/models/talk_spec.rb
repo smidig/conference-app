@@ -11,7 +11,7 @@ describe Talk do
       talk.errors[:description].should be_true
     end
     it "should be valid with required fields" do
-      talk = FactoryGirl.create(:talk)
+      talk = FactoryGirl.build(:talk)
       talk.valid?.should be_true
     end
   end

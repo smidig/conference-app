@@ -5,7 +5,7 @@
   %li
     = link_to('Sponse', info_sponsor_path)
   %li
-    = link_to('Talks', talks_path)
+    %a{:href => "#{talks_path}"} Foredrag
   - if user_signed_in?
     %li
       = link_to('Logout', destroy_user_session_path, :method=>'delete')
@@ -19,7 +19,6 @@
     %li
       = link_to('Sign up', new_user_registration_path)
   - if user_signed_in? and current_user.admin
-
     %li.dropdown
       %a.dropdown-toggle{:href => "#", "data-toggle" => "dropdown"}
         Admin
