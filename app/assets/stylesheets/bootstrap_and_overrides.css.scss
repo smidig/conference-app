@@ -1,9 +1,71 @@
+$linkColor: #00a4e3;
+$linkColorHover: #00c2ef;
+
+$navbarBackground: $linkColor;
+$navbarBackgroundHighlight: $linkColorHover;
+$navbarText: white;
+$navbarBrandColor: $navbarText;
+$navbarLinkColor: $navbarText;
+$navbarLinkColorHover: $navbarText;
+$navbarLinkColorActive: $navbarLinkColorHover;
+$dropdownBackground: white;
+$dropdownLinkBackgroundHover: $navbarBackgroundHighlight;
+$dropdownBorder: $navbarBackground;
+
 @import "bootstrap";
 @import "bootstrap-responsive";
+
+.slide {
+	overflow: hidden;
+	position: relative;
+
+	.item {
+		height: 300px;
+		img {
+			min-width: 100%;
+		}
+
+		.overlay {
+			position: absolute;
+			bottom: 10%;
+			width: 100%;
+
+			.text {
+				width: 50%;
+				padding: 0px;
+
+				h1, h2, h3, h4, h5, p, a, span {
+					background: white;
+					background: rgba(255,255,255, 0.9);
+					display: inline-block;
+					padding: 5px 10px;
+				}
+			}
+		}
+	}
+}
+
+.navbar .btn-navbar {
+	padding: 4px 12px;
+}
 
 .alert-alert {
   @extend .alert-error
 }
 .alert-notice {
   @extend .alert-success
+}
+
+.mobile {
+	display: none;
+}
+
+@media (max-width: 979px) {
+	.desktop {
+		display: none !important;
+	}
+
+	.mobile {
+		display: block;
+	}
 }
