@@ -45,6 +45,8 @@
               %h4 Twitter
               / Too add twitter widget, goto "js" folder and open "custom.js" file and search for the word "ashokramesh90". This is my twitter username. Just replace the word with your twitter username. You are done.
               .tweet
+
+              %a.twitter-follow-button{"data-show-count" => "false", :href => "https://twitter.com/smidig"} Follow @smidig
           .span4
             / widget 2
             .widget
@@ -70,7 +72,11 @@
                   %a{:href => "http://www.facebook.com/smidig", :target => "_blank"} facebook.com
                 %li
                   %a{:href => "http://lanyrd.com/2013/smidig2013/", :target => "_blank"} lanyrd.com
+                %li
+                  %a{:href => "https://www.linkedin.com/groups?gid=963587", :target => "_blank"} linkedin.com
         %hr/
-        %p.copy
-          Copyright ©
-          %a{:href => "http://smidig2013.no"} Smidig 2013
+        %p.text-center
+
+          %a{:href => "mailto:kontakt@smidig.no"}
+            %i.icon-envelope.icon-white
+            kontakt@smidig.no
