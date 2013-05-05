@@ -28,24 +28,6 @@ class UsersController < ApplicationController
   def destroy
     user = User.find(params[:id])
 
-    if user.order and user.order.owner_user_id == user.id
-      order = user.order
-
-      # Destroy all payments for order
-      if order.payment
-        order.payment.destroy
-      end
-
-      # destroy all other users created by this order
-      order.users.each do |u|
-        if u.id != user.id
-          u.destroy
-        end
-      end
-
-      order.destroy
-    end
-
     user.destroy
 
     respond_to do |format|

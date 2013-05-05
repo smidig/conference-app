@@ -22,7 +22,7 @@ class Order < ActiveRecord::Base
   end
 
   def owner
-    User.find(self.owner_user_id)
+    User.find(self.owner_user_id) rescue nil
   end
 
   def finish

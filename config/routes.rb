@@ -7,6 +7,7 @@ ConferenceApp::Application.routes.draw do
   post "orders/add_user"
   get "orders/show"
   get "orders/:id" => "orders#show"
+  delete "orders/:id" => "orders#destroy"
 
   resources :sponsors
 
