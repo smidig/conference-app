@@ -26,8 +26,27 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.xml
   def destroy
-    @user = User.find(params[:id])
-    @user.destroy
+    user = User.find(params[:id])
+
+    if user.order and user.order.owner_user_id == user.id
+      order = user.order
+
+      # Destroy all payments for order
+      if order.payment
+        order.payment.destroy
+      end
+
+      # destroy all other users created by this order
+      order.users.each do |u|
+        if u.id != user.id
+          u.destroy
+        end
+      end
+
+      order.destroy
+    end
+
+    user.destroy
 
     respond_to do |format|
       format.html { redirect_to(users_url) }
@@ -55,5 +74,9 @@ class UsersController < ApplicationController
       format.html { redirect_to :action => :index}
       format.json { head :no_content }
     end
+  end
+
+  def delete
+    @user = User.find(params[:id])
   end
 end

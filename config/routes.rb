@@ -49,4 +49,5 @@ ConferenceApp::Application.routes.draw do
   get "users/make_admin"
   match "users/complete/:id" => "users#complete"
   resources :users
+  get "users/delete/:id" => "users#delete"
 end
