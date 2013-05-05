@@ -1,10 +1,20 @@
 # encoding: UTF-8
 class OrdersController < ApplicationController
-  before_filter :require_admin, :only => [:index]
+  before_filter :require_admin, :only => [:index, :destroy]
   before_filter :redirect_if_order_completed, :only => [:add_user, :new_user]
 
   def index
     @orders = Order.all
+  end
+
+  def destroy
+    order = Order.find(params[:id])
+    order.destroy
+
+    respond_to do |format|
+      format.html { redirect_to(orders_url) }
+      format.xml  { head :ok }
+    end
   end
 
   def show

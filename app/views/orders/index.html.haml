@@ -13,6 +13,7 @@
       %th Status
       %th
       %th
+      %th
   %tbody
     - for order in @orders
       %tr
@@ -25,3 +26,6 @@
         %td= link_to '#'+order.payment.id.to_s, {:controller => :payments, :action => 'show', :id => order.payment.id} if order.payment
         %td= order.status
         %td= link_to 'Show', orders_show_path(:id => order.id)
+        %td
+          = link_to({:action => "destroy", :id => order.id}, :confirm =>"Er du sikker på at du vil slette bestillingen #{order.id}?", :method=>:delete, :class => 'btn btn-danger', :title => "Slett bestilling") do
+            %i{:class => "icon-remove"}

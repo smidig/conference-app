@@ -1,12 +1,6 @@
 :markdown
   # Slette bruker
-  _Å slette en bruker innebærer at følgende vil bli slettet:_
-
-  * Brukeren
-  * Brukerens bestilling (hvis han eier denne)
-  * Bestillingens evt betaling (hvis han eier denne)
-  * Andre deltakere koblet til bestillingen blir også slettet (hvis han eier bestillinga)
-  * Ødelegger oversikt (total pris) på fullførte bestillinger (hvis ikke eier)
+  _Før du sletter en bruker anbefales det at du sletter en evt betaling og bestilling. Dersom brukeren tilhører en fullført bestilling kan det bli missmatch mellom bestillingen og betalingen for den bestillingen._
 
   #### Brukerinfo:
   * **Navn:**  #{@user.name}
