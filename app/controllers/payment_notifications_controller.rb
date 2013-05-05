@@ -1,3 +1,4 @@
+# encoding: UTF-8
 require "net/http"
 class PaymentNotificationsController < ApplicationController
   skip_before_filter :verify_authenticity_token
