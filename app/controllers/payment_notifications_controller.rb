@@ -1,5 +1,7 @@
 require "net/http"
 class PaymentNotificationsController < ApplicationController
+  skip_before_filter :verify_authenticity_token
+
   def create
     isValid = validate(request.raw_post)
     payment = Payment.find_by_invoice_id(params[:invoice])
