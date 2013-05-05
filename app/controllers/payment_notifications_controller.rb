@@ -13,7 +13,7 @@ class PaymentNotificationsController < ApplicationController
       payment.paypal_tx_type = params[:txn_type]
       payment.paypal_status = params[:payment_status]
       payment.paypal_payer_email = params[:payer_email]
-      payment.paypal_params = params.force_encoding("utf-8")
+      payment.paypal_params = params.to_s.force_encoding("utf-8")
       payment.save!
 
       if payment.paid_amount == payment.price
