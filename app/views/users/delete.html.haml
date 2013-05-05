@@ -1,0 +1,49 @@
+:markdown
+  # Slette bruker
+  _Å slette en bruker innebærer at følgende vil bli slettet:_
+
+  * Brukeren
+  * Brukerens bestilling (hvis han eier denne)
+  * Bestillingens evt betaling (hvis han eier denne)
+  * Andre deltakere koblet til bestillingen blir også slettet (hvis han eier bestillinga)
+  * Ødelegger oversikt (total pris) på fullførte bestillinger (hvis ikke eier)
+
+  #### Brukerinfo:
+  * **Navn:**  #{@user.name}
+  * **Epost:** #{@user.email}
+  * **Firma:** #{@user.company}
+
+%h4 Bestillingsinfo:
+- if @user.order
+  %ul
+    %li
+      %strong Bestilling:
+      = link_to '#'+@user.order.id.to_s, {:controller => :orders, :action => 'show', :id => @user.order.id}  if @user.order
+      - if @user.order.owner_user_id == @user.id
+        %strong (EIER!)
+      - else
+        %strong (ikke eier)
+    %li
+      %strong Deltakere:
+      - for user in @user.order.users
+        #{user.name} (#{user.email}),
+
+    %li
+      %strong Betaling
+      = link_to '#'+@user.order.payment.id.to_s, {:controller => :payments, :action => 'show', :id => @user.order.payment.id} if @user.order.payment
+- else
+  %p
+    Brukeren tilhører ingen bestilling!
+
+
+%p
+  %i Er du HELT sikker på at du vil slette denne brukeren og evt bestilling?
+
+.form-actions
+  = link_to(@user, :confirm =>"Er du sikker på at du vil slette #{@user.name}?", :method=>:delete, :class => 'btn btn-danger', :title => "Slett bruker") do
+    %i{:class => "icon-remove"}
+    Ja slett bruker
+
+  = link_to(users_path, :class => 'btn btn-primary', :title => "Avbryt") do
+    %i{:class => "icon-backward"}
+    Nei, avbryt!
