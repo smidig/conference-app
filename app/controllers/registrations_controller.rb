@@ -10,7 +10,13 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def sign_up(resource_name, resource)
-    SmidigMailer.registration_confirmation(@user).deliver
+    # TODO: Add a special email for speakers..
+    if @user.ticket.price > 0
+      SmidigMailer.registration_confirmation(@user).deliver
+    else
+      SmidigMailer.free_registration_confirmation(@user).deliver
+      SmidigMailer.free_registration_notification(@user, users_url).deliver
+    end
     sign_in(resource_name, resource)
   end
 

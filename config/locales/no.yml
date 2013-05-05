@@ -18,6 +18,8 @@
           attributes:
             accepted_privacy:
               accepted: "Du må godta vilkårene"
+            email:
+              taken: "Vi har allerede en registrering på denne eposten"
   helpers:
     submit:
       user:
