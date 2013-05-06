@@ -10,7 +10,7 @@ Feature: Order Complete
   Scenario: Participant should be able to complete order
     Given I have just registered as a new participant
     And I am on the order page
-    When I follow "Fullfør med Paypal"
+    When I follow "Betal med Paypal"
     # User will automagically complete at paypal
     Then I should be on the paypal completed page
     And It should exist one paypal payment
