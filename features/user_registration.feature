@@ -23,7 +23,7 @@ Feature: User registration
       | Navn            | Jane Doe                         |
       | Telefon         | 22222222                         |
       | Passord         | password                         |
-    And check "Jeg aksepterer vilkårene"
+    And check "Jeg forstår at påmeldingen er bindende og at Smidig vil sende meg epost"
     And I press "Meld meg på!"
     Then I should see a flash message saying "Velkommen!"
     And I should be on the order page

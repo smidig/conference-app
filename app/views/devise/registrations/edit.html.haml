@@ -1,8 +1,16 @@
-%h2 Endre konto
+%h2 Endre din bruker
 
 = simple_form_for resource, :as => resource_name, :url => registration_path(resource_name), :html => { :class => 'form-horizontal', :method => :put } do |f|
-  = render "form_common", :f => f
-  = f.input :current_password, :hint => "We need your current password to confirm your changes"
+  = f.input :email, :autofocus => true
+  = f.input :name
+  = f.input :tlf
+  = f.input :password
+  = f.input :company
+  = f.input :twitter, :placeholder => '@username'
+  = f.input :allergies
+  = f.input :accepted_optional_email, :inline_label => 'Jeg ønsker epost om tilsvarende arrangementer', :label => false
+  = f.input :includes_dinner, :inline_label=> 'Jeg deltar på konferansemiddagen', :label => false
+  = f.input :current_password, :hint => "Vi trenger ditt nåverende passord for å bekrefte endringen"
   .form-actions
     = f.button :submit, :class => 'btn-primary'
     = link_to t('.cancel', :default => t("helpers.links.cancel")), users_path, :class => 'btn'

@@ -1,10 +1,31 @@
-%h2
-  =t("general.register")
-= simple_form_for @user, :html => { :class => 'form-horizontal' } do |f|
-  %input{:type => "hidden", :name => "ticket_name", :value => "#{@ticket_default.name}"}
-  = f.association :ticket, :collection => @tickets, :label_method => :display, :selected => @ticket_default.id
-  = render "form_common", :f => f
+.row
+  .span8
+    %h2
+      =t("general.register")
+    %p
+      Early Bird billett til Smidig 2013 koster 2.000,- inklusive mva.
+      Vanlig billett koster 3.200kr.
+      Foredragsholdere slipper inn gratis, forutsatt at foredraget godkjennes.
 
-  .form-actions
-    = f.button :submit, :class => 'btn-primary'
-    = link_to t('.cancel', :default => t("helpers.links.cancel")), users_path, :class => 'btn'
+    %p
+      %a(href="/info/policy")
+        Se informasjon om sikkerhet og personvern.
+    %br
+
+    = simple_form_for @user, :html => { :class => 'form-horizontal' } do |f|
+      %input{:type => "hidden", :name => "ticket_name", :value => "#{@ticket_default.name}"}
+      = f.association :ticket, :collection => @tickets, :label_method => :display, :selected => @ticket_default.id
+      = f.input :email, :autofocus => true
+      = f.input :name
+      = f.input :tlf
+      = f.input :password
+      = f.input :company
+      = f.input :twitter, :placeholder => '@username'
+      = f.input :allergies
+      = f.input :accepted_optional_email, :inline_label => 'Jeg ønsker epost om tilsvarende arrangementer (færre enn 1 pr mnd)', :label => false
+      = f.input :includes_dinner, :inline_label=> 'Jeg deltar på konferansemiddagen', :label => false
+      = f.input :accepted_privacy, :as => :boolean, :inline_label => 'Jeg forstår at påmeldingen er bindende og at Smidig vil sende meg epost', :label => false
+
+      .form-actions
+        = f.button :submit, :class => 'btn-primary'
+        = link_to t('.cancel', :default => t("helpers.links.cancel")), users_path, :class => 'btn'
