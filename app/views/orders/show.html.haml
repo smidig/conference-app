@@ -1,16 +1,18 @@
-%h2 Din bestilling:
+%h3 Din bestilling
 
 = render "details", :order => @order
 
-%h3 Påmeldte deltakere:
+%br
+
+%h4 Deltakere på din bestilling:
 %table{:class => 'table table-striped'}
   %thead
     %tr
-      %th Name
+      %th Navn
       %th Epost
       %th Telefon
       %th Billett
-      %th.text-right= 'Pris'
+      %th.text-right Pris
   %tbody
     - for user in @order.users
       %tr
@@ -30,13 +32,13 @@
             %i.icon-plus-sign
             Legg til deltaker
 
-PS! Det er ikke mulig å legge til flere deltakere etter at du har startet en betalingsprosess!
+PS! Det er ikke mulig å legge til flere deltakere etter at du har startet en betalingsprosess.
 
 - unless @order.payment
   .form-actions
-    #{link_to 'Fullfør med Paypal', payments_new_paypal_path(:order_id => @order.id), :class => 'btn btn-large btn-primary'}
-    - if @order.users.size > 2
-      #{link_to 'Fullfør med Faktura', payments_new_manual_path(:order_id => @order.id), :class => 'btn btn-large'}
+    #{link_to 'Betal med Paypal', payments_new_paypal_path(:order_id => @order.id), :class => 'btn btn-large btn-primary'}
+    - if @order.users.size > 2 or current_user.admin
+      #{link_to 'Be om faktura', payments_new_manual_path(:order_id => @order.id), :class => 'btn btn-large'}
 
 - if @order.payment && !@order.payment.completed? && @order.payment.type == 'PaypalPayment'
   .form-actions
