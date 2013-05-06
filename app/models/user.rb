@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   attr_accessible :name, :tlf, :company, :accepted_privacy, :twitter, :accepted_optional_email, :allergies, :ticket_id, :order, :includes_dinner
 
   # validations
-  validates_presence_of :name, :email
+  validates_presence_of :name, :email, :tlf, :company
   validates_acceptance_of :accepted_privacy
 
   belongs_to :ticket
