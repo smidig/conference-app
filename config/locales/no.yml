@@ -13,6 +13,7 @@
         accepted_privacy: ""
         allergies: "Allergier"
         current_password: "Nåværende passord"
+        remember_me: "Husk meg"
     errors:
       models:
         user:
