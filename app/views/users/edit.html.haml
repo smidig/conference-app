@@ -1,0 +1,20 @@
+%h1 Endre bruker (admin)
+
+= simple_form_for @user, :html => { :class => 'form-horizontal', :method => :put } do |f|
+  = f.association :ticket, :collection => @tickets, :label_method => :display
+  = f.input :email, :autofocus => true
+  = f.input :name
+  = f.input :tlf
+  = f.input :company
+  = f.input :twitter, :placeholder => '@username'
+  = f.input :allergies
+  = f.input :accepted_optional_email, :inline_label => 'Jeg ønsker epost om tilsvarende arrangementer', :label => false
+  = f.input :includes_dinner, :inline_label=> 'Jeg deltar på konferansemiddagen', :label => false
+
+  %p
+    PS! Å endre billett til en bruker som tilhører en fullført bestilling vil ødelegge
+    konistens i dataene.
+
+  .form-actions
+    = f.button :submit, :class => 'btn-primary'
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), users_path, :class => 'btn'
