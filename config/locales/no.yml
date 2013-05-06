@@ -38,6 +38,8 @@
               blank: "Du må lage deg ett passord"
             current_password:
               blank: "Du må oppgi ditt nåværende passord for å bekrefte endringen"
+            company:
+              blank: "Selskap må oppgis"
         payment:
           attributes:
             manual_contact_person:

@@ -22,6 +22,7 @@ Feature: User registration
       | Epostadresse    | jane.doe@gmail.com               |
       | Navn            | Jane Doe                         |
       | Telefon         | 22222222                         |
+      | Selskap         | Firma                            |
       | Passord         | password                         |
     And check "Jeg forstår at påmeldingen er bindende og at Smidig vil sende meg epost"
     And I press "Meld meg på!"
