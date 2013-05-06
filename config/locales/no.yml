@@ -12,6 +12,7 @@
         password: "Passord"
         accepted_privacy: ""
         allergies: "Allergier"
+        current_password: "Nåværende passord"
     errors:
       models:
         user:
@@ -20,6 +21,13 @@
               accepted: "Du må godta vilkårene"
             email:
               taken: "Vi har allerede en registrering på denne eposten"
+              blank: "Du må angi en epost"
+            name:
+              blank: "Du må angi ditt navn"
+            password:
+              blank: "Du må lage deg ett passord"
+            current_password:
+              blank: "Du må oppgi ditt nåværende passord for å bekrefte endringen"
   helpers:
     submit:
       user:
