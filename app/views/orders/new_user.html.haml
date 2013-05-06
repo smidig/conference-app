@@ -1,8 +1,6 @@
-= render "details"
+%h3 Legg til deltaker på din bestilling (id: #{@order.id})
 
-%h4 Legg til deltaker på din bestilling
-
-= simple_form_for @user, :html => {:class => 'form-vertical'},  :url => url_for(:action => 'add_user', :controller => 'orders') do |f|
+= simple_form_for @user, :html => {:class => 'form-horizontal'},  :url => url_for(:action => 'add_user', :controller => 'orders') do |f|
   = f.association :ticket, :collection => Ticket.visible, :label_method => :display, :selected => Ticket.default.id
   = f.input :email, :autofocus => true, :required => true
   = f.input :name
