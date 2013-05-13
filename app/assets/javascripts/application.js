@@ -10,9 +10,18 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
+// These are provided by gems:
+//
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//
+// These are located in vendor/assets/javascripts:
+//
+//= require jquery.tweet
+//
+// These are our scripts:
+//
 //= require_tree .
 
 $(function() {
