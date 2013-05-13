@@ -13,6 +13,7 @@ administrators.each do |user_data|
       :password => 'password',
       :password_confirmation => 'password',
       :accepted_privacy => "1",
+      :company => 'Smidig 2013',
   })
 
   user = User.new user_data
