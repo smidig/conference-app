@@ -1,5 +1,5 @@
 class AddBelongsToOrderOnUser < ActiveRecord::Migration
   def change
-     add_column :user
+     add_column :users, :order_id, :integer
   end
 end
