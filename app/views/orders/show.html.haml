@@ -42,4 +42,4 @@ PS! Det er ikke mulig å legge til flere deltakere etter at du har startet en be
 
 - if @order.payment && !@order.payment.completed? && @order.payment.type == 'PaypalPayment'
   .form-actions
-    #{link_to 'Fullfør betaling', payments_complete_path(:id => @order.payment.id), :class => 'btn btn-large btn-primary'}
+    #{link_to 'Fullfør betaling hos paypal', payments_complete_path(:id => @order.payment.id), :class => 'btn btn-large btn-primary'}
