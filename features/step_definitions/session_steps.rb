@@ -21,7 +21,7 @@ Given /^I register as a participant with email "([^"]*)" and password "([^"]*)"$
   step %(I fill in "#{password}" for "Passord")
   step %(I check "Jeg forstår at påmeldingen er bindende og at Smidig vil sende meg epost")
   step %(I press "Meld meg på!")
-  step %(show me the page)
+  #step %(show me the page)
   step %(I should be logged in)
 end
 

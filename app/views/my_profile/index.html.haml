@@ -12,8 +12,9 @@
       - **Twitter**: #{@user.twitter}
       - **Firma**: #{@user.company}
       - **Deltar på konferansemiddag**: <span class="dinner">#{@user.includes_dinner ? "Ja": "Nei"}</span>
+      - **Allergier**: #{@user.allergies.blank? ? "Ingen" : @user.allergies}
       - **Billett**: #{@user.ticket.display}
-      - [Kvittering](my-profile/receipt)
+      - [Kvittering](/my-profile/receipt)
     = link_to "Endre profil", edit_user_registration_path
 
     %br
