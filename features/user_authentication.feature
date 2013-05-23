@@ -20,7 +20,7 @@ Feature: User authentication
     And I fill in "invalid password" for "user_password"
     And I press "Sign in"
     Then I should be on the login page
-    And show me the page
+    #And show me the page
     And I should not be logged in
     And the "Epostadresse" field should contain "invalid@user.com"
     And I should see a flash message saying "Ugyldig epost eller passord"

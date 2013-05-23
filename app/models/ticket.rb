@@ -16,6 +16,10 @@ class Ticket < ActiveRecord::Base
     self.price - (self.price / 1.25)
   end
 
+  def price_ex_mva
+    self.price / 1.25
+  end
+
   def display
     name.to_s + " - (kr " + price.to_s + ",-)"
   end

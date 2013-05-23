@@ -1,13 +1,16 @@
 ConferenceApp::Application.routes.draw do
   root :to => "info#index"
 
+  #MyProfile
+  get "my_profile/dinner_registration" => "my_profile#dinner_registration"
+  get "my_profile/receipt" => "my_profile#receipt"
+  resources :my_profile, :only => "index"
+
   #order stuff
-  get "orders" => "orders#index"
   get "orders/new_user"
   post "orders/add_user"
   get "orders/show"
-  get "orders/:id" => "orders#show"
-  delete "orders/:id" => "orders#destroy"
+  resources :orders, :only => [:index, :show, :destroy]
 
   resources :sponsors
 
@@ -25,12 +28,13 @@ ConferenceApp::Application.routes.draw do
 
   resources :talk_types
 
+  # Can these be deleted?
   get "talk/index"
   get "talk/destroy"
+  resources :talks
 
   resources :tickets
 
-  resources :talks
 
   resources :payment_notifications
 
