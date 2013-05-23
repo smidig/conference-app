@@ -1,10 +1,10 @@
-%h2 Change your password
+%h2 Endre passord
 
 = simple_form_for resource, :as => resource_name, :url => password_path(resource_name), :html => { :class => 'form-horizontal',:method => :put } do |f|
   = f.input :reset_password_token, :as => :hidden
   = f.input :password
   = f.input :password_confirmation
   .form-actions
-    = f.button :submit, :class => 'btn-primary', :value => "Change my password"
+    = f.button :submit, :class => 'btn-primary', :value => "Endre passord"
 
 =render "devise/shared/links"

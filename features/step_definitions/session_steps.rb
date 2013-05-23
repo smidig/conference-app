@@ -29,6 +29,6 @@ Given(/^I am logged in as a user with email "(.*?)" and password "(.*?)"$/) do |
   step %{I am on the login page}
   step %{I fill in "#{email}" for "user_email"}
   step %{I fill in "#{password}" for "user_password"}
-  step %{I press "Sign in"}
+  step %{I press "Logg på"}
   step %(I should be logged in)
 end

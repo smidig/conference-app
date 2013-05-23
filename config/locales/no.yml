@@ -59,7 +59,7 @@
       cancel: "Avbryt"
 
   general:
-    register: "Påmelding Smidig 2013"
+    register: "Påmelding til Smidig 2013"
     manual_payment:
       create: "Opprett faktura!"
       email_or_mail: "Dersom du oppgir epost benyttes denne for å sende faktura."
