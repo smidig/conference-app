@@ -21,6 +21,10 @@ module NavigationHelpers
         payments_paypal_completed_path
       when /^the users admin page$/
         users_path
+      when /^the my profile page$/
+        my_profile_index_path
+      when /^the edit user registration page$/
+        edit_user_registration_path
       else
         raise "Can't find mapping from \"#{page_name}\" to a path.\n" +
                   "Now, go and add a mapping in #{__FILE__}"
