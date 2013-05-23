@@ -2,8 +2,8 @@ ConferenceApp::Application.routes.draw do
   root :to => "info#index"
 
   #MyProfile
-  get "my-profile/dinner_registration" => "my_profile#dinner_registration"
-  get "my-profile/receipt" => "my_profile#receipt"
+  get "my_profile/dinner_registration" => "my_profile#dinner_registration"
+  get "my_profile/receipt" => "my_profile#receipt"
   resources :my_profile, :only => "index"
 
   #order stuff

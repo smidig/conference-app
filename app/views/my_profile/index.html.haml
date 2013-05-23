@@ -4,35 +4,46 @@
 
 .row-fluid
   .span6
-    :markdown
-      #### Din profil
-      - **Navn**: #{@user.name}
-      - **Epost**: #{@user.email}
-      - **Telefon**: #{@user.tlf}
-      - **Twitter**: #{@user.twitter}
-      - **Firma**: #{@user.company}
-      - **Deltar på konferansemiddag**: <span class="dinner">#{@user.includes_dinner ? "Ja": "Nei"}</span>
-      - **Allergier**: #{@user.allergies.blank? ? "Ingen" : @user.allergies}
-      - **Billett**: #{@user.ticket.display}
-      - [Kvittering](/my-profile/receipt)
-    = link_to "Endre profil", edit_user_registration_path
-
-    %br
-    %br
+    .boxed
+      .title
+        %i.icon-user
+        Din profil
+      .content
+        :markdown
+          - **Navn**: #{@user.name}
+          - **Epost**: #{@user.email}
+          - **Telefon**: #{@user.tlf}
+          - **Twitter**: #{@user.twitter}
+          - **Firma**: #{@user.company}
+          - **Deltar på konferansemiddag**: <span class="dinner">#{@user.includes_dinner ? "Ja": "Nei"}</span>
+          - **Allergier**: #{@user.allergies.blank? ? "Ingen" : @user.allergies}s
+          - **Billett**: #{@user.ticket.display} ([Kvittering](/my-profile/receipt))
+        = link_to (edit_user_registration_path) do
+          %i.icon-pencil
+          Endre din profil
 
     - if @order
-      :markdown
-        #### Din bestilling
-        - **Status**: #{@order.status}
-        - **Opprettet**: #{@order.created_at.to_formatted_s(:long)}
-        - **Eies av**: #{@order.owner.name}
-        - **Totalt pris**: kr #{@order.price},-
+      .boxed
+        .title
+          %i.icon-shopping-cart
+          Din bestilling
+        .content
+          :markdown
+            - **Status**: #{@order.status}
+            - **Opprettet**: #{@order.created_at.to_formatted_s(:long)}
+            - **Eies av**: #{@order.owner.name}
+            - **Totalt pris**: kr #{@order.price},-
 
-      - if @order.owner_user_id == @user.id
-        = link_to "#{@order.completed ? "Se" : "Fullfør"} din bestilling",  {:controller => "orders", :action => "show", :id => @order.id}
+          - if @order.owner_user_id == @user.id
+            = link_to({:controller => "orders", :action => "show", :id => @order.id}) do
+              %i.icon-th-list
+              #{@order.completed ? "Se" : "Fullfør"} din bestilling
 
   .span3
-    .alert.alert-success.dinner-question
-      %h4 Skal du på konferansemiddagen?
-      = link_to " Ja ", {:action => "dinner_registration", :dinner => "yes"}, :class => 'btn btn-primary', :remote => true
-      = link_to " Nei ", {:action => "dinner_registration", :dinner => "no"}, :remote => true
+    .boxed.dinner-question
+      .title
+        %i.icon-question-sign
+        Skal du på konferansemiddagen?
+      .content
+        = link_to "Ja", {:action => "dinner_registration", :dinner => "yes"}, :class => 'btn btn-primary', :remote => true
+        = link_to "Nei", {:action => "dinner_registration", :dinner => "no"}, :remote => true
