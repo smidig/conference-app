@@ -1,0 +1,43 @@
+!!!
+%html
+  %head
+    %meta{:charset => "utf-8"}
+    %meta{:name => "viewport", :content => "width=device-width, initial-scale=1, maximum-scale=1"}
+    %title= content_for?(:title) ? yield(:title) : "Smidig 2013 - 5. og 6. november i Oslo"
+
+    %p
+
+    KJØPSINFORMASJON
+    %br
+
+    Navn: #{@user.name}
+    %br
+    Firma: #{@user.company}
+    %br
+    Referansenr:
+    - if @order and @order.payment
+      #{@order.payment.invoice_id}
+    %br
+    Betalingsform:
+    -if @order and @order.payment
+      #{@order.payment.type}
+    %br
+    Betalingsdato:
+    - if @order and @order.payment
+      #{@order.payment.completed_at}
+    %br
+    %br
+    Produktinformasjon: Konferansedeltakelse
+    %br
+    SMIDIGKONFERANSEN 05.-06.NOVEMBER
+    %br
+    Radisson BLU Plaza Hotel Oslo!!!
+
+    %br
+
+    %br
+    Total Pris: #{@user.ticket.price.to_i}.00
+    %br
+    Mva: 25.00% Gr.lag: #{@user.ticket.price_ex_mva.to_i}.00 Mva kr: #{@user.ticket.mva}.00
+    %br
+    Smidigkonferansen (forening) Org nr. 993169919 MVA

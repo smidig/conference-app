@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130425191129) do
+ActiveRecord::Schema.define(:version => 20130429001338) do
+
+  create_table "cospeakers_talks", :id => false, :force => true do |t|
+    t.integer "talk_id"
+    t.integer "user_id"
+  end
+
+  add_index "cospeakers_talks", ["talk_id", "user_id"], :name => "index_cospeakers_talks_on_talk_id_and_user_id"
+  add_index "cospeakers_talks", ["user_id", "talk_id"], :name => "index_cospeakers_talks_on_user_id_and_talk_id"
 
   create_table "orders", :force => true do |t|
     t.string   "comment"
@@ -83,7 +91,10 @@ ActiveRecord::Schema.define(:version => 20130425191129) do
     t.integer  "presentation_file_size"
     t.datetime "presentation_updated_at"
     t.string   "status",                    :default => "pending"
+    t.integer  "user_id"
   end
+
+  add_index "talks", ["user_id"], :name => "index_talks_on_user_id"
 
   create_table "tickets", :force => true do |t|
     t.string   "name"

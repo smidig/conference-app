@@ -1,6 +1,6 @@
 # encoding: UTF-8
 Then /^I should be logged in$/i do
-  page.should_not have_xpath XPath.descendant(:a)[XPath.attr(:href).equals(path_to("the login page"))]
+  page.should have_xpath XPath.descendant(:a)[XPath.attr(:href).equals(path_to("the logout page"))]
 end
 
 Then /^I should not be logged in$/i do
@@ -21,7 +21,7 @@ Given /^I register as a participant with email "([^"]*)" and password "([^"]*)"$
   step %(I fill in "#{password}" for "Passord")
   step %(I check "Jeg forstår at påmeldingen er bindende og at Smidig vil sende meg epost")
   step %(I press "Meld meg på!")
-  step %(show me the page)
+  #step %(show me the page)
   step %(I should be logged in)
 end
 
