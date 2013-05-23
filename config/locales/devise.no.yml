@@ -52,7 +52,7 @@
       already_confirmed: "har allerede blitt bekreftet, forsøk å logg inn"
       confirmation_period_expired: "må bekreftes innen %{period}, vennligst forespør en ny en"
       expired: "har utløpt, vennligst få en ny en"
-      not_found: "ikke funnet"
+      not_found: "bruker ble ikke funnet"
       not_locked: "var ikke låst"
       not_saved:
         one: "Én feil gjorde at %{resource} ikke kunne lagres:"

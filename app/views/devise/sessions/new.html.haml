@@ -1,10 +1,10 @@
-%h2 Sign in
+%h2 Logg på
 
 = simple_form_for resource, :as => resource_name, :url => session_path(resource_name), :html => { :class => 'form-horizontal' } do |f|
   = f.input :email, :autofocus => true
   = f.input :password
   = f.input :remember_me, :collection=> [["", "1"]], :as => :check_boxes
   .form-actions
-    = f.button :submit, :class => 'btn-primary', :value => "Sign in"
+    = f.button :submit, :class => 'btn-primary', :value => "Logg på"
 
 =render "devise/shared/links"

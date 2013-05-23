@@ -10,7 +10,7 @@ Feature: User authentication
     Given I am on the login page
     When I fill in "valid@user.com" for "user_email"
     And I fill in "password" for "user_password"
-    And I press "Sign in"
+    And I press "Logg på"
     Then I should be on the home page
     And I should be logged in
 
@@ -18,7 +18,7 @@ Feature: User authentication
     Given I am on the login page
     When I fill in "invalid@user.com" for "user_email"
     And I fill in "invalid password" for "user_password"
-    And I press "Sign in"
+    And I press "Logg på"
     Then I should be on the login page
     #And show me the page
     And I should not be logged in

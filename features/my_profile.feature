@@ -18,7 +18,7 @@ Feature: My Profile
     And I should be on the login page
     And I fill in "valid@user.com" for "user_email"
     And I fill in "password" for "user_password"
-    And I press "Sign in"
+    And I press "Logg på"
     Then I should be on the my profile page
 
   Scenario: Should have edit profile link

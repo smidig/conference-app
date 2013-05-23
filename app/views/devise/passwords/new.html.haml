@@ -1,8 +1,11 @@
-%h2 Forgot your password?
+%h2 Glemt passord?
 
-= simple_form_for resource, :as => resource_name, :url => password_path(resource_name), :html => { :class => 'form-horizontal' } do |f|
-  = f.input :email, :autofocus => true
-  .form-actions
-    = f.button :submit, :class => 'btn-primary', :value => "Send me reset password instructions"
+%p
+  Skriv inn din registrerte epost-adresse så sender vi deg en epost som
+  beskriver hvordan du kan lage et nytt passord.
+
+= simple_form_for resource, :as => resource_name, :url => password_path(resource_name), :html => { :class => 'form-inline' } do |f|
+  = f.input :email, :autofocus => true, :label => false, :placeholder => "you@mail.com"
+  = f.button :submit, :class => 'btn-primary', :value => "Send epost"
 
 =render "devise/shared/links"
