@@ -13,6 +13,8 @@ module NavigationHelpers
         new_user_registration_path
       when /^the login page$/
         new_user_session_path
+      when /^the logout page$/
+        destroy_user_session_path
       when /^the order page$/
         orders_show_path
       when /^the paypal completed page$/

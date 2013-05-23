@@ -1,6 +1,6 @@
 %h2 Hei #{@user.name}
 %p
-  Velkommen til Smidig 2013. På denne siden finner du alt vi har registrert om deg.
+  Velkommen til Smidig 2013. Dette er din personlige profil registrert hos oss.
 
 .row-fluid
   .span6
@@ -17,7 +17,7 @@
           - **Firma**: #{@user.company}
           - **Deltar på konferansemiddag**: <span class="dinner">#{@user.includes_dinner ? "Ja": "Nei"}</span>
           - **Allergier**: #{@user.allergies.blank? ? "Ingen" : @user.allergies}s
-          - **Billett**: #{@user.ticket.display} ([Kvittering](/my-profile/receipt))
+          - **Billett**: #{@user.ticket.display} ([Kvittering](/my_profile/receipt))
         = link_to (edit_user_registration_path) do
           %i.icon-pencil
           Endre din profil

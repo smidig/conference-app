@@ -10,10 +10,10 @@ class MyProfileController < ApplicationController
     @user = current_user
     @order = current_user.order
 
-    if @user.completed?
+    if @user.completed? and @user.ticket
       render :layout => false
     else
-      flash[:error] = "Kan ikke vise kvittering - Du har ikke betalt"
+      flash[:error] = "Kan ikke vise kvittering. Du har ikke betalt eller mangler billett."
       redirect_to :action => "index"
     end
   end
