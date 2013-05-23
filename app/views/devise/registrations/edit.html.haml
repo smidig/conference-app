@@ -13,4 +13,4 @@
   = f.input :current_password, :hint => "Vi trenger ditt nåverende passord for å bekrefte endringen", :required => true
   .form-actions
     = f.button :submit, :class => 'btn-primary'
-    = link_to t('.cancel', :default => t("helpers.links.cancel")), users_path, :class => 'btn'
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), {:controller => "my_profile"}, :class => 'btn'
