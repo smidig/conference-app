@@ -48,7 +48,7 @@ class OrdersController < ApplicationController
     @user.order_id = @order.id
 
     if @user.save
-      redirect_to :action => "show"
+      redirect_to :action => "show", :id => @order.id
     else
       render action: "new_user"
     end
@@ -64,6 +64,8 @@ class OrdersController < ApplicationController
   def redirect_if_order_completed
     if current_user.admin && params[:id]
       @order = Order.find(params[:id])
+    elsif current_user.admin && params[:order_id]
+      @order = Order.find(params[:order_id])
     else
       @order = Order.find_by_owner_user_id(current_user.id)
     end

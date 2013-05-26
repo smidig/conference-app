@@ -1,6 +1,7 @@
 %h3 Legg til deltaker på din bestilling (id: #{@order.id})
 
 = simple_form_for @user, :html => {:class => 'form-horizontal'},  :url => url_for(:action => 'add_user', :controller => 'orders') do |f|
+  %input{:type => "hidden", :name => "order_id", :value => "#{@order.id}"}
   = f.association :ticket, :collection => Ticket.visible, :label_method => :display, :selected => Ticket.default.id
   = f.input :email, :autofocus => true, :required => true
   = f.input :name

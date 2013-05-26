@@ -19,8 +19,8 @@
         %td #{user.name}
         %td #{user.email}
         %td #{user.tlf}
-        %td= user.ticket.name
-        %td.text-right #{user.ticket.price},-
+        %td #{user.ticket.name if user.ticket}
+        %td.text-right #{user.ticket.price if user.ticket},-
     %tr
       %td{:colspan => 4}
       %td.text-right
@@ -28,9 +28,10 @@
     %tr
       %td{:colspan => 5, :class => "text-right"}
         - unless @order.payment
-          %a{:href => "new_user"}
+          = link_to({:action => :new_user, :order_id => @order.id}, :title => "Legg til flere deltakere på denne bestillingen.") do
             %i.icon-plus-sign
             Legg til deltaker
+
 
 PS! Det er ikke mulig å legge til flere deltakere etter at du har startet en betalingsprosess.
 
