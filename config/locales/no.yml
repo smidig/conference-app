@@ -46,6 +46,8 @@
               blank: "Kontaktperson må oppgis"
             manual_company_name:
               blank: "Firmanavn må oppgis"
+            manual_organization_number:
+              too_short: "Organisasjonsnummer består av 9 siffer"
         sponsor:
           attributes:
             name:

@@ -4,6 +4,7 @@ class ManualPayment < Payment
 
   validates_presence_of :manual_company_name, :manual_contact_person
   validate :has_a_place_to_send_invoice
+  validates :manual_organization_number, length: {minimum: 9, maximum: 9}, allow_blank: true
 
   def status
     if self.completed?
