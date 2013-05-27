@@ -2,6 +2,7 @@ class Payment < ActiveRecord::Base
   belongs_to :order
   attr_accessible :order_id
   after_create :set_invoice_id
+  default_scope order('created_at DESC')
   # Abstract interface for payments, implementations:
   #  - PaypalPayment
   #  - ManualPayment
@@ -16,6 +17,10 @@ class Payment < ActiveRecord::Base
       self.invoice_id = "#{time.year}t#{id}"
     end
     self.save!
+  end
+
+  def order
+    Order.find(self.order_id) rescue nil
   end
 
   def finish

@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.xml
   def index
-    @users = User.order("created_at desc").all
+    @users = User.all
 
     respond_to do |format|
       format.html # index.html.erb

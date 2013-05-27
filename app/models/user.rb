@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
+  default_scope order('created_at DESC')
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
