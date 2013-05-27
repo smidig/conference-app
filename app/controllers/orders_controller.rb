@@ -48,6 +48,7 @@ class OrdersController < ApplicationController
     @user.order_id = @order.id
 
     if @user.save
+      SmidigMailer.user_added_to_order_confirmation(@user, @order.owner, new_user_password_url).deliver
       redirect_to :action => "show", :id => @order.id
     else
       render action: "new_user"

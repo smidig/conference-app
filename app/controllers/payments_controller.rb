@@ -102,6 +102,8 @@ class PaymentsController < ApplicationController
     @manual_payment.price = @manual_payment.order.price
 
     if @manual_payment.save
+      SmidigMailer.manual_payment_created_confirmation(@manual_payment).deliver
+      SmidigMailer.manual_payment_created_notification(@manual_payment, payments_manual_url).deliver
       redirect_to :action=> :manual_completed, :id=> @manual_payment.id
     else
       render action: "new_manual"
