@@ -31,6 +31,8 @@ ConferenceApp::Application.routes.draw do
   # Can these be deleted?
   get "talk/index"
   get "talk/destroy"
+
+  post '/talks/:id/vote' => 'talks#vote', :as => 'vote'
   resources :talks
 
   resources :tickets

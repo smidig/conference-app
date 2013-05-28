@@ -87,6 +87,18 @@ class TalksController < ApplicationController
     end
   end
 
+  # POST /talks/1/vote
+  def vote
+    @talk = Talk.find(params[:id])
+    @talk.vote :voter => current_user, :vote => !(current_user.voted_as_when_voted_for @talk) ? true : false
+    flash[:notice] = "Vote registered."
+
+    respond_to do |format|
+      format.html { redirect_to talks_url }
+      format.json { head :no_content }
+    end
+  end
+
   def require_admin_or_talk_owner
     if params[:talk_id]
       talk = Talk.find(params[:talk_id])
