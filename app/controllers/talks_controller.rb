@@ -45,7 +45,6 @@ class TalksController < ApplicationController
   def create
     @talk = Talk.new(params[:talk], :as => admin? ? :admin : :default)
     @talk.user = current_user
-    @talks.cospeakers = User.find(:all)
 
     respond_to do |format|
       if @talk.save()
