@@ -1,11 +1,11 @@
 class TalksController < ApplicationController
   before_filter :authenticate_user! , :except => [:index, :show]
-  before_filter :require_admin_or_talk_owner, :only => [:destroy]
+  before_filter :require_admin_or_talk_owner, :only => [:destroy, :edit]
 
   # GET /talks
   # GET /talks.json
   def index
-    @talks = Talk.all
+    @talks = current_user.admin ? Talk.all : Talk.where(:user_id => current_user.id)
 
     respond_to do |format|
       format.html # index.html.haml
@@ -63,7 +63,6 @@ class TalksController < ApplicationController
     @talk = Talk.find(params[:id])
 
     respond_to do |format|
-      #if @talk.update_attributes(params[:talk], :as => :admin)
       if @talk.update_attributes(params[:talk], :as => admin? ? :admin : :default)
         format.html { redirect_to @talk, notice: "Talk was successfully updated." }
         format.json { head :no_content }
@@ -100,13 +99,13 @@ class TalksController < ApplicationController
   end
 
   def require_admin_or_talk_owner
-    if params[:talk_id]
-      talk = Talk.find(params[:talk_id])
+    if params[:id]
+      talk = Talk.find(params[:id])
     end
 
-    unless current_user.admin? or talk.users == current_user
+    unless current_user.admin? or talk.user == current_user
       flash[:notice] = 'Du er ikke taleren som opprettet denne talk'
-      redirect_to talks_path
+      redirect_to :back
     end
   end
   
