@@ -1,12 +1,18 @@
-=simple_form_for @talk, :html => {:multipart => true} do |f|
-  =f.input :title
-  =f.input :description
-  =f.association :talk_type
-  =f.association :talk_category
+= simple_form_for @talk, :html => {:multipart => true, :class => 'form-horizontal' } do |f|
+  = f.input :title
+  = f.input :description
+  = f.association :talk_type
+  = f.association :talk_category
   - if @talk.presentation.file?
-    Opplasted presentasjon:
-    =link_to @talk.presentation.original_filename, @talk.presentation.url
-  =f.input :presentation, :as => :file, :label => 'Last opp ny presentation'
+    %div.control-group
+      %label.control-label
+        Nåvarende presentasjon
+      %div.controls
+        = link_to @talk.presentation.original_filename, @talk.presentation.url
+
+  = f.input :presentation, :as => :file, :label => 'Last opp ny presentation'
   - if current_user.admin?
-    =f.input :status, :collection => Talk::STATUS_OPTIONS, :label => 'Status'
-  =f.button :submit
+    = f.input :status, :collection => Talk::STATUS_OPTIONS, :label => 'Status'
+
+  .form-actions
+    = f.button :submit, :class => 'btn-primary', :value => 'Lagre endringer'
