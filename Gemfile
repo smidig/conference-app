@@ -10,6 +10,7 @@ gem 'simple_form'
 gem 'rdiscount'
 gem 'devise'
 gem 'csv_shaper'
+gem 'acts_as_votable', '~> 0.5.0'
 
 # Gems used only for assets and not required
 # in production environments by default.

@@ -3,6 +3,8 @@ class Talk < ActiveRecord::Base
   attr_accessible :cospeakers, :as => :default
   attr_accessible :status, :user, :as => :admin
 
+  acts_as_votable
+  
   STATUS_OPTIONS = %w(approved_and_confirmed approved rejected pending)
 
   belongs_to :talk_type
