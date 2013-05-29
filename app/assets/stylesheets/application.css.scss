@@ -25,10 +25,23 @@ body {
   }
 }
 
+#main {
+  min-height: 600px;
+  background-color: #FFF;
+  padding: 10px;
+}
+
+#innhold {
+  -moz-box-shadow:11px 10px 20px 1px #777777;
+  -webkit-box-shadow:11px 10px 20px 1px #777777;
+  box-shadow:11px 10px 20px 1px #777777;
+
+  margin-bottom: 20px;
+}
+
 @media (max-width: 767px) {
-  footer {
+  #innhold {
     margin: 0 -20px;
-    padding: 0 20px;
   }
 }
 
@@ -52,19 +65,7 @@ body {
   }
 }
 
-#main {
-  min-height: 600px;
-  background-color: #FFF;
-  padding: 10px;
-}
 
-#innhold {
-  -moz-box-shadow:11px 10px 20px 1px #777777;
-  -webkit-box-shadow:11px 10px 20px 1px #777777;
-  box-shadow:11px 10px 20px 1px #777777;
-  
-  margin-bottom: 20px;
-}
 
 .navbar .fb-like {
   padding-top: 10px;
