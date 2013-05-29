@@ -8,11 +8,13 @@
   %td
     =talk.upvotes.size
     -if !current_user.voted_as_when_voted_for talk
-      =link_to "+1", vote_path(talk), :action => :vote, :method => :post, :class => 'btn btn-warning'
+      =link_to "+1", vote_path(talk), :action => :vote, :method => :post, :class => 'btn btn-success'
     -else 
-      =link_to "-1", vote_path(talk), :action => :vote, :method => :post, :class => 'btn btn-warning'
+      =link_to "-1", vote_path(talk), :action => :vote, :method => :post, :class => 'btn btn-danger'
   %td
-    =talk.status
+    %div.btn-group
+      - Talk::STATUS_OPTIONS.each do |status|
+        =link_to status, talk_path(talk, "talk[status]" => status), {:class => (status == talk.status ? "btn btn-primary" : "btn"), :method => :put}
   %td
     =talk.talk_type.name
   %td

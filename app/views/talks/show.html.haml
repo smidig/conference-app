@@ -1,5 +1,14 @@
-%h1
-  =@talk.title
+%header
+  %h1
+    =@talk.title
+  %em.author
+    =@talk.user.name
+    - for user in @talk.users
+      ,
+      =user.name
+
 %div.row
   %div.span8
     =simple_format @talk.description
+
+  %div.span4

@@ -71,7 +71,7 @@ class TalksController < ApplicationController
           @talk.users << @new_user
           @talk.save
         end
-        format.html { redirect_to @talk, notice: "Talk was successfully updated." }
+        format.html { redirect_to :back, notice: "Talk was successfully updated." }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
