@@ -16,7 +16,7 @@
       .navbar-inner
         .container
           %a.brand{:href=>"/"}
-            =image_tag("smidig_logo_24.png")
+            =image_tag("smidig_logo_24_inverted.png")
             Smidig 2013
           %a.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse"}
             Meny
@@ -29,23 +29,22 @@
                             :font=>"verdana", |
                             :layout=>"button_count"}}
 
-    #main.container
-      .row
-        .span12
-          = render 'layouts/messages'
-          = yield
-    / Footer
-    %footer
-      .container
+    #innhold.container
+      #main.container
+        .row
+          .span12
+            = render 'layouts/messages'
+            = yield
+
+      #footer.container
         .row
           .span4
             / Widget 1
             .widget
-              %h4 Twitter
-              / Too add twitter widget, goto "js" folder and open "custom.js" file and search for the word "ashokramesh90". This is my twitter username. Just replace the word with your twitter username. You are done.
+              %aside
+                %a.twitter-follow-button{"data-show-count" => "false", :href => "https://twitter.com/smidig"} Follow @smidig
+              %h4 Twitter 
               .tweet
-
-              %a.twitter-follow-button{"data-show-count" => "false", :href => "https://twitter.com/smidig"} Follow @smidig
           .span4
             / widget 2
             .widget

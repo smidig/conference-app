@@ -54,19 +54,30 @@ body {
 
 #main {
   min-height: 600px;
+  background-color: #FFF;
+  padding: 10px;
+}
+
+#innhold {
+  -moz-box-shadow:11px 10px 20px 1px #777777;
+  -webkit-box-shadow:11px 10px 20px 1px #777777;
+  box-shadow:11px 10px 20px 1px #777777;
+  
+  margin-bottom: 20px;
 }
 
 .navbar .fb-like {
   padding-top: 10px;
 }
 
-footer {
+#footer {
   color: #ddd;
   font-size: 13px;
-  background: #222;
-  margin-top: 10px;
-  border-top: 3px solid #00a4e3;
-  padding-top: 10px;
+  background: #54545E;
+  padding-right: 10px;
+  padding-left: 10px;
+  border-top: 3px solid #6600CC;
+
 
   a {
     color: #bbb;
@@ -82,15 +93,16 @@ footer {
   }
 
   hr {
-    padding: 0px;
-    border-top: 1px solid #333;
-    border-bottom: 1px solid #111;
+    padding: 0;
+    border-top: 1px solid #58585E ;
+    border-bottom: 1px solid #3B3B42;
+    margin: 5px;
   }
 
   h4 {
     font-size: 15px;
     padding-bottom: 6px;
-    border-bottom: 1px solid #313131;
+    border-bottom: 1px solid #3B3B42;
     margin-bottom: 4px;
     color:#ccc;
   }
@@ -99,9 +111,13 @@ footer {
     margin-bottom:10px;
   }
 
+  aside{
+    float: right;
+  }
+
   ul {
     list-style-type: none !important;
-    padding: 0px;
+    padding: 0;
     margin: 0 0 10px 0;
 
     li {

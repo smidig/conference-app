@@ -3,7 +3,7 @@ jQuery(function($){
       username: "smidig",
       join_text: "auto",
       avatar_size: 0,
-      count: 4,
+      count: 3,
       auto_join_text_default: "we said,",
       auto_join_text_ed: "we",
       auto_join_text_ing: "we were",
