@@ -61,8 +61,16 @@ class TalksController < ApplicationController
   # PUT /talks/1.json
   def update
     @talk = Talk.find(params[:id])
+    @new_user = User.find_by_email(params[:talk][:new_user])
+    
+
     respond_to do |format|
       if @talk.update_attributes(params[:talk], :as => admin? ? :admin : :default)
+        # Change to be set on e-mail request insted of directly from edit form
+        if @new_user
+          @talk.users << @new_user
+          @talk.save
+        end
         format.html { redirect_to @talk, notice: "Talk was successfully updated." }
         format.json { head :no_content }
       else
