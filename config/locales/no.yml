@@ -3,6 +3,12 @@
     models:
       user: "Deltaker"
     attributes:
+      talk:
+        status:
+          approved_and_confirmed: "Godkjent og bekreftet"
+          approved: "Godkjent"
+          rejected: "Avvist"
+          pending: "Ventende"
       user:
         ticket: "Billett"
         email: "Epostadresse"
