@@ -5,14 +5,16 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def create
-  	set_up_default_tickets
-  	super
+    set_up_default_tickets
+    super
   end
 
   def sign_up(resource_name, resource)
     # TODO: Add a special email for speakers..
-    if @user.ticket.price > 0
+    if (@user.ticket.ticket_type == "regular")
       SmidigMailer.registration_confirmation(@user).deliver
+    elsif (@user.ticket.ticket_type == "speaker")
+
     else
       SmidigMailer.free_registration_confirmation(@user).deliver
       SmidigMailer.free_registration_notification(@user, users_url).deliver
@@ -22,8 +24,10 @@ class RegistrationsController < Devise::RegistrationsController
 
   def after_sign_up_path_for(user)
     # TODO: Send user to add talk if speaker
-    if(user.ticket.price > 0)
+    if (user.ticket.ticket_type == "regular")
       orders_show_path
+    elsif (user.ticket.ticket_type == "speaker")
+      new_talk_path
     else
       root_path
     end
