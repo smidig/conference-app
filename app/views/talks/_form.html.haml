@@ -14,7 +14,7 @@
   - if current_user.admin?
     = f.input :status, :collection => Talk::STATUS_OPTIONS, :label => 'Status'
 
-  - if @talk.user or current_user.admin?
+  - if @talk.user or (@talk.user and current_user.admin?)
     = f.input :new_user, :label => 'Legg til taler'
     = f.association :users, as: :check_boxes, collection: @talk.users, :label => 'Nåvarende talere'
       
