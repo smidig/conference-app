@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  acts_as_voter
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
@@ -18,6 +19,6 @@ class User < ActiveRecord::Base
 
   belongs_to :ticket
   belongs_to :order
-  belongs_to :talk
+  has_and_belongs_to_many :talks
 
 end

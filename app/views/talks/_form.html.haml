@@ -1,12 +1,22 @@
-=simple_form_for @talk, :html => {:multipart => true} do |f|
-  =f.input :title
-  =f.input :description
-  =f.association :talk_type
-  =f.association :talk_category
+= simple_form_for @talk, :html => {:multipart => true, :class => 'form-horizontal' } do |f|
+  = f.input :title
+  = f.input :description, input_html: { :class => "span6", :rows => "10" }
+  = f.association :talk_type, :label => 'Type'
+  = f.association :talk_category, :label => 'Tema'
   - if @talk.presentation.file?
-    Opplasted presentasjon:
-    =link_to @talk.presentation.original_filename, @talk.presentation.url
-  =f.input :presentation, :as => :file, :label => 'Last opp ny presentation'
+    %div.control-group
+      %label.control-label
+        Nåvarende presentasjon
+      %div.controls
+        = link_to @talk.presentation.original_filename, @talk.presentation.url
+
+  = f.input :presentation, :as => :file, :label => 'Presentation'
   - if current_user.admin?
-    =f.input :status, :collection => Talk::STATUS_OPTIONS, :label => 'Status'
-  =f.button :submit
+    = f.input :status, :collection => Talk::STATUS_OPTIONS, :label => 'Status', label_method: lambda {|s| t("activerecord.attributes.talk.status." + s)}
+
+  - if @talk.user or (@talk.user and current_user.admin?)
+    = f.input :new_user, :label => 'Legg til ekstra taler', :hint => '(e-post til registrert deltager)'
+    = f.association :users, as: :check_boxes, collection: @talk.users, :label => 'Ekstra talere'
+      
+  .form-actions
+    = f.button :submit, :class => 'btn-primary', :value => 'Lagre endringer'

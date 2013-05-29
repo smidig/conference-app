@@ -47,3 +47,19 @@
       .content
         = link_to "Ja", {:action => "dinner_registration", :dinner => "yes"}, :class => 'btn btn-primary', :remote => true
         = link_to "Nei", {:action => "dinner_registration", :dinner => "no"}, :remote => true
+
+    .boxed.speaker
+      .title
+        %i.icon-bullhorn
+        Dine taler
+      .content
+        %ul
+          - for talk in Talk.where(:user_id => @user.id)
+            %li
+              = link_to talk.title, edit_talk_path(talk)
+              = " [#{talk.status}]" 
+          - for talk in @user.talks
+            %li
+              = talk.title
+              = " [#{talk.status}]"
+        = link_to "Opprett foredrag", new_talk_path, :class => 'btn btn-sucess'
