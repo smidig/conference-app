@@ -1,6 +1,7 @@
 $sansFontFamily: 'Ubuntu', sans-serif;
-$linkColor: #00a4e3;
-$linkColorHover: #00c2ef;
+$navbarHeight: 40px;
+$linkColor: #6600CC;
+$linkColorHover: #6600CC;
 $navbarBackground: $linkColor;
 $navbarBackgroundHighlight: $linkColorHover;
 $navbarText: white;
@@ -12,6 +13,9 @@ $navbarCollapseWidth: 720px;
 $dropdownBackground: white;
 $dropdownLinkBackgroundHover: $navbarBackgroundHighlight;
 $dropdownBorder: $navbarBackground;
+$bodyBackground: #CCCCDD;
+$errorBackground: #FF9090;
+$errorText: #995656;
 
 @import "bootstrap";
 @import "bootstrap-responsive";
@@ -49,6 +53,18 @@ $dropdownBorder: $navbarBackground;
 
 .navbar .btn-navbar {
 	padding: 4px 12px;
+}
+
+.nav > li.active {
+	/*border-bottom: 5px solid #5900b3;
+	border-radius: 0 0 5px 5px;*/
+}
+
+.navbar-fixed-top {
+	-moz-box-shadow:0px 0px 20px 1px #777777;
+	-webkit-box-shadow:0px 0px 20px 1px #777777;
+	box-shadow:0px 0px 20px 1px #777777;
+
 }
 
 .alert-alert {
