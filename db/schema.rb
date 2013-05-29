@@ -11,15 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130528181902) do
-
-  create_table "cospeakers_talks", :id => false, :force => true do |t|
-    t.integer "talk_id"
-    t.integer "user_id"
-  end
-
-  add_index "cospeakers_talks", ["talk_id", "user_id"], :name => "index_cospeakers_talks_on_talk_id_and_user_id"
-  add_index "cospeakers_talks", ["user_id", "talk_id"], :name => "index_cospeakers_talks_on_user_id_and_talk_id"
+ActiveRecord::Schema.define(:version => 20130529121706) do
 
   create_table "orders", :force => true do |t|
     t.string   "comment"
@@ -95,6 +87,11 @@ ActiveRecord::Schema.define(:version => 20130528181902) do
   end
 
   add_index "talks", ["user_id"], :name => "index_talks_on_user_id"
+
+  create_table "talks_users", :id => false, :force => true do |t|
+    t.integer "talk_id"
+    t.integer "user_id"
+  end
 
   create_table "tickets", :force => true do |t|
     t.string   "name"

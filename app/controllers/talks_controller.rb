@@ -61,7 +61,6 @@ class TalksController < ApplicationController
   # PUT /talks/1.json
   def update
     @talk = Talk.find(params[:id])
-
     respond_to do |format|
       if @talk.update_attributes(params[:talk], :as => admin? ? :admin : :default)
         format.html { redirect_to @talk, notice: "Talk was successfully updated." }
