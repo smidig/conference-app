@@ -18,5 +18,8 @@
   %div{:class => "field"}
     =f.label :visible
     =f.check_box :visible
+  %div{:class => "field"}
+    =f.label :ticket_type
+    =f.select :ticket_type, options_for_select(Ticket::TICKET_TYPES)
   %div{:class => "actions"}
     =f.submit

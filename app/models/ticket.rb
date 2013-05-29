@@ -1,8 +1,11 @@
 class Ticket < ActiveRecord::Base
-  attr_accessible :active, :name, :price, :visible
-  validates_presence_of :name, :price
-
+  attr_accessible :active, :name, :price, :visible, :ticket_type
   has_many :users
+
+  TICKET_TYPES = %w(free speaker regular)
+
+  validates_presence_of :name, :price
+  validates :ticket_type, :inclusion => {:in => TICKET_TYPES}, :allow_nil => true  
 
   def self.default
     Ticket.find(:all, :conditions => { :visible => true, :active => true }).first

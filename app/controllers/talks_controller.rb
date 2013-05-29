@@ -1,11 +1,11 @@
 class TalksController < ApplicationController
   before_filter :authenticate_user! , :except => [:index, :show]
-  before_filter :require_admin_or_talk_owner, :only => [:destroy]
+  before_filter :require_admin_or_talk_owner, :only => [:destroy, :edit]
 
   # GET /talks
   # GET /talks.json
   def index
-    @talks = Talk.all
+    @talks = current_user.admin ? Talk.all : Talk.where(:user_id => current_user.id)
 
     respond_to do |format|
       format.html # index.html.haml
@@ -45,15 +45,12 @@ class TalksController < ApplicationController
   def create
     @talk = Talk.new(params[:talk], :as => admin? ? :admin : :default)
     @talk.user = current_user
-    @talks.cospeakers = User.find(:all)
 
     respond_to do |format|
       if @talk.save()
-        format.html { redirect_to @talk, notice: 'Talk was successfully created.' }
-        format.json { render json: @talk, status: :created, location: @talk }
+        format.html { redirect_to my_profile_index_path, notice: 'Talk was successfully created.' }
       else
         format.html { render action: "new" }
-        format.json { render json: @talk.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -62,11 +59,17 @@ class TalksController < ApplicationController
   # PUT /talks/1.json
   def update
     @talk = Talk.find(params[:id])
+    @new_user = User.find_by_email(params[:talk][:new_user])
+    
 
     respond_to do |format|
-      #if @talk.update_attributes(params[:talk], :as => :admin)
-      if @talk.update_attributes(params[:talk], :as => admin? ? :admin : :default)
-        format.html { redirect_to @talk, notice: "Talk was successfully updated." }
+      if @talk.update_attributes(params[:talk], :as => (admin? or @talk.user == current_user)? :admin : :default)
+        # Change to be set on e-mail request insted of directly from edit form
+        if @new_user
+          @talk.users << @new_user
+          @talk.save
+        end
+        format.html { redirect_to :back, notice: "Talk was successfully updated." }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -88,14 +91,26 @@ class TalksController < ApplicationController
     end
   end
 
+  # POST /talks/1/vote
+  def vote
+    @talk = Talk.find(params[:id])
+    @talk.vote :voter => current_user, :vote => !(current_user.voted_as_when_voted_for @talk) ? true : false
+    flash[:notice] = "Vote registered."
+
+    respond_to do |format|
+      format.html { redirect_to talks_url }
+      format.json { head :no_content }
+    end
+  end
+
   def require_admin_or_talk_owner
-    if params[:talk_id]
-      talk = Talk.find(params[:talk_id])
+    if params[:id]
+      talk = Talk.find(params[:id])
     end
 
-    unless current_user.admin? or talk.users == current_user
+    unless current_user.admin? or talk.user == current_user
       flash[:notice] = 'Du er ikke taleren som opprettet denne talk'
-      redirect_to talks_path
+      redirect_to :back
     end
   end
   

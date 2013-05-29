@@ -7,6 +7,7 @@
       %th= 'Price'
       %th= 'Active'
       %th= 'Visible'
+      %th= 'Type'
       %th= ''
       %th= ''
       %th= ''
@@ -17,6 +18,7 @@
         %td= ticket.price
         %td= ticket.active
         %td= ticket.visible
+        %td= ticket.ticket_type
         %td= link_to 'Show', ticket
         %td= link_to 'Edit', edit_ticket_path(ticket)
         %td= link_to 'Delete', ticket, :confirm =>"Are you sure", :method=>:delete, :class => 'btn btn-danger'

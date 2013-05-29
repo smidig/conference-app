@@ -1,11 +1,24 @@
-%h3
-  =talk.title
-  %span.pull-right
-    =link_to "Slett", talk, confirm: 'Are you sure you want to delete this talk?', :method => :delete, :class => 'btn btn-danger'
-    =link_to "Edit", edit_talk_path(talk), :class => 'btn btn-success'
-%span.author
-  =talk.user.name
-%p.description
-  =talk.description
--if talk.presentation.file?
-  =link_to "Last ned", talk.presentation.url, :class => 'btn btn-warning'
+%tr
+  %td
+    =talk.title
+  %td
+    =talk.user.name
+  %td
+    =talk.created_at
+  %td
+    =talk.upvotes.size
+    -if !current_user.voted_as_when_voted_for talk
+      =link_to "+1", vote_path(talk), :action => :vote, :method => :post, :class => 'btn btn-success'
+    -else 
+      =link_to "-1", vote_path(talk), :action => :vote, :method => :post, :class => 'btn btn-danger'
+  %td
+    %div.btn-group
+      - Talk::STATUS_OPTIONS.each do |status|
+        =link_to status, talk_path(talk, "talk[status]" => status), {:class => (status == talk.status ? "btn btn-primary" : "btn"), :method => :put}
+  %td
+    =talk.talk_type.name
+  %td
+    %span.pull-right
+      =link_to "Vis", talk_path(talk), :class => 'btn btn-success'
+      =link_to "Editer", edit_talk_path(talk), :class => 'btn btn-success'
+      =link_to "Slett", talk, confirm: 'Are you sure you want to delete this talk?', :method => :delete, :class => 'btn btn-danger'

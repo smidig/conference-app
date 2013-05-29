@@ -3,6 +3,12 @@
     models:
       user: "Deltaker"
     attributes:
+      talk:
+        status:
+          approved_and_confirmed: "Godkjent og bekreftet"
+          approved: "Godkjent"
+          rejected: "Avvist"
+          pending: "Ventende"
       user:
         ticket: "Billett"
         email: "Epostadresse"
@@ -40,6 +46,8 @@
               blank: "Du må oppgi ditt nåværende passord for å bekrefte endringen"
             company:
               blank: "Selskap må oppgis"
+            password:
+              too_short: "Passord er for kort"
         payment:
           attributes:
             manual_contact_person:
