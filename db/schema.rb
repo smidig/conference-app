@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130529121706) do
+ActiveRecord::Schema.define(:version => 20130529154552) do
 
   create_table "orders", :force => true do |t|
     t.string   "comment"
@@ -98,8 +98,9 @@ ActiveRecord::Schema.define(:version => 20130529121706) do
     t.integer  "price"
     t.boolean  "active"
     t.boolean  "visible"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.string   "ticket_type"
   end
 
   create_table "users", :force => true do |t|

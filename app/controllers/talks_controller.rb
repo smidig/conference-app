@@ -48,11 +48,9 @@ class TalksController < ApplicationController
 
     respond_to do |format|
       if @talk.save()
-        format.html { redirect_to @talk, notice: 'Talk was successfully created.' }
-        format.json { render json: @talk, status: :created, location: @talk }
+        format.html { redirect_to my_profile_index_path, notice: 'Talk was successfully created.' }
       else
         format.html { render action: "new" }
-        format.json { render json: @talk.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -65,7 +63,7 @@ class TalksController < ApplicationController
     
 
     respond_to do |format|
-      if @talk.update_attributes(params[:talk], :as => admin? ? :admin : :default)
+      if @talk.update_attributes(params[:talk], :as => (admin? or @talk.user == current_user)? :admin : :default)
         # Change to be set on e-mail request insted of directly from edit form
         if @new_user
           @talk.users << @new_user
