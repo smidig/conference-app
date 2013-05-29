@@ -19,6 +19,7 @@
 // These are located in vendor/assets/javascripts:
 //
 //= require jquery.tweet
+//= require jquery.flexslider
 //
 // These are our scripts:
 //
@@ -27,4 +28,8 @@
 $(function() {
   //Workaround for dropdown not initializing correctly.
   $('.dropdown-toggle').dropdown();
+  $('.flexslider').flexslider({
+    pauseOnHover: true,
+    directionNav: false
+  });
 });

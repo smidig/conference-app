@@ -1,8 +1,20 @@
-.hero-unit
-  :markdown
-    # Smidig 2013
-
-    Smidig 2013 vil inspirere og presentere nye trender i en sosial atmosfære. Konferansen arrangeres i Oslo, 5. og 6. november 2013. Påmelding starter snart.
+.row-fluid
+  .span12.flex-container
+    .flexslider
+      %ul.slides
+        %li
+          %a(href="#{new_user_registration_path}")
+            %img{:src => "#{image_path "slide_1.jpg"}"}
+            %span.flex-button.btn.btn-primary.pull-right.btn-large
+              Påmelding
+            %p.flex-caption
+              Smidig 2013 vil inspirere og presentere nye trender i en sosial atmosfære.
+              Konferansen arrangeres i Oslo, 5. -6. november 2013.
+        %li
+          %a(hred="http://google.com")
+            %img{:src => "#{image_path "slide_2.jpg"}"}
+            %p.flex-caption
+              Vi trenger din tilbakemelding
 .row-fluid
   .span4
     :markdown
