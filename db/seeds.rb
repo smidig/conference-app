@@ -1,5 +1,8 @@
 # encoding: utf-8
 
+DatabaseCleaner.strategy = :truncation
+DatabaseCleaner.clean
+
 # This will seed administrators with their appropriate names and email addresses. Their password is 'password'.
 administrators = [
     {:name => "Jonas Amundsen",      :email => "jonasba@gmail.com"},
