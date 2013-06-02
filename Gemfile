@@ -50,6 +50,7 @@ group :development do
   gem 'guard-migrate'
   gem 'spork'
   gem 'spork-testunit'
+  gem 'database_cleaner'
 end
 
 group :test do
