@@ -48,7 +48,7 @@ class TalksController < ApplicationController
 
     respond_to do |format|
       if @talk.save()
-        format.html { redirect_to my_profile_index_path, notice: 'Talk was successfully created.' }
+        format.html { redirect_to my_profile_index_path, notice: 'Takk, ditt foredragsforslag er registrert.' }
       else
         format.html { render action: "new" }
       end
@@ -60,7 +60,7 @@ class TalksController < ApplicationController
   def update
     @talk = Talk.find(params[:id])
     @new_user = User.find_by_email(params[:talk][:new_user])
-    
+
 
     respond_to do |format|
       if @talk.update_attributes(params[:talk], :as => (admin? or @talk.user == current_user)? :admin : :default)
@@ -113,5 +113,5 @@ class TalksController < ApplicationController
       redirect_to :back
     end
   end
-  
+
 end
