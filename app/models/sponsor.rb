@@ -4,5 +4,13 @@ class Sponsor < ActiveRecord::Base
 
   # validations
   validates_presence_of :name
-  # Legg på http hvis det mangler på url
+
+  before_save :prefix_url_with_default_scheme, :if => :url_changed?
+
+  private
+
+  def prefix_url_with_default_scheme
+    uri = URI.parse(self.url)
+    self.url = "http://#{url}" if uri.scheme.nil?
+  end
 end
