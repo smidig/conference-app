@@ -3,7 +3,7 @@
     %a{:href => "#{info_about_path}"}
       Om konferansen
   %li{:class=>current_page?(info_sponsor_path) ? "active" : ""}
-    = link_to('Sponse', info_sponsor_path)
+    = link_to('Sponsor', info_sponsor_path)
   - unless Rails.env.production?
     %li{:class=>current_page?(my_profile_index_path) ? "active" : ""}
       = link_to('Min profil', my_profile_index_path)
@@ -12,7 +12,7 @@
         = link_to('Logout', destroy_user_session_path, :method=>'delete')
     - else
       %li{:class=>current_page?(new_user_registration_path) ? "active" : ""}
-        = link_to('Påmelding', new_user_registration_path)
+        = link_to('Meld deg på!', new_user_registration_path)
     - if user_signed_in? and current_user.admin
 
       %li.dropdown
