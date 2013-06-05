@@ -16,7 +16,7 @@
           - **Twitter**: #{@user.twitter}
           - **Firma**: #{@user.company}
           - **Deltar på konferansemiddag**: <span class="dinner">#{@user.includes_dinner ? "Ja": "Nei"}</span>
-          - **Allergier**: #{@user.allergies.blank? ? "Ingen" : @user.allergies}s
+          - **Allergier**: #{@user.allergies.blank? ? "Ingen" : @user.allergies}
           - **Billett**: #{@user.ticket.display} ([Kvittering](/my_profile/receipt))
         = link_to (edit_user_registration_path) do
           %i.icon-pencil
@@ -57,7 +57,7 @@
           - for talk in Talk.where(:user_id => @user.id)
             %li
               = link_to talk.title, edit_talk_path(talk)
-              = " [#{talk.status}]" 
+              = " [#{talk.status}]"
           - for talk in @user.talks
             %li
               = talk.title

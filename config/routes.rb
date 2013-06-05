@@ -23,13 +23,14 @@ ConferenceApp::Application.routes.draw do
   get "info/sponsor"
   get "info/index"
   get "info/policy"
+  get "info/godbiter"
 
   resources :talk_categories
 
   resources :talk_types
 
   post '/talks/:id/vote' => 'talks#vote', :as => 'vote'
-  
+
   resources :talks
 
   resources :tickets
