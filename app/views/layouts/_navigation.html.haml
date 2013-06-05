@@ -14,7 +14,7 @@
         = link_to('Logout', destroy_user_session_path, :method=>'delete')
     - else
       %li
-        = link_to('Påmelding', new_user_registration_path, {:class=>current_page?(new_user_registration_path) ? "active" : ""})
+        = link_to('Meld deg på!', new_user_registration_path, {:class=>current_page?(new_user_registration_path) ? "active" : ""})
     - if user_signed_in? and current_user.admin
 
       %li
