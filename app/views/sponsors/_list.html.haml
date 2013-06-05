@@ -1,7 +1,14 @@
 - if Sponsor.all.size > 0
-  %h4 Våre sponsorer:
-  .row-fluid.sponsors
-    - Sponsor.all.shuffle.each do |sponsor|
-      .span3.sponsor
-        %a{:href => "#{sponsor.url}", :title => "#{sponsor.name}"}
-          %img{:src => "#{sponsor.imageUrl}"}
+  .sponsor-wrapper
+    .container
+      .row-fluid
+        .span2.offset1
+          %h4
+            Våre sponsorer
+        .sponsors.span8
+          - Sponsor.all.shuffle.each_slice(4) do |sponsor_row|
+            .sponsor-row.row-fluid
+              - sponsor_row.each do |sponsor|
+                .sponsor.span3
+                  %a{:href => "#{sponsor.url}", :title => "#{sponsor.name}"}
+                    %img{:src => "#{sponsor.imageUrl}"}
