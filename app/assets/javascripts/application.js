@@ -26,8 +26,10 @@
 //= require_tree .
 
 $(function() {
-  //Workaround for dropdown not initializing correctly.
-  $('.dropdown-toggle').dropdown();
+  $('.toggle-menu').on('tap click', function() {
+  	$('.header-nav').slideToggle();
+  });
+
   $('.flexslider').flexslider({
     pauseOnHover: true,
     directionNav: false

@@ -1,6 +1,6 @@
 %h1 Om Smidigkonferansen
-.row
-  .span6
+.row-fluid
+  .span7
     :markdown
       Vi tror at IT-prosjekter i Norge kan lære mye av prinsippene bak smidig utvikling. Derfor arrangerer vi
       Smidigkonferansen for å dele erfaringer og bidra til å øke kunnskapen om smidige metoder i Oslo og Norge.
@@ -41,13 +41,16 @@
       akkurat det problemet du sliter med i din organisasjon, har du en unik mulighet til å diskutere temaet nærmere med
       andre som har tilsvarende interesser og problemstillinger.
 
-  .span6
-    :markdown
-      ![Bilde fra tidligere Smidigkonferanse](#{image_path "smidig2012_4.jpg"})
-      *Keynote fra Smidig 2012*
-
-      ![Bilde fra tidligere Smidigkonferanse](#{image_path "smidig2012_1.jpg"})
-      *Open Space tavlen i 2012*
-
-      ![Bilde fra tidligere Smidigkonferanse](#{image_path "smidig2012_5.jpg"})
-      *Engasjerte deltakere*
+  .span5
+    .image
+      =image_tag (image_path "smidig2012_4.jpg")
+      %p.caption
+        Keynote fra Smidig 2012 
+    .image
+      =image_tag (image_path "smidig2012_1.jpg")
+      %p.caption
+        Open Space tavlen i 2012
+    .image
+      =image_tag (image_path "smidig2012_5.jpg")
+      %p.caption
+        Engasjerte deltakere
