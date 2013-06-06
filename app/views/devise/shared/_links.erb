@@ -3,7 +3,10 @@
 <% end -%>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  <%= link_to "Meld deg på Smidig 2013", new_registration_path(resource_name) %><br />
+  <%= link_to "Meld deg på Smidig 2013 som deltaker", new_registration_path(resource_name) %><br />
+<% end -%>
+<%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+  <%= link_to "Meld deg på Smidig 2013 som foredragsholder", new_registration_path(resource_name, :ticket_name=>"Speaker")  %><br />
 <% end -%>
 
 <%- if devise_mapping.recoverable? && controller_name != 'passwords' %>

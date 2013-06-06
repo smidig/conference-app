@@ -40,10 +40,12 @@ class RegistrationsController < Devise::RegistrationsController
     @ticket_default = Ticket.default
 
     # Enable override of special tickets from param
-    special_ticket = Ticket.find_by_name(params[:ticket_name])
-    if special_ticket
-      @tickets.push special_ticket
-      @ticket_default = special_ticket
+    if params[:ticket_name]
+      @special_ticket = Ticket.find_by_name(params[:ticket_name])
+      if @special_ticket and @special_ticket.active
+        @tickets.push @special_ticket
+        @ticket_default = @special_ticket
+      end
     end
   end
 

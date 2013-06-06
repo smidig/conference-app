@@ -8,6 +8,8 @@
     = link_to('Sponse', info_sponsor_path, {:class=>current_page?(info_sponsor_path) ? "active" : ""})
   - unless Rails.env.production?
     %li
+      = link_to('Foreslå foredrag', new_talk_path, {:class=>current_page?(new_talk_path) ? "active" : ""})
+    %li
       = link_to('Min profil', my_profile_index_path, {:class=>current_page?(my_profile_index_path) ? "active" : ""})
     - if user_signed_in?
       %li

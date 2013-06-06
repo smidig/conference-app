@@ -2,19 +2,25 @@
   .span12
     %h2
       =t("general.register")
-    %p Velkommene til årets smidigkonferanse.
+    %p
+      Velkommene til årets smidigkonferanse.
+
     %ul
       %li Early Bird billett koster NOK 2.000,- inklusive mva.
       %li Vanlig billett koster NOK 3.200,- inklusive mva.
-      %li Foredragsholdere slipper inn  <strong>gratis</strong>, forutsatt at foredraget godkjennes.
+      %li
+        Foredragsholdere slipper inn  <strong>gratis</strong>, forutsatt at foredraget godkjennes. <br />
+        = link_to "Trykk her hvis du skal registrere lyntale eller workshop", new_registration_path(resource_name, :ticket_name=>"Speaker")
 
     %p
       %a(href="/info/policy")
-        Se informasjon om sikkerhet og personvern.
+        Vennligst les informasjon om sikkerhet og personvern før du bestiller.
+
     %br
 
     = simple_form_for @user, :html => { :class => 'form-horizontal' } do |f|
-      %input{:type => "hidden", :name => "ticket_name", :value => "#{@ticket_default.name}"}
+      - if @special_ticket
+        %input{:type => "hidden", :name => "ticket_name", :value => "#{@special_ticket.name}"}
       = f.association :ticket, :collection => @tickets, :label_method => :display, :selected => @ticket_default.id
       = f.input :email, :autofocus => true
       = f.input :name
