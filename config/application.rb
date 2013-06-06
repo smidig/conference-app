@@ -72,5 +72,9 @@ module ConferenceApp
     # Prevent app to connecto to database during initialization.
     # https://devcenter.heroku.com/articles/rails-asset-pipeline#troubleshooting
     config.assets.initialize_on_precompile = false
+
+    config.before_initialize do
+      require 'add_default_scheme'
+    end
   end
 end
