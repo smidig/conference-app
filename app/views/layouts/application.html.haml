@@ -6,75 +6,71 @@
     %title= content_for?(:title) ? yield(:title) : "Smidig 2013 - 5. og 6. november i Oslo"
     %meta{:content => "", :name => "description"}
     %meta{:content => "", :name => "author"}
-    %link{:href => "http://fonts.googleapis.com/css?family=Ubuntu", :rel => "stylesheet", :type => "text/css"}
+    %link{:href => "http://fonts.googleapis.com/css?family=Merriweather+Sans:400,300,700,800", :rel => "stylesheet", :type => "text/css"}
     = stylesheet_link_tag "application", :media => "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
     = yield(:head)
-  %body
-    .navbar.navbar-fixed-top
-      .navbar-inner
-        .container
-          %a.brand{:href=>"/"}
-            =image_tag("smidig_logo_24_inverted.png")
-            Smidig 2013
-          %a.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse"}
-            Meny
-          .nav-collapse.collapse
+  %body.smidig
+    #header.container
+      .row-fluid
+        .span10.offset1
+          %header.header
+            %a.brand{:href=>"/"}
+              Smidig 2013
             = render 'layouts/navigation'
-          .pull-right.fb-like.desktop{:data => { |
-                            :href=>"http://facebook.com/smidig", |
-                            :send=>"false", |
-                            :show_faces=>"false", |
-                            :font=>"verdana", |
-                            :layout=>"button_count"}}
-
-    #innhold.container
-      #main.container
-        .row
+      - if current_page?('/')
+        .row-fluid
           .span12
-            = render 'layouts/messages'
-            = yield
+            = render :partial => "layouts/topslider"
+        .row-fluid
+          .span10.offset1
+            = render :partial => "layouts/intro"
+    - if current_page?('/')
+      = render :partial => 'sponsors/list'
+    #main.container
+      .row-fluid
+        .span10.offset1.content-wrapper
+          = render 'layouts/messages'
+          = yield
+    - if !current_page?('/')
+      = render :partial => 'sponsors/list'
 
-      #footer.container
-        .row
-          .span4
+    #footer.container
+      .row-fluid
+        .span10.offset1
+          .row-fluid.footer-wrapper
             / Widget 1
-            .widget
-              %aside
-                %a.twitter-follow-button{"data-show-count" => "false", :href => "https://twitter.com/smidig"} Follow @smidig
-              %h4 Twitter 
+            .widget.twitter.span4
+              %h4.heading.twitter-icon
+                Twitter 
               .tweet
-          .span4
-            / widget 2
-            .widget
-              %h4 Tidligere konferanser
-              %ul
-                %li
-                  %a{:href => "http://vimeo.com/smidig"} Videoarkiv på Vimeo
-                %li
-                  %a{:href => "http://smidig2012.no"} smidig2012.no,
-                  %a{:href => "http://smidig2011.no"} smidig2011.no,
-                  %a{:href => "http://smidig2010.no"} smidig2010.no,
-                  %a{:href => "http://smidig2009.no"} smidig2009.no,
-                  %a{:href => "http://smidig2008.no"} smidig2008.no,
-                  %a{:href => "http://smidig2007.no"} smidig2007.no
-          .span4
-            / Widget 3
-            .widget
-              %h4 Følg oss på sosiale medier
-              %ul
-                %li
-                  %a{:href => "https://twitter.com/smidig", :target => "_blank"} twitter.com
-                %li
-                  %a{:href => "http://www.facebook.com/smidig", :target => "_blank"} facebook.com
-                %li
-                  %a{:href => "http://lanyrd.com/2013/smidig/", :target => "_blank"} lanyrd.com
-                %li
-                  %a{:href => "https://www.linkedin.com/groups?gid=963587", :target => "_blank"} linkedin.com
-        %hr/
-        %p.text-center
+            .span4
+              / Widget 2
+              .widget.vimeo
+                %h4.heading.vimeo-icon
+                  Vimeo
+                %ul
+                  %li
+                    %a{:href => "http://vimeo.com/smidig"} Videoarkiv på Vimeo
+              / Widget 3
+              .widget.history
+                %h4.heading.history-icon
+                  Tidligere konferanser
+                %a{:href => "http://smidig2012.no"} smidig2012.no,
+                %a{:href => "http://smidig2011.no"} smidig2011.no,
+                %a{:href => "http://smidig2010.no"} smidig2010.no,
+                %a{:href => "http://smidig2009.no"} smidig2009.no,
+                %a{:href => "http://smidig2008.no"} smidig2008.no,
+                %a{:href => "http://smidig2007.no"} smidig2007.no
 
-          %a{:href => "mailto:kontakt@smidig.no"}
-            %i.icon-envelope.icon-white
-            kontakt@smidig.no
+            .follow-us.span4
+              %h4.heading
+                Følg oss
+              %ul
+                %li
+                  %a{:href => "https://twitter.com/smidig", :target => "_blank", :class => "twitter"} twitter.com
+                %li
+                  %a{:href => "http://www.facebook.com/smidig", :target => "_blank", :class => "facebook"} facebook.com
+                %li
+                  %a{:href => "https://www.linkedin.com/groups?gid=963587", :target => "_blank", :class => "linkedin"} linkedin.com

@@ -1,25 +1,26 @@
-%ul.nav
-  %li{:class=>current_page?(info_about_path) ? "active" : ""}
-    %a{:href => "#{info_about_path}"}
+%span.toggle-menu
+  MENY
+%ul.header-nav
+  %li
+    %a{:href => "#{info_about_path}", :class=>current_page?(info_about_path) ? "active" : ""}
       Om konferansen
-  %li{:class=>current_page?(info_sponsor_path) ? "active" : ""}
-    = link_to('Sponsor', info_sponsor_path)
+  %li
+    = link_to('Sponse', info_sponsor_path, {:class=>current_page?(info_sponsor_path) ? "active" : ""})
   - unless Rails.env.production?
-    %li{:class=>current_page?(my_profile_index_path) ? "active" : ""}
-      = link_to('Min profil', my_profile_index_path)
+    %li
+      = link_to('Min profil', my_profile_index_path, {:class=>current_page?(my_profile_index_path) ? "active" : ""})
     - if user_signed_in?
       %li
         = link_to('Logout', destroy_user_session_path, :method=>'delete')
     - else
-      %li{:class=>current_page?(new_user_registration_path) ? "active" : ""}
-        = link_to('Meld deg på!', new_user_registration_path)
+      %li
+        = link_to('Meld deg på!', new_user_registration_path, {:class=>current_page?(new_user_registration_path) ? "active" : ""})
     - if user_signed_in? and current_user.admin
 
-      %li.dropdown
-        %a.dropdown-toggle{:href => "#", "data-toggle" => "dropdown"}
+      %li
+        %a
           Admin
-          %b.caret
-        %ul.dropdown-menu
+        %ul
           %li
             %a{:href => "#{users_path}"} Deltakere
           %li

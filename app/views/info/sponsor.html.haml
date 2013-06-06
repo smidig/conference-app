@@ -1,5 +1,5 @@
 %h2 Vil din bedrift sponse Smidig 2013?
-.row
+.row-fluid
   .span8
     :markdown
       Konferansen arrangeres av frivillige entusiaster og finansieres ved hjelp av deltakeravgift og sponsormidler. I dag
@@ -30,8 +30,11 @@
       sponse Smidig 2013.**
 
   .span4
-    :markdown
-      ![Bilde fra tidligere Smidigkonferanse](#{image_path "smidig2012_5.jpg"})
-      *Engasjerte deltakere*
-      ![Noen sponsorer fra Smidig 2012](#{image_path "sponsors.jpg"})
-      *Noen sponsorer fra Smidig 2012*
+    .image
+      =image_tag (image_path "smidig2012_5.jpg")
+      %p.caption
+        Engasjerte deltakere
+    .image
+      =image_tag (image_path "sponsors.jpg")
+      %p.caption
+        Noen sponsorer fra Smidig 2012
