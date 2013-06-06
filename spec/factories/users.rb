@@ -5,6 +5,7 @@ FactoryGirl.define do
     u.password 'please123445'
     u.tlf '99900999'
     u.accepted_privacy "1"
+    u.company 'Smidig 2013'
     u.ticket { FactoryGirl.create(:ticket) }
   end
 
@@ -14,6 +15,7 @@ FactoryGirl.define do
     u.password 'please123445'
     u.tlf '99900999'
     u.accepted_privacy "1"
+    u.company 'Smidig 2013'
     u.ticket { FactoryGirl.create(:ticket) }
     u.admin true
   end
