@@ -17,6 +17,7 @@ Given /^there is a user with ((?:(?:[^ ]+) "(?:[^"]+)")(?:(?:, | and )(?:(?:[^ ]
         :tlf => "22222222",
         :password => "password",
         :company => "firma",
+        :ticket_id => Ticket.first.id,
         :password_confirmation => "password",
         :accepted_privacy => "1"
     }.merge attributes

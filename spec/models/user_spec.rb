@@ -14,6 +14,19 @@ describe User do
       expect(user.errors[:name].join).to eq('can\'t be blank')
     end
     it "should be valid with required fields" do
+      t = FactoryGirl.create(:ticket)
+
+      user = User.new({
+        :name => "Tester",
+        :email => "me@mail.com",
+        :tlf => "92043382",
+        :password => "lala12345",
+        :accepted_privacy => "1",
+        :ticket_id => t.id,
+        :company => "Smidig 2013"})
+      user.valid?.should be_true
+    end
+    it "should require a ticket" do
       user = User.new({
         :name => "Tester",
         :email => "me@mail.com",
@@ -21,7 +34,19 @@ describe User do
         :password => "lala12345",
         :accepted_privacy => "1",
         :company => "Smidig 2013"})
-      user.valid?.should be_true
+      user.valid?.should be_false
+    end
+    it "should require an active ticket" do
+      t =
+      user = User.new({
+        :name => "Tester",
+        :email => "me@mail.com",
+        :tlf => "92043382",
+        :password => "lala12345",
+        :accepted_privacy => "1",
+        :ticket_id =>  FactoryGirl.create(:ticket, active: false).id,
+        :company => "Smidig 2013"})
+      user.valid?.should be_false
     end
   end
 end

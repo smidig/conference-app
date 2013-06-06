@@ -5,7 +5,7 @@ class Ticket < ActiveRecord::Base
   TICKET_TYPES = %w(free speaker regular)
 
   validates_presence_of :name, :price
-  validates :ticket_type, :inclusion => {:in => TICKET_TYPES}, :allow_nil => true  
+  validates :ticket_type, :inclusion => {:in => TICKET_TYPES}, :allow_nil => true
 
   def self.default
     Ticket.find(:all, :conditions => { :visible => true, :active => true }).first

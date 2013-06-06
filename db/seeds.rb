@@ -3,6 +3,11 @@
 DatabaseCleaner.strategy = :truncation
 DatabaseCleaner.clean
 
+Ticket.create(name: 'Early Bird', price: 1750, active: true, visible: true, ticket_type: 'regular')
+organizer = Ticket.create(name: 'Organizer', price: 0, active: true, visible: false, ticket_type: 'free')
+Ticket.create(name: 'Sponsor', price: 0, active: true, visible: false, ticket_type: 'free')
+Ticket.create(name: 'Speaker', price: 0, active: true, visible: false, ticket_type: 'speaker')
+
 # This will seed administrators with their appropriate names and email addresses. Their password is 'password'.
 administrators = [
     {:name => "Jonas Amundsen",      :email => "jonasba@gmail.com"},
@@ -16,6 +21,7 @@ administrators.each do |user_data|
       :password => 'password',
       :password_confirmation => 'password',
       :accepted_privacy => "1",
+      :ticket_id => organizer.id,
       :company => 'Smidig 2013',
   })
 
@@ -32,7 +38,4 @@ TalkCategory.create(name: 'Annet')
 TalkCategory.create(name: 'Smidig programmering')
 TalkCategory.create(name: 'Lean startup')
 
-Ticket.create(name: 'Early Bird', price: 1750, active: true, visible: true, ticket_type: 'regular')
-Ticket.create(name: 'Organizer', price: 0, active: true, visible: false, ticket_type: 'free')
-Ticket.create(name: 'Sponsor', price: 0, active: true, visible: false, ticket_type: 'free')
-Ticket.create(name: 'Speaker', price: 0, active: true, visible: false, ticket_type: 'speaker')
+

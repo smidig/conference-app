@@ -18,3 +18,6 @@ en:
           attributes:
             accepted_privacy:
               accepted: "Du må godta vilkårene"
+            ticket:
+              not_active: "Valgt billett er ikke tilgjengelig lenger"
+              blank: "Du må velge en billett"

@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class User < ActiveRecord::Base
   acts_as_voter
   # Include default devise modules. Others available are:
@@ -16,9 +17,18 @@ class User < ActiveRecord::Base
   # validations
   validates_presence_of :name, :tlf, :company
   validates_acceptance_of :accepted_privacy
+  validate :require_active_ticket
 
   belongs_to :ticket
   belongs_to :order
   has_and_belongs_to_many :talks
+
+  def require_active_ticket
+      if not self.ticket
+        errors.add(:ticket, :blank)
+      elsif not self.ticket.active
+        errors.add(:ticket, :not_active)
+      end
+  end
 
 end

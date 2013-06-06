@@ -2,10 +2,8 @@ require 'spec_helper'
 
 describe Order do
   before(:each) do
-    @user = FactoryGirl.create(:user)
-    @user2 = FactoryGirl.create(:user)
-    @user.ticket = Ticket.new({:name => "name", :price => 200})
-    @user2.ticket = Ticket.new({:name => "name", :price => 300})
+    @user = FactoryGirl.create(:user, ticket: FactoryGirl.create(:ticket, price: 200))
+    @user2 = FactoryGirl.create(:user, ticket: FactoryGirl.create(:ticket, price: 300))
   end
   it "should be possible to create order" do
 
