@@ -93,6 +93,21 @@ a:hover {
 }
 
 .smidig {
+  .boxed {
+    border: 1px solid #e7e7e7;
+    border-radius: 3px;
+    margin-bottom: 10px;
+
+    .title {
+      background: #f0ede6;
+      font-weight: bold;
+      border-bottom: 1px solid #e9e9e9;
+      padding: 3px;
+    }
+    .content {
+      padding: 5px;
+    }
+  }
 
   .header {
     margin: 0 -20px;
@@ -109,7 +124,7 @@ a:hover {
       display: inline-block;
       @include font-size(1.6, 7, 300);
       color: $alternative-text-color;
-      
+
       @include breakpoint('phones-to-tablets') {
         margin-left: 0;
       }
@@ -214,7 +229,7 @@ a:hover {
                 background: $primary-color;
               }
             }
-            
+
           }
         }
       }
@@ -222,7 +237,7 @@ a:hover {
   }
 
   .top-slider {
-    margin-top: -70px; /* Header height */  
+    margin-top: -70px; /* Header height */
     z-index: 10;
 
     @include breakpoint('phones-to-tablets') {
@@ -243,7 +258,7 @@ a:hover {
             position: relative;
             bottom: 0;
           }
-          
+
           .title,
           .text {
             margin: 0;
@@ -322,7 +337,7 @@ a:hover {
     margin-top: 20px;
   }
 
-  // Global styling of text-views... 
+  // Global styling of text-views...
   .content-wrapper {
     padding: 20px 20px 40px;
     background: $secondary-background;
@@ -400,7 +415,7 @@ a:hover {
   }
 
   #footer {
-  
+
     .footer-wrapper {
       background: $primary-color;
       height: 350px;
@@ -432,7 +447,7 @@ a:hover {
 
         &.history-icon {
           padding-left: 60px;
-          background: image-url('history-free.png') no-repeat; 
+          background: image-url('history-free.png') no-repeat;
           padding-top: 6px;
           min-height: 37px;
         }
@@ -494,7 +509,7 @@ a:hover {
           background: transparent none no-repeat;
           margin: 0 0 10px 0;
         }
-        
+
         .twitter {
           background-image: image-url('twitter-icon.png');
         }
@@ -519,15 +534,15 @@ a:hover {
   line-height: 0;
   height: 0;
 }
- 
+
 .clearfix {
   display: inline-block;
 }
- 
+
 html[xmlns] .clearfix {
   display: block;
 }
- 
+
 * html .clearfix {
   height: 1%;
 }
