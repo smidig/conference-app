@@ -15,7 +15,6 @@
   article {
     padding: 5px;
     background: #eee;
-    /*border: 1px solid silver;*/
     margin: 10px 0;
     -moz-box-shadow: 0 0 5px #888;
     -webkit-box-shadow: 0 0 5px#888;
@@ -27,7 +26,6 @@
       padding-bottom: 0;
     }
     header p {
-      margin-top: -10px;
       font-size: 10px;
       color: gray;
     }
@@ -39,10 +37,6 @@
       -webkit-box-shadow: 0 0 5px#888;
       box-shadow: 0 0 5px #888;
     }
-  }
-
-  article:nth-child(even) {
-    background: #F7DFDF;
   }
 }
 
