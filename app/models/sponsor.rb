@@ -7,10 +7,5 @@ class Sponsor < ActiveRecord::Base
 
   before_save :prefix_url_with_default_scheme, :if => :url_changed?
 
-  private
-
-  def prefix_url_with_default_scheme
-    uri = URI.parse(self.url)
-    self.url = "http://#{url}" if uri.scheme.nil?
-  end
+  add_default_scheme :url, :imageUrl
 end
