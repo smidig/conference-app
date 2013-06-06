@@ -1,0 +1,533 @@
+// Variable override for bootstrap
+$navbarHeight: 40px;
+$linkColor: #6600CC;
+$linkColorHover: #6600CC;
+$navbarBackground: $linkColor;
+$navbarBackgroundHighlight: $linkColorHover;
+$navbarText: white;
+$navbarBrandColor: $navbarText;
+$navbarLinkColor: $navbarText;
+$navbarLinkColorHover: $navbarText;
+$navbarLinkColorActive: $navbarLinkColorHover;
+$navbarCollapseWidth: 720px;
+$dropdownBackground: white;
+$dropdownLinkBackgroundHover: $navbarBackgroundHighlight;
+$dropdownBorder: $navbarBackground;
+$bodyBackground: #CCCCDD;
+$errorBackground: #FF9090;
+$errorText: #995656;
+$btnPrimaryBackground:#6600CC;
+$btnPrimaryBackgroundHighlight:#4d009a;
+
+// Import bootstrap-sass
+@import "bootstrap";
+@import "bootstrap-responsive";
+
+// Setup colors
+$primary-color: #662d91;
+$secondary-color: #92278f;
+
+$primary-background: #f0ede6;
+$secondary-background: #e4e0d7;
+
+$primary-text-color: #534741;
+$secondary-text-color: #998675;
+$alternative-text-color: white;
+
+// TODO: Be a good boy and move  mixins out into mixin files...
+@mixin breakpoint($point) {
+  @if $point == large-display {
+    @media (min-width: 1200px) { @content; }
+  }
+  @if $point == default {
+    @media (min-width: 908px) { @content; }
+  }
+  @if $point == portrait-tablets {
+    @media (min-width: 768px) { @content; }
+  }
+  @if $point == phones-to-tablets {
+    @media (max-width: 767px) { @content; }
+  }
+  @if $point == phones {
+    @media (max-width: 480px) { @content; }
+  }
+}
+
+@mixin font-size($sizeValue: 1.6, $lineHeightValue: $sizeValue, $weightValue: 300) {
+  font-size: ($sizeValue * 10) + px;
+  font-size: $sizeValue + rem;
+  line-height: ($lineHeightValue * 10) + px;
+  line-height: $lineHeightValue + rem;
+  font-weight: $weightValue;
+}
+
+html {
+  font-size: 10px;
+}
+
+body {
+  background: $primary-background;
+  // Merriweather Sans from Google Fonts, available weights 300, 400, 700, 800
+  font-family: 'Merriweather Sans';
+  font-size: 10px;
+}
+
+h1 {
+  @include font-size(2.8, 2.8, 300);
+}
+h2 {
+  @include font-size(2.4, 2.5, 300);
+}
+h3 {
+  @include font-size(2, 2, 300);
+}
+h4 {
+  @include font-size(1.8, 1.8, 300);
+}
+h5 {
+  @include font-size(1.6, 1.6, 300);
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.smidig {
+
+  .header {
+    margin: 0 -20px;
+    background: $primary-color;
+    color: $alternative-text-color;
+    height: 70px;
+    z-index: 1000;
+    position: relative;
+
+    .brand {
+      background: image-url('smidig_logo_24_inverted.png') no-repeat 20px 50%;
+      padding: 0 20px 0 50px;
+      margin-left: 20px;
+      display: inline-block;
+      @include font-size(1.6, 7, 300);
+      color: $alternative-text-color;
+      
+      @include breakpoint('phones-to-tablets') {
+        margin-left: 0;
+      }
+
+      &:hover {
+        background-color: $secondary-color;
+      }
+    }
+
+    .toggle-menu {
+      display: none;
+
+      @include breakpoint('phones-to-tablets') {
+        display: inline-block;
+        float: right;
+        line-height: 70px;
+        margin-right: 20px;
+      }
+    }
+
+    ul.header-nav {
+      display: inline-block;
+      list-style: none;
+      padding: 0;
+      margin: 0 20px 0 0;
+      float: right;
+
+      @include breakpoint('phones-to-tablets') {
+        display: none;
+        width: 100%;
+        margin: 0;
+        background-color: $secondary-color;
+      }
+
+      li {
+        float: left;
+        position: relative;
+        @include breakpoint('phones-to-tablets') {
+          float: none;
+          border-bottom: 1px solid white;
+
+          &:first-child {
+            border-top: 1px solid white;
+          }
+        }
+
+        &:hover {
+          ul {
+            display: block;
+          }
+        }
+
+        a {
+          color: $alternative-text-color;
+          @include font-size(1.4, 7, 300);
+          display: inline-block;
+          padding: 0 10px;
+
+          @include breakpoint('phones-to-tablets') {
+            display: block;
+            padding: 0 20px;
+            line-height: 3em;
+          }
+
+          &.active,
+          &:hover {
+            background: $secondary-color;
+          }
+
+          &.active {
+            font-weight: 400;
+          }
+        }
+
+        ul {
+          display: none;
+          list-style: none;
+          margin: 0;
+          padding: 0;
+          position: absolute;
+          right: 0;
+          background: $secondary-color;
+
+          @include breakpoint('phones-to-tablets') {
+            display: block;
+            position: static;
+          }
+
+          li {
+            float: none;
+            a {
+              line-height: 1em;
+              padding: 10px;
+              display: block;
+              clear: left;
+
+              @include breakpoint('phones-to-tablets') {
+                padding: 10px 40px;
+              }
+
+              &:hover {
+                background: $primary-color;
+              }
+            }
+            
+          }
+        }
+      }
+    }
+  }
+
+  .top-slider {
+    margin-top: -70px; /* Header height */  
+    z-index: 10;
+
+    @include breakpoint('phones-to-tablets') {
+      margin-top: 0;
+    }
+
+    .slides {
+      li {
+
+        .caption {
+          background-color: $secondary-color;
+          position: absolute;
+          bottom: 20px;
+          padding: 20px;
+          color: $alternative-text-color;
+
+          @include breakpoint('phones-to-tablets') {
+            position: relative;
+            bottom: 0;
+          }
+          
+          .title,
+          .text {
+            margin: 0;
+            @include font-size(1.6, 1.8);
+          }
+
+          .title {
+            font-weight: 400;
+            margin-bottom: 0.5em;
+          }
+        }
+      }
+    }
+
+    // TODO: Place this somewhere...
+    .flex-control-nav {
+      display: none;
+      bottom: 20px;
+      width: auto;
+      background: $secondary-color;
+      padding: 10px;
+      height: 14px;
+    }
+  }
+
+  .intro {
+    @extend .clearfix;
+    position: relative;
+    padding-left: 150px;
+
+    @include breakpoint('phones-to-tablets') {
+      padding-left: 0;
+      width: 100%;
+    }
+
+    .date-time {
+      position: absolute;
+      left: -82px;
+      background: $secondary-color;
+      color: white;
+      float: left;
+      padding: 20px;
+
+      @include breakpoint('large-display') {
+        left: -120px;
+      }
+
+      @include breakpoint('default') {
+        left: -100px;
+      }
+
+      @include breakpoint('phones-to-tablets') {
+        position: static;
+        margin-right: 20px;
+      }
+
+      @include breakpoint('phones-to-tablets') {
+        width: 100%;
+        box-sizing: border-box;
+        margin-bottom: 20px;
+        margin-right: 0;
+      }
+
+      .location,
+      .year {
+        @include font-size(3.6);
+      }
+
+      .date {
+        @include font-size(1.8);
+      }
+    }
+  }
+
+  .news {
+    margin-top: 20px;
+  }
+
+  // Global styling of text-views... 
+  .content-wrapper {
+    padding: 20px 20px 40px;
+    background: $secondary-background;
+    color: $primary-text-color;
+    @include font-size(1.4, 1.8);
+
+    h1, h2, h3, h4, h5 {
+      color: $secondary-text-color;
+      font-weight: 400;
+      margin-bottom: 0.3em;
+      margin-top: 1em;
+
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+
+    a {
+      color: $secondary-color;
+
+      &:hover {
+        color: $primary-color;
+      }
+    }
+
+    .image {
+      margin-bottom: 40px;
+
+      .caption {
+        display: block;
+        padding: 10px;
+        background: $secondary-color;
+        color: $alternative-text-color;
+      }
+    }
+  }
+
+  .sponsor-wrapper {
+    position: relative;
+    box-shadow: 0px 0px 9px 1px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 0px 9px 1px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0px 0px 9px 1px rgba(0, 0, 0, 0.3);
+    background: white;
+    padding: 40px 0px;
+
+    h4 {
+      padding-left: 20px;
+
+      @include breakpoint('phones-to-tablets') {
+        padding-left: 25px;
+      }
+    }
+
+    .sponsors {
+      .sponsor-row {
+        margin-top: 20px;
+
+        @include breakpoint('phones-to-tablets') {
+          margin-top: 0;
+        }
+
+        &:first-child {
+          margin-top: 0;
+        }
+
+        .sponsor {
+          @include breakpoint('phones-to-tablets') {
+            margin-bottom: 20px;
+            float: left;
+            width: 50%;
+          }
+        }
+      }
+    }
+  }
+
+  #footer {
+  
+    .footer-wrapper {
+      background: $primary-color;
+      height: 350px;
+      color: $alternative-text-color;
+
+      @include breakpoint('phones-to-tablets') {
+        height: auto;
+      }
+    }
+
+    .widget {
+      padding: 20px;
+      @include font-size(1.2, 1.4);
+
+      .heading {
+        margin: 0 0 5px;
+        padding-top: 15px;
+        min-height: 28px;
+
+        &.twitter-icon {
+          padding-left: 60px;
+          background: image-url('twitter-free.png') no-repeat;
+        }
+
+        &.vimeo-icon {
+          padding-left: 60px;
+          background: image-url('vimeo-free.png') no-repeat;
+        }
+
+        &.history-icon {
+          padding-left: 60px;
+          background: image-url('history-free.png') no-repeat; 
+          padding-top: 6px;
+          min-height: 37px;
+        }
+      }
+
+      a {
+        color: rgba($alternative-text-color, 0.5);
+        font-weight: 400;
+
+        &:hover {
+          color: rgba($alternative-text-color, 0.7);
+        }
+      }
+
+      ul {
+        list-style: none;
+        margin: 0;
+
+        li {
+          border-top: 1px solid rgba($alternative-text-color, 0.1);
+          margin-top: 5px;
+          padding-top: 5px;
+
+          &:first-child {
+            border-top: 0;
+            margin-top: 0;
+            padding-top: 0;
+          }
+        }
+      }
+    }
+
+    .follow-us {
+      @extend .clearfix;
+      padding: 28px 20px 20px;
+      height: 100%;
+      background: $secondary-color;
+
+      @include breakpoint('phones-to-tablets') {
+        display: block !important;
+      }
+
+      .heading {
+        float: left;
+        font-weight: 300;
+      }
+
+      ul {
+        float: right;
+        list-style: none;
+
+        .twitter,
+        .facebook,
+        .linkedin {
+          text-indent: -9999px;
+          height: 52px;
+          width: 52px;
+          display: inline-block;
+          background: transparent none no-repeat;
+          margin: 0 0 10px 0;
+        }
+        
+        .twitter {
+          background-image: image-url('twitter-icon.png');
+        }
+
+        .facebook {
+          background-image: image-url('facebook-icon.png');
+        }
+
+        .linkedin {
+          background-image: image-url('linkedin-icon.png');
+        }
+      }
+    }
+  }
+}
+
+.clearfix:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+ 
+.clearfix {
+  display: inline-block;
+}
+ 
+html[xmlns] .clearfix {
+  display: block;
+}
+ 
+* html .clearfix {
+  height: 1%;
+}
