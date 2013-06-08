@@ -11,6 +11,8 @@ Given /^there is a user with ((?:(?:[^ ]+) "(?:[^"]+)")(?:(?:, | and )(?:(?:[^ ]
   if (user = User.find_by_email attributes[:email])
     user.update_attributes! attributes
   else
+    step %(there exist a visible ticket)
+
     attributes = {
         :name => "John Doe",
         :email => "#{rand(1000)}@gmail.com",
@@ -19,6 +21,7 @@ Given /^there is a user with ((?:(?:[^ ]+) "(?:[^"]+)")(?:(?:, | and )(?:(?:[^ ]
         :company => "firma",
         :ticket_id => Ticket.first.id,
         :password_confirmation => "password",
+        :company => "Smidig 2013",
         :accepted_privacy => "1"
     }.merge attributes
 

@@ -18,13 +18,13 @@ class OrdersController < ApplicationController
   end
 
   def show
-    if(current_user.admin && params[:id])
+    if current_user.admin && params[:id]
       @order = Order.find(params[:id])
     else
       @order = Order.find_by_owner_user_id(current_user.id)
     end
 
-    if(@order.nil?)
+    if @order.nil?
       @order = Order.create({:owner_user_id => current_user.id})
       @order.save
       current_user.order_id = @order.id
@@ -71,7 +71,7 @@ class OrdersController < ApplicationController
       @order = Order.find_by_owner_user_id(current_user.id)
     end
 
-    if @order.completed or @order.payment
+    if @order.completed || @order.payment
       flash[:alert] = 'Kan ikke legge til brukere på din bestilling etter at en betaling er startet.'
       redirect_to :action => :show, :id => @order.id
     end

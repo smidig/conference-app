@@ -8,7 +8,7 @@ class PaymentsController < ApplicationController
   end
 
   def manual
-    @uncomplete =ManualPayment.all(:conditions => {:manual_invoice_sent => [nil, false]})
+    @incomplete = ManualPayment.all(:conditions => {:manual_invoice_sent => [nil, false]})
     @invoiced = ManualPayment.all(:conditions => {:manual_invoice_sent => true, :completed => [nil, false]})
     @completed = ManualPayment.all(:conditions => {:completed => true})
 
@@ -43,12 +43,13 @@ class PaymentsController < ApplicationController
   def invoice_sent
     payment = Payment.find(params[:id])
     invoice_id = params[:manual_payment][:manual_invoice_id]
-    unless invoice_id.blank?
+
+    if invoice_id.blank?
+      flash[:alert] = "Du mangler fakturaid for faktura #{payment.id}"
+    else
       payment.manual_invoice_sent = true
       payment.manual_invoice_id = invoice_id
       payment.save
-    else
-      flash[:alert] = "Du mangler fakturaid for faktura #{payment.id}"
     end
 
     respond_to do |format|
@@ -129,7 +130,7 @@ class PaymentsController < ApplicationController
     elsif params[:manual_payment][:order_id]
       order = Order.find(params[:manual_payment][:order_id])
     end
-    if order.payment and order.payment.type == 'PaypalPayment'
+    if order.payment && order.payment.type == 'PaypalPayment'
       redirect_to get_paypal_url(order.payment)
     elsif order.payment
       max_one order

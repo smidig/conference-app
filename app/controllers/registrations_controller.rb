@@ -11,9 +11,9 @@ class RegistrationsController < Devise::RegistrationsController
 
   def sign_up(resource_name, resource)
     # TODO: Add a special email for speakers..
-    if (@user.ticket.ticket_type == "regular")
+    if @user.ticket.ticket_type == "regular"
       SmidigMailer.registration_confirmation(@user).deliver
-    elsif (@user.ticket.ticket_type == "speaker")
+    elsif @user.ticket.ticket_type == "speaker"
       SmidigMailer.speaker_registration_confirmation(@user).deliver
       SmidigMailer.speaker_registration_notification(@user, users_url).deliver
     else
@@ -44,7 +44,7 @@ class RegistrationsController < Devise::RegistrationsController
     # Enable override of special tickets from param
     if params[:ticket_name]
       @special_ticket = Ticket.find_by_name(params[:ticket_name])
-      if @special_ticket and @special_ticket.active
+      if @special_ticket.try(:active)
         @tickets.push @special_ticket
         @ticket_default = @special_ticket
       end

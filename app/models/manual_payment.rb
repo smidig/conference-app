@@ -7,9 +7,9 @@ class ManualPayment < Payment
   validates :manual_organization_number, length: {minimum: 9, maximum: 9}, allow_blank: true
 
   def status
-    if self.completed?
+    if completed?
       "Betalt"
-    elsif self.manual_invoice_sent?
+    elsif manual_invoice_sent?
       "Faktura sent. Venter på betaling."
     else
       "Fakura opprettet. Ikke sendt."
@@ -17,10 +17,10 @@ class ManualPayment < Payment
   end
 
   private
+
   def has_a_place_to_send_invoice
-    if manual_company_email.blank? and manual_street_address.blank?
+    if manual_company_email.blank? && manual_street_address.blank?
       errors.add(:manual_company_email, "oppgi enten epost eller gateadresse")
     end
-
   end
 end

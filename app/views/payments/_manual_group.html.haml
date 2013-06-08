@@ -9,7 +9,7 @@
     %td= "#{payment.paid_amount},-" if payment.paid_amount
     %td= participants(payment)
     %td= payment.manual_contact_person
-    %td= manual_adress(payment)
+    %td= manual_address(payment)
     %td= link_to '#'+payment.order.id.to_s, {:controller => :orders, :action => 'show', :id => payment.order.id} if payment.order
     %td.text-right
       - unless payment.manual_invoice_sent

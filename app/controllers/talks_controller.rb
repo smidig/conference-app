@@ -65,7 +65,7 @@ class TalksController < ApplicationController
 
 
     respond_to do |format|
-      if @talk.update_attributes(params[:talk], :as => (admin? or @talk.user == current_user)? :admin : :default)
+      if @talk.update_attributes(params[:talk], :as => (admin? || @talk.user == current_user)? :admin : :default)
         # Change to be set on e-mail request insted of directly from edit form
         if @new_user
           @talk.users << @new_user
@@ -96,7 +96,7 @@ class TalksController < ApplicationController
   # POST /talks/1/vote
   def vote
     @talk = Talk.find(params[:id])
-    @talk.vote :voter => current_user, :vote => !(current_user.voted_as_when_voted_for @talk) ? true : false
+    @talk.vote :voter => current_user, :vote => !current_user.voted_as_when_voted_for(@talk)
     flash[:notice] = "Vote registered."
 
     respond_to do |format|
@@ -110,7 +110,7 @@ class TalksController < ApplicationController
       talk = Talk.find(params[:id])
     end
 
-    unless current_user.admin? or talk.user == current_user
+    unless current_user.admin? || talk.user == current_user
       flash[:notice] = 'Du er ikke taleren som opprettet denne talk'
       redirect_to :back
     end
