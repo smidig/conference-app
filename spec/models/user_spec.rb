@@ -48,5 +48,19 @@ describe User do
         :company => "Smidig 2013"})
       user.valid?.should be_false
     end
+
+    it "should have a default after creation if no order was specified" do
+      user = FactoryGirl.create(:user)
+
+      user.order.should_not be_nil
+      user.order.new_record?.should be_false
+    end
+
+    it "should have the still have the specified order after creation" do
+      user = FactoryGirl.create(:user)
+      another_user = FactoryGirl.create(:user, :order => user.order)
+
+      another_user.order.should == user.order
+    end
   end
 end
