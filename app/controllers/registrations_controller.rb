@@ -34,6 +34,10 @@ class RegistrationsController < Devise::RegistrationsController
     end
   end
 
+  def after_update_path_for(resource)
+      my_profile_index_path
+    end
+
   private
 
   def set_up_default_tickets
