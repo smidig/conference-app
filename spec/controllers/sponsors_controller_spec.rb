@@ -31,9 +31,9 @@ describe SponsorsController, :type => :controller do
 
   describe "GET index" do
     it "assigns all sponsors as @sponsors" do
-      sponsor = Sponsor.create! valid_attributes
+      sponsors = Sponsor.all
       get :index, {}
-      assigns(:sponsors).should eq([sponsor])
+      assigns(:sponsors).should eq(sponsors)
     end
   end
 
