@@ -57,7 +57,7 @@ class UsersController < ApplicationController
 
   def complete
     @user = User.find(params[:id])
-    @user.completed = @user.completed ? nil : true
+    @user.completed = !@user.completed
     @user.save!
 
     respond_to do |format|
@@ -68,7 +68,7 @@ class UsersController < ApplicationController
 
   def make_admin
     @user = User.find(params[:id])
-    @user.admin = @user.admin ? false : true
+    @user.admin = !@user.admin
     @user.save!
 
     respond_to do |format|

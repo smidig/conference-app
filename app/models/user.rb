@@ -24,11 +24,10 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :talks
 
   def require_active_ticket
-      if not self.ticket
-        errors.add(:ticket, :blank)
-      elsif not self.ticket.active
-        errors.add(:ticket, :not_active)
-      end
+    if ticket and !ticket.active
+      errors.add(:ticket, :not_active)
+    elsif ticket.nil?
+      errors.add(:ticket, :blank)
+    end
   end
-
 end

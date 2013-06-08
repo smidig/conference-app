@@ -11,15 +11,15 @@ class Order < ActiveRecord::Base
   end
 
   def status
-    if self.payment
-      self.payment.status
+    if payment
+      payment.status
     else
       "Ingen betaling startet"
     end
   end
 
   def payment_created
-    return self.payment != nil
+    !payment.nil?
   end
 
   def owner
@@ -27,14 +27,14 @@ class Order < ActiveRecord::Base
   end
 
   def finish
-    self.transaction do
-      self.users.each do |user|
-        user.completed=true
+    transaction do
+      users.each do |user|
+        user.completed = true
         user.save!
         SmidigMailer.payment_confirmation(user).deliver
       end
-      self.completed=true
-      self.save!
+      self.completed = true
+      save!
     end
   end
 

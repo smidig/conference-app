@@ -16,11 +16,11 @@ class Ticket < ActiveRecord::Base
   end
 
   def mva
-    self.price - (self.price / 1.25)
+    price - price_ex_mva
   end
 
   def price_ex_mva
-    self.price / 1.25
+    price / 1.25
   end
 
   def display
