@@ -63,4 +63,19 @@ class SmidigMailer < ActionMailer::Base
    :subject => "#{SUBJECT_PREFIX} Fakturaforespørsel opprettet")
   end
 
+  def speaker_registration_confirmation(user)
+    @name = user.name
+    @email = user.email
+    mail(:to => @email,
+    :subject => "#{SUBJECT_PREFIX} Bruker #{user.email} er registrert")
+  end
+
+  def speaker_registration_notification(user, user_url)
+    @name = user.name
+    @email = user.email
+    @user_url = user_url
+    mail(:to => FROM_EMAIL, :reply_to => "#{user.name} <#{user.email}>",
+         :subject => "#{SUBJECT_PREFIX} Bruker #{user.email} har registrert seg som foredragsholder.")
+  end
+
 end

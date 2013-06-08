@@ -14,7 +14,8 @@ class RegistrationsController < Devise::RegistrationsController
     if (@user.ticket.ticket_type == "regular")
       SmidigMailer.registration_confirmation(@user).deliver
     elsif (@user.ticket.ticket_type == "speaker")
-
+      SmidigMailer.speaker_registration_confirmation(@user).deliver
+      SmidigMailer.speaker_registration_notification(@user, users_url).deliver
     else
       SmidigMailer.free_registration_confirmation(@user).deliver
       SmidigMailer.free_registration_notification(@user, users_url).deliver

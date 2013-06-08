@@ -1,5 +1,7 @@
+# encoding: UTF-8
 class TalksController < ApplicationController
-  before_filter :authenticate_user! , :except => [:index, :show]
+  before_filter :authenticate_user! , :except => [:index, :show, :new]
+  before_filter :redirect_to_create_user_if_not_logged_in, :only => [:new]
   before_filter :require_admin_or_talk_owner, :only => [:destroy, :edit]
 
   # GET /talks
@@ -113,5 +115,18 @@ class TalksController < ApplicationController
       redirect_to :back
     end
   end
+
+  private
+
+  def redirect_to_create_user_if_not_logged_in
+    if not current_user
+      store_location
+      flash[:notice] = "Du må opprette en bruker før du kan registrere en lyntale eller workshop. " +
+                       "Dersom du allerede har en bruker kan du logge inn via \"Min Profil\"."
+      redirect_to new_user_registration_path(:ticket_name=>"Speaker")
+      return false
+    end
+  end
+
 
 end
