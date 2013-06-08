@@ -27,17 +27,12 @@ describe TalkTypesController do
     { "name" => "MyString" }
   end
 
-  # This should return the minimal set of values that should be in the session
-  # in order to pass any filters (e.g. authentication) defined in
-  # TalkTypesController. Be sure to keep this updated too.
-  def valid_session
-    {}
-  end
+  login_admin
 
   describe "GET index" do
     it "assigns all talk_types as @talk_types" do
       talk_type = TalkType.all
-      get :index, {}, valid_session
+      get :index, {}
       assigns(:talk_types).should eq(talk_type)
     end
   end
@@ -45,14 +40,14 @@ describe TalkTypesController do
   describe "GET show" do
     it "assigns the requested talk_type as @talk_type" do
       talk_type = TalkType.create! valid_attributes
-      get :show, {:id => talk_type.to_param}, valid_session
+      get :show, {:id => talk_type.to_param}
       assigns(:talk_type).should eq(talk_type)
     end
   end
 
   describe "GET new" do
     it "assigns a new talk_type as @talk_type" do
-      get :new, {}, valid_session
+      get :new, {}
       assigns(:talk_type).should be_a_new(TalkType)
     end
   end
@@ -60,7 +55,7 @@ describe TalkTypesController do
   describe "GET edit" do
     it "assigns the requested talk_type as @talk_type" do
       talk_type = TalkType.create! valid_attributes
-      get :edit, {:id => talk_type.to_param}, valid_session
+      get :edit, {:id => talk_type.to_param}
       assigns(:talk_type).should eq(talk_type)
     end
   end
@@ -69,18 +64,18 @@ describe TalkTypesController do
     describe "with valid params" do
       it "creates a new TalkType" do
         expect {
-          post :create, {:talk_type => valid_attributes}, valid_session
+          post :create, {:talk_type => valid_attributes}
         }.to change(TalkType, :count).by(1)
       end
 
       it "assigns a newly created talk_type as @talk_type" do
-        post :create, {:talk_type => valid_attributes}, valid_session
+        post :create, {:talk_type => valid_attributes}
         assigns(:talk_type).should be_a(TalkType)
         assigns(:talk_type).should be_persisted
       end
 
       it "redirects to the created talk_type" do
-        post :create, {:talk_type => valid_attributes}, valid_session
+        post :create, {:talk_type => valid_attributes}
         response.should redirect_to(TalkType.last)
       end
     end
@@ -89,14 +84,14 @@ describe TalkTypesController do
       it "assigns a newly created but unsaved talk_type as @talk_type" do
         # Trigger the behavior that occurs when invalid params are submitted
         TalkType.any_instance.stub(:save).and_return(false)
-        post :create, {:talk_type => { "name" => "invalid value" }}, valid_session
+        post :create, {:talk_type => { "name" => "invalid value" }}
         assigns(:talk_type).should be_a_new(TalkType)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         TalkType.any_instance.stub(:save).and_return(false)
-        post :create, {:talk_type => { "name" => "invalid value" }}, valid_session
+        post :create, {:talk_type => { "name" => "invalid value" }}
         response.should render_template("new")
       end
     end
@@ -111,18 +106,18 @@ describe TalkTypesController do
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
         TalkType.any_instance.should_receive(:update_attributes).with({ "name" => "MyString" })
-        put :update, {:id => talk_type.to_param, :talk_type => { "name" => "MyString" }}, valid_session
+        put :update, {:id => talk_type.to_param, :talk_type => { "name" => "MyString" }}
       end
 
       it "assigns the requested talk_type as @talk_type" do
         talk_type = TalkType.create! valid_attributes
-        put :update, {:id => talk_type.to_param, :talk_type => valid_attributes}, valid_session
+        put :update, {:id => talk_type.to_param, :talk_type => valid_attributes}
         assigns(:talk_type).should eq(talk_type)
       end
 
       it "redirects to the talk_type" do
         talk_type = TalkType.create! valid_attributes
-        put :update, {:id => talk_type.to_param, :talk_type => valid_attributes}, valid_session
+        put :update, {:id => talk_type.to_param, :talk_type => valid_attributes}
         response.should redirect_to(talk_type)
       end
     end
@@ -132,7 +127,7 @@ describe TalkTypesController do
         talk_type = TalkType.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         TalkType.any_instance.stub(:save).and_return(false)
-        put :update, {:id => talk_type.to_param, :talk_type => { "name" => "invalid value" }}, valid_session
+        put :update, {:id => talk_type.to_param, :talk_type => { "name" => "invalid value" }}
         assigns(:talk_type).should eq(talk_type)
       end
 
@@ -140,7 +135,7 @@ describe TalkTypesController do
         talk_type = TalkType.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         TalkType.any_instance.stub(:save).and_return(false)
-        put :update, {:id => talk_type.to_param, :talk_type => { "name" => "invalid value" }}, valid_session
+        put :update, {:id => talk_type.to_param, :talk_type => { "name" => "invalid value" }}
         response.should render_template("edit")
       end
     end
@@ -150,13 +145,13 @@ describe TalkTypesController do
     it "destroys the requested talk_type" do
       talk_type = TalkType.create! valid_attributes
       expect {
-        delete :destroy, {:id => talk_type.to_param}, valid_session
+        delete :destroy, {:id => talk_type.to_param}
       }.to change(TalkType, :count).by(-1)
     end
 
     it "redirects to the talk_types list" do
       talk_type = TalkType.create! valid_attributes
-      delete :destroy, {:id => talk_type.to_param}, valid_session
+      delete :destroy, {:id => talk_type.to_param}
       response.should redirect_to(talk_types_url)
     end
   end
