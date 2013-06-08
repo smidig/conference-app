@@ -419,6 +419,7 @@ a:hover {
     .footer-wrapper {
       background: $primary-color;
       height: 350px;
+      overflow: hidden;
       color: $alternative-text-color;
 
       @include breakpoint('phones-to-tablets') {
@@ -545,4 +546,13 @@ html[xmlns] .clearfix {
 
 * html .clearfix {
   height: 1%;
+}
+
+@media (min-width: $navbarCollapseWidth) and (max-width: 980px) {
+  #header {
+    .menu-row {
+      margin: 0;
+      width: 100%;
+    }
+  }
 }
