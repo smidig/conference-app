@@ -3,7 +3,7 @@ class Order < ActiveRecord::Base
   attr_accessible :comment, :completed, :owner_user_id
   has_many :users
   has_one :payment
-  belongs_to :user, class_name: "User", foreign_key: "owner_user_id"
+  belongs_to :owner, class_name: "User", foreign_key: "owner_user_id"
   default_scope order('created_at DESC')
 
   def price
@@ -20,10 +20,6 @@ class Order < ActiveRecord::Base
 
   def payment_created
     !payment.nil?
-  end
-
-  def owner
-    User.find(self.owner_user_id) rescue nil
   end
 
   def finish
