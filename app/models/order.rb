@@ -1,6 +1,6 @@
 # encoding: UTF-8
 class Order < ActiveRecord::Base
-  attr_accessible :comment, :completed, :owner_user_id
+  attr_accessible :comment, :completed, :owner
   has_many :users
   has_one :payment
   belongs_to :owner, class_name: "User", foreign_key: "owner_user_id"
