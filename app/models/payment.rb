@@ -19,10 +19,6 @@ class Payment < ActiveRecord::Base
     save!
   end
 
-  def order
-    Order.find(order_id) rescue nil
-  end
-
   def finish
     transaction do
       self.completed_at = Time.now
