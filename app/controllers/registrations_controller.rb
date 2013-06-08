@@ -24,13 +24,10 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def after_sign_up_path_for(user)
-    # TODO: Send user to add talk if speaker
-    if (user.ticket.ticket_type == "regular")
-      orders_show_path
-    elsif (user.ticket.ticket_type == "speaker")
+    if user.ticket.ticket_type == "speaker"
       new_talk_path
     else
-      root_path
+      orders_show_path
     end
   end
 
