@@ -1,0 +1,7 @@
+csv.headers :name, :tlf, :company, :accepted_privacy, :twitter, :accepted_optional_email, :allergies, :ticket, :includes_dinner, :completed
+
+csv.rows @users do |csv, user|
+  csv.cells :name, :tlf, :company, :accepted_privacy, :twitter, :accepted_optional_email, :allergies, :includes_dinner
+  csv.cell :ticket, user.ticket.name
+  csv.cell :completed, user.completed?
+end

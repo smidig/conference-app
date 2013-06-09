@@ -9,6 +9,9 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @users }
+      format.csv  {
+        @filename = "Smidig_deltakere_#{Date.today.to_formatted_s(:db)}.csv"
+      }
     end
   end
 
