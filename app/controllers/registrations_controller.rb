@@ -24,10 +24,10 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def after_sign_up_path_for(user)
-    if user.ticket.ticket_type == "speaker"
-      new_talk_path
-    else
-      orders_show_path
+    case user.ticket.ticket_type
+      when 'speaker' then new_talk_path
+      when 'regular' then orders_show_path
+      when 'free'    then root_path
     end
   end
 
