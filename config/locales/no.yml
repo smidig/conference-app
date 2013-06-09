@@ -28,6 +28,13 @@
         manual_street_address: "Gateadresse (valgfri)"
         manual_post_code: "Postnr (valgfri)"
         manual_city: "By (valgfri)"
+      talk:
+        title: Tittel
+        description: Argumentasjon
+        talk_type: Type foredrag
+        presentation: Presentasjon
+        talk_category: Hovedkategori
+
 
     errors:
       models:
@@ -44,6 +51,10 @@
             ticket:
               not_active: "Valgt billett er ikke tilgjengelig lenger"
               blank: "Du må velge en billett"
+        talk:
+          attributes:
+            accepted_license:
+              accepted: "Du må godta vilkårene"
         payment:
           attributes:
             manual_contact_person:

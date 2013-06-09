@@ -25,6 +25,8 @@ module NavigationHelpers
         my_profile_index_path
       when /^the edit user registration page$/
         edit_user_registration_path
+      when /^the talk registration page$/
+        new_talk_path
       else
         raise "Can't find mapping from \"#{page_name}\" to a path.\n" +
                   "Now, go and add a mapping in #{__FILE__}"

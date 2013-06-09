@@ -1,8 +1,8 @@
 = simple_form_for @talk, :html => {:multipart => true, :class => 'form-horizontal' } do |f|
   = f.input :title
   = f.input :description, input_html: { :class => "span6", :rows => "10" }
-  = f.association :talk_type, :label => 'Type'
-  = f.association :talk_category, :label => 'Tema'
+  = f.association :talk_type
+  = f.association :talk_category
   - if @talk.presentation.file?
     %div.control-group
       %label.control-label
@@ -17,6 +17,7 @@
   - if @talk.user or (@talk.user and current_user.admin?)
     = f.input :new_user, :label => 'Legg til ekstra taler', :hint => '(e-post til registrert deltager)'
     = f.association :users, as: :check_boxes, collection: @talk.users, :label => 'Ekstra talere'
-      
+  = f.input :accepted_license, :as => :boolean, :inline_label => 'Jeg forstår at foredraget blir gjort tilgjengelig med en Creative Commons Navngivelse 3.0 Norge lisens.', :label => false
+
   .form-actions
-    = f.button :submit, :class => 'btn-primary', :value => 'Lagre endringer'
+    = f.button :submit, :class => 'btn-primary', :value => 'Send inn forslag!'
