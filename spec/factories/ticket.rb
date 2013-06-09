@@ -5,4 +5,8 @@ FactoryGirl.define do
     active true
     ticket_type 'regular'
   end
+
+  factory :free_ticket, :parent => :ticket do
+    ticket_type 'free'
+  end
 end

@@ -49,18 +49,55 @@ describe User do
       user.valid?.should be_false
     end
 
-    it "should have a default order after creation if no order was specified" do
-      user = FactoryGirl.create(:user)
+    context "when associated with a ticket of type 'regular'" do
+      it "should have a default order after creation if no order was specified" do
+        user = FactoryGirl.create(:user)
 
-      user.order.should_not be_nil
-      user.order.new_record?.should be_false
+        user.order.should_not be_nil
+        user.order.new_record?.should be_false
+      end
+
+      it "should have the still have the specified order after creation" do
+        user = FactoryGirl.create(:user)
+        another_user = FactoryGirl.create(:user, :order => user.order)
+
+        another_user.order.should == user.order
+      end
+
+      it "upon changing the ticket to one of type other than 'regular', should not have an order" do
+        free_ticket = FactoryGirl.create(:free_ticket)
+        user = FactoryGirl.create(:user)
+        user.ticket = free_ticket
+        user.save
+
+        expect {
+          user.order.reload
+        }.to raise_error(ActiveRecord::RecordNotFound)
+      end
     end
 
-    it "should have the still have the specified order after creation" do
-      user = FactoryGirl.create(:user)
-      another_user = FactoryGirl.create(:user, :order => user.order)
+    context "when associated with a ticket of type other than 'regular'" do
+      it "should not have a default order after creation if no order was specified" do
+        user = FactoryGirl.create(:user, :ticket => FactoryGirl.create(:free_ticket))
 
-      another_user.order.should == user.order
+        user.order.should be_nil
+      end
+
+      it "should have the still have the specified order after creation" do
+        user = FactoryGirl.create(:user)
+        another_user = FactoryGirl.create(:user, :order => user.order)
+
+        another_user.order.should == user.order
+      end
+
+      it "upon changing the ticket to one of type 'regular', should have a default order after creation if no order was specified" do
+        regular_ticket = FactoryGirl.create(:ticket)
+        user = FactoryGirl.create(:user, :ticket => FactoryGirl.create(:free_ticket))
+        user.ticket = regular_ticket
+        user.save
+
+        user.order.should_not be_nil
+      end
     end
   end
 end
