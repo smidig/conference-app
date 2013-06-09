@@ -62,6 +62,7 @@ group :test do
   gem 'cucumber-rails'
   gem 'launchy'
   gem 'database_cleaner'
+  gem 'webrat'
 end
 
 # To use debugger
