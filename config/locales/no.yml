@@ -51,6 +51,10 @@
             ticket:
               not_active: "Valgt billett er ikke tilgjengelig lenger"
               blank: "Du må velge en billett"
+        talk:
+          attributes:
+            accepted_license:
+              accepted: "Du må godta vilkårene"
         payment:
           attributes:
             manual_contact_person:
