@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
   has_one :owned_order, :class_name => 'Order', :foreign_key => 'owner_user_id'
   has_and_belongs_to_many :talks
 
-  after_create :create_default_order
+  after_save :correct_order, :if => :ticket_id_changed?
 
   private
 
@@ -36,12 +36,28 @@ class User < ActiveRecord::Base
     end
   end
 
+  def correct_order
+    if needs_order?
+      create_default_order
+    else
+      destroy_order
+    end
+  end
+
+  def needs_order?
+    ticket.ticket_type == 'regular'
+  end
+
   def create_default_order
-    if order.nil?
+    unless order
       transaction do
         create_order!(:owner => self)
         save!
       end
     end
+  end
+
+  def destroy_order
+    order.destroy if order
   end
 end
