@@ -11,7 +11,7 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
     = yield(:head)
-  %body.smidig
+  %body.smidig{:class=>"#{@body_class}"}
     #header.container
       .row-fluid
         .span10.offset1.menu-row

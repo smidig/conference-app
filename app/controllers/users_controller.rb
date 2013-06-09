@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_filter :require_admin
+  before_filter lambda { @body_class = 'admin' }
 
   # GET /users
   # GET /users.xml
