@@ -1,7 +1,8 @@
 # encoding: UTF-8
 class OrdersController < ApplicationController
-  before_filter :authenticate_user!, :only => [:show, :add_user, :new_user]
-  before_filter :require_admin, :only => [:index, :destroy]
+  authorize_user! :only => [:show, :add_user, :new_user]
+  authorize_admin! :only => [:index, :destroy]
+
   before_filter :redirect_if_order_completed, :only => [:add_user, :new_user]
 
   def index
