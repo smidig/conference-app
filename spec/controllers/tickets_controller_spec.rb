@@ -6,7 +6,7 @@ describe TicketsController, :type => :controller do
   # Ticket. As you add validations to Ticket, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    { "name" => "Student Ticket", "price" => "500" }
+    { "name" => "Student Ticket", "price" => "500", :ticket_type => "regular" }
   end
 
   # Creates an admin-user and login as that user.

@@ -4,7 +4,8 @@ Given /^there exist a visible ticket$/ do
       price: 1,
       ticket_type: 'regular',
       active: true,
-      visible: true
+      visible: true,
+      ticket_type: 'regular'
   ) if Ticket.visible.empty?
 end
 
