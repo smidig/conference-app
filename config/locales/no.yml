@@ -28,6 +28,13 @@
         manual_street_address: "Gateadresse (valgfri)"
         manual_post_code: "Postnr (valgfri)"
         manual_city: "By (valgfri)"
+      talk:
+        title: Tittel
+        description: Argumentasjon
+        talk_type: Type foredrag
+        presentation: Presentasjon
+        talk_category: Hovedkategori
+
 
     errors:
       models:
