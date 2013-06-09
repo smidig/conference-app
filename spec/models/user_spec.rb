@@ -49,7 +49,7 @@ describe User do
       user.valid?.should be_false
     end
 
-    it "should have a default after creation if no order was specified" do
+    it "should have a default order after creation if no order was specified" do
       user = FactoryGirl.create(:user)
 
       user.order.should_not be_nil
