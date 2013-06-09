@@ -22,6 +22,6 @@
       %th Bestilling
       %th.text-right FakturaID
   %tbody
-    =render 'manual_group', :payments => @uncomplete, :title => "Nye registeringer"
+    =render 'manual_group', :payments => @incomplete, :title => "Nye registeringer"
     =render 'manual_group', :payments => @invoiced, :title => "Faktura sent"
     =render 'manual_group', :payments => @completed, :title => "Betalt"

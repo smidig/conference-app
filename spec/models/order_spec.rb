@@ -9,11 +9,11 @@ describe Order do
 
     order = Order.new({
         :completed => false,
-        :owner_user_id => @user.id
+        :owner => @user
       })
 
     order.save!
-    @user.order_id = order.id
+    @user.order = order
     @user.save!
 
     order.users.size.should == 1
@@ -25,12 +25,12 @@ describe Order do
 
     order = Order.new({
         :completed => false,
-        :owner_user_id => @user.id
+        :owner => @user
       })
 
     order.save!
-    @user.order_id = order.id
-    @user2.order_id = order.id
+    @user.order = order
+    @user2.order = order
     @user.save!
     @user2.save!
 
@@ -40,12 +40,14 @@ describe Order do
 
     order = Order.new({
         :completed => false,
-        :owner_user_id => @user.id
+        :owner => @user
       })
 
     order.save!
-    @user.order_id = order.id
-    @user2.order_id = order.id
+
+    @user.order = order
+    @user2.order = order
+
     @user.save!
     @user2.save!
 
