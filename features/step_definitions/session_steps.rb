@@ -32,3 +32,7 @@ Given(/^I am logged in as a user with email "(.*?)" and password "(.*?)"$/) do |
   step %{I press "Logg på"}
   step %(I should be logged in)
 end
+
+Then /^the "([^"]*)" drop-down should contain the option "([^"]*)"$/ do |id, value|
+  page.should have_xpath "//select[@id = '#{id}']/option[text() = '#{value}']"
+end
