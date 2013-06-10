@@ -23,8 +23,6 @@ module NavigationHelpers
         users_path
       when /^the my profile page$/
         my_profile_index_path
-      when /^the edit user registration page$/
-        edit_user_registration_path
       when /^the talk registration page$/
         new_talk_path
       else
