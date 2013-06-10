@@ -36,8 +36,8 @@ describe Payment do
         :manual_company_email => 'me@email.com'
       })
     payment.save!
-    time = Time.new
-    payment.invoice_id.should eq("#{time.year}t#{payment.id}")
+    time = Time.new.strftime("%Y%m%d")
+    payment.invoice_id.should eq("#{time}t#{payment.id}")
   end
 
   it "should finish payment" do

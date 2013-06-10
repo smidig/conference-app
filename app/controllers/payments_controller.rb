@@ -2,6 +2,7 @@ class PaymentsController < ApplicationController
   before_filter :require_admin, :only => [:index, :show, :destroy, :manual, :invoice_sent, :finish]
   before_filter :max_one_payment_per_order, :only => [:new_paypal, :new_manual, :create_manual]
   before_filter :require_admin_or_order_owner, :only => [:new_paypal, :new_manual, :create_manual]
+  before_filter lambda { @body_class = 'admin' }, :only => [:index, :manual]
 
   def index
     @payments = Payment.all
