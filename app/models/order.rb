@@ -1,9 +1,9 @@
 # encoding: UTF-8
 class Order < ActiveRecord::Base
-  attr_accessible :comment, :completed, :owner_user_id
+  attr_accessible :comment, :completed, :owner
   has_many :users
   has_one :payment
-  belongs_to :user, class_name: "User", foreign_key: "owner_user_id"
+  belongs_to :owner, class_name: "User", foreign_key: "owner_user_id"
   default_scope order('created_at DESC')
 
   def price
@@ -11,30 +11,26 @@ class Order < ActiveRecord::Base
   end
 
   def status
-    if self.payment
-      self.payment.status
+    if payment
+      payment.status
     else
       "Ingen betaling startet"
     end
   end
 
   def payment_created
-    return self.payment != nil
-  end
-
-  def owner
-    User.find(self.owner_user_id) rescue nil
+    !payment.nil?
   end
 
   def finish
-    self.transaction do
-      self.users.each do |user|
-        user.completed=true
+    transaction do
+      users.each do |user|
+        user.completed = true
         user.save!
         SmidigMailer.payment_confirmation(user).deliver
       end
-      self.completed=true
-      self.save!
+      self.completed = true
+      save!
     end
   end
 

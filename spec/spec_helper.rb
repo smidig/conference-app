@@ -21,7 +21,6 @@ Spork.prefork do
 
   RSpec.configure do |config|
 
-    config.extend ControllerMacros, :type => :controller
     # == Mock Framework
     #
     # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:
@@ -49,7 +48,10 @@ Spork.prefork do
     # the seed, which is printed after each run.
     #     --seed 1234
     config.order = "random"
+
+    config.extend  AuthenticationMacros
     config.include Devise::TestHelpers, :type => :controller
+    config.extend  ControllerMacros,    :type => :controller
 
     config.before(:suite) do
       I18n.locale = 'en'

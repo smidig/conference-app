@@ -23,7 +23,7 @@ class PaypalPayment < Payment
   end
 
   def status
-    if self.completed?
+    if completed?
       "Betalt"
     else
       "Venter på betaling hos paypal"

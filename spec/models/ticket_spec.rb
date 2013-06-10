@@ -12,8 +12,13 @@ describe Ticket do
       ticket.invalid?.should be_true
       ticket.errors[:price].should be_true
     end
+    it "should require a type" do
+      ticket = Ticket.new(:ticket_type => nil)
+      ticket.invalid?.should be_true
+      ticket.errors[:ticket_type].should be_true
+    end
     it "should create new instance" do
-      ticket = Ticket.new(:price=>3000, :name=>"Early Bird")
+      ticket = Ticket.new(:price=>3000, :name=>"Early Bird", :ticket_type=>"regular")
       ticket.save!
       ticket.valid?.should be_true
       Ticket.find(ticket.id).should eq(ticket)
