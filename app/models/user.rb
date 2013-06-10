@@ -21,14 +21,43 @@ class User < ActiveRecord::Base
 
   belongs_to :ticket
   belongs_to :order
+  has_one :owned_order, :class_name => 'Order', :foreign_key => 'owner_user_id'
   has_and_belongs_to_many :talks
 
+  after_save :correct_order, :if => :ticket_id_changed?
+
+  private
+
   def require_active_ticket
-      if not self.ticket
-        errors.add(:ticket, :blank)
-      elsif not self.ticket.active
-        errors.add(:ticket, :not_active)
-      end
+    if ticket and !ticket.active
+      errors.add(:ticket, :not_active)
+    elsif ticket.nil?
+      errors.add(:ticket, :blank)
+    end
   end
 
+  def correct_order
+    if needs_order?
+      create_default_order
+    else
+      destroy_order
+    end
+  end
+
+  def needs_order?
+    ticket.ticket_type == 'regular'
+  end
+
+  def create_default_order
+    unless order
+      transaction do
+        create_order!(:owner => self)
+        save!
+      end
+    end
+  end
+
+  def destroy_order
+    order.destroy if order
+  end
 end

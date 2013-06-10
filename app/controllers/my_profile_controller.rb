@@ -10,7 +10,7 @@ class MyProfileController < ApplicationController
     @user = current_user
     @order = current_user.order
 
-    if @user.completed? and @user.ticket
+    if @user.completed? && @user.ticket
       render :layout => false
     else
       flash[:error] = "Kan ikke vise kvittering. Du har ikke betalt eller mangler billett."
@@ -19,7 +19,7 @@ class MyProfileController < ApplicationController
   end
 
   def dinner_registration
-    current_user.includes_dinner = params[:dinner] == "yes" ? true : false
+    current_user.includes_dinner = params[:dinner] == "yes"
     current_user.save!
     respond_to do |format|
       format.html { redirect_to :action => "index" }

@@ -16,19 +16,15 @@ class Payment < ActiveRecord::Base
     else
       self.invoice_id = "#{time.year}t#{id}"
     end
-    self.save!
-  end
-
-  def order
-    Order.find(self.order_id) rescue nil
+    save!
   end
 
   def finish
-    self.transaction do
+    transaction do
       self.completed_at = Time.now
       self.completed = true
-      self.order.finish
-      self.save!
+      order.finish
+      save!
     end
   end
 end

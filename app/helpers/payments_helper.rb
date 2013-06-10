@@ -1,5 +1,5 @@
 module PaymentsHelper
-  def manual_adress(payment)
+  def manual_address(payment)
     content_tag(:div) do
       if payment.manual_company_email
           payment.manual_company_email
