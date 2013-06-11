@@ -42,14 +42,6 @@ module Authorization
     redirect_to path
   end
 
-  def after_sign_in_path
-    if request.get?
-      request.fullpath
-    else
-      request_referer_if_on_current_domain
-    end
-  end
-
   def request_referer_if_on_current_domain
     if request.referer and request.referer.include? request.host
       request.referer
