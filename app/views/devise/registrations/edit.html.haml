@@ -8,6 +8,7 @@
   = f.input :company
   = f.input :twitter, :placeholder => '@username'
   = f.input :allergies
+  = f.input :role, collection: @user.roles
   = f.input :accepted_optional_email, :inline_label => 'Jeg ønsker epost om tilsvarende arrangementer', :label => false
   = f.input :includes_dinner, :inline_label=> 'Jeg deltar på konferansemiddagen', :label => false
   = f.input :current_password, :hint => "Vi trenger ditt nåverende passord for å bekrefte endringen", :required => true

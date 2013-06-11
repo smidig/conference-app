@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
-  attr_accessible :name, :tlf, :company, :accepted_privacy, :twitter, :accepted_optional_email, :allergies, :ticket_id, :order, :includes_dinner
+  attr_accessible :name, :tlf, :company, :role, :accepted_privacy, :twitter, :accepted_optional_email, :allergies, :ticket_id, :order, :includes_dinner
 
   # validations
   validates_presence_of :name, :tlf, :company
@@ -25,6 +25,21 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :talks
 
   after_save :correct_order, :if => :ticket_id_changed?
+
+  def roles
+    [
+      "Utvikler",
+      "Arkitekt",
+      "Tester",
+      "Drifter",
+      "Designer",
+      "UX spesialist",
+      "Prosjektleder",
+      "Linjeleder",
+      "Direktør",
+      "Annet"
+    ]
+  end
 
   private
 

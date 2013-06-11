@@ -20,6 +20,7 @@
         allergies: "Allergier"
         current_password: "Nåværende passord"
         remember_me: "Husk meg"
+        role: "Hva er din jobbrolle?"
       payment:
         manual_contact_person: "Kontaktperson"
         manual_company_name: "Firmanavn"
