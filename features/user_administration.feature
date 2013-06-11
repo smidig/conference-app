@@ -17,12 +17,12 @@ Feature: User administration
     Given there is a user with email "valid@user.com" and password "password"
     When I am logged in as a user with email "valid@user.com" and password "password"
     And I go to the users admin page
-    Then I should see a flash message saying "You must be an admin to access this view."
+    Then I should see a flash message saying "Du er nødt være logget inn som en administrator for å få tilgang til denne siden."
     And I should be on the home page
 
   Scenario: Should require to login as admin to access users admin page
     Given I am on the home page
     And I should not be logged in
     When I go to the users admin page
-    Then I should see a flash message saying "You must login as an admin to access this view."
+    Then I should see a flash message saying "Du er nødt til å logge inn for å få tilgang til denne siden."
     And I should be on the login page

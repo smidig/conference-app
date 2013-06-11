@@ -1,0 +1,4 @@
+en:
+  authorization:
+    requires_user_privileges: 'You must log in in order to access this page.'
+    requires_admin_privileges: 'You must be logged in as an administrator in order to access this page.'

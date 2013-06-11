@@ -51,7 +51,8 @@ ConferenceApp::Application.routes.draw do
   resources :payments
 
   # user stuff
-  devise_for :users, :controllers => { :registrations => "registrations"}
+  devise_for :users, :controllers => { :registrations => "registrations",
+                                       :sessions => "sessions" }
   get "users/make_admin"
   match "users/complete/:id" => "users#complete"
   resources :users

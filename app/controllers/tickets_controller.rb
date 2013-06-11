@@ -1,6 +1,4 @@
 class TicketsController < ApplicationController
-  before_filter :require_admin
-
   # GET /tickets
   # GET /tickets.json
   def index

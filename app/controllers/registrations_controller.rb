@@ -1,4 +1,6 @@
 class RegistrationsController < Devise::RegistrationsController
+  no_authorization!
+
   def new
     set_up_default_tickets
     super

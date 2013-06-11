@@ -1,3 +1,3 @@
 class AdministrationController < ApplicationController
-	before_filter :require_admin
+  authorize_admin!
 end
