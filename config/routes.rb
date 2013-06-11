@@ -44,6 +44,7 @@ ConferenceApp::Application.routes.draw do
   get "payments/new_paypal"
   get "payments/new_manual"
   post "payments/create_manual"
+  put "payments/update_manual"
   get "payments/complete"
   get "payments/manual"
   get "payments/finish"
