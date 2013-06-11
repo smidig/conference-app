@@ -2,9 +2,11 @@
 
 :markdown
   ## Paypal info:
-  - **paypal_params:** #{@payment.paypal_params}
-  - **paypal_tx_id:** #{@payment.paypal_tx_id}
-  - **paypal_tx_type:** #{@payment.paypal_tx_type}
-  - **paypal_currency:** #{@payment.paypal_currency}
-  - **paypal_status:** #{@payment.paypal_status}
-  - **paypal_payer_email:** #{@payment.paypal_payer_email}
+  - **tx_id:** #{@payment.paypal_tx_id}
+  - **tx_type:** #{@payment.paypal_tx_type}
+  - **currency:** #{@payment.paypal_currency}
+  - **status:** #{@payment.paypal_status}
+  - **payer_email:** #{@payment.paypal_payer_email}
+  - **Alle parameter:** #{@payment.paypal_params}
+
+= link_to 'Vis alle betalinger', payments_path
