@@ -139,6 +139,10 @@ Then you can push to testsmidig/smidig2013 with the following command:
 
     git push testsmidig master
 
+If you change the database you typically have to run migration:
+
+    heroku run rake db:migrate --app testsmidig
+
 ## Issue tracker
 
 We use Trello.com as [our kanban board](https://trello.com/board/smidig-app-2013/515daaeba00d423573004a20) to manage our user stories.
