@@ -6,38 +6,37 @@
       Om konferansen
   %li
     = link_to('Sponse', info_sponsor_path, {:class=>current_page?(info_sponsor_path) ? "active" : ""})
-  - unless Rails.env.production?
+  %li
+    = link_to('Foreslå foredrag', new_talk_path, {:class=>current_page?(new_talk_path) ? "active" : ""})
+  %li
+    = link_to('Min profil', my_profile_index_path, {:class=>current_page?(my_profile_index_path) ? "active" : ""})
+  - if user_signed_in?
     %li
-      = link_to('Foreslå foredrag', new_talk_path, {:class=>current_page?(new_talk_path) ? "active" : ""})
+      = link_to('Logout', destroy_user_session_path, :method=>'delete')
+  - else
     %li
-      = link_to('Min profil', my_profile_index_path, {:class=>current_page?(my_profile_index_path) ? "active" : ""})
-    - if user_signed_in?
-      %li
-        = link_to('Logout', destroy_user_session_path, :method=>'delete')
-    - else
-      %li
-        = link_to('Meld deg på!', new_user_registration_path, {:class=>current_page?(new_user_registration_path) ? "active" : ""})
-    - if user_signed_in? and current_user.admin
+      = link_to('Meld deg på!', new_user_registration_path, {:class=>current_page?(new_user_registration_path) ? "active" : ""})
+  - if user_signed_in? and current_user.admin
 
-      %li
-        %a
-          Admin
-        %ul
-          %li
-            %a{:href => "#{users_path}"} Deltakere
-          %li
-            %a{:href => "#{orders_path}"} Bestillinger
-          %li
-            %a{:href => "#{payments_path}"} Betalinger
-          %li
-            %a{:href => "#{tickets_path}"} Billetter
-          %li
-            %a{:href => "#{talks_path}"} Foredrag
-          %li
-            %a{:href => "#{talk_types_path}"} Foredragstyper
-          %li
-            %a{:href => "#{sponsors_path}"} Sponsorer
-          %li
-            %a{:href => "#{talk_categories_path}"} Foredragskategorier
-          %li
-            = link_to("Statistikk", administration_statistics_path)
+    %li
+      %a
+        Admin
+      %ul
+        %li
+          %a{:href => "#{users_path}"} Deltakere
+        %li
+          %a{:href => "#{orders_path}"} Bestillinger
+        %li
+          %a{:href => "#{payments_path}"} Betalinger
+        %li
+          %a{:href => "#{tickets_path}"} Billetter
+        %li
+          %a{:href => "#{talks_path}"} Foredrag
+        %li
+          %a{:href => "#{talk_types_path}"} Foredragstyper
+        %li
+          %a{:href => "#{sponsors_path}"} Sponsorer
+        %li
+          %a{:href => "#{talk_categories_path}"} Foredragskategorier
+        %li
+          = link_to("Statistikk", administration_statistics_path)
