@@ -1,4 +1,6 @@
 class TalkTypesController < ApplicationController
+  authorize_admin!
+
   # GET /talk_types
   # GET /talk_types.json
   def index

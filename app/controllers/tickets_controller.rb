@@ -1,4 +1,6 @@
 class TicketsController < ApplicationController
+  authorize_admin!
+
   # GET /tickets
   # GET /tickets.json
   def index
