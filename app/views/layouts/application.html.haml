@@ -19,6 +19,7 @@
             %a.brand{:href=>"/"}
               Smidig 2013
             = render 'layouts/navigation'
+            = render 'layouts/messages' unless flash.empty?
       - if current_page?('/')
         .row-fluid
           .span12
@@ -31,7 +32,6 @@
     #main.container
       .row-fluid
         .span10.offset1.content-wrapper
-          = render 'layouts/messages'
           = yield
     - if !current_page?('/')
       = render :partial => 'sponsors/list'
