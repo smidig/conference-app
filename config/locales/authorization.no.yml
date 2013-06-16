@@ -1,4 +1,5 @@
 'no':
   authorization:
+    requires_rule_definition: 'Denne siden er utilgjengelig som følge av manglende regel for tilgang.'
     requires_user_privileges: 'Du er nødt til å logge inn for å få tilgang til denne siden.'
     requires_admin_privileges: 'Du er nødt være logget inn som en administrator for å få tilgang til denne siden.'

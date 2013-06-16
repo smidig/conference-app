@@ -3,10 +3,10 @@ class ApplicationController < ActionController::Base
 
   include Authorization
 
-  # Every actions requires admin privileges by default. This behavior can be overridden
+  # Every action in deemed inaccessible to by default. This behavior can be overriden
   # by using #no_authorization!, #authorize_user! or #authorize!. This ensures that we
   # whitelist access to controller actions, instead of blacklist.
-  authorize_admin!
+  deny_everything!
 
   private
 

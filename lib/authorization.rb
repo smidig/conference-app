@@ -50,6 +50,12 @@ module Authorization
 
   module ClassMethods
 
+    def deny_everything!
+      add_authorization_rule do
+        permission_denied(t('authorization.requires_rule_definition'))
+      end
+    end
+
     def no_authorization!(options = {})
       add_authorization_rule(options) do
         # No operation

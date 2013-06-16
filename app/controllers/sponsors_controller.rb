@@ -1,4 +1,6 @@
 class SponsorsController < ApplicationController
+  authorize_admin!
+
   # GET /sponsors
   # GET /sponsors.json
   def index
