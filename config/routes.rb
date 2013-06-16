@@ -1,6 +1,9 @@
 ConferenceApp::Application.routes.draw do
-  resources :talk_comments
 
+  resources :talk_comments
+  resources :roomslots
+  resources :rooms
+  resources :timeslots
 
   root :to => "info#index"
 

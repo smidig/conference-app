@@ -40,3 +40,8 @@ TalkCategory.create(name: 'Smidig programmering')
 TalkCategory.create(name: 'Lean startup')
 
 Sponsor.create(name: "Smidig 2013", url: "http://2013.smidig.no/info/sponsor", imageUrl: "https://googledrive.com/host/0Bxbse3ziIO6GUmYwQ0VxME1TRUE/sponsor.png")
+
+Room.create(name: "Olympia")
+Room.create(name: "Film")
+Room.create(name: "Kunst")
+Room.create(name: "Foajé")

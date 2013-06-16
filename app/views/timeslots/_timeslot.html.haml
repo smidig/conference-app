@@ -1,0 +1,23 @@
+.timeslot
+  = link_to 'Endre', edit_timeslot_path(timeslot)
+  = link_to 'Slett', timeslot, :method => :delete, :data => { :confirm => 'Are you sure?' }
+  %br
+  Start: #{timeslot.start.to_formatted_s(:long)}
+  %br
+  Slutt: #{timeslot.end.to_formatted_s(:long)}
+  .rooms
+    - timeslot.roomslot.each do |roomslot|
+      .room
+        Room: #{roomslot.room.name}
+        .talks
+          Talks:
+          %br
+          - roomslot.talks.each do |talk|
+            .talk
+              %h4 #{talk.title}
+        = link_to 'Edit', edit_roomslot_path(roomslot)
+        = link_to 'Slett', roomslot, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+    .clear
+  %a(href="#{new_roomslot_path}?timeslot_id=#{timeslot.id}")
+    Legg til rom

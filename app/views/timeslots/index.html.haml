@@ -1,0 +1,7 @@
+%h1 Listing timeslots
+
+- @timeslots.each do |timeslot|
+  = render 'timeslot', :timeslot => timeslot
+
+%p
+  = link_to 'Legg til timeslot', new_timeslot_path
