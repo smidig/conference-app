@@ -1,0 +1,7 @@
+
+= simple_form_for @timeslot, :html => { :class => 'form-horizontal' } do |f|
+  = f.input :start
+  = f.input :end
+
+  .actions
+    = f.button :submit, :class => 'btn-primary'

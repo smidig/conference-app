@@ -1,0 +1,12 @@
+p#notice= notice
+
+%p
+  %b Start:
+  = @timeslot.start
+%p
+  %b End:
+  = @timeslot.end
+
+= link_to 'Edit', edit_timeslot_path(@timeslot)
+\|
+= link_to 'Back', timeslots_path
