@@ -346,6 +346,11 @@ a:hover {
 
   .news {
     margin-top: 20px;
+    @include breakpoint('phones-to-tablets') {
+      article {
+        margin-top: 10px;
+      }
+    }
   }
 
   // Global styling of text-views...
@@ -419,6 +424,9 @@ a:hover {
             margin-bottom: 10px;
             float: left;
             width: 49%;
+            img {
+              width: 100px;
+            }
           }
         }
       }
