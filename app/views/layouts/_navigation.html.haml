@@ -5,7 +5,7 @@
     %a{:href => "#{info_about_path}", :class=>current_page?(info_about_path) ? "active" : ""}
       Om konferansen
   %li
-    = link_to('Sponse', info_sponsor_path, {:class=>current_page?(info_sponsor_path) ? "active" : ""})
+    = link_to('Sponsor', info_sponsor_path, {:class=>current_page?(info_sponsor_path) ? "active" : ""})
   %li
     = link_to('Foreslå foredrag', new_talk_path, {:class=>current_page?(new_talk_path) ? "active" : ""})
   %li
