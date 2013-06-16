@@ -1,24 +1,48 @@
 .row-fluid.news
   .span6
-    :markdown
-      ## Sponse smidig?
+    %article
+      :markdown
+        ## Sponse smidig?
 
-      Konferansen finansieres av deltakeravgift og sponsormidler.
-      Å være sponsor for Smidig 2013 er et sterkt signal om at selskapet stiller seg
-      bak bevegelsen for smidige metoder og støtter opp under det frivillige initiativet som er
-      drivkraften bak arrangement.
+        Konferansen finansieres av deltakeravgift og sponsormidler.
+        Å være sponsor for Smidig 2013 er et sterkt signal om at selskapet stiller seg
+        bak bevegelsen for smidige metoder og støtter opp under det frivillige initiativet som er
+        drivkraften bak arrangement.
 
-      [Les mer om å sponse Smidig 2013](#{info_sponsor_path})
+      %a.btn(href="#{info_sponsor_path}")
+        Les mer om å sponse Smidig 2013
+
   .span6
-    :markdown
-      ## Vil du snakke på Smidig?
+    %article
+      :markdown
+        ## Vil du snakke på Smidig?
 
-      Å snakke på Smidig er en fin mulighet til å spre kunnskap og siste erfaringer innen smidig utvikling.
-      Kanskje klarer du å inspirere eller provosere frem en god open space som arrangeres senere på dagen?
-      I fjor hadde vi 64 lyntaler og 8 workshopper. For å få til dette trenger vi gode foredragsholdere!
+        Å snakke på Smidig er en fin mulighet til å spre kunnskap og siste erfaringer innen smidig utvikling.
+        Kanskje klarer du å inspirere eller provosere frem en god open space som arrangeres senere på dagen?
+        I fjor hadde vi 64 lyntaler og 8 workshopper. For å få til dette trenger vi gode foredragsholdere!
 
-    %a.btn.pull-right(href="#{new_talk_path}")
-      Send inn din lyntale eller workshop
+      %a.btn.pull-right(href="#{new_talk_path}")
+        Foreslå lyntale eller workshop
+
+.row-fluid.news
+  .span6
+    %article 
+      :markdown
+        ## Det beste fra Smidig 2012
+
+        Trenger du inspirasjon?  Basert på deltakerenes tilbakemeldinger direkte etter fordragene i fjor har 
+        vi samlet de videoene som fikk høyest score. En perfekt måte å lade opp til Smidig 2013!
+
+      %a.btn(href="#{info_godbiter_path}")
+        Se topp 10 fra 2012
+
+  .span6
+    %article
+      :markdown
+        ## Få med deg det som skjer
+
+        Vi har en egen side på Facebook, her får du løpende oppdatering og interessant stoff om Smidig!
+      .fb-like.pull-right{"data-href" => "http://www.facebook.com/smidig", "data-send" => "true", "data-show-faces" => "true", "data-width" => "150"}
 
     -#
       .span6
