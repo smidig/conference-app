@@ -1,10 +1,12 @@
 # encoding: UTF-8
 class TalksController < ApplicationController
-  no_authorization! :only => [:index, :show, :new]
+  no_authorization! :only => [:new, :show]
+
+  authorize_admin! :only => [:index, :vote, :destroy]
 
   authorize_user! :only => :create
 
-  authorize! :only => [:edit, :update, :destroy] do
+  authorize! :only => [:edit, :update] do
     talk = Talk.find(params[:id])
 
     unless current_user.admin? || talk.user == current_user

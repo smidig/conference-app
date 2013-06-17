@@ -1,14 +1,13 @@
-%header
-  %h1
-    =@talk.title
-  %em.author
-    =@talk.user.name
-    - for user in @talk.users
-      ,
-      =user.name
+.row-fluid
+  .span8
+    %header
+      %h1
+        =@talk.title
+      %em.author
+        =@talk.user.name
+        - for user in @talk.users
+          ,
+          =user.name
 
-%div.row
-  %div.span8
-    =simple_format @talk.description
-
-  %div.span4
+    %p
+      =simple_format @talk.description

@@ -1,7 +1,7 @@
 class PaymentsController < ApplicationController
   authorize_admin! :only => [:index, :show, :destroy, :manual, :invoice_sent, :finish, :update_manual]
 
-  authorize_user! :only => [:paypal_completed, :manual_completed]
+  authorize_user! :only => [:paypal_completed, :manual_completed, :complete]
 
   authorize! :only => [:new_paypal, :new_manual, :create_manual] do
     if params[:order_id]
