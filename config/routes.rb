@@ -53,7 +53,8 @@ ConferenceApp::Application.routes.draw do
 
   # user stuff
   devise_for :users, :controllers => { :registrations => "registrations",
-                                       :sessions => "sessions" }
+                                       :sessions => "sessions",
+                                       :passwords => "passwords" }
   get "users/make_admin"
   match "users/complete/:id" => "users#complete"
   resources :users
