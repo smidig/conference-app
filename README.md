@@ -54,6 +54,12 @@ Start in the folder where you want to checkout the code to. Clone the project fr
     $ bundle install 
     $ rake db:migrate
     $ rake db:seed
+    
+
+#### Protip! 
+If you don't want to install a postgres locally you can specify bundle install without production requirements:
+
+    $ bundle install --without production
 
 ### Server
 You can start the server with the following command:
