@@ -1,25 +1,9 @@
-=if @ticket.errors.any?
-  #error_explanation
-    %h2 Form is invalid
-    %ul
-      -for message in  @ticket.errors.full_messages
-        %li= message
+= simple_form_for @ticket, :html => { :class => 'form-horizontal' } do |f|
+  = f.input :name
+  = f.input :price
+  = f.input :active
+  = f.input :visible
+  = f.input :ticket_type, :collection => Ticket::TICKET_TYPES
 
-=form_for @ticket  do |f|
-  %div{:class => "field"}
-    =f.label :name
-    =f.text_field :name
-  %div{:class => "field"}
-    =f.label :price
-    =f.text_field :price
-  %div{:class => "field"}
-    =f.label :active
-    =f.check_box :active
-  %div{:class => "field"}
-    =f.label :visible
-    =f.check_box :visible
-  %div{:class => "field"}
-    =f.label :ticket_type
-    =f.select :ticket_type, options_for_select(Ticket::TICKET_TYPES)
-  %div{:class => "actions"}
-    =f.submit
+  .form-actions
+    = f.button :submit, :class => 'btn-primary'
