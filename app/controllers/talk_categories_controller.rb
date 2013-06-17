@@ -1,5 +1,5 @@
 class TalkCategoriesController < ApplicationController
-  before_filter :require_admin
+  authorize_admin!
 
   # GET /talk_categories
   # GET /talk_categories.json

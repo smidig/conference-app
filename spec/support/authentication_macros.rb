@@ -35,7 +35,7 @@ module AuthenticationMacros
           end
 
           it "should set an error message explaining that they must log in as an user" do
-            flash[:alert].should == 'You need to sign in or sign up before continuing.'
+            flash[:alert].should == 'You must log in in order to access this page.'
           end
         end
 
@@ -67,7 +67,7 @@ module AuthenticationMacros
           end
 
           it "should set an error message explaining that they must log in as an administrator" do
-            flash[:notice].should == 'You must login as an admin to access this view.'
+            flash[:alert].should == 'You must log in in order to access this page.'
           end
         end
 
@@ -82,7 +82,7 @@ module AuthenticationMacros
           end
 
           it "should set an error message explaining that only administrators can access the page" do
-            flash[:alert].should == 'You must be an admin to access this view.'
+            flash[:alert].should == 'You must be logged in as an administrator in order to access this page.'
           end
         end
 

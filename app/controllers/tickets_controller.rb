@@ -1,5 +1,5 @@
 class TicketsController < ApplicationController
-  before_filter :require_admin
+  authorize_admin!
 
   # GET /tickets
   # GET /tickets.json

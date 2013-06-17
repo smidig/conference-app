@@ -1,7 +1,21 @@
 class PaymentsController < ApplicationController
-  before_filter :require_admin, :only => [:index, :show, :destroy, :manual, :invoice_sent, :finish, :update_manual]
+  authorize_admin! :only => [:index, :show, :destroy, :manual, :invoice_sent, :finish, :update_manual]
+
+  authorize_user! :only => [:paypal_completed, :manual_completed]
+
+  authorize! :only => [:new_paypal, :new_manual, :create_manual] do
+    if params[:order_id]
+      order = Order.find(params[:order_id])
+    elsif params[:manual_payment][:order_id]
+      order = Order.find(params[:manual_payment][:order_id])
+    end
+
+    unless current_user.admin || order.owner == current_user
+      permission_denied('Du er ikke eier av bestillingen')
+    end
+  end
+
   before_filter :max_one_payment_per_order, :only => [:new_paypal, :new_manual, :create_manual]
-  before_filter :require_admin_or_order_owner, :only => [:new_paypal, :new_manual, :create_manual]
   before_filter lambda { @body_class = 'admin' }, :only => [:index, :manual]
 
   def index
@@ -146,19 +160,6 @@ class PaymentsController < ApplicationController
       redirect_to get_paypal_url(order.payment)
     elsif order.payment
       max_one order
-    end
-  end
-
-  def require_admin_or_order_owner
-    if params[:order_id]
-      order = Order.find(params[:order_id])
-    elsif params[:manual_payment][:order_id]
-      order = Order.find(params[:manual_payment][:order_id])
-    end
-
-    unless current_user.admin or order.owner == current_user
-      flash[:notice] = 'Du er ikke eier av bestillingen'
-      redirect_to info_index_url
     end
   end
 

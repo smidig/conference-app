@@ -1,5 +1,5 @@
 class MyProfileController < ApplicationController
-  before_filter :authenticate_user!
+  authorize_user!
 
   def index
     @user = current_user

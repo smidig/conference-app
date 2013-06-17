@@ -1,8 +1,18 @@
 # encoding: UTF-8
 class TalksController < ApplicationController
-  before_filter :authenticate_user! , :except => [:index, :show, :new]
-  before_filter :redirect_to_create_user_if_not_logged_in, :only => [:new]
-  before_filter :require_admin_or_talk_owner, :only => [:destroy, :edit]
+  no_authorization! :only => [:index, :show, :new]
+
+  authorize_user! :only => :create
+
+  authorize! :only => [:edit, :update, :destroy] do
+    talk = Talk.find(params[:id])
+
+    unless current_user.admin? || talk.user == current_user
+      permission_denied('Du er ikke taleren som opprettet denne talk', my_profile_index_path)
+    end
+  end
+
+  before_filter :redirect_to_create_user_if_not_logged_in, :only => :new
 
   # GET /talks
   # GET /talks.json
@@ -105,22 +115,11 @@ class TalksController < ApplicationController
     end
   end
 
-  def require_admin_or_talk_owner
-    if params[:id]
-      talk = Talk.find(params[:id])
-    end
-
-    unless current_user.admin? || talk.user == current_user
-      flash[:notice] = 'Du er ikke taleren som opprettet denne talk'
-      redirect_to :back
-    end
-  end
-
   private
 
   def redirect_to_create_user_if_not_logged_in
     if not current_user
-      store_location
+      session[:return_to] = request.fullpath
       flash[:notice] = "Du må opprette en bruker før du kan registrere en lyntale eller workshop. " +
                        "Dersom du allerede har en bruker kan du logge inn via \"Min Profil\"."
       redirect_to new_user_registration_path(:ticket_name=>"Speaker")
