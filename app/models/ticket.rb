@@ -8,11 +8,11 @@ class Ticket < ActiveRecord::Base
   validates :ticket_type, :inclusion => {:in => TICKET_TYPES}
 
   def self.default
-    Ticket.find(:all, :conditions => { :visible => true, :active => true }).first
+    visible.first
   end
 
   def self.visible
-    Ticket.find(:all, :conditions => { :visible => true, :active => true })
+    Ticket.find(:all, :conditions => { :visible => true, :active => true }, :order => "price asc")
   end
 
   def mva
