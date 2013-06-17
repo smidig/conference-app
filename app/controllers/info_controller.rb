@@ -1,1 +1,3 @@
-class InfoController < ApplicationController; end
+class InfoController < ApplicationController
+  no_authorization!
+end

@@ -1,24 +1,17 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
+  include Authorization
+
+  # Every action in deemed inaccessible to by default. This behavior can be overriden
+  # by using #no_authorization!, #authorize_user! or #authorize!. This ensures that we
+  # whitelist access to controller actions, instead of blacklist.
+  deny_everything!
+
   private
 
   def admin?
     current_user.try(:admin)
-  end
-
-  def require_admin
-    if current_user and !current_user.admin
-      flash[:alert] = "You must be an admin to access this view."
-      redirect_to root_path
-    elsif !current_user
-      flash[:notice] = "You must login as an admin to access this view."
-      redirect_to new_user_session_url
-    end
-  end
-
-  def store_location
-    session[:return_to] = request.fullpath
   end
 
 end

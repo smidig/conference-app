@@ -1,6 +1,8 @@
 # encoding: UTF-8
 require "net/http"
 class PaymentNotificationsController < ApplicationController
+  no_authorization!
+
   skip_before_filter :verify_authenticity_token
 
   def create

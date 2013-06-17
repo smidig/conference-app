@@ -1,5 +1,5 @@
 class SponsorsController < ApplicationController
-  before_filter :require_admin
+  authorize_admin!
   before_filter lambda { @body_class = 'admin' }  
 
   # GET /sponsors
