@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  no_authorization! :only => :password
+  authorize_admin!
+
   before_filter lambda { @body_class = 'admin' }
 
   # GET /users
