@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe TalksController do
 
-  login_user
+  login_admin
 
   describe "GET 'index'" do
     it "returns http success" do
