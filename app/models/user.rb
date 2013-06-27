@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
 
   after_save :correct_order, :if => :ticket_id_changed?
 
-  #after_create :follow_user_on_twitter
+  after_create :follow_user_on_twitter
 
   def roles
     [
@@ -82,11 +82,12 @@ class User < ActiveRecord::Base
     order.destroy if order
   end
 
-  def follow_user_on_twitter 
+  def follow_user_on_twitter
     unless twitter.blank?
       begin
-        Twitter.follow(twitter.gsub('@', ''))
-      rescue Exception => e
+        user = twitter.gsub('@', '')
+        Twitter.follow(user)
+      rescue
         puts 'Could not follow ' + twitter + ' on twitter' 
       end
     end
