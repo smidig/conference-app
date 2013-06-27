@@ -41,6 +41,10 @@ class User < ActiveRecord::Base
     ]
   end
 
+  def profile_picture
+    return "http://www.gravatar.com/avatar/" + Digest::MD5.hexdigest(email)
+  end
+
   private
 
   def require_active_ticket
