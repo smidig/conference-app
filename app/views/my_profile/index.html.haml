@@ -1,65 +1,68 @@
-%h2 Hei #{@user.name}
-%p
-  Velkommen til Smidig 2013. Dette er din personlige profil registrert hos oss.
+.profile
+  %h2 Hei #{@user.name}
+  %p
+    Velkommen til Smidig 2013. Dette er din personlige profil registrert hos oss.
 
-.row-fluid
-  .span6
-    .boxed
-      .title
-        %i.icon-user
-        Din profil
-      .content
-        :markdown
-          - **Navn**: #{@user.name}
-          - **Epost**: #{@user.email}
-          - **Telefon**: #{@user.tlf}
-          - **Twitter**: #{@user.twitter}
-          - **Firma**: #{@user.company}
-          - **Deltar på konferansemiddag**: <span class="dinner">#{@user.includes_dinner ? "Ja": "Nei"}</span>
-          - **Allergier**: #{@user.allergies.blank? ? "Ingen" : @user.allergies}
-          - **Billett**: #{@user.ticket.display} ([Kvittering](/my_profile/receipt))
-        = link_to (edit_user_registration_path) do
-          %i.icon-pencil
-          Endre din profil
-
-    - if @order
+  .row-fluid
+    .span6
       .boxed
         .title
-          %i.icon-shopping-cart
-          Din bestilling
+          %i.icon-user
+          Din profil
         .content
+          %img{:src => "#{@user.profile_picture}?s=80&&d=mm", :id => "gravatar"}
           :markdown
-            - **Status**: #{@order.status}
-            - **Opprettet**: #{@order.created_at.to_formatted_s(:long)}
-            - **Eies av**: #{@order.owner.name}
-            - **Totalt pris**: kr #{@order.price},-
+            - **Navn**: #{@user.name}
+            - **Epost**: #{@user.email}
+            - **Telefon**: #{@user.tlf}
+            - **Twitter**: #{@user.twitter}
+            - **Firma**: #{@user.company}
+            - **Deltar på konferansemiddag**: <span class="dinner">#{@user.includes_dinner ? "Ja": "Nei"}</span>
+            - **Allergier**: #{@user.allergies.blank? ? "Ingen" : @user.allergies}
+            - **Billett**: #{@user.ticket.display} ([Kvittering](/my_profile/receipt))
+          = link_to (edit_user_registration_path) do
+            %i.icon-pencil
+            Endre din profil
 
-          - if @order.owner_user_id == @user.id
-            = link_to({:controller => "orders", :action => "show", :id => @order.id}) do
-              %i.icon-th-list
-              #{@order.completed ? "Se" : "Fullfør"} din bestilling
 
-  .span3
-    .boxed.dinner-question
-      .title
-        %i.icon-question-sign
-        Skal du på konferansemiddagen?
-      .content
-        = link_to "Ja", {:action => "dinner_registration", :dinner => "yes"}, :class => 'btn btn-primary', :remote => true
-        = link_to "Nei", {:action => "dinner_registration", :dinner => "no"}, :remote => true
+      - if @order
+        .boxed
+          .title
+            %i.icon-shopping-cart
+            Din bestilling
+          .content
+            :markdown
+              - **Status**: #{@order.status}
+              - **Opprettet**: #{@order.created_at.to_formatted_s(:long)}
+              - **Eies av**: #{@order.owner.name}
+              - **Totalt pris**: kr #{@order.price},-
 
-    .boxed.speaker
-      .title
-        %i.icon-bullhorn
-        Dine taler
-      .content
-        %ul
-          - for talk in Talk.where(:user_id => @user.id)
-            %li
-              = link_to talk.title, edit_talk_path(talk)
-              = " [#{talk.status}]"
-          - for talk in @user.talks
-            %li
-              = talk.title
-              = " [#{talk.status}]"
-        = link_to "Opprett foredrag", new_talk_path, :class => 'btn btn-sucess'
+            - if @order.owner_user_id == @user.id
+              = link_to({:controller => "orders", :action => "show", :id => @order.id}) do
+                %i.icon-th-list
+                #{@order.completed ? "Se" : "Fullfør"} din bestilling
+
+    .span3
+      .boxed.dinner-question
+        .title
+          %i.icon-question-sign
+          Skal du på konferansemiddagen?
+        .content
+          = link_to "Ja", {:action => "dinner_registration", :dinner => "yes"}, :class => 'btn btn-primary', :remote => true
+          = link_to "Nei", {:action => "dinner_registration", :dinner => "no"}, :remote => true
+
+      .boxed.speaker
+        .title
+          %i.icon-bullhorn
+          Dine taler
+        .content
+          %ul
+            - for talk in Talk.where(:user_id => @user.id)
+              %li
+                = link_to talk.title, edit_talk_path(talk)
+                = " [#{talk.status}]"
+            - for talk in @user.talks
+              %li
+                = talk.title
+                = " [#{talk.status}]"
+          = link_to "Opprett foredrag", new_talk_path, :class => 'btn btn-sucess'
