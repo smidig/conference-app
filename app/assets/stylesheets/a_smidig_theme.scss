@@ -353,6 +353,14 @@ a:hover {
     }
   }
 
+  .profile{
+    #gravatar{
+      float:right;
+      padding:3px;
+      border: 1px solid white;
+    }
+  }
+  
   // Global styling of text-views...
   .content-wrapper {
     padding: 20px 20px 40px;
