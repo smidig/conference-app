@@ -59,7 +59,7 @@ describe TicketsController, :type => :controller do
 
       it "redirects to the created ticket" do
         post :create, {:ticket => valid_attributes}
-        response.should redirect_to(Ticket.last)
+        response.should redirect_to(Ticket)
       end
     end
 
@@ -101,7 +101,7 @@ describe TicketsController, :type => :controller do
       it "redirects to the ticket" do
         ticket = Ticket.create! valid_attributes
         put :update, {:id => ticket.to_param, :ticket => valid_attributes}
-        response.should redirect_to(ticket)
+        response.should redirect_to(Ticket)
       end
     end
 
