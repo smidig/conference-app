@@ -10,7 +10,7 @@
           %i.icon-user
           Din profil
         .content
-          %img{:src => "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(@user.email)}?s=80&&d=mm", :id => "gravatar"}
+          %img{:src => "#{@user.profile_picture}?s=80&&d=mm", :id => "gravatar"}
           :markdown
             - **Navn**: #{@user.name}
             - **Epost**: #{@user.email}
