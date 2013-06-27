@@ -25,6 +25,9 @@ ConferenceApp::Application.routes.draw do
   get "info/policy"
   get "info/godbiter"
 
+  #twitter stuff
+  get "twitter/smidig_feed"
+
   resources :talk_categories
 
   resources :talk_types
