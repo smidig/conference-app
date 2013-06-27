@@ -46,7 +46,8 @@ class TicketsController < ApplicationController
 
     respond_to do |format|
       if @ticket.save
-        format.html { redirect_to :action => :index, notice: 'Ticket was successfully created.' }
+        flash[:notice] = 'Ticket was successfully created.'
+        format.html { redirect_to :action => :index }
         format.json { render json: @ticket, status: :created, location: @ticket }
       else
         format.html { render action: "new" }
@@ -62,7 +63,8 @@ class TicketsController < ApplicationController
 
     respond_to do |format|
       if @ticket.update_attributes(params[:ticket])
-        format.html { redirect_to :action => :index, notice: 'Ticket was successfully updated.' }
+        flash[:notice] = 'Ticket was successfully created.'
+        format.html { redirect_to :action => :index }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
