@@ -22,6 +22,10 @@ class Order < ActiveRecord::Base
     !payment.nil?
   end
 
+  def invoice_button_visible(current_user)
+    users.size > 1 || current_user.admin
+  end
+
   def finish
     transaction do
       users.each do |user|
