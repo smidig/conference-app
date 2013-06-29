@@ -11,7 +11,7 @@ Feature: User authentication
     When I fill in "valid@user.com" for "user_email"
     And I fill in "password" for "user_password"
     And I press "Logg på"
-    Then I should be on the home page
+    Then I should be on the my profile page
     And I should be logged in
 
   Scenario: Unsuccessful login

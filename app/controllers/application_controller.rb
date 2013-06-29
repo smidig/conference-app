@@ -14,4 +14,12 @@ class ApplicationController < ActionController::Base
     current_user.try(:admin)
   end
 
+  def after_sign_in_path_for(resource_or_scope)
+    if admin?
+      users_path
+    else
+      my_profile_index_path
+    end
+  end
+
 end
