@@ -25,6 +25,9 @@ ConferenceApp::Application.routes.draw do
   get "info/policy"
   get "info/godbiter"
   get "info/gruppepaamelding"
+  get "info/sponsor/request"
+  get "info/david"
+  post "info/sponsor"
 
   #twitter stuff
   get "twitter/smidig_feed"
