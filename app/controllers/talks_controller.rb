@@ -1,5 +1,7 @@
 # encoding: UTF-8
 class TalksController < ApplicationController
+  before_filter lambda { @body_class = 'admin' }
+  
   no_authorization! :only => [:new, :show]
 
   authorize_admin! :only => [:index, :vote, :destroy]
