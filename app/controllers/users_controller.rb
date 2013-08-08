@@ -4,9 +4,9 @@ class UsersController < ApplicationController
   before_filter lambda { @body_class = 'admin' }
 
   # GET /users
-  # GET /users.xml
+  # /users.xml
   def index
-    @users = User.all
+    @users = User.find_by_params(params)
 
     respond_to do |format|
       format.html # index.html.erb
