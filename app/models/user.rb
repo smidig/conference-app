@@ -92,4 +92,16 @@ class User < ActiveRecord::Base
       end
     end
   end
+
+  def self.find_by_params(params)
+    if params[:completed] == 'false'
+      where(:completed => [nil, false])
+    elsif params[:completed] == 'true'
+      where(:completed => true)
+    elsif params[:ticket_name]
+      joins(:ticket).where(:tickets => {:name => params[:ticket_name]})
+    else
+      find(:all)
+    end
+  end
 end
