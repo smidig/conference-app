@@ -1,2 +1,31 @@
-%h1 Administration#statistics
-%p Find me in app/views/administration/statistics.html.haml
+%h1 Statistikk
+
+.row-fluid
+	%p
+		Antall påmeldte: #{@antall}
+
+	%p
+		Antall betalt: #{@antallBetalende}	
+
+	%h3
+		Antall pr tickettype
+	- @antallPrBillett.each do |(a,b)|
+		%p 
+			#{a}: #{b}
+
+	%h3
+		Antall pr jobbrolle
+	- @antallPrJobbrolle.each do |(a,b)|
+		%p 
+			#{a}: #{b}
+
+	%h3
+		Antall pr firma
+	- @antallPrFirma.each do |(a,b)|
+		%p 
+			#{a}: #{b}
+
+
+	#antallPrJobbrolle{:style => "min-width: 310px; height: 400px; margin: 0 auto"}
+
+	#hei{:style => "min-width: 310px; height: 400px; margin: 0 auto"}
