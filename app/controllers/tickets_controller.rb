@@ -1,5 +1,6 @@
 class TicketsController < ApplicationController
   authorize_admin!
+  before_filter lambda { @body_class = 'admin' }
 
   # GET /tickets
   # GET /tickets.json
