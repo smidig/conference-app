@@ -96,6 +96,20 @@ a:hover {
   .container {
     width: 100%;
   }
+  .menu-row.span10.offset1, .content-wrapper.span10.offset1 {
+    width: 100%;
+    margin-left: 0;
+    background: $primary-background;
+  }
+
+  .menu-row.span10.offset1 .header {
+    margin-right: 0;
+  }
+
+  #footer, .sponsor-wrapper {
+    display: none;
+  }
+
 }
 
 .smidig {
@@ -118,6 +132,10 @@ a:hover {
   .alert {
     margin: 0 10px;
     text-align: center;
+  }
+
+  .table-hover tr:hover td {
+    background-color: $successBackground;
   }
 
   .header {
