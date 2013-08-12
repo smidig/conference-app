@@ -2,6 +2,25 @@
   %i.icon-th
   Eksporter som CSV
 
+.filter
+  Billett:
+  %select{:data => { :type => "ticket"}}
+    %option{:value => ""} Alle
+    - for ticket in @tickets
+      %option{:value => "#{ticket.name}"}
+        =ticket.name
+
+  Fullført:
+  %select.span1{:data => { :type => "completed"}}
+    %option{:value => ""} Alle
+    %option{:value => "Nei"} Nei
+    %option{:value => "Ja"} Ja
+
+  Ant:
+  %span.count
+    =@users.size
+
+
 %table{:class => 'table table-striped table-hover'}
   %thead
     %tr
@@ -29,9 +48,10 @@
           = user.name
         %td= user.email
         %td= user.company
-        %td= user.ticket.name if user.ticket
+        %td{:data => {:type => "ticket"}}
+          = user.ticket.name if user.ticket
         %td= user.ticket.price if user.ticket
-        %td
+        %td{:data => {:type => "completed"}}
           = link_to({:action => 'complete', :id => user.id}, :title => "Toggle fullført") do
             = user.completed ? "Ja" : "Nei"
 

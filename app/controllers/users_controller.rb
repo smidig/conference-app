@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   # GET /users
   # /users.xml
   def index
+    @tickets = Ticket.all
     @users = User.find_by_params(params)
 
     respond_to do |format|
