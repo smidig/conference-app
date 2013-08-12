@@ -23,6 +23,14 @@ class UsersController < ApplicationController
     end
   end
 
+  def speaker
+    @speakers = User.joins(:ticket).where(:tickets => {:ticket_type => "speaker"})
+ 
+    respond_to do |format|
+      format.html 
+    end
+  end
+
   # GET /users
   # GET /users.xml
   def show

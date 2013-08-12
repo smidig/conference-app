@@ -64,6 +64,7 @@ ConferenceApp::Application.routes.draw do
                                        :passwords => "passwords" }
   get "users/make_admin"
   match "users/complete/:id" => "users#complete"
+  get "users/speaker"
   resources :users
   get "users/delete/:id" => "users#delete"
 end
