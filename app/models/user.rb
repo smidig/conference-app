@@ -47,6 +47,10 @@ class User < ActiveRecord::Base
     return "http://www.gravatar.com/avatar/" + Digest::MD5.hexdigest(email)
   end
 
+  def all_talks
+    Talk.where(:user_id => id)
+  end
+
   private
 
   def require_active_ticket

@@ -1,0 +1,24 @@
+%a(href="/users") << Tilbake til alle brukere
+%table{:class => 'table table-striped table-hover'}
+  %thead
+    %tr
+      %th ID
+      %th Dato
+      %th 
+      %th Navn
+      %th Epost
+      %th Firma
+      %th Godkjent
+      %th Antall foredrag
+  %tbody
+    - for user in @speakers
+      %tr
+        %td= user.id
+        %td= user.created_at.to_formatted_s(:short)
+        %td
+          %img{:src => "#{user.profile_picture}?s=35&&d=wavatar"}
+        %td= user.name
+        %td= user.email
+        %td= user.company
+        %td= user.completed ? "Ja" : "Nei"
+        %td= user.all_talks.size
