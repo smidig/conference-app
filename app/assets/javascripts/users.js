@@ -1,10 +1,14 @@
-$(function() {
-  function getFilters() {
+var smidig = smidig || {};
+
+smidig.tableFilter = (function($) {
+  
+  function getFilters(selectList) {
     var filters = [];
-    $(".filter select").each(function() {
+    selectList.each(function() {
+      var option = $(this);
       filters.push({
-        type: $(this).data("type"), 
-        value: $(this).find("option:selected").val()
+        type: option.data("type"), 
+        value: option.find("option:selected").val()
       });
     });
     return filters;
@@ -12,14 +16,17 @@ $(function() {
 
   function shouldRowBeVisible(row, filters) {
     var visible = true;
+    
     $.each(filters, function(idx, filter) {
       if(filter.value === "") return;
+
       var cell = row.find("td[data-type='"+filter.type+"']");
       var value = $.trim(cell.text());
       if(value != filter.value) {
         visible = false;
       }
     });
+
     return visible;
   }
 
@@ -32,16 +39,29 @@ $(function() {
     });
   }
 
-  function updateCount() {
-    var count = $(".table tr:visible").length;
-    $(".filter .count").text(count);
+  function updateCount(countNode, table) {
+    var count = table.find("tbody tr:visible").length;
+    countNode.text(count);
   }
 
-  $(".filter select").change(function() {
-    var filters = getFilters($(this)); 
-    var rows = $(".table tr");
-    rows.hide();
-    applyFilters(rows, filters);   
-    updateCount();
-  });
+  function register(container, table) {
+    var countNode = container.find(".count"),
+        selectList = container.find("select"),
+        rows = table.find("tbody tr");
+
+    selectList.change(function() {
+      var filters = getFilters(selectList); 
+      rows.hide();
+      applyFilters(rows, filters);   
+      updateCount(countNode, table);
+    });
+  }
+
+  return {
+    register: register
+  }
+}(jQuery));
+
+$(function() {
+  smidig.tableFilter.register($(".filter"), $(".table"));
 });
