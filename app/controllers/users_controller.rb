@@ -8,6 +8,11 @@ class UsersController < ApplicationController
   def index
     @tickets = Ticket.all
     @users = User.find_by_params(params)
+    @dinner_count = {
+        :yes => User.where(:includes_dinner => [true]).count(),
+        :no => User.where(:includes_dinner => [false]).count(),
+        :not_set => User.where(:includes_dinner => [nil]).count()
+    }
 
     respond_to do |format|
       format.html # index.html.erb
