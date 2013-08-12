@@ -21,11 +21,15 @@
     =@users.size
 
 .info
-  %span
-    Middag: 
-    JA=#{@dinner_count[:yes]}, 
-    NEI=#{@dinner_count[:no]}, 
-    NOT_SET=#{@dinner_count[:not_set]}
+  %ul
+    %li
+      %strong Middag: 
+      Ja=#{@dinner_count[:yes]}, 
+      Nei=#{@dinner_count[:no]}, 
+      Ikke satt=#{@dinner_count[:not_set]}
+
+    %li
+      %a(href="/users/speaker") Liste over foredragsholdere
 
 %table{:class => 'table table-striped table-hover'}
   %thead
