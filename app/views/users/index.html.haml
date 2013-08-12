@@ -20,6 +20,12 @@
   %span.count
     =@users.size
 
+.info
+  %span
+    Middag: 
+    JA=#{@dinner_count[:yes]}, 
+    NEI=#{@dinner_count[:no]}, 
+    NOT_SET=#{@dinner_count[:not_set]}
 
 %table{:class => 'table table-striped table-hover'}
   %thead
