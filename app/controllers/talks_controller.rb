@@ -26,6 +26,9 @@ class TalksController < ApplicationController
     respond_to do |format|
       format.html # index.html.haml
       format.json { render json: @talks }
+      format.csv  {
+        @filename = "Smidig_foredrag_#{Date.today.to_formatted_s(:db)}.csv"
+      }
     end
   end
 
