@@ -66,7 +66,7 @@ class TalkCommentsController < ApplicationController
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
-        format.json { render json: @talk_comment.errors, status: :unprocessable_entity }
+        format.json { render json: @talk_comment}
       end
     end
   end

@@ -12,8 +12,8 @@
   - @talk_comments.each do |talk_comment|
     %tr
       %td= talk_comment.content
-      %td= talk_comment.user.name
-      %td= talk_comment.talk.title
+      %td= talk_comment.user.name if talk_comment.user
+      %td= talk_comment.talk.title if talk_comment.talk
       %td= link_to 'Show', talk_comment
       %td= link_to 'Edit', edit_talk_comment_path(talk_comment)
       %td= link_to 'Destroy', talk_comment, :method => :delete, :data => { :confirm => 'Are you sure?' }
