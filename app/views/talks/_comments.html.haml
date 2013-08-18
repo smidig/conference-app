@@ -1,0 +1,14 @@
+.talk_comments
+  %ul 
+    - for comment in talk.talk_comments
+      %li 
+        %span.time #{comment.created_at.to_formatted_s(:short)},
+        %span.username #{comment.user.name}
+        %br
+        %span.comment #{comment.content}
+
+  %form.form-inline
+    %input{:type=>"hidden", :name => "user_id", :value => "#{current_user.id}"}
+    %input{:type=>"hidden", :name => "talk_id", :value => "#{talk.id}"}
+    %input{:type=> "text", :name => "content", :placeholder => "Skriv en kommentar"}
+    %button{:type => "submit"} Lagre
