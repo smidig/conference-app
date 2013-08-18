@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Content:
+  = @talk_comment.content
+
+= link_to 'Edit', edit_talk_comment_path(@talk_comment)
+\|
+= link_to 'Back', talk_comments_path

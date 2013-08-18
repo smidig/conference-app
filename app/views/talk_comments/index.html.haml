@@ -1,0 +1,23 @@
+%h1 Listing talk_comments
+
+%table.table
+  %tr
+    %th Content
+    %th User
+    %th Title
+    %th 
+    %th
+    %th
+
+  - @talk_comments.each do |talk_comment|
+    %tr
+      %td= talk_comment.content
+      %td= talk_comment.user.name
+      %td= talk_comment.talk.title
+      %td= link_to 'Show', talk_comment
+      %td= link_to 'Edit', edit_talk_comment_path(talk_comment)
+      %td= link_to 'Destroy', talk_comment, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Talk comment', new_talk_comment_path
