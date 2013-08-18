@@ -1,4 +1,7 @@
 ConferenceApp::Application.routes.draw do
+  resources :talk_comments
+
+
   root :to => "info#index"
 
   #MyProfile

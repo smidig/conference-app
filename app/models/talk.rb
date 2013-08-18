@@ -11,6 +11,7 @@ class Talk < ActiveRecord::Base
   belongs_to :talk_category
   belongs_to :user
   has_and_belongs_to_many :users
+  has_many :talk_comments
 
   has_attached_file :presentation
   validates_attachment_size :presentation, :less_than => 10.megabytes
