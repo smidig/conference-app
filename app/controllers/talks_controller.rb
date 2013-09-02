@@ -46,6 +46,12 @@ class TalksController < ApplicationController
   # GET /talks/new
   # GET /talks/new.json
   def new
+    if current_user.admin
+      @talk_types = TalkType.all
+    else
+      @talk_types = TalkType.find(:all, :conditions => { :visible => true})
+    end
+
     @talk = Talk.new
 
     respond_to do |format|
@@ -56,6 +62,12 @@ class TalksController < ApplicationController
 
   # GET /talks/1/edit
   def edit
+    if current_user.admin
+      @talk_types = TalkType.all
+    else
+      @talk_types = TalkType.find(:all, :conditions => { :visible => true})
+    end
+
     @talk = Talk.find(params[:id])
   end
 
