@@ -2,6 +2,17 @@
   .flexslider
     %ul.slides
       %li
+        %a(href="#{info_tema_path}")
+          // TODO: Add correct image with proper size (940 x 400)
+          %img{:src => "#{image_path "slide_4.jpg"}"}
+          .row-fluid
+            .caption.span5.offset1
+              %h5.title
+                Tema Smidig 2013
+              %p.text
+                Produktkøen, Software Craftsmanship, Team, Realisering av verdi, Smidig Testing, 
+                Innovasjon, Continuous Delivery og DevOps. 
+      %li
         %a(href="#{new_user_registration_path}")
           // TODO: Add correct image with proper size (940 x 400)
           %img{:src => "#{image_path "slide_1.jpg"}"}

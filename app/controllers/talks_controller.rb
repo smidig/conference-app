@@ -2,7 +2,7 @@
 class TalksController < ApplicationController
   before_filter lambda { @body_class = 'admin' }, :only => :index
   
-  no_authorization! :only => [:new, :show]
+  no_authorization! :only => [:new, :show, :list]
 
   authorize_admin! :only => [:index, :vote, :destroy]
 
@@ -29,6 +29,15 @@ class TalksController < ApplicationController
       format.csv  {
         @filename = "Smidig_foredrag_#{Date.today.to_formatted_s(:db)}.csv"
       }
+    end
+  end
+
+  def list
+    @talks = Talk.all
+
+    respond_to do |format|
+      format.html # index.html.haml
+      format.json { render json: @talks }
     end
   end
 

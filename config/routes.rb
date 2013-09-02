@@ -42,6 +42,7 @@ ConferenceApp::Application.routes.draw do
 
   post '/talks/:id/vote' => 'talks#vote', :as => 'vote'
 
+  get "talks/list"
   resources :talks
 
   resources :tickets
