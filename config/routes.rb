@@ -21,6 +21,7 @@ ConferenceApp::Application.routes.draw do
   #Info sites
   get "info/about"
   get "info/tema"
+  get "info/til_lyntalere"
   get "info/sponsor"
   get "info/index"
   get "info/policy"
