@@ -8,7 +8,8 @@
         ,
         =user.name
     %span.category
-      [#{talk.talk_category.name}]
+      - if talk.talk_category
+        [#{talk.talk_category.name}]
 
       
 
