@@ -2,15 +2,5 @@
 .row-fluid
   .span10
     - for talk in @talks
-      .talk
-        %header
-          %h4
-            =talk.title
-          %em.author
-            =talk.user.name
-            - for user in talk.users
-              ,
-              =user.name
-        %p
-          =simple_format talk.description
-      %br
+      = render 'talk', :talk => talk
+   
