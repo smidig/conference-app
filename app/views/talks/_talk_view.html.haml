@@ -1,0 +1,18 @@
+.talk
+  %header
+    %h4
+      =talk.title
+    %em.author
+      =talk.user.name
+      - for user in talk.users
+        ,
+        =user.name
+    %span.category
+      [#{talk.talk_category.name}]
+
+      
+
+    %a.twitter-share-button{"data-count" => "horizontal", "data-text" => "#smidig13", "data-url" => "http://smidig.no#{url_for(talk)}", "data-via" => "smidig", :href => "http://twitter.com/share"} Tweet!
+
+    %h6 Beskrivelse:
+    = simple_format talk.description
