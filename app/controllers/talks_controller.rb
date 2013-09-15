@@ -33,7 +33,7 @@ class TalksController < ApplicationController
   end
 
   def list
-    @talks = Talk.all
+    @talks = Talk.order('id desc').all
 
     respond_to do |format|
       format.html # index.html.haml
