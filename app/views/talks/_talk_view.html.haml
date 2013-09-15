@@ -1,19 +1,29 @@
-.talk
-  %header
-    %h4
-      =talk.title
-    %em.author
-      =talk.user.name
+.row-fluid.talk
+  .span10
+    %header
+      %h4 
+        =link_to talk.title, talk_path(talk)
+        
+      %em Foreslått av:     
+      = talk.user.name
       - for user in talk.users
         ,
         =user.name
-    %span.category
-      - if talk.talk_category
-        [#{talk.talk_category.name}]
 
-      
+      %br
+      %span
+        - if talk.talk_type
+          %em Type: 
+          #{talk.talk_type.name}
 
-    %a.twitter-share-button{"data-count" => "horizontal", "data-text" => "#smidig13", "data-url" => "http://smidig.no#{url_for(talk)}", "data-via" => "smidig", :href => "http://twitter.com/share"} Tweet!
-
-    %h6 Beskrivelse:
-    = simple_format talk.description
+      %span
+        - if talk.talk_category
+          | 
+          %em Kategori: 
+          #{talk.talk_category.name}
+       
+     
+      %h6 Beskrivelse:
+      = simple_format talk.description
+  .span2
+    %a.twitter-share-button{"data-count" => "horizontal", "data-text" => "#smidig13", "data-url" => "http://smidig.no#{url_for(talk)}", :href => "http://twitter.com/share"} Tweet!
