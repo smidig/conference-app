@@ -22,4 +22,15 @@ class Talk < ActiveRecord::Base
 
   validates_acceptance_of :accepted_license
 
+  after_save    :expire_talk_all_cache
+  after_destroy :expire_talk_all_cache
+
+  def self.all_cached
+    Rails.cache.fetch('Talk.all') { order('id desc').all }
+  end
+
+  def expire_talk_all_cache
+    Rails.cache.delete('Talk.all')
+  end
+
 end
