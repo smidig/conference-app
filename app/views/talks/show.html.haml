@@ -1,13 +1,3 @@
 .row-fluid
   .span8
-    %header
-      %h1
-        =@talk.title
-      %em.author
-        =@talk.user.name
-        - for user in @talk.users
-          ,
-          =user.name
-
-    %p
-      =simple_format @talk.description
+    =render :partial => "details", locals: {talk: @talk}
