@@ -13,8 +13,20 @@
  *
  * These are located in vendor/assets/stylesheets:
  *= require flexslider
+ *= require theme.bootstrap
+ *= require filter.formatter
  */
 
 .table .text-right   { text-align: right; }
 .table .text-left    { text-align: left; }
 .table .text-center  { text-align: center; }
+
+.container {
+
+}
+
+.tablesorter-filter-row {
+	input {
+		width: auto;
+	}
+}

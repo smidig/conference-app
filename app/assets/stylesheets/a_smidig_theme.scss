@@ -113,6 +113,12 @@ a:hover {
 }
 
 .smidig {
+  .fb-like {
+    display: block;
+    overflow: hidden;
+    background: $secondary-background;
+  }
+
   .boxed {
     border: 1px solid #e7e7e7;
     border-radius: 3px;
@@ -572,6 +578,22 @@ a:hover {
           background-image: image-url('linkedin-icon.png');
         }
       }
+    }
+  }
+}
+
+.tablesorter {
+  background: white;
+
+  .tablesorter-childRow {
+    td {
+      display: none;
+    }
+  }
+
+  .tablesorter-filter {
+    &.disabled {
+      display: none;
     }
   }
 }

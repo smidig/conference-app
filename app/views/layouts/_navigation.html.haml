@@ -2,20 +2,25 @@
   MENY
 %ul.header-nav
   %li
-    %a{:href => "#{info_about_path}", :class=>current_page?(info_about_path) ? "active" : ""}
+    %a{:href => "#{info_about_path}", :class=>current_page?(info_about_path) ? "active" : "", 
+    :title => "Om konferansen"}
       Om konferansen
   %li
-    = link_to('Sponsor', info_sponsor_path, {:class=>current_page?(info_sponsor_path) ? "active" : ""})
+    = link_to('Sponsor', info_sponsor_path, 
+    {:class=>current_page?(info_sponsor_path) ? "active" : "", :title => "Sponsor"})
   %li
-    = link_to('Foreslå foredrag', new_talk_path, {:class=>current_page?(new_talk_path) ? "active" : ""})
+    = link_to('Foreslå foredrag', new_talk_path, 
+    {:class=>current_page?(new_talk_path) ? "active" : "", :title => "Foreslå foredrag"})
   %li
-    = link_to('Min profil', my_profile_index_path, {:class=>current_page?(my_profile_index_path) ? "active" : ""})
+    = link_to('Min profil', my_profile_index_path, 
+    {:class=>current_page?(my_profile_index_path) ? "active" : "", :title => "Min profil"})
   - if user_signed_in?
     %li
       = link_to('Logout', destroy_user_session_path, :method=>'delete')
   - else
     %li
-      = link_to('Meld deg på!', new_user_registration_path, {:class=>current_page?(new_user_registration_path) ? "active" : ""})
+      = link_to('Meld deg på!', new_user_registration_path, 
+      {:class=>current_page?(new_user_registration_path) ? "active" : "", :title => "Meld deg på"})
   - if user_signed_in? and current_user.admin
 
     %li
