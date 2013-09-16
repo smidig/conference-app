@@ -4,12 +4,24 @@
     %meta{:charset => "utf-8"}
     %meta{:name => "viewport", :content => "width=device-width, initial-scale=1, maximum-scale=1"}
     %title= content_for?(:title) ? yield(:title) : "Smidig 2013 - 5. og 6. november i Oslo"
-    %meta{:content => "", :name => "description"}
-    %meta{:content => "", :name => "author"}
+    %meta{:content => "Smidig 2013 - 5. og 6. november i Oslo", :property => "og:title"}
+    %meta{:content => "#{asset_url "smidig_logo_180.png"}", :property => "og:image"}
+    %meta{:content => "image/png", :property => "og:image:type"}
+    %meta{:content => "180", :property => "og:image:width"}
+    %meta{:content => "180", :property => "og:image:height"}
+    %meta{:content => "Smidigkonferansen er en årlig konferanse for og av fagmiljøet selv. Her får du høre hvordan andre prosjektdeltakere som deg takler hverdagen i sine smidige og kanskje ikke så smidige prosjekter", :name => "description"}
+    %meta{:content => "Smidigkonferansen er en årlig konferanse for og av fagmiljøet selv. Her får du høre hvordan andre prosjektdeltakere som deg takler hverdagen i sine smidige og kanskje ikke så smidige prosjekter", :property => "og:description"}
+    %meta{:content => "smidig, kanban, agile, workshop, konferanse, oslo, scrum, lean, startup, testledelse, continous deployment, open space, keynote, produkteier, certified scrum master", :name => "keywords"}
+    %meta{:content => "Smidigkonferansen", :name => "author"}
+    %link{:href => "/favicon.ico", :rel => "shortcut icon", :type => "image/x-icon"}
+    %link{:href => "/favicon.gif", :rel => "shortcut icon"}
     %link{:href => "http://fonts.googleapis.com/css?family=Merriweather+Sans:400,300,700,800", :rel => "stylesheet", :type => "text/css"}
     = stylesheet_link_tag "application", :media => "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
+    == <!--[if lt IE 9]>
+    = javascript_include_tag "html5"
+    == <![endif]-->
     = yield(:head)
   %body.smidig{:class=>"#{@body_class}"}
     #header.container
@@ -26,7 +38,7 @@
             = render :partial => "layouts/topslider"
         .row-fluid
           .span10.offset1
-            = render :partial => "layouts/intro"
+            = render :partial => "layouts/intro"            
     - if current_page?('/')
       = render :partial => 'sponsors/list'
     #main.container

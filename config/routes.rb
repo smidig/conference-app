@@ -23,6 +23,10 @@ ConferenceApp::Application.routes.draw do
 
   #Info sites
   get "info/about"
+  get "info/tema"
+  get "info/til_lyntalere"
+  get "info/spre_ordet"
+  get "info/direkte_mail"
   get "info/sponsor"
   get "info/index"
   get "info/policy"
@@ -41,6 +45,7 @@ ConferenceApp::Application.routes.draw do
 
   post '/talks/:id/vote' => 'talks#vote', :as => 'vote'
 
+  get "talks/list"
   resources :talks
 
   resources :tickets

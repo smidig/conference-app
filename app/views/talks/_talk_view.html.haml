@@ -1,0 +1,29 @@
+.row-fluid.talk
+  .span10
+    %header
+      %h4 
+        =link_to talk.title, talk_path(talk)
+        
+      %em Foreslått av:     
+      = talk.user.name
+      - for user in talk.users
+        ,
+        =user.name
+
+      %br
+      %span
+        - if talk.talk_type
+          %em Type: 
+          #{talk.talk_type.name}
+
+      %span
+        - if talk.talk_category
+          | 
+          %em Kategori: 
+          #{talk.talk_category.name}
+       
+     
+      %h6 Beskrivelse:
+      = simple_format talk.description
+  .span2
+    %a.twitter-share-button{"data-count" => "horizontal", "data-text" => "#smidig13", "data-url" => "http://smidig.no#{url_for(talk)}", :href => "http://twitter.com/share"} Tweet!

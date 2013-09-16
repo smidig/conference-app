@@ -60,19 +60,12 @@
         Se topp 10 fra 2012
 
   .span6
-    %article
-      :markdown
-        ## Få med deg det som skjer
-
-        Vi har en egen side på Facebook, her får du løpende oppdatering og interessant stoff om Smidig!
-      .fb-like.pull-right{"data-href" => "http://www.facebook.com/smidig", "data-send" => "true", "data-show-faces" => "true", "data-width" => "150"}
-
-    -#
-      .span6
+    %article 
       :markdown
         ## Om konferansen
 
         Smidigkonferansen er en årlig konferanse for og av fagmiljøet selv. Her får du høre hvordan andre
         prosjektdeltakere som deg takler hverdagen i sine smidige og kanskje ikke så smidige prosjekter.
 
-        [Les mer om smidig](#{info_about_path})
+      %a.pull-right(href="#{info_about_path}")
+        Les mer om Smidig 2013

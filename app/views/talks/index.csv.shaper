@@ -3,8 +3,12 @@ csv.headers :created_at, :status, :votes, :title, :description, :type, :category
 csv.rows @talks do |csv, talk|
   csv.cells :created_at, :status, :title, :description
   csv.cell :votes, talk.upvotes.size
-  csv.cell :type, talk.talk_type.name
-  csv.cell :category, talk.talk_category.name
+  if talk.talk_type
+    csv.cell :type, talk.talk_type.name
+  end
+  if talk.talk_category
+    csv.cell :category, talk.talk_category.name
+  end
   csv.cell :email, talk.user.email
   csv.cell :name, talk.user.name
   csv.cell :twitter, talk.user.twitter

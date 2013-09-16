@@ -5,24 +5,24 @@
 %header.clearfix
   %h1
     Foredrag
-  =link_to 'Create new', new_talk_path, :class => 'pull-right btn btn-success'
+  =link_to 'Create new', new_talk_path, :class => 'btn btn-success'
 %article.main  
-  %table.table.table-striped
+  %table.table.tablesorter
     %thead
       %tr
         %th
-          Title
+          Tittel
         %th
-          Speaker
-        %th
-          Created
-        %th
-          Votes
-        %th
+          Taler (bedrift)
+        %th.sorter-sortOnDataAttrib.filter-parsed
+          Stemmer
+        %th.sorter-sortOnDataAttrib.filter-select{"data-placeholder" => "Alle"}
           Status
-        %th
+        %th.filter-select{"data-placeholder" => "Alle"}
           Foredrags type
-        %th
-
-    - for talk in @talks
-      = render :partial => "talk", :locals => { :talk => talk }
+        %th.filter-false
+          Opprettet
+        %th.filter-false.sorter-false
+    %tbody
+      - for talk in @talks
+        = render :partial => "talk", :locals => { :talk => talk }

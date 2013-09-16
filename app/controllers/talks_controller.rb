@@ -2,7 +2,7 @@
 class TalksController < ApplicationController
   before_filter lambda { @body_class = 'admin' }, :only => :index
   
-  no_authorization! :only => [:new, :show]
+  no_authorization! :only => [:new, :show, :list]
 
   authorize_admin! :only => [:index, :vote, :destroy]
 
@@ -21,7 +21,7 @@ class TalksController < ApplicationController
   # GET /talks
   # GET /talks.json
   def index
-    @talks = current_user.admin ? Talk.all : Talk.where(:user_id => current_user.id)
+    @talks = Talk.all
 
     respond_to do |format|
       format.html # index.html.haml
@@ -29,6 +29,15 @@ class TalksController < ApplicationController
       format.csv  {
         @filename = "Smidig_foredrag_#{Date.today.to_formatted_s(:db)}.csv"
       }
+    end
+  end
+
+  def list
+    @talks = Talk.order('id desc').all
+
+    respond_to do |format|
+      format.html # index.html.haml
+      format.json { render json: @talks }
     end
   end
 
@@ -46,6 +55,12 @@ class TalksController < ApplicationController
   # GET /talks/new
   # GET /talks/new.json
   def new
+    if current_user.admin
+      @talk_types = TalkType.all
+    else
+      @talk_types = TalkType.find(:all, :conditions => { :visible => true})
+    end
+
     @talk = Talk.new
 
     respond_to do |format|
@@ -56,6 +71,12 @@ class TalksController < ApplicationController
 
   # GET /talks/1/edit
   def edit
+    if current_user.admin
+      @talk_types = TalkType.all
+    else
+      @talk_types = TalkType.find(:all, :conditions => { :visible => true})
+    end
+
     @talk = Talk.find(params[:id])
   end
 
@@ -90,6 +111,13 @@ class TalksController < ApplicationController
         end
         format.html { redirect_to :back, notice: "Talk was successfully updated." }
         format.json { head :no_content }
+        format.js { 
+          render "update",
+          :locals => {
+            :id => params[:id], 
+            :talk => @talk
+          } 
+        }
       else
         format.html { render action: "edit" }
         format.json { render json: @talk.errors, status: :unprocessable_entity, notice: 'Failed' }
@@ -119,6 +147,13 @@ class TalksController < ApplicationController
     respond_to do |format|
       format.html { redirect_to talks_url }
       format.json { head :no_content }
+      format.js { 
+        render "update",
+        :locals => {
+          :id => params[:id], 
+          :talk => @talk
+        } 
+      }
     end
   end
 
@@ -133,6 +168,5 @@ class TalksController < ApplicationController
       return false
     end
   end
-
 
 end
