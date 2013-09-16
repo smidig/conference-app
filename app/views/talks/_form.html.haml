@@ -1,7 +1,7 @@
 = simple_form_for @talk, :html => {:multipart => true, :class => 'form-horizontal' } do |f|
   = f.input :title
   = f.input :description, input_html: { :class => "span6", :rows => "10" }
-  = f.association :talk_type
+  = f.association :talk_type, :collection => @talk_types
   = f.association :talk_category
   - if @talk.presentation.file?
     %div.control-group
@@ -10,7 +10,7 @@
       %div.controls
         = link_to @talk.presentation.original_filename, @talk.presentation.url
 
-  = f.input :presentation, :as => :file, :label => 'Presentation'
+  = f.input :presentation, :as => :file, :label => 'Presentation', :hint => '(Lastes opp senest 24 timer før konferansen)'
   - if current_user.admin?
     = f.input :status, :collection => Talk::STATUS_OPTIONS, :label => 'Status', label_method: lambda {|s| t("activerecord.attributes.talk.status." + s)}
 

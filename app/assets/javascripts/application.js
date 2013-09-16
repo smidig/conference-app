@@ -27,6 +27,9 @@
 // These are our scripts:
 //
 //= require_tree .
+//
+// These are <IE9 only
+//= stub html5
 
 $(function() {
   $('.toggle-menu').on('tap click', function() {

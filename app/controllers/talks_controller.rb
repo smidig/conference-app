@@ -1,6 +1,8 @@
 # encoding: UTF-8
 class TalksController < ApplicationController
-  no_authorization! :only => [:new, :show]
+  before_filter lambda { @body_class = 'admin' }, :only => :index
+  
+  no_authorization! :only => [:new, :show, :list]
 
   authorize_admin! :only => [:index, :vote, :destroy]
 
@@ -34,6 +36,18 @@ class TalksController < ApplicationController
     respond_to do |format|
       format.html # index.html.haml
       format.json { render json: @talks }
+      format.csv  {
+        @filename = "Smidig_foredrag_#{Date.today.to_formatted_s(:db)}.csv"
+      }
+    end
+  end
+
+  def list
+    @talks = Talk.order('id desc').all
+
+    respond_to do |format|
+      format.html # index.html.haml
+      format.json { render json: @talks }
     end
   end
 
@@ -51,6 +65,12 @@ class TalksController < ApplicationController
   # GET /talks/new
   # GET /talks/new.json
   def new
+    if current_user.admin
+      @talk_types = TalkType.all
+    else
+      @talk_types = TalkType.find(:all, :conditions => { :visible => true})
+    end
+
     @talk = Talk.new
 
     respond_to do |format|
@@ -61,6 +81,12 @@ class TalksController < ApplicationController
 
   # GET /talks/1/edit
   def edit
+    if current_user.admin
+      @talk_types = TalkType.all
+    else
+      @talk_types = TalkType.find(:all, :conditions => { :visible => true})
+    end
+
     @talk = Talk.find(params[:id])
   end
 

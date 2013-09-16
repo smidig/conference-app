@@ -3,6 +3,8 @@ class OrdersController < ApplicationController
   authorize_user! :only => [:show, :add_user, :new_user]
   authorize_admin! :only => [:index, :destroy]
 
+  before_filter lambda { @body_class = 'admin' }, :only => :index
+
   before_filter :redirect_if_order_completed, :only => [:add_user, :new_user]
 
   def index

@@ -20,10 +20,21 @@ ConferenceApp::Application.routes.draw do
 
   #Info sites
   get "info/about"
+  get "info/tema"
+  get "info/til_lyntalere"
+  get "info/spre_ordet"
+  get "info/direkte_mail"
   get "info/sponsor"
   get "info/index"
   get "info/policy"
   get "info/godbiter"
+  get "info/gruppepaamelding"
+  get "info/sponsor/request"
+  get "info/david"
+  post "info/sponsor"
+
+  #twitter stuff
+  get "twitter/smidig_feed"
 
   resources :talk_categories
 
@@ -31,6 +42,7 @@ ConferenceApp::Application.routes.draw do
 
   post '/talks/:id/vote' => 'talks#vote', :as => 'vote'
 
+  get "talks/list"
   resources :talks
 
   resources :tickets
@@ -57,6 +69,7 @@ ConferenceApp::Application.routes.draw do
                                        :passwords => "passwords" }
   get "users/make_admin"
   match "users/complete/:id" => "users#complete"
+  get "users/speaker"
   resources :users
   get "users/delete/:id" => "users#delete"
 end

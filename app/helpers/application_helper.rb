@@ -5,4 +5,8 @@ module ApplicationHelper
     direction = column == sort_column && sort_direction == "asc" ? "desc" : "asc"
     link_to "#{title} <i class='#{direction == "desc" ? "icon-chevron-down" : "icon-chevron-up"}'></i>".html_safe, {:sort => column, :direction => direction}, {:class => css_class}
   end
+  
+  def asset_url asset
+    "#{request.protocol}#{request.host_with_port}#{asset_path(asset)}"
+  end
 end

@@ -38,7 +38,7 @@ PS! Det er ikke mulig å legge til flere deltakere etter at du har startet en be
 - unless @order.payment
   .form-actions
     #{link_to 'Betal med Paypal', payments_new_paypal_path(:order_id => @order.id), :class => 'btn btn-large btn-primary'}
-    - if @order.users.size > 2 or current_user.admin
+    - if @order.invoice_button_visible(current_user)
       #{link_to 'Be om faktura', payments_new_manual_path(:order_id => @order.id), :class => 'btn btn-large'}
 
 - if @order.payment && !@order.payment.completed? && @order.payment.type == 'PaypalPayment'

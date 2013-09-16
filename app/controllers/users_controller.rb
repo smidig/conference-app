@@ -4,9 +4,15 @@ class UsersController < ApplicationController
   before_filter lambda { @body_class = 'admin' }
 
   # GET /users
-  # GET /users.xml
+  # /users.xml
   def index
-    @users = User.all
+    @tickets = Ticket.all
+    @users = User.find_by_params(params)
+    @dinner_count = {
+        :yes => User.where(:includes_dinner => [true]).count(),
+        :no => User.where(:includes_dinner => [false]).count(),
+        :not_set => User.where(:includes_dinner => [nil]).count()
+    }
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,6 +20,14 @@ class UsersController < ApplicationController
       format.csv  {
         @filename = "Smidig_deltakere_#{Date.today.to_formatted_s(:db)}.csv"
       }
+    end
+  end
+
+  def speaker
+    @speakers = User.joins(:ticket).where(:tickets => {:ticket_type => "speaker"})
+ 
+    respond_to do |format|
+      format.html 
     end
   end
 

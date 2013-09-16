@@ -1,3 +1,2 @@
-.row-fluid
-  .span8
-    =render :partial => "details", locals: {talk: @talk}
+= render 'talk_view', :talk => @talk
+%a(href="/talks/list") Tilbake til alle foredrag

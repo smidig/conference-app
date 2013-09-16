@@ -26,6 +26,8 @@ class User < ActiveRecord::Base
 
   after_save :correct_order, :if => :ticket_id_changed?
 
+  after_create :follow_user_on_twitter
+
   def roles
     [
       "Utvikler",
@@ -39,6 +41,14 @@ class User < ActiveRecord::Base
       "Direktør",
       "Annet"
     ]
+  end
+
+  def profile_picture
+    return "http://www.gravatar.com/avatar/" + Digest::MD5.hexdigest(email)
+  end
+
+  def all_talks
+    Talk.where(:user_id => id)
   end
 
   private
@@ -74,5 +84,28 @@ class User < ActiveRecord::Base
 
   def destroy_order
     order.destroy if order
+  end
+
+  def follow_user_on_twitter
+    unless twitter.blank?
+      begin
+        user = twitter.gsub('@', '')
+        Twitter.follow(user)
+      rescue
+        puts 'Could not follow ' + twitter + ' on twitter' 
+      end
+    end
+  end
+
+  def self.find_by_params(params)
+    if params[:completed] == 'false'
+      where(:completed => [nil, false])
+    elsif params[:completed] == 'true'
+      where(:completed => true)
+    elsif params[:ticket_name]
+      joins(:ticket).where(:tickets => {:name => params[:ticket_name]})
+    else
+      find(:all)
+    end
   end
 end
