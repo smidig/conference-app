@@ -2,15 +2,12 @@
   .span6
     %article
       :markdown
-        ## Sponse smidig?
+        ## Keynote 
 
-        Konferansen finansieres av deltakeravgift og sponsormidler.
-        Å være sponsor for Smidig 2013 er et sterkt signal om at selskapet stiller seg
-        bak bevegelsen for smidige metoder og støtter opp under det frivillige initiativet som er
-        drivkraften bak arrangement.
+        Vi er stolte av å ha fått David J. Anderson til å holde en av keynotene på Smidig 2013. Han har tidligere omkalfatret IT-bransjen med Kanban, har han noen nye revolusjoner planlagt for Smidig 2013? Meld deg på og finn ut!
 
-      %a.btn(href="#{info_sponsor_path}")
-        Les mer om å sponse Smidig 2013
+      %a(href="#{info_david_path}")
+        Les mer om Mr. Anderson og meld deg på her
 
   .span6
     %article
@@ -21,8 +18,34 @@
         Kanskje klarer du å inspirere eller provosere frem en god open space som arrangeres senere på dagen?
         I fjor hadde vi 64 lyntaler og 8 workshopper. For å få til dette trenger vi gode foredragsholdere!
 
-      %a.btn.pull-right(href="#{new_talk_path}")
+      %a.pull-right(href="#{new_talk_path}")
         Foreslå lyntale eller workshop
+
+.row-fluid.news
+  .span6
+    %article 
+      :markdown
+        ## Gruppepåmelding
+
+        I år lanserer Smidigkonferansen gruppepåmelding. Dette forenkler påmelding og betaling for 
+        bedrifter som ønsker å sende flere deltakere
+
+      %a(href="#{info_gruppepaamelding_path}")
+        Les mer om gruppepåmelding
+
+  .span6
+    %article
+
+      :markdown
+        ## Sponse smidig?
+
+        Konferansen finansieres av deltakeravgift og sponsormidler.
+        Å være sponsor for Smidig 2013 er et sterkt signal om at selskapet stiller seg
+        bak bevegelsen for smidige metoder og støtter opp under det frivillige initiativet som er
+        drivkraften bak arrangement.
+
+      %a.pull-right(href="#{info_sponsor_path}")
+        Les mer om å sponse Smidig 2013
 
 .row-fluid.news
   .span6
@@ -33,23 +56,16 @@
         Trenger du inspirasjon?  Basert på deltakerenes tilbakemeldinger direkte etter fordragene i fjor har 
         vi samlet de videoene som fikk høyest score. En perfekt måte å lade opp til Smidig 2013!
 
-      %a.btn(href="#{info_godbiter_path}")
+      %a(href="#{info_godbiter_path}")
         Se topp 10 fra 2012
 
   .span6
-    %article
-      :markdown
-        ## Få med deg det som skjer
-
-        Vi har en egen side på Facebook, her får du løpende oppdatering og interessant stoff om Smidig!
-      .fb-like.pull-right{"data-href" => "http://www.facebook.com/smidig", "data-send" => "true", "data-show-faces" => "true", "data-width" => "150"}
-
-    -#
-      .span6
+    %article 
       :markdown
         ## Om konferansen
 
         Smidigkonferansen er en årlig konferanse for og av fagmiljøet selv. Her får du høre hvordan andre
         prosjektdeltakere som deg takler hverdagen i sine smidige og kanskje ikke så smidige prosjekter.
 
-        [Les mer om smidig](#{info_about_path})
+      %a.pull-right(href="#{info_about_path}")
+        Les mer om Smidig 2013

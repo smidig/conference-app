@@ -12,7 +12,8 @@ Ticket.create(name: 'Speaker', price: 0, active: true, visible: false, ticket_ty
 administrators = [
     {:name => "Jonas Amundsen",      :email => "jonasba@gmail.com"},
     {:name => "Ivar Conradi Østhus", :email => "ivarconr@gmail.com"},
-    {:name => "Edward Grönroos", :email => "edward@gronroos.se"}
+    {:name => "Edward Grönroos", :email => "edward@gronroos.se"},
+    {:name => "Trude Martinsen", :email => "trude.martinsen@gmail.com"}
 ]
 
 administrators.each do |user_data|

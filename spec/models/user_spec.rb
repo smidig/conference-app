@@ -99,5 +99,19 @@ describe User do
         user.order.should_not be_nil
       end
     end
+
+    context "when user is created" do
+      before(:each) do
+        Twitter.stubs(:follow)
+      end
+      it "should follow user on twitter if user defines a twitter-account" do
+        FactoryGirl.create(:user, :twitter => "@test")
+        Twitter.expects(:follow).once.with("test")
+      end
+      it "should not follow user on twitter if user does not define a twitter-account" do
+        FactoryGirl.create(:user, :twitter => "")
+        Twitter.expects(:follow).never
+      end
+    end
   end
 end
