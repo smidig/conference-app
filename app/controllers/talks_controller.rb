@@ -21,7 +21,7 @@ class TalksController < ApplicationController
   # GET /talks
   # GET /talks.json
   def index
-    @talks = current_user.admin ? Talk.all : Talk.where(:user_id => current_user.id)
+    @talks = Talk.all
 
     respond_to do |format|
       format.html # index.html.haml
@@ -111,6 +111,13 @@ class TalksController < ApplicationController
         end
         format.html { redirect_to :back, notice: "Talk was successfully updated." }
         format.json { head :no_content }
+        format.js { 
+          render "update",
+          :locals => {
+            :id => params[:id], 
+            :talk => @talk
+          } 
+        }
       else
         format.html { render action: "edit" }
         format.json { render json: @talk.errors, status: :unprocessable_entity, notice: 'Failed' }
@@ -140,6 +147,13 @@ class TalksController < ApplicationController
     respond_to do |format|
       format.html { redirect_to talks_url }
       format.json { head :no_content }
+      format.js { 
+        render "update",
+        :locals => {
+          :id => params[:id], 
+          :talk => @talk
+        } 
+      }
     end
   end
 
@@ -154,6 +168,5 @@ class TalksController < ApplicationController
       return false
     end
   end
-
 
 end

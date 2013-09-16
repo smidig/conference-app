@@ -582,6 +582,22 @@ a:hover {
   }
 }
 
+.tablesorter {
+  background: white;
+
+  .tablesorter-childRow {
+    td {
+      display: none;
+    }
+  }
+
+  .tablesorter-filter {
+    &.disabled {
+      display: none;
+    }
+  }
+}
+
 .clearfix:after {
   content: ".";
   display: block;
