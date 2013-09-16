@@ -18,20 +18,10 @@ class TalksController < ApplicationController
 
   before_filter :redirect_to_create_user_if_not_logged_in, :only => :new
 
-  helper_method :sort_column, :sort_direction
-
-  def sort_column
-    Talk.column_names.include?(params[:sort]) ? params[:sort] : "created_at"
-  end
-  
-  def sort_direction
-    %w[asc desc].include?(params[:direction]) ? params[:direction] : "desc"
-  end
-
   # GET /talks
   # GET /talks.json
   def index
-    @talks = Talk.order(sort_column + " " + sort_direction)
+    @talks = Talk.all
 
     respond_to do |format|
       format.html # index.html.haml
