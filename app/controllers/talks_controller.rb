@@ -21,7 +21,7 @@ class TalksController < ApplicationController
   # GET /talks
   # GET /talks.json
   def index
-    @talks = Talk.all
+    @talks = Talk.all_cached
 
     respond_to do |format|
       format.html # index.html.haml
