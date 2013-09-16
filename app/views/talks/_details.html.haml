@@ -1,0 +1,26 @@
+%header
+  %h1
+    =talk.title
+  %em.author
+    =talk.user.name
+    - for user in talk.users
+      ,
+      =user.name
+%p
+  =simple_format talk.description
+
+- if talk.presentation.file?
+  = link_to talk.presentation.original_filename, talk.presentation.url
+
+%div.btn-group
+  - Talk::STATUS_OPTIONS.each do |status|
+    =link_to talk_path(talk, "talk[status]" => status), {:class => (status == talk.status ? "btn btn-primary" : "btn"), :method => :put, :remote => true} do
+      - if status == "approved_and_confirmed"
+        %i.icon-ok
+        %i.icon-thumbs-up
+      - elsif status == "approved"
+        %i.icon-thumbs-up
+      - elsif status == "rejected"
+        %i.icon-thumbs-down
+      - else
+        %i.icon-time
