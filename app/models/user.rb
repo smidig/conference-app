@@ -23,6 +23,7 @@ class User < ActiveRecord::Base
   belongs_to :order
   has_one :owned_order, :class_name => 'Order', :foreign_key => 'owner_user_id'
   has_and_belongs_to_many :talks
+  has_many :talk_comments
 
   after_save :correct_order, :if => :ticket_id_changed?
 
