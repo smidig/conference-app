@@ -1,17 +1,17 @@
 $(function() {
 
   var url = "/talk_comments.json";
-  var comments =  $(".talk_comments ul");
 
-  function addCommentRow(data) {
-    $(".talk_comments input[name='content']").val("");
+  function addCommentRow(data, container) {
+    container.find("input[name='content']").val("");
     var li = $("<li>").html("<span class='time'>Akkuratt nå, </span> <span class='username'>sier du:</span><br /><span class='content'>"+data.content+"</span>");
 
-    li.appendTo(comments);
+    li.appendTo(container.find("ul"));
   }
 
   $(".talk_comments form").submit(function(event) {
     event.preventDefault();
+    var container = $(this).parent();
     var data = {
       talk_comment: {
         content: $(this).find("input[name='content']").val(),
@@ -25,8 +25,8 @@ $(function() {
         return;
     }
 
-
-
-    $.post(url, data,"json").success(addCommentRow);
+    $.post(url, data,"json").success(function(data) {
+      addCommentRow(data, container);
+    });
   });
 });
