@@ -21,7 +21,8 @@ class TalksController < ApplicationController
   # GET /talks
   # GET /talks.json
   def index
-    @talk_type_count = Talk.count(:group => :talk_type)
+    @talk_type_count = Talk.talk_type_count_cached
+
     @talks = Talk.all_cached
 
     respond_to do |format|
