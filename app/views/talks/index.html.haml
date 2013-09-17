@@ -5,9 +5,9 @@
 %header.clearfix
   %h1
     Foredrag
-    
-  - @talk_type_count.each do |talk_type,count|
-    #{talk_type.name}: #{count} 
+
+  - for c in @talk_type_count
+    #{c[:name]}: #{c[:total]} / #{c[:approved]}
     %br
 
 %article.main  

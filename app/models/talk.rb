@@ -29,8 +29,29 @@ class Talk < ActiveRecord::Base
     Rails.cache.fetch('Talk.all') { order('id desc').all }
   end
 
+  def self.talk_type_count_cached
+    Rails.cache.fetch('Talk.talk_type_count') { talk_type_count }
+  end
+
+  def self.talk_type_count
+    talk_count = []
+    talk_type_id_approved_count = where("status = 'approved_and_confirmed' or status = 'approved'").count(:group => :talk_type_id)
+
+    count(:group => :talk_type).each do |talk_type, count|
+      o =  {
+        :name => talk_type.name,
+        :total => count,
+        :approved => talk_type_id_approved_count[talk_type.id] || 0
+      }
+      talk_count.push(o)
+    end
+
+    talk_count
+  end
+
   def expire_talk_all_cache
     Rails.cache.delete('Talk.all')
+    Rails.cache.delete('Talk.talk_type_count')
   end
 
 end
