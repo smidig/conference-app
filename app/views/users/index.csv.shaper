@@ -1,7 +1,10 @@
-csv.headers :name, :tlf, :company, :twitter, :accepted_optional_email, :allergies, :role, :ticket, :includes_dinner, :completed
+csv.headers :email, :name, :tlf, :company, :twitter, :accepted_optional_email, :allergies, :role, :ticket, :includes_dinner, :completed, :order_status
 
 csv.rows @users do |csv, user|
-  csv.cells :name, :tlf, :company, :twitter, :accepted_optional_email, :allergies, :role, :includes_dinner
+  csv.cells :email, :name, :tlf, :company, :twitter, :accepted_optional_email, :allergies, :role, :includes_dinner
   csv.cell :ticket, user.ticket.name
   csv.cell :completed, user.completed?
+  if user.order
+  	csv.cell :order_status, user.order.status
+  end
 end
