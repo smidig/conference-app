@@ -9,7 +9,7 @@ $(function() {
     li.appendTo(container.find("ul"));
   }
 
-  $(".talk_comments form").submit(function(event) {
+  $(document).on("submit", ".talk_comments form", function(event) {
     event.preventDefault();
     var container = $(this).parent();
     var data = {

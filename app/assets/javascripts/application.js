@@ -69,7 +69,7 @@ $(function() {
     },
     format: function(s, table, cell, cellIndex) {
       // format your data for normalization
-      return cell.getAttribute("data-sort-value");
+      return $(cell).attr("data-sort-value");
     },
     // set type, either numeric or text
     type: 'text'
