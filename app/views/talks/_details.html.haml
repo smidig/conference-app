@@ -12,15 +12,27 @@
 - if talk.presentation.file?
   = link_to talk.presentation.original_filename, talk.presentation.url
 
-%div.btn-group
-  - Talk::STATUS_OPTIONS.each do |status|
-    =link_to talk_path(talk, "talk[status]" => status), {:class => (status == talk.status ? "btn btn-primary" : "btn"), :method => :put, :remote => true} do
-      - if status == "approved_and_confirmed"
-        %i.icon-ok
-        %i.icon-thumbs-up
-      - elsif status == "approved"
-        %i.icon-thumbs-up
-      - elsif status == "rejected"
-        %i.icon-thumbs-down
-      - else
-        %i.icon-time
+%div.talk-actions
+  %hr
+
+  =link_to "Editer", edit_talk_path(talk), :class => 'btn btn-success'
+  =link_to "Slett", talk, confirm: t("helpers.confirm.delete"), :method => :delete, :class => 'btn btn-danger'
+
+  %label.pull-right
+    Status
+    %div.btn-group
+      - Talk::STATUS_OPTIONS.each do |status|
+        =link_to talk_path(talk, "talk[status]" => status), {:class => (status == talk.status ? "btn btn-success" : "btn"), :method => :put, :confirm => t("helpers.confirm.talk_status_change"), :remote => true} do
+          - if status == "approved_and_confirmed"
+            %i.icon-ok
+            %i.icon-thumbs-up
+            =t("activerecord.attributes.talk.status.approved_and_confirmed")
+          - elsif status == "approved"
+            %i.icon-thumbs-up
+            =t("activerecord.attributes.talk.status.approved")
+          - elsif status == "rejected"
+            %i.icon-thumbs-down
+            =t("activerecord.attributes.talk.status.rejected")
+          - else
+            %i.icon-time
+            =t("activerecord.attributes.talk.status.pending")

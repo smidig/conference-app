@@ -78,4 +78,29 @@ class SmidigMailer < ActionMailer::Base
          :subject => "#{SUBJECT_PREFIX} Bruker #{user.email} har registrert seg som foredragsholder.")
   end
 
+  def talk_confirmation(talk)
+    @speaker = talk.user.name
+    @email = talk.user.email
+    @talk = talk.title
+
+    mail(:to => @email,
+         :subject => "#{SUBJECT_PREFIX} Bekreftelse på ditt bidrag #{talk.title}")
+  end
+
+  def talk_acceptance_confirmation(talk)
+    @speaker = talk.user.name
+    @talk = talk.title
+
+    mail(:to => talk.user.email,
+         :subject => "Ditt bidrag \"#{talk.title}\" har blitt akseptert")
+  end
+
+  def talk_refusation_confirmation(talk)
+    @speaker = talk.user.name
+    @talk = talk.title
+
+    mail(:to => talk.user.email,
+         :subject => "Ditt bidrag \"#{talk.title}\" har ikke kommet med")
+  end
+
 end

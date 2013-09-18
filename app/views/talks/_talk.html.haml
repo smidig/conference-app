@@ -13,19 +13,19 @@
       -else 
         =link_to vote_path(talk), {:action => :vote, :method => :post, :class => 'btn btn-danger', :remote => true} do
           %i.icon-thumbs-down
-  %td{"data-sort-value" => talk.status, "data-value" => talk.status}
-    =talk.status
+  %td{"data-sort-value" => t("activerecord.attributes.talk.status." + talk.status)}
+    =t("activerecord.attributes.talk.status." + talk.status)
   %td
     =talk.talk_type.name
+  %td
+    =talk.talk_category.name
   %td
     =talk.created_at.to_formatted_s(:short)
   %td
     %a.btn.btn-success.expand
       %i.icon-plus
-%tr.tablesorter-childRow{:id => "talk_#{talk.id}"}
-  %td{"colspan" => 3}
+%tr.tablesorter-childRow
+  %td{"colspan" => 4, "class" => "talk-details"}
     =render :partial => "details", locals: {talk: talk}
-    =link_to "Editer", edit_talk_path(talk), :class => 'btn btn-success'
-    =link_to "Slett", talk, confirm: 'Are you sure you want to delete this talk?', :method => :delete, :class => 'btn btn-danger'
   %td{"colspan" => 4}
     =render 'comments', :talk => talk

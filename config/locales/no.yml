@@ -3,12 +3,6 @@
     models:
       user: "Deltaker"
     attributes:
-      talk:
-        status:
-          approved_and_confirmed: "Godkjent og bekreftet"
-          approved: "Godkjent"
-          rejected: "Avvist"
-          pending: "Ventende"
       user:
         ticket: "Billett"
         email: "Epostadresse"
@@ -35,8 +29,11 @@
         talk_type: Type foredrag
         presentation: Presentasjon
         talk_category: Hovedkategori
-
-
+        status:
+          approved_and_confirmed: "Godkjent og bekreftet"
+          approved: "Godkjent"
+          rejected: "Avvist"
+          pending: "Ventende"
     errors:
       models:
         user:
@@ -78,6 +75,9 @@
         update: "Lagre min profil!"
     links:
       cancel: "Avbryt"
+    confirm:
+      delete: "Er du sikker på at du vill slette?"
+      talk_status_change: "Er du sikker? Det sendes mail til taler hvis talen blir godkjennt eller avvist"
 
   general:
     register: "Påmelding til Smidig 2013"
