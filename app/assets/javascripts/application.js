@@ -76,7 +76,12 @@ $(function() {
   });
 
   // call the tablesorter plugin and apply the uitheme widget
-  $(".tablesorter").tablesorter({
+  $(".tablesorter").bind("tablesorter-initialized filterEnd", function(){
+    var $this = $(this);
+    $(".row-count").each(function() {
+      $(this).html($this.find("tbody tr").not(".filtered").length);
+    });
+  }).tablesorter({
     // this will apply the bootstrap theme if "uitheme" widget is included
     // the widgetOptions.uitheme is no longer required to be set
     theme : "bootstrap",
@@ -98,6 +103,6 @@ $(function() {
   }).delegate('.expand', 'click' ,function(){
     $(this).toggleClass('btn-success').find('i').toggleClass('icon-plus').toggleClass('icon-minus').closest('tr').nextUntil('tr:not(.tablesorter-childRow)').find('td').toggle();
     return false;
-  });;
+  });
 
 });

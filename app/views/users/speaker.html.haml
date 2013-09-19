@@ -1,15 +1,22 @@
-%a(href="/users") << Tilbake til alle brukere
-%table{:class => 'table table-striped table-hover'}
+%a(href="/users"){:class => "btn pull-right"}
+  %i.icon-backward
+  Tilbake til alle brukere
+
+%header
+  %h1
+    Foredragsholdere
+
+%table{:class => 'table table-striped table-hover tablesorter'}
   %thead
     %tr
-      %th ID
-      %th Dato
-      %th 
-      %th Navn
-      %th Epost
-      %th Firma
-      %th Godkjent
-      %th Antall foredrag
+      %th.filter-false ID
+      %th.filter-false Dato
+      %th.filter-false.sorter-false 
+      %th.filter-false Navn
+      %th.filter-false Epost
+      %th.filter-false Firma
+      %th.filter-false Godkjent
+      %th.filter-false Antall foredrag
   %tbody
     - for user in @speakers
       %tr
