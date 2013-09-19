@@ -6,7 +6,7 @@
     (#{talk.user.company})
   %td.votes{"data-sort-value" => talk.upvotes.size}
     .input-append
-      %input.span2{:type=>"text", :disabled => 'disabled', :value => talk.upvotes.size}
+      %input.vote-input{:type=>"text", :disabled => 'disabled', :value => talk.upvotes.size}
       -if !current_user.voted_as_when_voted_for talk
         =link_to vote_path(talk), {:action => :vote, :method => :post, :class => 'btn', :remote => true} do
           %i.icon-thumbs-up
@@ -16,11 +16,9 @@
   %td{"data-sort-value" => t("activerecord.attributes.talk.status." + talk.status)}
     =t("activerecord.attributes.talk.status." + talk.status)
   %td
-    -if !talk.talk_type.blank?
-      =talk.talk_type.name
+    =talk.talk_type.name
   %td
-    -if !talk.talk_category.blank?
-      =talk.talk_category.name
+    =talk.talk_category.name
   %td
     =talk.created_at.to_formatted_s(:short)
   %td
