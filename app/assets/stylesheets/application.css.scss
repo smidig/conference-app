@@ -21,12 +21,15 @@
 .table .text-left    { text-align: left; }
 .table .text-center  { text-align: center; }
 
-.container {
-
-}
 
 .tablesorter-filter-row {
 	input {
 		width: auto;
+	}
+}
+
+.tablesorter-childRow {
+	.talk-details {
+		width: 60%; /* Just to fix default width changing over content when expanding talks */
 	}
 }
