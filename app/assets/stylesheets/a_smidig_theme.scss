@@ -585,6 +585,11 @@ a:hover {
 .tablesorter {
   background: white;
 
+  .vote-input {
+    min-width: 25px;
+    text-align: center;
+  }
+
   .tablesorter-childRow {
     td {
       display: none;
