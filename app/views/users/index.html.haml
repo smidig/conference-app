@@ -1,50 +1,67 @@
-%a.pull-right{:href => "#{users_path}.csv"}
-  %i.icon-th
-  Eksporter som CSV
+.pull-right
+  %a.btn.pull-right{:href => "#{users_path}.csv"}
+    %i.icon-th
+    Eksporter som CSV
+  %br
+  %br
+  %a.btn.pull-right{:href => "/users/speaker"}
+    %i.icon-list-alt
+    Liste over foredragsholdere
 
-.filter
-  Billett:
-  %select{:data => { :type => "ticket"}}
-    %option{:value => ""} Alle
-    - for ticket in @tickets
-      %option{:value => "#{ticket.name}"}
-        =ticket.name
+-# Removed since same functionality is achieved and displayed by tablesorter
+  .filter
+    Billett:
+    %select{:data => { :type => "ticket"}}
+      %option{:value => ""} Alle
+      - for ticket in @tickets
+        %option{:value => "#{ticket.name}"}
+          =ticket.name
 
-  Fullført:
-  %select.span1{:data => { :type => "completed"}}
-    %option{:value => ""} Alle
-    %option{:value => "Nei"} Nei
-    %option{:value => "Ja"} Ja
+    Fullført:
+    %select.span1{:data => { :type => "completed"}}
+      %option{:value => ""} Alle
+      %option{:value => "Nei"} Nei
+      %option{:value => "Ja"} Ja
 
-  Ant:
-  %span.count
-    =@users.size
+    Ant:
+    %span.count
+      =@users.size
+
+%header.clearfix
+  %h1
+    Deltakere
 
 .info
-  %ul
-    %li
-      %strong Middag: 
-      Ja=#{@dinner_count[:yes]}, 
-      Nei=#{@dinner_count[:no]}, 
-      Ikke satt=#{@dinner_count[:not_set]}
+  %dl.dl-horizontal
+    %dt
+      Deltar på middagen:
+    %dd
+      #{@dinner_count[:yes]} Ja
+      %br
+      #{@dinner_count[:no]} Nei
+      %br
+      #{@dinner_count[:not_set]} Ikke satt 
 
-    %li
-      %a(href="/users/speaker") Liste over foredragsholdere
+    %dt
+      Antall rader i tabell
+    %dd
+      %strong.row-count
+      (Bruk meg for å telle antall ved filtrering)
 
-%table{:class => 'table table-striped table-hover'}
+%table{:class => 'table table-striped table-hover tablesorter'}
   %thead
     %tr
       %th ID
-      %th Dato
-      %th 
+      %th.filter-false Dato
+      %th.filter-false.sorter-false
       %th Navn
       %th Epost
       %th Firma
-      %th Billett
-      %th Pris
-      %th Fullført
+      %th.filter-select{"data-placeholder" => "Alle"} Billett
+      %th.filter-false Pris
+      %th.filter-select{"data-placeholder" => "Alle"} Fullført
       %th Bestilling
-      %th
+      %th.filter-false.sorter-false
   %tbody
     - for user in @users
       %tr
@@ -67,9 +84,13 @@
 
         %td= link_to '#'+user.order.id.to_s, {:controller => :orders, :action => 'show', :id => user.order.id}  if user.order
         %td
-          = link_to({:action => 'make_admin', :id => user.id}, :title => "Toggle Admin", :class => 'btn btn-primary', :confirm => "#{admin_toggle_confirm_msg(user)}") do
-            %i{:class => "icon-user"}
+          %div.btn-group
+            = link_to({:action => 'make_admin', :id => user.id}, :title => "Toggle Admin", :class => 'btn btn-primary', :confirm => "#{admin_toggle_confirm_msg(user)}") do
+              %i{:class => "icon-user"}
 
-          = link_to({:action=> 'delete', :id=> user.id}, :class => 'btn btn-danger', :title => "Slett bruker") do
-            %i{:class => "icon-remove"}
+            = link_to({:action=> 'delete', :id=> user.id}, :class => 'btn btn-danger', :title => "Slett bruker") do
+              %i{:class => "icon-remove"}
+
+            = link_to(edit_user_path(user), :class => 'btn btn-success', :title => "Editer bruker") do
+              %i{:class => "icon-edit"}
 

@@ -1,2 +1,11 @@
-$("#talk_<%=id%>").replaceWith("<%= escape_javascript(render :partial => talk)%>");
+var $talk = $("#talk_<%=id%>")
+	open = !$talk.find(".expand").hasClass("btn-success");
+
+$talk.next().remove();
+$talk.replaceWith("<%= escape_javascript(render :partial => talk)%>");
+
+if(open) {
+	$("#talk_<%=id%>").find(".expand").trigger("click");
+}
+
 $(".tablesorter").trigger("update");
