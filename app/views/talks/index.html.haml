@@ -1,4 +1,4 @@
-%a.pull-right{:href => "#{talks_path}.csv"}
+%a.pull-right{:href => "#{talks_path}.csv", :class => "btn"}
   %i.icon-th
   Eksporter som CSV
 
@@ -6,9 +6,12 @@
   %h1
     Foredrag
 
+%dl.dl-horizontal
   - for c in @talk_type_count
-    #{c[:name]}: #{c[:total]} / #{c[:approved]}
-    %br
+    %dt
+      #{c[:name]}
+    %dd
+      #{c[:total]} / #{c[:approved]}
 
 %article.main  
   %table.table.tablesorter
@@ -24,6 +27,8 @@
           Status
         %th.filter-select{"data-placeholder" => "Alle"}
           Foredrags type
+        %th.filter-select{"data-placeholder" => "Alle"}
+          Kategori
         %th.filter-false
           Opprettet
         %th.filter-false.sorter-false

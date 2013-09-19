@@ -112,6 +112,15 @@ class TalksController < ApplicationController
           @talk.users << @new_user
           @talk.save
         end
+
+        if(admin?)
+          if(params[:talk][:status] == "approved")
+            SmidigMailer.talk_acceptance_confirmation(@talk).deliver
+          elsif(params[:talk][:status] == "rejected")
+            SmidigMailer.talk_refusation_confirmation(@talk).deliver
+          end
+        end
+
         format.html { redirect_to :back, notice: "Talk was successfully updated." }
         format.json { head :no_content }
         format.js { 

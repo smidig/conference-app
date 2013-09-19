@@ -2,14 +2,19 @@
   ul {
     margin-left: 2px;
     list-style: none;
-  }
 
-  li {
-    margin-bottom: 6px;
-  }
-  
-  .username, .time {
-    color: gray;
-  }
+    li {
+      margin-bottom: 6px;
+      padding: 6px;
 
+      &:nth-child(odd) {
+        background-color: #e4e0d7;
+      }
+
+      .username, .time {
+        color: gray;
+        font-weight: 400;
+      }
+    }
+  }
 }
