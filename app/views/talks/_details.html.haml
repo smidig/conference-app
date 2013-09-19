@@ -2,10 +2,10 @@
   %h1
     =talk.title
   %em.author
-    =talk.user.name
+    =link_to(talk.user.name, edit_user_path(talk.user))
     - for user in talk.users
       ,
-      =user.name
+      =link_to(user.name, edit_user_path(user))
 %p
   =simple_format talk.description
 

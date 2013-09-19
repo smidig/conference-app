@@ -8,10 +8,10 @@
     .input-append
       %input.span2{:type=>"text", :disabled => 'disabled', :value => talk.upvotes.size}
       -if !current_user.voted_as_when_voted_for talk
-        =link_to vote_path(talk), {:action => :vote, :method => :post, :class => 'btn btn-success', :remote => true} do
+        =link_to vote_path(talk), {:action => :vote, :method => :post, :class => 'btn', :remote => true} do
           %i.icon-thumbs-up
       -else 
-        =link_to vote_path(talk), {:action => :vote, :method => :post, :class => 'btn btn-danger', :remote => true} do
+        =link_to vote_path(talk), {:action => :vote, :method => :post, :class => 'btn btn-success', :remote => true} do
           %i.icon-thumbs-down
   %td{"data-sort-value" => t("activerecord.attributes.talk.status." + talk.status)}
     =t("activerecord.attributes.talk.status." + talk.status)
