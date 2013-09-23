@@ -22,7 +22,8 @@
     Status
     %div.btn-group
       - Talk::STATUS_OPTIONS.each do |status|
-        =link_to talk_path(talk, "talk[status]" => status), {:class => (status == talk.status ? "btn btn-success" : "btn"), :method => :put, :confirm => t("helpers.confirm.talk_status_change"), :remote => true} do
+        =link_to status_path(talk, "status" => status), {:class => (status == talk.status ? "btn btn-success" : "btn"), :method => :post, :action => :status, :confirm => t("helpers.confirm.talk_status_change"), :remote => true} do
+
           - if status == "approved_and_confirmed"
             %i.icon-ok
             %i.icon-thumbs-up
