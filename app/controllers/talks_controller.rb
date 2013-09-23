@@ -4,7 +4,7 @@ class TalksController < ApplicationController
   
   no_authorization! :only => [:new, :show, :list]
 
-  authorize_admin! :only => [:index, :vote, :destroy]
+  authorize_admin! :only => [:index, :vote, :destroy, :status]
 
   authorize_user! :only => :create
 
@@ -113,14 +113,6 @@ class TalksController < ApplicationController
           @talk.save
         end
 
-        if(admin?)
-          if(params[:talk][:status] == "approved")
-            SmidigMailer.talk_acceptance_confirmation(@talk).deliver
-          elsif(params[:talk][:status] == "rejected")
-            SmidigMailer.talk_refusation_confirmation(@talk).deliver
-          end
-        end
-
         format.html { redirect_to :back, notice: "Talk was successfully updated." }
         format.json { head :no_content }
         format.js { 
@@ -155,6 +147,42 @@ class TalksController < ApplicationController
     @talk = Talk.find(params[:id])
     @talk.vote :voter => current_user, :vote => !current_user.voted_as_when_voted_for(@talk)
     flash[:notice] = "Vote registered."
+
+    respond_to do |format|
+      format.html { redirect_to talks_url }
+      format.json { head :no_content }
+      format.js { 
+        render "update",
+        :locals => {
+          :id => params[:id], 
+          :talk => @talk
+        } 
+      }
+    end
+  end
+
+  # POST /talks/1/status
+  def status
+    @talk = Talk.find(params[:id])
+    @status = params[:status]
+
+    unless @status == @talk.status
+      @talk.status = @status
+      @talk.save
+
+      if(@status == "approved")
+        SmidigMailer.talk_acceptance_confirmation(@talk).deliver
+
+        # Confirm user as speaker if talk gets approved
+        unless @talk.user.completed
+          @talk.user.completed = true
+          @talk.user.save
+        end
+
+      elsif(@status == "rejected")
+        SmidigMailer.talk_refusation_confirmation(@talk).deliver
+      end
+    end
 
     respond_to do |format|
       format.html { redirect_to talks_url }

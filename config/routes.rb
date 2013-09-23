@@ -44,6 +44,7 @@ ConferenceApp::Application.routes.draw do
   resources :talk_types
 
   post '/talks/:id/vote' => 'talks#vote', :as => 'vote'
+  post '/talks/:id/status' => 'talks#status', :as => 'status'
 
   get "talks/list"
   resources :talks
