@@ -21,9 +21,13 @@
           | 
           %em Kategori: 
           #{talk.talk_category.name}
-       
+
+      %span
+        - if talk.status
+          | 
+          %em Status: 
+          #{talk.status == "approved_and_confirmed" ? "Godkjent" : "Registrert"}       
      
       %h6 Beskrivelse:
       = simple_format talk.description
   .span2
-    %a.twitter-share-button{"data-count" => "horizontal", "data-text" => "#smidig13", "data-url" => "http://smidig.no#{url_for(talk)}", :href => "http://twitter.com/share"} Tweet!
