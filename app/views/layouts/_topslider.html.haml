@@ -2,17 +2,27 @@
   .flexslider
     %ul.slides
       %li
+        %a(href="#{info_keynote_path}")
+          // TODO: Add correct image with proper size (940 x 400)
+          %img{:src => "#{image_path "slide_5.jpg"}"}
+          .row-fluid
+            .caption.span5.offset1
+              %h5.title 
+                Lean og Smidige metoder
+              %p.text
+                Jon Kåre Stene kommer til Smidig for å 
+                snakke hva de har utrettet ved å bruke smidige- og lean metoder 
+                i Schibsted.
+      %li
         %a(href="#{new_user_registration_path}")
           // TODO: Add correct image with proper size (940 x 400)
           %img{:src => "#{image_path "slide_1.jpg"}"}
           .row-fluid
             .caption.span5.offset1
-              %h5.title 
-                Fristen nærmer seg!
               %p.text
-                Fristen for å melde seg på til 
-                early bird pris er 
-                %strong 1.&nbsp;oktober. 
+                Smidig 2013 vil inspirere og presentere nye trender i en sosial atmosfære.
+                %br
+                %em Oslo, 5. - 6. november 2013.
       %li
         %a(href="#{info_tema_path}")
           %img{:src => "#{image_path "slide_4.jpg"}"}
@@ -24,7 +34,7 @@
                 Produktkøen, Software Craftsmanship, Team, Realisering av verdi, Smidig Testing, 
                 Innovasjon, Continuous Delivery og DevOps. 
       %li
-        %a(href="#{info_david_path}")
+        %a(href="#{info_keynote_path}")
           // TODO: Add correct image with proper size (940 x 400)
           %img{:src => "#{image_path "slide_david.jpg"}"}
           .row-fluid
