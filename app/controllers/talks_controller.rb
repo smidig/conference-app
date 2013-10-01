@@ -8,7 +8,7 @@ class TalksController < ApplicationController
 
   authorize_user! :only => :create
 
-  helper_method :get_talk_types
+  helper_method :get_talk_types, :get_voters
 
   authorize! :only => [:edit, :update] do
     talk = Talk.find(params[:id])
@@ -202,6 +202,18 @@ class TalksController < ApplicationController
       @talk_types = TalkType.find(:all, :conditions => { :visible => true})
     end
     return @talk_types
+  end
+
+  def get_voters(talk)
+    voters = "";
+    total_length = talk.upvotes.length - 1
+    talk.upvotes.each_with_index do |vote, index| 
+      voters = voters + " " + vote.voter.name
+      if index < total_length
+        voters = voters + ","
+      end
+    end
+    return voters
   end
 
   def redirect_to_create_user_if_not_logged_in
