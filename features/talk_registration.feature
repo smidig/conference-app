@@ -7,11 +7,11 @@ Feature: User registration
     Given there exist a speaker ticket
     And there is a user with email "valid@user.com" and password "password"
 
-  Scenario: Should send user to the sign up page with special ticket
-    Given I am on the home page
-    When I follow "Foreslå foredrag"
-    Then I should be on the registration page
-    And the "user_ticket_id" drop-down should contain the option "Speaker - (kr 0,-)"
+  #Scenario: Should send user to the sign up page with special ticket
+  #  Given I am on the home page
+  #  When I follow "Foreslå foredrag"
+  #  Then I should be on the registration page
+  #  And the "user_ticket_id" drop-down should contain the option "Speaker - (kr 0,-)"
 
 
   Scenario: A registered user should be able to submit abstracts
@@ -36,4 +36,5 @@ Feature: User registration
     And I select "Lyntale" from "Type foredrag"
     And I select "Annet" from "Hovedkategori"
     And I press "Send inn forslag!"
+    Then show me the page
     Then I should see an error in the form saying "Du må godta vilkårene"
