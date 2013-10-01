@@ -36,5 +36,4 @@ Feature: User registration
     And I select "Lyntale" from "Type foredrag"
     And I select "Annet" from "Hovedkategori"
     And I press "Send inn forslag!"
-    Then show me the page
     Then I should see an error in the form saying "Du må godta vilkårene"
