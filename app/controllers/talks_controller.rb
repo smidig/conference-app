@@ -8,6 +8,8 @@ class TalksController < ApplicationController
 
   authorize_user! :only => :create
 
+  helper_method :get_talk_types, :get_voters
+
   authorize! :only => [:edit, :update] do
     talk = Talk.find(params[:id])
 
@@ -58,12 +60,6 @@ class TalksController < ApplicationController
   # GET /talks/new
   # GET /talks/new.json
   def new
-    if current_user.admin
-      @talk_types = TalkType.all
-    else
-      @talk_types = TalkType.find(:all, :conditions => { :visible => true})
-    end
-
     @talk = Talk.new
 
     respond_to do |format|
@@ -198,6 +194,27 @@ class TalksController < ApplicationController
   end
 
   private
+
+  def get_talk_types
+    if current_user.admin
+      @talk_types = TalkType.all
+    else
+      @talk_types = TalkType.find(:all, :conditions => { :visible => true})
+    end
+    return @talk_types
+  end
+
+  def get_voters(talk)
+    voters = "";
+    total_length = talk.upvotes.length - 1
+    talk.upvotes.each_with_index do |vote, index| 
+      voters = voters + " " + vote.voter.name
+      if index < total_length
+        voters = voters + ","
+      end
+    end
+    return voters
+  end
 
   def redirect_to_create_user_if_not_logged_in
     if not current_user
