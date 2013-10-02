@@ -28,6 +28,12 @@
 	}
 }
 
+.tablesorter {
+	td.votes {
+		width: 140px;
+	}
+}
+
 .tablesorter-childRow {
 	.talk-details {
 		width: 60%; /* Just to fix default width changing over content when expanding talks */
