@@ -13,7 +13,7 @@ class Talk < ActiveRecord::Base
   has_and_belongs_to_many :users
   has_many :talk_comments
 
-  has_attached_file :presentation
+  has_attached_file :presentation, PAPERCLIP_CONFIG
   validates_attachment_size :presentation, :less_than => 10.megabytes
 
   validates :status, :inclusion => {:in => STATUS_OPTIONS}, :allow_nil => true
