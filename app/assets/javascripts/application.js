@@ -103,6 +103,10 @@ $(function() {
   }).delegate('.expand', 'click' ,function(){
     $(this).toggleClass('btn-success').find('i').toggleClass('icon-plus').toggleClass('icon-minus').closest('tr').nextUntil('tr:not(.tablesorter-childRow)').find('td').toggle();
     return false;
+  }).delegate('.bs-tooltip', 'mouseenter', function() {
+    $(this).tooltip('show');
+  }).delegate('.bs-tooltip', 'mouseleave', function() {
+    $(this).tooltip('hide');
   });
 
 });

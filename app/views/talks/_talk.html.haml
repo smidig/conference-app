@@ -13,6 +13,9 @@
       -else 
         =link_to vote_path(talk), {:action => :vote, :method => :post, :class => 'btn btn-success', :remote => true} do
           %i.icon-thumbs-down
+    -if talk.upvotes.size > 0
+      %button.btn.pull-right.bs-tooltip{:title => get_voters(talk)}
+        %i.icon-user
   %td{"data-sort-value" => t("activerecord.attributes.talk.status." + talk.status)}
     =t("activerecord.attributes.talk.status." + talk.status)
   %td
