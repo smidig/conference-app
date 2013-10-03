@@ -1,4 +1,6 @@
 class TimeslotsController < ApplicationController
+  authorize_admin!
+  
   # GET /timeslots
   # GET /timeslots.json
   def index

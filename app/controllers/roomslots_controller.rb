@@ -1,4 +1,6 @@
 class RoomslotsController < ApplicationController
+  authorize_admin!
+
   # GET /roomslots
   # GET /roomslots.json
   def index
@@ -37,6 +39,7 @@ class RoomslotsController < ApplicationController
 
   # GET /roomslots/1/edit
   def edit
+    @available_talks = Talk.where(:roomslot_id => nil).where(:status => 'approved_and_confirmed')
     @roomslot = Roomslot.find(params[:id])
   end
 
@@ -59,7 +62,7 @@ class RoomslotsController < ApplicationController
   # PUT /roomslots/1
   # PUT /roomslots/1.json
   def update
-    @roomslot = Roomslot.find(params[:id])
+    @roomslot = Roomslot.find(params[:id], :readonly => false)
 
     respond_to do |format|
       if @roomslot.update_attributes(params[:roomslot])
