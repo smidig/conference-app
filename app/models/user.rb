@@ -54,6 +54,18 @@ class User < ActiveRecord::Base
     Talk.where(:user_id => id)
   end
 
+  def can_delete
+    if !order
+      return true
+    elsif order.payment_created
+      return false
+    elsif order.users.size > 1
+      return false
+    else
+      return true
+    end
+  end
+
   private
 
   def destroy_talks

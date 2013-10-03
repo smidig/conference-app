@@ -23,7 +23,7 @@
         #{user.name} (#{user.email}),
 
     %li
-      %strong Betaling
+      %strong Betaling:
       = link_to '#'+@user.order.payment.id.to_s, {:controller => :payments, :action => 'show', :id => @user.order.payment.id} if @user.order.payment
 - else
   %p
@@ -52,9 +52,12 @@ Co-speaker på foredrag:
   %i Er du HELT sikker på at du vil slette denne brukeren og evt bestilling?
 
 .form-actions
-  = link_to(@user, :confirm =>"Er du sikker på at du vil slette #{@user.name}?", :method=>:delete, :class => 'btn btn-danger', :title => "Slett bruker") do
-    %i{:class => "icon-remove"}
-    Ja slett bruker
+  - if @user.can_delete
+    = link_to(@user, :confirm =>"Er du sikker på at du vil slette #{@user.name}?", :method=>:delete, :class => 'btn btn-danger', :title => "Slett bruker") do
+      %i{:class => "icon-remove"}
+      Ja slett bruker
+  - else
+    Kan ikke slette, fjern betaling og/eller bestilling først.. 
 
   = link_to(users_path, :class => 'btn btn-primary', :title => "Avbryt") do
     %i{:class => "icon-backward"}
