@@ -23,6 +23,7 @@
 //= require jquery.metadata
 //= require jquery.tablesorter
 //= require jquery.tablesorter.widgets
+//= require jquery.multi-select
 //
 // These are our scripts:
 //

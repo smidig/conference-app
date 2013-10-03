@@ -11,11 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(:version => 20130818132707) do
-=======
-ActiveRecord::Schema.define(:version => 20130612124116) do
->>>>>>> This implements the basic fundations for managing
 
   create_table "orders", :force => true do |t|
     t.string   "comment"

@@ -1,4 +1,6 @@
 class RoomsController < ApplicationController
+  authorize_admin!
+  
   # GET /rooms
   # GET /rooms.json
   def index
