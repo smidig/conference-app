@@ -29,6 +29,8 @@ class User < ActiveRecord::Base
 
   after_create :follow_user_on_twitter
 
+  after_destroy :destroy_talks
+
   def roles
     [
       "Utvikler",
@@ -53,6 +55,12 @@ class User < ActiveRecord::Base
   end
 
   private
+
+  def destroy_talks
+    all_talks.each do |talk|
+      talk.destroy
+    end
+  end
 
   def require_active_ticket
     if ticket and !ticket.active
