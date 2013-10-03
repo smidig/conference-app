@@ -1,6 +1,6 @@
 :markdown
   # Slette bruker
-  _Før du sletter en bruker anbefales det at du sletter en evt betaling og bestilling. Dersom brukeren tilhører en fullført bestilling kan det bli missmatch mellom bestillingen og betalingen for den bestillingen._
+  _Før du sletter en bruker anbefales det at du sletter en evt betaling og bestilling. Dersom brukeren tilhører en fullført bestilling vil det bli missmatch mellom bestillingen og betaling._
 
   #### Brukerinfo:
   * **Navn:**  #{@user.name}
@@ -29,8 +29,26 @@
   %p
     Brukeren tilhører ingen bestilling!
 
+%h4 Foredrag
+Hovedforfatter til foredrag 
+%em (vil også bli slettet)
+%ul
+  - for talk in @user.all_talks
+    %li
+      = link_to talk.title, talk
 
-%p
+  - if @user.all_talks.size == 0
+    %li ingen
+
+Co-speaker på foredrag:
+%ul
+  - for talk in @user.talks
+    %li
+      = link_to talk.title, talk
+  - if @user.talks.size == 0
+    %li (ingen)
+
+%h3
   %i Er du HELT sikker på at du vil slette denne brukeren og evt bestilling?
 
 .form-actions
