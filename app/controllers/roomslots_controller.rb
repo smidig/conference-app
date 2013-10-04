@@ -75,6 +75,17 @@ class RoomslotsController < ApplicationController
     end
   end
 
+  def add_talk
+    talk = Talk.find(params[:talk_id])
+    talk.roomslot = Roomslot.find(params[:roomslot_id])
+    talk.save!
+
+    respond_to do |format|
+      format.html { redirect_to timeslots_url }
+      format.json { head :no_content }
+    end
+  end
+
   # DELETE /roomslots/1
   # DELETE /roomslots/1.json
   def destroy

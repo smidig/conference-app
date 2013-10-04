@@ -12,4 +12,29 @@
   .clear {
     clear: both;
   }
+
+  .talks {
+    .dropzone {
+      margin: 3px;
+      list-style-type: none; 
+      min-height: 30px;
+      border: 1px dotted gray;
+    }
+
+    .talk {
+      max-width: 150px;
+    }
+  }
+
+  .dragover {
+    border: 1px solid red;
+  }
+}
+
+.available-talks {
+  /*
+  position: fixed;
+  z-index: 1000;
+  top: 20px;
+  */
 }

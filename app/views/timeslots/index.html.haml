@@ -1,7 +1,21 @@
-%h1 Listing timeslots
+.row-fluid
+  .span9
+    %h1 Tidsslotter:
+    - @timeslots.each do |timeslot|
+      = render 'timeslot', :timeslot => timeslot
 
-- @timeslots.each do |timeslot|
-  = render 'timeslot', :timeslot => timeslot
+    %p
+      = link_to 'Legg til timeslot', new_timeslot_path
 
-%p
-  = link_to 'Legg til timeslot', new_timeslot_path
+
+
+
+
+
+  .span3
+    %h1 Foredrag tilgjengelig:
+    
+    %ul.available-talks
+      - for talk in @available_talks
+        %li.talk{:draggable => "true", :data => {:talk_id=>talk.id}}
+          #{talk.id}:#{talk.title} (#{talk.user.name})
