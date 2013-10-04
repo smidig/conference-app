@@ -1,9 +1,12 @@
 class TimeslotsController < ApplicationController
   authorize_admin!
+  before_filter lambda { @body_class = 'admin' }
   
   # GET /timeslots
   # GET /timeslots.json
   def index
+    @available_talks = Talk.where(:roomslot_id => nil).where(:status => 'approved_and_confirmed')
+    
     @timeslots = Timeslot.all
 
     respond_to do |format|

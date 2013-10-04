@@ -1,20 +1,21 @@
 .timeslot
-  = link_to 'Endre', edit_timeslot_path(timeslot)
-  = link_to 'Slett', timeslot, :method => :delete, :data => { :confirm => 'Are you sure?' }
-  %br
-  Start: #{timeslot.start.to_formatted_s(:long)}
-  %br
-  Slutt: #{timeslot.end.to_formatted_s(:long)}
+  #{timeslot.start.to_formatted_s(:long)} - #{timeslot.end.to_formatted_s(:long)}
+  %span.pull-right
+    = link_to 'Endre', edit_timeslot_path(timeslot)
+    = link_to 'Slett', timeslot, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
   .rooms
     - timeslot.roomslot.each do |roomslot|
       .room
-        Room: #{roomslot.room.name}
+        %strong Room: 
+        #{roomslot.room.name}
         .talks
-          Talks:
-          %br
-          - roomslot.talks.each do |talk|
-            .talk
-              %strong #{talk.title}
+          %strong Talks:
+          %ul.dropzone{:data => {:roomslot_id => "#{roomslot.id}"}}
+            - roomslot.talks.each do |talk|
+              %li.talk
+                %strong #{talk.title}
+
         = link_to 'Edit', edit_roomslot_path(roomslot)
         = link_to 'Slett', roomslot, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
