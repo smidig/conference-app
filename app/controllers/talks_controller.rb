@@ -166,7 +166,7 @@ class TalksController < ApplicationController
       @talk.status = @status
       @talk.save
 
-      if(@status == "approved")
+      if(@status == "approved_and_confirmed")
         SmidigMailer.talk_acceptance_confirmation(@talk).deliver
 
         # Confirm user as speaker if talk gets approved
