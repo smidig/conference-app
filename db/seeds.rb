@@ -71,13 +71,11 @@ t4 = Timeslot.create(start: "2013-11-05 10:15:00", end: "2013-11-05 11:00:00")
 Roomslot.create(:room_id => foaje.id, :timeslot_id => t1.id)
 
 Roomslot.create(:room_id => olympia.id, :timeslot_id => t2.id)
-Roomslot.create(:room_id => olympia.id, :timeslot_id => t2.id)
+Roomslot.create(:room_id => olympia.id, :timeslot_id => t3.id)
 
 # lyntaler row 1
-Roomslot.create(:room_id => olympia.id, :timeslot_id => t3.id)
-Roomslot.create(:room_id => film.id, :timeslot_id => t3.id)
-Roomslot.create(:room_id => kunst.id, :timeslot_id => t3.id)
-Roomslot.create(:room_id => madonna.id, :timeslot_id => t3.id)
-Roomslot.create(:room_id => vampyr.id, :timeslot_id => t3.id)
-
-
+Roomslot.create(:room_id => olympia.id, :timeslot_id => t4.id)
+Roomslot.create(:room_id => film.id, :timeslot_id => t4.id)
+Roomslot.create(:room_id => kunst.id, :timeslot_id => t4.id)
+Roomslot.create(:room_id => madonna.id, :timeslot_id => t4.id)
+Roomslot.create(:room_id => vampyr.id, :timeslot_id => t4.id)
