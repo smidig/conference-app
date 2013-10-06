@@ -1,9 +1,11 @@
 .timeslot
   #{timeslot.start.to_formatted_s(:long)} - #{timeslot.end.to_formatted_s(:long)}
   %span.pull-right
-    = link_to(edit_timeslot_path(timeslot), :title => "Editer") do
+    %a{:href=>"#{new_roomslot_path}?timeslot_id=#{timeslot.id}", :title => "Legg til rom"}
+      %i{:class => "icon-plus"}
+    = link_to(edit_timeslot_path(timeslot), :title => "Editer timeslot") do
       %i{:class => "icon-edit"}
-    = link_to({:action => 'destroy', :id => timeslot.id}, :title => "Slett", :confirm => "Sikker på at du vil slette?") do
+    = link_to({:action => 'destroy', :id => timeslot.id}, :title => "Slett timeslot", :confirm => "Sikker på at du vil slette?") do
       %i{:class => "icon-remove"}
 
   .rooms
@@ -21,5 +23,3 @@
         = link_to 'Slett', roomslot, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
     .clear
-  %a(href="#{new_roomslot_path}?timeslot_id=#{timeslot.id}")
-    Legg til rom
