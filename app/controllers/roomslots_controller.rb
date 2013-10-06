@@ -39,7 +39,6 @@ class RoomslotsController < ApplicationController
 
   # GET /roomslots/1/edit
   def edit
-    @available_talks = Talk.where(:roomslot_id => nil).where(:status => 'approved_and_confirmed')
     @roomslot = Roomslot.find(params[:id])
   end
 
@@ -78,6 +77,17 @@ class RoomslotsController < ApplicationController
   def add_talk
     talk = Talk.find(params[:talk_id])
     talk.roomslot = Roomslot.find(params[:roomslot_id])
+    talk.save!
+
+    respond_to do |format|
+      format.html { redirect_to timeslots_url }
+      format.json { head :no_content }
+    end
+  end
+
+  def remove_talk
+    talk = Talk.find(params[:talk_id])
+    talk.roomslot = nil
     talk.save!
 
     respond_to do |format|

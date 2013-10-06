@@ -5,13 +5,3 @@
 
   .actions
     = f.button :submit, :class => 'btn-primary'
-
-
-%hr
-%h1 Testing:
-%select{:multiple => "multiple", :id => "available-talks"}
-  - for talk in @available_talks
-    %option{:value => talk.id}
-      #{talk.id} - #{talk.title}
-
-%hr
