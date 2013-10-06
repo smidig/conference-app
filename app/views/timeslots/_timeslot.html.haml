@@ -1,8 +1,10 @@
 .timeslot
   #{timeslot.start.to_formatted_s(:long)} - #{timeslot.end.to_formatted_s(:long)}
   %span.pull-right
-    = link_to 'Endre', edit_timeslot_path(timeslot)
-    = link_to 'Slett', timeslot, :method => :delete, :data => { :confirm => 'Are you sure?' }
+    = link_to(edit_timeslot_path(timeslot), :title => "Editer") do
+      %i{:class => "icon-edit"}
+    = link_to({:action => 'destroy', :id => timeslot.id}, :title => "Slett", :confirm => "Sikker på at du vil slette?") do
+      %i{:class => "icon-remove"}
 
   .rooms
     - timeslot.roomslot.each do |roomslot|
@@ -13,8 +15,7 @@
           %strong Talks:
           %ul.dropzone{:data => {:roomslot_id => "#{roomslot.id}"}}
             - roomslot.talks.each do |talk|
-              %li.talk
-                %strong #{talk.title}
+              = render 'talk', :talk => talk
 
         = link_to 'Edit', edit_roomslot_path(roomslot)
         = link_to 'Slett', roomslot, :method => :delete, :data => { :confirm => 'Are you sure?' }

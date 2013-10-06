@@ -1,40 +1,55 @@
-.timeslot {
-  border: 1px solid silver;
-  margin: 10px 0;
-  padding: 5px;
-
-  .room {
+.program-admin {
+  
+  .timeslot {
     border: 1px solid silver;
-    float:left;
-    margin: 3px;
-    padding: 2px;
-  }
-  .clear {
-    clear: both;
+    margin: 10px 0;
+    padding: 5px;
+
+    .room {
+      border: 1px solid silver;
+      float:left;
+      margin: 3px;
+      padding: 2px;
+    }
+    .clear {
+      clear: both;
+    }
   }
 
   .talks {
     .dropzone {
       margin: 3px;
-      list-style-type: none; 
       min-height: 30px;
       border: 1px dotted gray;
     }
 
     .talk {
       max-width: 150px;
+      list-style-type: none; 
+    }
+
+    .dragover {
+      border: 1px solid #00FF00;
     }
   }
 
-  .dragover {
-    border: 1px solid red;
-  }
-}
+  .available-talks-container {
+    background: white;
+    position: fixed;
+    z-index: 1000;
+    top: 80px;
+    width: 200px;
+    right: 10px;
+    bottom: 10px;
+    overflow-y: auto;  
+    border: 1px solid black;
+    padding: 5px;
 
-.available-talks {
-  /*
-  position: fixed;
-  z-index: 1000;
-  top: 20px;
-  */
+    .talk {
+      .remove {
+        display: none;
+      }
+    }
+  }
+
 }

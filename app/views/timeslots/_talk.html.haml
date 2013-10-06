@@ -1,0 +1,4 @@
+%li.talk{:draggable => "true", :data => {:talk_id=>talk.id}} 
+  #{talk.id}:#{talk.title} (#{talk.user.name})
+  %a.remove{:href=>"delete_talk"}
+    %i.icon-remove
