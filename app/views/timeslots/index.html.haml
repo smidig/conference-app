@@ -5,12 +5,14 @@
       = render 'timeslot', :timeslot => timeslot
 
     %p
-      = link_to 'Legg til timeslot', new_timeslot_path
+      = link_to new_timeslot_path, :class => "btn" do
+        %i.icon-plus
+        Legg til timeslot
 
 
   .span3
     .available-talks-container
-      %h2 Godkjente talks:
+      %h4 Godkjente talks:
       %ul.available-talks.talks
         - for talk in @available_talks
           = render 'talk', :talk => talk
