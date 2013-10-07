@@ -1,11 +1,17 @@
 .program-admin {
   
   .timeslot {
+    background: white;
     border: 1px solid silver;
     margin: 10px 0;
-    padding: 5px;
+    padding: 0;
+    header {
+      background: #efefef;
+      border-bottom: 1px solid silver;
+    }
 
     .room {
+      background: #efefef;
       border: 1px solid silver;
       float:left;
       margin: 3px;
@@ -18,32 +24,51 @@
 
   .talks {
     .dropzone {
+      background: white;
       margin: 3px;
+      padding: 3x;
       min-height: 30px;
-      border: 1px dotted gray;
+      border: 2px solid silver;
+      background-color: white;
     }
 
     .talk {
-      max-width: 150px;
+      background: white;
+      max-width: 160px;
       list-style-type: none; 
+      padding: 3px;
+      margin: 5px;
+      font-size: 0.9em;
+      border: 1px solid #ccc;
+      cursor: pointer;
+      box-shadow: none;
+    }
+
+    .talk:hover {
+      background: #00FF00;
     }
 
     .dragover {
-      border: 1px solid #00FF00;
+      border: 2px solid #00FF00;
     }
   }
 
   .available-talks-container {
-    background: white;
+    background: #efefef;
     position: fixed;
     z-index: 1000;
     top: 80px;
-    width: 200px;
+    width: 180px;
     right: 10px;
     bottom: 10px;
     overflow-y: auto;  
-    border: 1px solid black;
+    border: 1px solid silver;
     padding: 5px;
+
+    .available-talks {
+      margin: 0;
+    }
+
 
     .talk {
       .remove {
