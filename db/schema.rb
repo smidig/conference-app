@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130818132707) do
+ActiveRecord::Schema.define(:version => 20131007192646) do
 
   create_table "orders", :force => true do |t|
     t.string   "comment"
@@ -46,6 +46,23 @@ ActiveRecord::Schema.define(:version => 20130818132707) do
     t.string   "manual_invoice_id"
     t.string   "manual_city"
     t.integer  "manual_organization_number"
+  end
+
+  create_table "rooms", :force => true do |t|
+    t.string   "name"
+    t.string   "details"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "color"
+  end
+
+  create_table "roomslots", :force => true do |t|
+    t.integer  "timeslot_id"
+    t.integer  "room_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.string   "title"
+    t.text     "description"
   end
 
   create_table "sponsors", :force => true do |t|
@@ -92,6 +109,8 @@ ActiveRecord::Schema.define(:version => 20130818132707) do
     t.datetime "presentation_updated_at"
     t.string   "status",                    :default => "pending"
     t.integer  "user_id"
+    t.integer  "roomslot_id"
+    t.integer  "roomslot_priority"
   end
 
   add_index "talks", ["user_id"], :name => "index_talks_on_user_id"
@@ -109,6 +128,13 @@ ActiveRecord::Schema.define(:version => 20130818132707) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.string   "ticket_type"
+  end
+
+  create_table "timeslots", :force => true do |t|
+    t.datetime "start"
+    t.datetime "end"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|
