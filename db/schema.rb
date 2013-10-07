@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131007180725) do
+ActiveRecord::Schema.define(:version => 20131007191335) do
 
   create_table "orders", :force => true do |t|
     t.string   "comment"
@@ -109,6 +109,7 @@ ActiveRecord::Schema.define(:version => 20131007180725) do
     t.string   "status",                    :default => "pending"
     t.integer  "user_id"
     t.integer  "roomslot_id"
+    t.integer  "roomslot_priority"
   end
 
   add_index "talks", ["user_id"], :name => "index_talks_on_user_id"
