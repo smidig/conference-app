@@ -6,10 +6,21 @@ class Roomslot < ActiveRecord::Base
 
   default_scope :joins => :room, :order => 'rooms.name'
 
+  after_destroy :cleanup_talks
+
   def max_priority 
     if talks.size > 0
       return talks.last.roomslot_priority
     end
     0
+  end
+
+  private
+  def cleanup_talks
+    talks.each do |talk|
+      talk.roomslot = nil
+      talk.roomslot_priority = 0
+      talk.save
+    end
   end
 end
