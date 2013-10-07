@@ -76,7 +76,9 @@ class RoomslotsController < ApplicationController
 
   def add_talk
     talk = Talk.find(params[:talk_id])
-    talk.roomslot = Roomslot.find(params[:roomslot_id])
+    roomslot = Roomslot.find(params[:roomslot_id])
+    talk.roomslot = roomslot
+    talk.roomslot_priority = roomslot.max_priority() +1
     talk.save!
 
     respond_to do |format|
