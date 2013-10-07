@@ -65,7 +65,7 @@ class RoomslotsController < ApplicationController
 
     respond_to do |format|
       if @roomslot.update_attributes(params[:roomslot])
-        format.html { redirect_to @roomslot, notice: 'Roomslot was successfully updated.' }
+        format.html { redirect_to timeslots_url}
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

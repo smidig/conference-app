@@ -13,6 +13,10 @@
       .room
         %strong Room: 
         #{roomslot.room.name}
+        - if roomslot.title 
+          %strong Tittel: 
+          #{roomslot.title}
+
         .talks
           %strong Talks:
           %ul.dropzone{:data => {:roomslot_id => "#{roomslot.id}"}}
