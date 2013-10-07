@@ -54,13 +54,13 @@ for i in 0..10
 end
 
 # rooms
-foaje = Room.create(name: "Foajé")
-olympia = Room.create(name: "Olympia")
-film = Room.create(name: "Film")
-kunst = Room.create(name: "Kunst")
-madonna = Room.create(name: "Madonna")
-vampyr = Room.create(name: "Vampyr")
-resturant = Room.create(name: "Resturant")
+foaje = Room.create(name: "Foajé", color: "gray")
+olympia = Room.create(name: "Olympia", color: "#F90")
+film = Room.create(name: "Film", color: "#C00")
+kunst = Room.create(name: "Kunst", color: "#090")
+madonna = Room.create(name: "Madonna", color: "silver")
+vampyr = Room.create(name: "Vampyr", color: "blue")
+resturant = Room.create(name: "Resturant", color: "gray")
 
 
 t1 = Timeslot.create(start: "2013-11-05 08:00:00", end: "2013-11-05 08:45:00")
