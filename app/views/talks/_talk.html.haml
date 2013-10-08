@@ -1,6 +1,6 @@
 %tr{:id => "talk_#{talk.id}"}
   %td{"data-sort-value" => talk.title, "data-value" => talk.title}
-    =talk.title
+    (#{talk.id}) #{talk.title}
   %td
     =talk.user.name
     (#{talk.user.company})
