@@ -36,6 +36,10 @@ $(function() {
     $('.header-nav').slideToggle();
   });
 
+  $("#main").on("click", ".talk", function() {
+    $(this).find(".description").slideToggle('fast');
+  });
+
   $('.flexslider').flexslider({
     pauseOnHover: true,
     directionNav: false
