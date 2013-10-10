@@ -26,6 +26,9 @@ ConferenceApp::Application.routes.draw do
   get "administration/send_mail"
   get "administration/statistics"
 
+  # program stuff
+  resources :program
+
   #Info sites
   get "info/about"
   get "info/tema"

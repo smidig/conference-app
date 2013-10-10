@@ -1,0 +1,180 @@
+// Place all the styles related to the Program controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.timeslot,
+.room,
+.room-name {
+	border: 0px solid #000;
+}
+
+.smidig {
+	.content-wrapper {
+		.timeslot-time {
+			.timeslot-start {
+				font-size: 14px;
+				margin-bottom: 0;
+			}
+		}
+
+		.timeslot {
+			margin-bottom: 1em;
+
+			.room {
+				border-left: 5px solid #662d91;
+
+				.room-title {
+					font-size: 12px;
+					margin-bottom: 0;
+
+					.room-name {
+						color: white;
+						padding: 5px 5px 5px 0px;
+						background-color: #662d91;
+						display: inline-block;
+					}
+				}
+
+				.talks {
+					background-color: white;
+					padding: 5px;
+
+					.description {
+						h3, p {
+							font-size: 14px;
+						}
+
+						p {
+							margin-bottom: 0;
+						}
+					}
+
+					.talk {
+						border-top: 1px dashed #92278f;
+						padding: 5px 0;
+						cursor: pointer;
+
+						&:first-child {
+							padding-top: 0;
+							border-top: 0;
+						}
+
+						.title {
+							font-size: 14px;
+							margin-bottom: 0;
+						}
+
+						.author {
+							font-size: 12px;
+						}
+
+						.description {
+							display: none;
+							margin-top: 5px;
+							margin-bottom: 1em;
+							font-size: 14px;
+						}
+					}
+				}
+			}
+
+
+		}
+	}
+}
+
+/* Snatched from Bootstrap 3 */
+.label {
+  display: inline;
+  padding: .2em .6em .3em;
+  font-size: 75%;
+  font-weight: bold;
+  line-height: 1;
+  color: #ffffff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: .25em;
+}
+.label[href]:hover,
+.label[href]:focus {
+  color: #ffffff;
+  text-decoration: none;
+  cursor: pointer;
+}
+.label:empty {
+  display: none;
+}
+.label-default {
+  background-color: #999999;
+}
+.label-default[href]:hover,
+.label-default[href]:focus {
+  background-color: #808080;
+}
+.label-primary {
+  background-color: #428bca;
+}
+.label-primary[href]:hover,
+.label-primary[href]:focus {
+  background-color: #3071a9;
+}
+.label-success {
+  background-color: #5cb85c;
+}
+.label-success[href]:hover,
+.label-success[href]:focus {
+  background-color: #449d44;
+}
+.label-info {
+  background-color: #5bc0de;
+}
+.label-info[href]:hover,
+.label-info[href]:focus {
+  background-color: #31b0d5;
+}
+.label-warning {
+  background-color: #f0ad4e;
+}
+.label-warning[href]:hover,
+.label-warning[href]:focus {
+  background-color: #ec971f;
+}
+.label-danger {
+  background-color: #d9534f;
+}
+.label-danger[href]:hover,
+.label-danger[href]:focus {
+  background-color: #c9302c;
+}
+
+.label.AN {
+	background-color: #FFBF00;
+}
+.label.ST {
+	background-color: #3B7A57;
+}
+.label.SF {
+	background-color: #FF033E;
+}
+.label.CD {
+	background-color: #9966CC;
+}
+.label.SC {
+	background-color: #A4C639;
+}
+.label.PB {
+	background-color: #F2F3F4;
+}
+.label.TE {
+	background-color: #FF7E00;
+}
+.label.IN {
+	background-color: #00308F;
+}
+.label.DO {
+	background-color: #72A0C1;
+}
+.label.RAV {
+	background-color: #665D1E;
+}

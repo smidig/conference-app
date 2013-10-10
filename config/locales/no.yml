@@ -78,7 +78,17 @@
     confirm:
       delete: "Er du sikker på at du vill slette?"
       talk_status_change: "Er du sikker? Det sendes mail til taler hvis talen blir godkjennt eller avvist"
-
+  label:
+    Annet: "AN"
+    Smidig testing: "ST"
+    Smidig forvaltning: "SF"
+    Continuous delivery: "CD"
+    Software craftsmanship: "SC"
+    Produktkøen (Backlog): "PB"
+    Team: "TE"
+    Innovasjon: "IN"
+    DevOps: "DO"
+    Realisering av verdi: "RAV"
   general:
     register: "Påmelding til Smidig 2013"
     manual_payment:
