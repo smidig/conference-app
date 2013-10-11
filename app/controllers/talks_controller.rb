@@ -38,7 +38,7 @@ class TalksController < ApplicationController
 
   def list
     #@talks = Talk.order('id desc').all
-    @talks = Talk.all_cached
+    @talks = Talk.approved_cached
 
     respond_to do |format|
       format.html # index.html.haml

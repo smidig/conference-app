@@ -32,6 +32,10 @@ class Talk < ActiveRecord::Base
     Rails.cache.fetch('Talk.all') { order('id desc').all }
   end
 
+  def self.approved_cached
+    Rails.cache.fetch('Talk.approved') { where(:status => 'approved_and_confirmed').all }
+  end
+
   def self.talk_type_count_cached
     Rails.cache.fetch('Talk.talk_type_count') { talk_type_count }
   end
@@ -54,6 +58,7 @@ class Talk < ActiveRecord::Base
 
   def expire_talk_all_cache
     Rails.cache.delete('Talk.all')
+    Rails.cache.delete('Talk.approved')
     Rails.cache.delete('Talk.talk_type_count')
   end
 
