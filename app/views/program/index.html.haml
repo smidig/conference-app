@@ -1,0 +1,42 @@
+%h1
+  Program 
+
+.row-fluid
+  .span12
+    :markdown
+      Intro til årets program 2013
+- Timeslot.all.group_by{|ts| ts[:start]}.each do |start, timeslot|
+  .row-fluid.timeslot-time.visible-phone
+    .span12
+      %h2.timeslot-start
+        =timeslot.first().start.to_formatted_s(:short)
+  .row-fluid.timeslot
+    -timeslot.each do |t|
+      -t.roomslot.each do |r|
+        .room{:style => ("border-color: " + r.room.color.to_s + ";"), :class => ((t.roomslot.size() == 1 && timeslot.length == 1) ? "span12" : "span3")}
+          %h2.room-title.hidden-phone
+            %span.room-name{:style => ("background-color: " + r.room.color.to_s + ";")}
+              =r.room.name
+            %span.time
+              =r.timeslot.start.to_formatted_s(:time)
+              \- 
+              =r.timeslot.end.to_formatted_s(:time)
+          .talks
+            - if r.title? &&  r.description?
+              .description
+                - if r.title?
+                  %h3
+                    = r.title
+                - if r.description?
+                  %p
+                    = r.description
+            - r.talks.each do |talk|
+              .talk
+                %h4.title
+                  =sanitize(talk.title)
+                  %span.label.label-small.pull-right{:class => t("label." + talk.talk_category.name), :title => talk.talk_category.name}
+                    =t("label." + talk.talk_category.name)
+                %em.author
+                  =sanitize(talk.user.name)
+                .description
+                  =simple_format(talk.description)

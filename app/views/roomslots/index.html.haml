@@ -1,0 +1,20 @@
+%h1 Listing roomslots
+
+%table
+  %tr
+    %th
+    %th
+    %th
+    %th
+
+  - @roomslots.each do |roomslot|
+    %tr
+      %td
+        #{roomslot.room.name}: #{roomslot.timeslot.start} - #{roomslot.timeslot.end}
+      %td= link_to 'Show', roomslot
+      %td= link_to 'Edit', edit_roomslot_path(roomslot)
+      %td= link_to 'Destroy', roomslot, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Roomslot', new_roomslot_path
