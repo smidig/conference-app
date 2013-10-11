@@ -1,0 +1,37 @@
+.timeslot
+  %header
+    #{timeslot.start.to_formatted_s(:long)} - #{timeslot.end.to_formatted_s(:long)}
+    %span.pull-right
+      %a{:href=>"#{new_roomslot_path}?timeslot_id=#{timeslot.id}", :title => "Legg til rom"}
+        %i{:class => "icon-plus"}
+      = link_to(edit_timeslot_path(timeslot), :title => "Editer timeslot") do
+        %i{:class => "icon-edit"}
+      = link_to({:action => 'destroy', :id => timeslot.id}, :title => "Slett timeslot", :confirm => "Sikker på at du vil slette?") do
+        %i{:class => "icon-remove"}
+
+  .rooms
+    - timeslot.roomslot.each do |roomslot|
+      .room
+        %span.pull-right
+          &nbsp;
+          = link_to(edit_roomslot_path(roomslot), :title => "Slett rom") do
+            %i{:class => "icon-edit"}
+          = link_to(roomslot, :method => :delete, :data => { :confirm => 'Are you sure?' }) do 
+            %i{:class => "icon-remove"}
+        %strong Room: 
+        #{roomslot.room.name}
+        - if roomslot.title 
+          %br
+          %strong Tittel: 
+          #{roomslot.title}
+
+        .talks
+          %strong Foredrag:
+          %ul.dropzone{:data => {:roomslot_id => "#{roomslot.id}"}}
+            - roomslot.talks.each do |talk|
+              = render 'talk', :talk => talk
+
+        
+        
+
+    .clear

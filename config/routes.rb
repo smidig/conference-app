@@ -1,6 +1,11 @@
 ConferenceApp::Application.routes.draw do
-  resources :talk_comments
 
+  get "roomslots/add_talk"
+  get "roomslots/remove_talk"
+  resources :talk_comments
+  resources :roomslots
+  resources :rooms
+  resources :timeslots
 
   root :to => "info#index"
 
@@ -20,6 +25,9 @@ ConferenceApp::Application.routes.draw do
   get "administration/registrations"
   get "administration/send_mail"
   get "administration/statistics"
+
+  # program stuff
+  resources :program
 
   #Info sites
   get "info/about"
