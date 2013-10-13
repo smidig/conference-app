@@ -5,15 +5,15 @@
   .span12
     :markdown
       Intro til årets program 2013
-- Timeslot.all.group_by(&:start).each do |start, timeslot|
+- Timeslot.pluck(:start).each do |start|
   .row-fluid.timeslot-time.visible-phone
     .span12
       %h2.timeslot-start
-        =timeslot.first().start.to_formatted_s(:short)
+        =start.to_formatted_s(:short)
   .row-fluid.timeslot
-    -timeslot.each do |t|
+    -Timeslot.where(:start => start).each do |t|
       -t.roomslot.each do |r|
-        .room{:style => ("border-color: " + r.room.color.to_s + ";"), :class => ((t.roomslot.size() == 1 && timeslot.length == 1) ? "span12" : "span3")}
+        .room{:style => ("border-color: " + r.room.color.to_s + ";"), :class => "span3"}
           %h2.room-title.hidden-phone
             %span.room-name{:style => ("background-color: " + r.room.color.to_s + ";")}
               =r.room.name
