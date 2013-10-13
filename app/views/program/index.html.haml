@@ -5,7 +5,7 @@
   .span12
     :markdown
       Intro til årets program 2013
-- Timeslot.pluck(:start).each do |start|
+- Timeslot.uniq.pluck(:start).each do |start|
   .row-fluid.timeslot-time.visible-phone
     .span12
       %h2.timeslot-start
