@@ -3,9 +3,9 @@ class ProgramController < ApplicationController
   before_filter lambda { @body_class = 'admin' }
 
   def index
-    @roomslots = Roomslot.all
+    #@roomslots = Roomslot.all
 
-    @timeslot = Timeslot.find(:all, :group => :start)
+    #@timeslot = Timeslot.find(:all, :group => :start)
 
     respond_to do |format|
       format.html # index.html.erb
