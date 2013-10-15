@@ -20,8 +20,19 @@
 		.timeslot {
 			margin-bottom: 1em;
 
+			.workshop {
+				xdisplay: none !important;
+			}
+
 			.room {
 				border-left: 5px solid #662d91;
+				box-sizing: border-box;
+				float: left;
+				padding-right: 10px;
+
+				@media (max-width: 767px) {
+					width: 100% !important;
+				}
 
 				.room-title {
 					font-size: 12px;

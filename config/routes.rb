@@ -27,7 +27,8 @@ ConferenceApp::Application.routes.draw do
   get "administration/statistics"
 
   # program stuff
-  resources :program
+  get "program" => "program#index"
+  get "program/program"
 
   #Info sites
   get "info/about"
