@@ -1,6 +1,6 @@
 # encoding: UTF-8
 class TalksController < ApplicationController
-  before_filter lambda { @body_class = 'admin' }, :only => :index
+  layout "fullwidth", :only => :index
   
   no_authorization! :only => [:new, :show, :list]
 
