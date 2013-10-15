@@ -6,7 +6,7 @@
         %i{:class => "icon-plus"}
       = link_to(edit_timeslot_path(timeslot), :title => "Editer timeslot") do
         %i{:class => "icon-edit"}
-      = link_to({:action => 'destroy', :id => timeslot.id}, :title => "Slett timeslot", :confirm => "Sikker på at du vil slette?") do
+      = link_to(timeslot, :method => :delete, :data => { :confirm => 'Are you sure?' }) do 
         %i{:class => "icon-remove"}
 
   .rooms
