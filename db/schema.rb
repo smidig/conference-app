@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131007192646) do
+ActiveRecord::Schema.define(:version => 20131015152931) do
 
   create_table "orders", :force => true do |t|
     t.string   "comment"
@@ -133,8 +133,9 @@ ActiveRecord::Schema.define(:version => 20131007192646) do
   create_table "timeslots", :force => true do |t|
     t.datetime "start"
     t.datetime "end"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+    t.boolean  "is_workshop_slot"
   end
 
   create_table "users", :force => true do |t|
