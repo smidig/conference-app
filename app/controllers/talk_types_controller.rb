@@ -1,6 +1,6 @@
 class TalkTypesController < ApplicationController
   authorize_admin!
-  before_filter lambda { @body_class = 'admin' }
+  layout "fullwidth"
 
   # GET /talk_types
   # GET /talk_types.json

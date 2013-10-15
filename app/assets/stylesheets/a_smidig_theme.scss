@@ -92,26 +92,20 @@ a:hover {
   text-decoration: none;
 }
 
-.admin {
-  .container {
-    width: 100%;
-  }
-  .menu-row.span10.offset1, .content-wrapper.span10.offset1 {
-    width: 100%;
-    margin-left: 0;
-    background: $primary-background;
-  }
 
-  .menu-row.span10.offset1 .header {
-    margin-right: 0;
+//Fullwith layout
+.smidig.fullwidth {
+  .header {
+    margin: 0;
   }
-
-  #footer, .sponsor-wrapper {
-    display: none;
+  @include breakpoint('phones-to-tablets') {
+    padding: 0;
   }
 
 }
 
+
+//default layout
 .smidig {
   .fb-like {
     display: block;

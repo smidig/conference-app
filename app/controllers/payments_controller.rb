@@ -16,7 +16,7 @@ class PaymentsController < ApplicationController
   end
 
   before_filter :max_one_payment_per_order, :only => [:new_paypal, :new_manual, :create_manual]
-  before_filter lambda { @body_class = 'admin' }, :only => [:index, :manual]
+  layout "fullwidth", :only => [:index, :manual]
 
   def index
     @payments = Payment.all

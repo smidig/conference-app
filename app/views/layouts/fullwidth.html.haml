@@ -1,0 +1,17 @@
+!!!
+%html
+  %head
+    = render 'layouts/head'
+  %body.smidig.fullwidth
+    #header
+      .row-fluid
+        .span12.menu-row
+          %header.header
+            %a.brand{:href=>"/"}
+              Smidig 2013
+            = render 'layouts/navigation'
+            = render 'layouts/messages' unless flash.empty?
+    #main.content-wrapper
+      .row-fluid
+        .span12
+          = yield
