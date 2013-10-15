@@ -5,15 +5,22 @@
   .span12
     :markdown
       Intro til årets program 2013
-- Timeslot.uniq.pluck(:start).each do |start|
+- @program[:start_wrappers].each do |sw|
   .row-fluid.timeslot-time.visible-phone
     .span12
       %h2.timeslot-start
-        =start.to_formatted_s(:short)
+        =sw[:start].to_formatted_s(:short)
   .row-fluid.timeslot
-    -Timeslot.where(:start => start).each do |t|
+    -sw[:timeslots].each do |t|
+      - if t.is_workshop_slot?
+        .row-fluid.timeslot-time.visible-phone.workshop
+          .span12
+            %h2.timeslot-start
+              =t.start.to_formatted_s(:short)
+              \- 
+              =t.end.to_formatted_s(:time)
       -t.roomslot.each do |r|
-        .room{:style => ("border-color: " + r.room.color.to_s + ";"), :class => "span3"}
+        .room{:style => ("border-color: " + r.room.color.to_s + "; width: " + (100 / (sw[:room_count] == 1 ? 1 : @program[:max_roomslots])).to_s + "%"), :class => (t.is_workshop_slot ? "workshop" : "")}
           %h2.room-title.hidden-phone
             %span.room-name{:style => ("background-color: " + r.room.color.to_s + ";")}
               =r.room.name
