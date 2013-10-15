@@ -2,6 +2,6 @@
   - Sponsor.all_cached.shuffle.each_slice(5) do |sponsor_row|
     .sponsor-row.row-fluid
       - sponsor_row.each do |sponsor|
-        .sponsor.span3
+        .sponsor.span2
           %a{:href => "#{sponsor.url}", :title => "#{sponsor.name}"}
             %img{:src => "#{sponsor.imageUrl}"}
