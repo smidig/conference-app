@@ -30,6 +30,10 @@ ConferenceApp::Application.routes.draw do
   get "program" => "program#index"
   get "program/program"
 
+  #nametags
+  get "/nametags" => "nametags#index"
+  get "/nametags/:id" => "nametags#show"
+
   #Info sites
   get "info/about"
   get "info/tema"
