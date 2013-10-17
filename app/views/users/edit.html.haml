@@ -1,5 +1,10 @@
 %h1 Endre bruker (admin)
 
+%a.btn.pull-right{:href => "/nametags/#{@user.id}.pdf"}
+  %i.icon-list-alt
+  Nametag
+  
+
 = simple_form_for @user, :html => { :class => 'form-horizontal', :method => :put } do |f|
   = f.association :ticket, :collection => @tickets, :label_method => :display
   = f.input :email, :autofocus => true

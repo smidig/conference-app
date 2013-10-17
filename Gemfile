@@ -14,6 +14,8 @@ gem 'acts_as_votable', '~> 0.5.0'
 gem 'twitter'
 gem 'dalli'
 gem 'memcachier'
+gem 'prawn', '= 0.6.3'
+gem 'prawnto'
 
 # Gems used only for assets and not required
 # in production environments by default.
