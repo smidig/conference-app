@@ -39,7 +39,27 @@ TalkCategory.create(name: 'Annet')
 TalkCategory.create(name: 'Smidig programmering')
 TalkCategory.create(name: 'Lean startup')
 
-Sponsor.create(name: "Smidig 2013", url: "http://2013.smidig.no/info/sponsor", imageUrl: "https://googledrive.com/host/0Bxbse3ziIO6GUmYwQ0VxME1TRUE/sponsor.png")
+Sponsor.create(name: "Smidig 2013", 
+  url: "http://2013.smidig.no/info/sponsor", 
+  imageUrl: "https://googledrive.com/host/0Bxbse3ziIO6GUmYwQ0VxME1TRUE/sponsor.png")
+Sponsor.create(name: "Smidig 2013", 
+  url: "http://2013.smidig.no/info/sponsor", 
+  imageUrl: "https://googledrive.com/host/0Bxbse3ziIO6GUmYwQ0VxME1TRUE/sponsor.png")
+Sponsor.create(name: "Smidig 2013", 
+  url: "http://2013.smidig.no/info/sponsor", 
+  imageUrl: "https://googledrive.com/host/0Bxbse3ziIO6GUmYwQ0VxME1TRUE/sponsor.png")
+Sponsor.create(name: "Itera", 
+  url: "http://2013.smidig.no/info/sponsor", 
+  imageUrl: "http://2013.smidig.no/assets/sponsors/itera.png")
+Sponsor.create(name: "BEKK", 
+  url: "http://2013.smidig.no/info/sponsor", 
+  imageUrl: "http://2013.smidig.no/assets/sponsors/bekk.png")
+Sponsor.create(name: "Miles", 
+  url: "http://2013.smidig.no/info/sponsor", 
+  imageUrl: "http://2013.smidig.no/assets/sponsors/miles.png")
+Sponsor.create(name: "Webstep", 
+  url: "http://2013.smidig.no/info/sponsor", 
+  imageUrl: "http://2013.smidig.no/assets/sponsors/webstep.png")
 
 # Approved talks:
 for i in 0..10
