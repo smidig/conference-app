@@ -7,6 +7,8 @@ class Talk < ActiveRecord::Base
 
   STATUS_OPTIONS = %w(approved_and_confirmed approved rejected pending)
 
+  MAX_WS_PARTICIPANTS = 20
+
   belongs_to :talk_type
   belongs_to :talk_category
   belongs_to :user
@@ -15,6 +17,8 @@ class Talk < ActiveRecord::Base
   has_many :talk_comments
   
   belongs_to :roomslot
+
+  has_many :workshop_participants
 
   has_attached_file :presentation, PAPERCLIP_CONFIG
   validates_attachment_size :presentation, :less_than => 10.megabytes
@@ -60,6 +64,18 @@ class Talk < ActiveRecord::Base
     Rails.cache.delete('Talk.all')
     Rails.cache.delete('Talk.approved')
     Rails.cache.delete('Talk.talk_type_count')
+  end
+
+  def ws_participant?(user)
+    workshop_participant_ids.include?(user.id)
+  end
+
+  def ws_full?
+    workshop_participant_ids.count >= MAX_WS_PARTICIPANTS
+  end
+
+  def ws_free_places
+    MAX_WS_PARTICIPANTS - workshop_participant_ids.count 
   end
 
 end
