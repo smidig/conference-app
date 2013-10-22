@@ -17,6 +17,13 @@
 			}
 		}
 
+		.day {
+			h1 {
+				font-size: 16px;
+				margin-top: 1em;
+			}
+		}
+
 		.timeslot {
 			margin-bottom: 1em;
 
@@ -77,6 +84,13 @@
 
 						.author {
 							font-size: 12px;
+						}
+
+						.duration {
+							font-size: 12px;
+							font-weight: 300;
+							clear: both;
+							text-align: right;
 						}
 
 						.description {
@@ -175,7 +189,7 @@
 	background-color: #A4C639;
 }
 .label.PB {
-	background-color: #F2F3F4;
+	background-color: #448ccb;
 }
 .label.TE {
 	background-color: #FF7E00;

@@ -1,49 +1,63 @@
 %h1
   Program 
 
-.row-fluid
-  .span12
-    :markdown
-      Intro til årets program 2013
-- @program[:start_wrappers].each do |sw|
-  .row-fluid.timeslot-time.visible-phone
+- @program[:days].each do |day|
+  .row-fluid.day
     .span12
-      %h2.timeslot-start
-        =sw[:start].to_formatted_s(:short)
-  .row-fluid.timeslot
-    -sw[:timeslots].each do |t|
-      - if t.is_workshop_slot?
-        .row-fluid.timeslot-time.visible-phone.workshop
-          .span12
-            %h2.timeslot-start
-              =t.start.to_formatted_s(:short)
-              \- 
-              =t.end.to_formatted_s(:time)
-      -t.roomslot.each do |r|
-        .room{:style => ("border-color: " + r.room.color.to_s + "; width: " + (100 / (sw[:room_count] == 1 ? 1 : @program[:max_roomslots])).to_s + "%"), :class => (t.is_workshop_slot ? "workshop" : "")}
-          %h2.room-title.hidden-phone
-            %span.room-name{:style => ("background-color: " + r.room.color.to_s + ";")}
-              =r.room.name
-            %span.time
-              =r.timeslot.start.to_formatted_s(:time)
-              \- 
-              =r.timeslot.end.to_formatted_s(:time)
-          .talks
-            - if r.title? &&  r.description?
-              .description
-                - if r.title?
-                  %h3
-                    = r.title
-                - if r.description?
-                  %p
-                    = r.description
-            - r.talks.each do |talk|
-              .talk
-                %h4.title
-                  =sanitize(talk.title)
-                  %span.label.label-small.pull-right{:class => t("label." + talk.talk_category.name), :title => talk.talk_category.name}
-                    =t("label." + talk.talk_category.name)
-                %em.author
-                  =sanitize(talk.user.name)
+      %h1
+        =localize day[:date], :format => "%A" + ","
+        =day[:date].to_formatted_s(:short)
+  - day[:starts].each do |sw|
+    .row-fluid.timeslot-time.visible-phone
+      .span12
+        %h2.timeslot-start
+          =sw[:start].to_formatted_s(:short)
+    .row-fluid.timeslot
+      -sw[:timeslots].each do |t|
+        - if t.is_workshop_slot?
+          .row-fluid.timeslot-time.visible-phone.workshop
+            .span12
+              %h2.timeslot-start
+                =t.start.to_formatted_s(:short)
+                \- 
+                =t.end.to_formatted_s(:time)
+        -t.roomslot.each do |r|
+          .room{:style => ("border-color: " + r.room.color.to_s + "; width: " + (100 / (sw[:room_count] == 1 ? 1 : @program[:max_roomslots])).to_s + "%"), :class => (t.is_workshop_slot ? "workshop" : "")}
+            %h2.room-title.hidden-phone
+              %span.room-name{:style => ("background-color: " + r.room.color.to_s + ";")}
+                =r.room.name
+              %span.time
+                =r.timeslot.start.to_formatted_s(:time)
+                - if r.timeslot.end > r.timeslot.start
+                  \- 
+                  =r.timeslot.end.to_formatted_s(:time)
+            .talks
+              - if r.title? &&  r.description?
                 .description
-                  =simple_format(talk.description)
+                  - if r.title?
+                    %h3
+                      = r.title
+                  - if r.description?
+                    %p
+                      = r.description
+              - r.talks.each do |talk|
+                .talk
+                  %h4.title
+                    %span.meta.pull-right
+                      %span.pull-right.label.label-small{:class => t("label." + talk.talk_category.name), :title => talk.talk_category.name}
+                        =t("label." + talk.talk_category.name)
+                      - if talk.talk_type.name == "Lyntale"
+                        %i.icon-bolt.pull-right
+                      - if talk.talk_type.name == "Kort workshop" or talk.talk_type.name == "Lang workshop"
+                        %i.icon-wrench.pull-right
+                      - if talk.talk_type.name == "Foredrag"
+                        %i.icon-comment.pull-right
+                      %div.duration
+                        #{talk.talk_type.duration} min
+                    =sanitize(talk.title)
+                  %em.author
+                    =sanitize(talk.user.name)
+                    - if talk.users
+                      , #{talk.users.map { |u| u.name }.join(', ')}
+                  .description
+                    =simple_format(talk.description)
