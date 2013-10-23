@@ -67,7 +67,7 @@ class Talk < ActiveRecord::Base
   end
 
   def ws_participant?(user)
-    workshop_participant_ids.include?(user.id)
+    workshop_participants.map{|wp| wp.user_id}.include?(user.id)
   end
 
   def ws_full?

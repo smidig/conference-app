@@ -17,17 +17,39 @@ class WorkshopParticipantController < ApplicationController
     end
   end
 
-  def show
-
-  end
-
-
   def create
-
+    @talk = Talk.find(params[:talk_id])
+    @wsp = WorkshopParticipant.new(:user => current_user, :talk => @talk)
+    respond_to do |format|
+      if @talk.ws_full?
+        format.json  { render :json => "{status: 'full'}", :status => :unprocessable_entity}
+        format.html { redirect_to(@talk, :notice => 'Workshoppen er full!') }
+      elsif @wsp.save
+        format.json  { render :json => "{status: 'ok'}", :status => :created}
+        format.html { redirect_to(@talk, :notice => 'Du er med i workshoppen') }
+      else
+        format.json  { render :json => "{status: 'failed'}", :status => :unprocessable_entity}
+        format.html { redirect_to(@talk, :notice => 'Du er ikke med i workshoppen') }
+      end
+    end
   end
 
   def destroy
+    @wsp = WorkshopParticipant.find(params[:id])
+    @talk = @wsp.talk
 
+    if @wsp.user_id == current_user.id || current_user.is_admin?
+      if @wsp.destroy
+        flash[:notice] = "Du er ikke med lengre i workshoppen"
+      end
+      respond_to do |format|
+        format.html { redirect_to(@talk) }
+        format.xml  { head :ok }
+      end
+    else
+      flash[:error] = "Access Denied"
+      redirect_to new_user_path
+    end
   end
 
 end
