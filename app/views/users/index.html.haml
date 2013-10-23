@@ -52,7 +52,7 @@
 %table{:class => 'table table-striped table-hover tablesorter'}
   %thead
     %tr
-      %th ID
+      %th.filter-false ID
       %th.filter-false Dato
       %th.filter-false.sorter-false
       %th Navn
@@ -61,7 +61,7 @@
       %th.filter-select{"data-placeholder" => "Alle"} Billett
       %th.filter-false Pris
       %th.filter-select{"data-placeholder" => "Alle"} Fullført
-      %th Bestilling
+      %th.filter-false Bestilling
       %th.filter-false.sorter-false
   %tbody
     - for user in @users
