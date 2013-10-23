@@ -51,10 +51,10 @@ ActiveRecord::Schema.define(:version => 20131023153722) do
   create_table "rooms", :force => true do |t|
     t.string   "name"
     t.string   "details"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
     t.string   "color"
-    t.string   "priority"
+    t.integer  "priority",   :default => 0
   end
 
   create_table "roomslots", :force => true do |t|
