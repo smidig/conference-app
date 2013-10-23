@@ -4,7 +4,7 @@ class Roomslot < ActiveRecord::Base
   belongs_to :room
   has_many :talks, :order => 'roomslot_priority ASC'
 
-  default_scope :joins => :room, :order => 'rooms.name'
+  default_scope :joins => :room, :order => 'rooms.priority DESC'
 
   after_destroy :cleanup_talks
 
