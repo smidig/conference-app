@@ -9,8 +9,8 @@
     = link_to('Sponsor', info_sponsor_path, 
     {:class=>current_page?(info_sponsor_path) ? "active" : "", :title => "Sponsor"})
   %li
-    = link_to('Godkjente foredrag', talks_list_path, 
-    {:class=>current_page?(new_talk_path) ? "active" : "", :title => "Foredrag til godkjenning"})
+    = link_to('Program', program_path, 
+    {:class=>current_page?(program_path) ? "active" : "", :title => "Programmet"})
   %li
     = link_to('Min profil', my_profile_index_path, 
     {:class=>current_page?(my_profile_index_path) ? "active" : "", :title => "Min profil"})

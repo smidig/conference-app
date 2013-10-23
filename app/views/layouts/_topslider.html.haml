@@ -2,6 +2,15 @@
   .flexslider
     %ul.slides
       %li
+        %a(href="#{program_path}")
+          %img{:src => "#{image_path "slide_fish.jpg"}"}
+          .row-fluid
+            .caption.span5.offset1
+              %h5.title
+                Smidig 2013 - programmet er klart!
+              %p.text
+                Ta en titt i årets program
+      %li
         %a(href="#{info_keynote_path}")
           // TODO: Add correct image with proper size (940 x 400)
           %img{:src => "#{image_path "slide_5.jpg"}"}
