@@ -98,3 +98,7 @@
       email_or_mail: "Dersom du oppgir epost benyttes denne for å sende faktura."
   date:
     day_names: [Mandag, Tirsdag, Onsdag, Torsdag, Fredag, Lørdag, Søndag]
+    order: 
+      - :day
+      - :month
+      - :year
