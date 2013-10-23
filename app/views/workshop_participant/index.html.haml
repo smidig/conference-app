@@ -1,0 +1,16 @@
+%h3 Workshop deltagere
+
+= @talk.talk_type.name
+= link_to h(@talk.title), talk_path(@talk)
+
+- if @participants.count > 0
+  %ol
+    - for participant in @participants.each
+      %li 
+        =h participant.name
+
+  %p 
+    #{@talk.ws_free_places} plasser igjen
+- else
+  %p
+    Ingen deltagere har registrert seg ennå.

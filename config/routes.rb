@@ -7,6 +7,8 @@ ConferenceApp::Application.routes.draw do
   resources :rooms
   resources :timeslots
 
+  resources :workshop_participant
+
   root :to => "info#index"
 
   #MyProfile
