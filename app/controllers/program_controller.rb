@@ -1,5 +1,5 @@
 class ProgramController < ApplicationController
-  authorize_admin!
+  no_authorization!
   layout "fullwidth"
 
   def index
