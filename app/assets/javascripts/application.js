@@ -39,6 +39,7 @@ $(function() {
   $("#main").on("click", ".talk .title", function() {
     $(this).closest(".talk").find(".description").slideToggle('fast');
   }).on('switch-change', ".switch-toggle", function (data) {
+    ga('send', 'event', 'Swicth', 'click', 'workshop-filter');
 
     $($(this).data("toggle")).toggle();
   
