@@ -28,7 +28,7 @@
 			margin-bottom: 1em;
 
 			.workshop {
-				xdisplay: none !important;
+				display: none;
 			}
 
 			.room {
@@ -70,7 +70,6 @@
 					.talk {
 						border-top: 1px dashed #92278f;
 						padding: 5px 0;
-						cursor: pointer;
 
 						&:first-child {
 							padding-top: 0;
@@ -80,6 +79,7 @@
 						.title {
 							font-size: 14px;
 							margin-bottom: 0;
+							cursor: pointer;
 						}
 
 						.author {
