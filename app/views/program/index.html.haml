@@ -3,9 +3,9 @@
 
 .toggle-workshops
   %span
-    Viser workshops
+    Vis workshops
   .make-switch.switch-small.switch-toggle{:data => { :"on-label" => "ja", :"off-label" => "nei", :on => "success",  :off => "danger", :toggle => ".workshop"}}
-    %input{:type => "checkbox"}
+    %input{:type => "checkbox", :checked => "checked"}
 
 - @program[:days].each do |day|
   .row-fluid.day

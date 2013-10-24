@@ -27,10 +27,6 @@
 		.timeslot {
 			margin-bottom: 1em;
 
-			.workshop {
-				display: none;
-			}
-
 			.room {
 				border-left: 5px solid #662d91;
 				box-sizing: border-box;
@@ -80,6 +76,15 @@
 							font-size: 14px;
 							margin-bottom: 0;
 							cursor: pointer;
+
+							.meta {
+							    min-width: 60px;
+							    text-align: right;
+
+								i {
+								    margin-right: 5px;
+								}
+							}
 						}
 
 						.author {
