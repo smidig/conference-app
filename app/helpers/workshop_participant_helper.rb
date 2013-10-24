@@ -3,15 +3,15 @@ module WorkshopParticipantHelper
   def workshop_participation_link(talk, user)
     if talk.ws_participant?(user)
       wsp = talk.workshop_participants.where(:user_id => user.id).first
-      button_to 'Annullere påmelding', workshop_participant_path(wsp),
-              :confirm => "Sure?", :method => :delete, :class => 'button'
+      button_to 'Meld deg av', workshop_participant_path(wsp),
+              :confirm => "Sure?", :method => :delete, :class => 'btn btn-danger', :remote => true
     elsif talk.ws_full?
       """
       <span class='workshop-full'>Ingen plasser igjen</span>
       """.html_safe
     else
       button_to 'Meld deg på', workshop_participant_index_path(:talk_id => talk.id),
-              :method => :post, :class => 'button'
+              :method => :post, :class => 'btn btn-success', :remote => true
     end
   end
 

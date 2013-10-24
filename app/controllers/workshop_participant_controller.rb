@@ -24,12 +24,33 @@ class WorkshopParticipantController < ApplicationController
       if @talk.ws_full?
         format.json  { render :json => "{status: 'full'}", :status => :unprocessable_entity}
         format.html { redirect_to(@talk, :notice => 'Workshoppen er full!') }
+        format.js { 
+          render "update",
+          :locals => {
+            :id => @talk.id, 
+            :talk => @talk
+          } 
+        }
       elsif @wsp.save
         format.json  { render :json => "{status: 'ok'}", :status => :created}
         format.html { redirect_to(@talk, :notice => 'Du er med i workshoppen') }
+        format.js { 
+          render "update",
+          :locals => {
+            :id => @talk.id, 
+            :talk => @talk
+          } 
+        }
       else
         format.json  { render :json => "{status: 'failed'}", :status => :unprocessable_entity}
         format.html { redirect_to(@talk, :notice => 'Du er ikke med i workshoppen') }
+        format.js { 
+          render "update",
+          :locals => {
+            :id => @talk.id, 
+            :talk => @talk
+          } 
+        }
       end
     end
   end
@@ -44,7 +65,13 @@ class WorkshopParticipantController < ApplicationController
       end
       respond_to do |format|
         format.html { redirect_to(@talk) }
-        format.xml  { head :ok }
+        format.js { 
+          render "update",
+          :locals => {
+            :id => @talk.id, 
+            :talk => @talk
+          } 
+        }
       end
     else
       flash[:error] = "Access Denied"
