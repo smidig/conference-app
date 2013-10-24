@@ -185,11 +185,4 @@ ActiveRecord::Schema.define(:version => 20131023153722) do
   add_index "votes", ["voter_id", "voter_type", "vote_scope"], :name => "index_votes_on_voter_id_and_voter_type_and_vote_scope"
   add_index "votes", ["voter_id", "voter_type"], :name => "index_votes_on_voter_id_and_voter_type"
 
-  create_table "workshop_participants", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "talk_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
 end

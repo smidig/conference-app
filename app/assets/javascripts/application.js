@@ -36,8 +36,21 @@ $(function() {
     $('.header-nav').slideToggle();
   });
 
-  $("#main").on("click", ".talk", function() {
-    $(this).find(".description").slideToggle('fast');
+  $("#main").on("click", ".talk .title", function() {
+    $(this).closest(".talk").find(".description").slideToggle('fast');
+  }).on('switch-change', ".switch-toggle", function (data) {
+
+    $($(this).data("toggle")).toggle();
+  
+    var visibleRoomCount = 0;
+    $(".timeslot").not(".single-room").each(function() {
+      roomCount = $(this).find(".room:visible").size();
+      if(roomCount > visibleRoomCount) {
+        visibleRoomCount = roomCount;
+      }
+    });
+
+    $(".timeslot").not(".single-room").find(".room").css("width", (Math.round((100 / visibleRoomCount) * 100) / 100 + "%"));
   });
 
   $('.flexslider').flexslider({

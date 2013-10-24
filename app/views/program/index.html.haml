@@ -1,6 +1,12 @@
 %h1
   Program 
 
+.toggle-workshops
+  %span
+    Viser workshops
+  .make-switch.switch-small.switch-toggle{:data => { :"on-label" => "ja", :"off-label" => "nei", :on => "success",  :off => "danger", :toggle => ".workshop"}}
+    %input{:type => "checkbox"}
+
 - @program[:days].each do |day|
   .row-fluid.day
     .span12
@@ -12,7 +18,7 @@
       .span12
         %h2.timeslot-start
           =sw[:start].to_formatted_s(:short)
-    .row-fluid.timeslot
+    .row-fluid.timeslot{:class => (sw[:room_count] == 1 ? "single-room" : "")}
       -sw[:timeslots].each do |t|
         - if t.is_workshop_slot?
           .row-fluid.timeslot-time.visible-phone.workshop
@@ -47,17 +53,17 @@
                       %span.pull-right.label.label-small{:class => t("label." + talk.talk_category.name), :title => talk.talk_category.name}
                         =t("label." + talk.talk_category.name)
                       - if talk.talk_type.name == "Lyntale"
-                        %i.icon-bolt.pull-right
+                        %i.icon-bolt
                       - if talk.talk_type.name == "Kort workshop" or talk.talk_type.name == "Lang workshop"
-                        %i.icon-wrench.pull-right
+                        %i.icon-wrench
                       - if talk.talk_type.name == "Foredrag"
-                        %i.icon-comment.pull-right
+                        %i.icon-comment
                       %div.duration
                         #{talk.talk_type.duration} min
                     =sanitize(talk.title)
                   %em.author
                     =sanitize(talk.user.name)
-                    - if talk.users
+                    - if talk.users.length > 0
                       , #{talk.users.map { |u| u.name }.join(', ')}
                   .description
                     =simple_format(talk.description)
