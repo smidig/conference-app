@@ -1,0 +1,2 @@
+var $talk = $("#talk_wsp_<%=id%>")
+$talk.replaceWith("<%= escape_javascript(render :partial => 'workshop_participant/participate', :locals => {:talk => talk})%>");
