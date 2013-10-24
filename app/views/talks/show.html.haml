@@ -1,3 +1,7 @@
 = render 'talk_view', :talk => @talk
-= render 'workshop_participant/signup', :talk => @talk
+
+- if @talk.talk_type.workshop
+  %h3 Påmelding til Workshop
+  = render 'workshop_participant/participate', :talk => @talk
+  
 %a(href="/talks/list") Tilbake til alle foredrag

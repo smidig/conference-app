@@ -1,0 +1,19 @@
+- if  talk.talk_type.workshop
+  .workshop-participation{:id => "talk_wsp_#{talk.id}"}
+    
+    .admin
+      - if talk.users.include?(current_user) || current_user.admin
+        Til nå er det 
+        = conditional_link_to_participant_list(talk)
+
+    .action
+      - if current_user 
+        = workshop_participation_link(talk, current_user) 
+      - else
+        (logg inn for å melde deg av/på)
+
+    .capacity
+      - if !talk.ws_full?  
+        #{talk.ws_free_places} plasser igjen!
+      - else 
+        Ingen ledige plasser
