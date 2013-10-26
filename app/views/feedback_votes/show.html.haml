@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Comment:
+  = @feedback_vote.comment
+%p
+  %b Vote:
+  = @feedback_vote.vote
+
+= link_to 'Edit', edit_feedback_vote_path(@feedback_vote)
+\|
+= link_to 'Back', feedback_votes_path

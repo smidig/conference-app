@@ -19,6 +19,7 @@ class Talk < ActiveRecord::Base
   belongs_to :roomslot
 
   has_many :workshop_participants
+  has_many :feedback_votes
 
   has_attached_file :presentation, PAPERCLIP_CONFIG
   validates_attachment_size :presentation, :less_than => 10.megabytes
