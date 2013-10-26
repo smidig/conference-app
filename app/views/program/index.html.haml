@@ -47,7 +47,7 @@
                     %p
                       = r.description
               - r.talks.each do |talk|
-                .talk
+                .talk{:data => {"talkid" => "#{talk.id}"}}
                   %h4.title
                     %span.meta.pull-right
                       %span.pull-right.label.label-small{:class => t("label." + talk.talk_category.name), :title => talk.talk_category.name}
@@ -68,3 +68,6 @@
                   .description
                     =simple_format(talk.description)
                     // render 'workshop_participant/participate', :talk => talk
+
+
+= render 'feedback_votes/template' 

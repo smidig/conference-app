@@ -1,0 +1,65 @@
+/* jQuery.Rating Plugin CSS - http://www.fyneworks.com/jquery/star-rating/ */
+div.rating-cancel,div.star-rating{
+	float:left;
+}
+div.rating-cancel,div.rating-cancel a{background:url(delete.png) no-repeat 0 -33px}
+
+div.star-rating, div.star-rating a:before {
+	content: "\f005";
+	text-decoration: inherit;
+	display: inline-block;
+	speak: none;
+}
+div.star-rating, div.star-rating a{
+	/*background:url(star.png) no-repeat 0 0px*/
+	font-family: FontAwesome;
+	font-weight: normal;
+	font-style: normal;
+	font-size: 1.4em;
+	text-decoration: inherit;
+	-webkit-font-smoothing: antialiased;
+	display: inline;
+	width: auto;
+	height: auto;
+	line-height: normal;
+	vertical-align: baseline;
+	background-image: none;
+	background-position: 0% 0%;
+	background-repeat: repeat;
+	margin-top: 0;
+	cursor: hand;
+
+	color: silver;
+}
+div.rating-cancel a, div.star-rating a{
+	display:block;
+	height:100%;
+	background-position:0 0px;border:0;
+}
+div.star-rating-on a{
+	color: #FFBF00;
+}
+div.star-rating-hover a{
+	color: #FFBF00;
+}
+/* Read Only CSS */
+div.star-rating-readonly a{cursor:default !important}
+/* Partial Star CSS */
+div.star-rating{background:transparent!important;overflow:hidden!important}
+/* END jQuery.Rating Plugin CSS */
+
+/* Hide cancel button */
+.rating-cancel{display: none!important}
+
+.feedback_vote input {margin-top: 8px;}
+.feedback_vote input[type='text'] {
+	width: 95%;
+	margin-bottom: 0;
+}
+
+span.ajaxloader {
+	background:url("ajax-loader.gif") no-repeat;
+	width: 56px;
+	height: 21px;
+	display: inline-block;
+}

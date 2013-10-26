@@ -1,0 +1,15 @@
+%h1 Listing feedback_votes
+
+%table.table.table-striped.table-bordered
+  - @talks_feedbacks_count.each do |element|
+    %tr
+      %td{:colspan => "2"}
+        = element.talk.try(:title)
+
+    - element.feedbacks.each do |vote|
+      %tr
+        %td= vote.comment
+        %td= vote.vote
+    %tr 
+      %td Snitt:
+      %td= element.avg
