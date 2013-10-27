@@ -90,6 +90,8 @@
     Innovasjon: "IN"
     DevOps: "DO"
     Realisering av verdi: "RAV"
+    Lean startup: "LS"
+    Smidig programmering: "SP"
   general:
     register: "Påmelding til Smidig 2013"
     manual_payment:

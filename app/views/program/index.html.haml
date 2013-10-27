@@ -4,8 +4,34 @@
 .toggle-workshops
   %span
     Vis workshops
-  .make-switch.switch-small.switch-toggle{:data => { :"on-label" => "ja", :"off-label" => "nei", :on => "success",  :off => "danger", :toggle => ".workshop"}}
+  .make-switch.switch-mini.switch-toggle{:data => { :"on-label" => "ja", :"off-label" => "nei", :on => "success",  :off => "danger", :toggle => ".workshop"}}
     %input{:type => "checkbox", :checked => "checked"}
+
+%dl.talk-types
+  %dt
+    %i.icon-bolt
+  %dd
+    Lyntale
+  %dt
+    %i.icon-comment
+  %dd
+    Foredrag
+  %dt
+    %i.icon-wrench
+  %dd
+    Workshop
+
+- @talk_category.shuffle.each_slice(@talk_category.length / 3) do |tcg|
+  %ul.talk-categories
+    - tcg.each do |tc|
+      %li
+        .talk-category
+          %span.label.pull-left{:class => (tc.name), :title => tc.name}
+            =#t("label." + tc.name)
+            =tc.name.slice(0,2).upcase
+          .make-switch.switch-mini.switch-toggle{:data => { :"on-label" => "ja", :"off-label" => "nei", :on => "success",  :off => "danger", :toggle => (".talk_category_" + tc.id.to_s)}}
+            %input{:type => "checkbox", :checked => "checked"}
+          =tc.name
 
 - @program[:days].each do |day|
   .row-fluid.day
@@ -47,7 +73,7 @@
                     %p
                       = r.description
               - r.talks.each do |talk|
-                .talk
+                .talk{:class => ("talk_category_" + talk.talk_category.id.to_s)}
                   %h4.title
                     %span.meta.pull-right
                       %span.pull-right.label.label-small{:class => t("label." + talk.talk_category.name), :title => talk.talk_category.name}

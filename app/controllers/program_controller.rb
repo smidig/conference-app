@@ -4,10 +4,11 @@ class ProgramController < ApplicationController
 
   def index
     @program = get_program_hash
+    @talk_category = TalkCategory.all
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @program }
+      format.json { render @program, @talk_category }
     end
   end
 

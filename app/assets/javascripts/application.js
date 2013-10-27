@@ -39,16 +39,27 @@ $(function() {
   $("#main").on("click", ".talk .title", function() {
     $(this).closest(".talk").find(".description").slideToggle('fast');
   }).on('switch-change', ".switch-toggle", function (data) {
-    ga('send', 'event', 'Swicth', 'click', 'workshop-filter');
+    ga('send', 'event', 'Switch', 'click', 'workshop-filter');
 
-    $($(this).data("toggle")).toggle();
-  
-    var visibleRoomCount = 0;
+    $($(this).data("toggle")).toggleClass("filtered-out");
+
+    var rooms,
+        visibleRoomCount = 0;
+        
     $(".timeslot").not(".single-room").each(function() {
-      roomCount = $(this).find(".room:visible").size();
+      rooms = $(this).find(".room:visible");
+      roomCount = rooms.size();
       if(roomCount > visibleRoomCount) {
         visibleRoomCount = roomCount;
       }
+
+      rooms.each(function() {
+        if($(this).find(".talk:visible").size() === 0) {
+          $(this).find(".talks").append("<p class='no-talks'>Ingen taler passer valgt filter.</p>");  
+        } else {
+          $(this).find(".no-talks").remove();
+        }
+      });
     });
 
     $(".timeslot").not(".single-room").find(".room").css("width", (Math.round((100 / visibleRoomCount) * 100) / 100 + "%"));
