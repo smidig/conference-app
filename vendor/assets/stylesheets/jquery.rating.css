@@ -40,7 +40,7 @@ div.star-rating-on a{
 	color: #FFBF00;
 }
 div.star-rating-hover a{
-	color: #FFBF00;
+	color: #FFBF55;
 }
 /* Read Only CSS */
 div.star-rating-readonly a{cursor:default !important}
