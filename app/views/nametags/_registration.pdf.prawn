@@ -70,3 +70,16 @@ p_pdf.table [[company]],
     :border_width => 0,
     :position => :left,
     :row_colors  => ['ffffff']
+
+
+if registration.includes_dinner == true
+  p_pdf.fill_color '000000'
+  p_pdf.text 'Middag',
+      :at => [5,5],
+      :size => 14
+elsif registration.includes_dinner == nil
+  p_pdf.fill_color '000000'
+  p_pdf.text '*',
+      :at => [5,5],
+      :size => 14
+end
