@@ -21,7 +21,7 @@
   %dd
     Workshop
 
-- @talk_category.shuffle.each_slice(@talk_category.length / 3) do |tcg|
+- @talk_category.each_slice(@talk_category.length / 4) do |tcg|
   %ul.talk-categories
     - tcg.each do |tc|
       %li
