@@ -26,9 +26,8 @@
     - tcg.each do |tc|
       %li
         .talk-category
-          %span.label.pull-left{:class => (tc.name), :title => tc.name}
-            =#t("label." + tc.name)
-            =tc.name.slice(0,2).upcase
+          %span.label.pull-left{:class => t("label." + tc.name, default: ''), :title => tc.name}
+            =t("label." + tc.name, default: tc.name.slice(0,2)).upcase
           .make-switch.switch-mini.switch-toggle{:data => { :"on-label" => "ja", :"off-label" => "nei", :on => "success",  :off => "danger", :toggle => (".talk_category_" + tc.id.to_s)}}
             %input{:type => "checkbox", :checked => "checked"}
           =tc.name
