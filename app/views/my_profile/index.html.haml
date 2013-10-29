@@ -40,6 +40,17 @@
               = link_to({:controller => "orders", :action => "show", :id => @order.id}) do
                 %i.icon-th-list
                 #{@order.completed ? "Se" : "Fullfør"} din bestilling
+      .boxed
+        .title
+          %i.icon-wrench
+          Workshoper du skal på
+        .content
+          - if @workshops.length == 0
+            Ingen registrert
+          %ul
+            - for workshop in @workshops
+              %li= link_to workshop.talk.title, workshop.talk
+
 
     .span3
       .boxed.dinner-question

@@ -1,19 +1,25 @@
-%h2 Workshop deltagere
+%h2 
+  Deltakere på
+  = link_to h(@talk.title), talk_path(@talk)
+  (#{@talk.talk_type.name})
 
-%strong #{@talk.talk_type.name}: 
-= link_to h(@talk.title), talk_path(@talk)
+%br
 
-- if !@talk.talk_type.workshop
-  %p.error
-    Dette er ikke en workshop!!!
-- elsif @participants.count > 0
-  %ol
-    - for participant in @participants.each
-      %li 
-        =h participant.name
+%table{:class => 'table table-striped table-hover tablesorter'}
+  %thead
+    %tr
+      %th Navn
+      %th Selskap
+      %th Epost
+  %tbody
+    - for user in @participants.each
+      %tr
+        %td= user.name
+        %td= user.company
+        %td= user.email
 
-  %p 
-    #{@talk.ws_free_places} plasser igjen.
-- else
-  %p
-    Ingen deltagere har registrert seg ennå.
+%p 
+  #{@talk.ws_free_places} plasser igjen.
+
+%p 
+  = link_to "Tilbake til foredrag", talk_path(@talk)
