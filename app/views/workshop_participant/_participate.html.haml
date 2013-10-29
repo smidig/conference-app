@@ -3,7 +3,7 @@
     
     .admin
       - if talk.users.include?(current_user) || talk.user == current_user || current_user.admin
-        Til nå er det 
+        Det er 
         = conditional_link_to_participant_list(talk)
 
     .action
