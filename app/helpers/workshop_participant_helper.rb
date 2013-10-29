@@ -17,11 +17,7 @@ module WorkshopParticipantHelper
 
   def conditional_link_to_participant_list(talk)
     n = talk.workshop_participants.count
-    if (n == 0)
-      "Ingen deltagere har registrert seg ennå."
-    else
-      link_to pluralize(n, 'deltaker', 'deltakere'),
-            workshop_participant_index_path(:talk_id => talk.id)
-    end
+    link_to pluralize(n, 'deltaker', 'deltakere'),
+          workshop_participant_index_path(:talk_id => talk.id)
   end
 end
