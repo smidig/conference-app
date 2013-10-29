@@ -7,7 +7,7 @@ module WorkshopParticipantHelper
               :confirm => "Sure?", :method => :delete, :class => 'btn btn-danger', :remote => true
     elsif talk.ws_full?
       """
-      <span class='workshop-full'>Ingen plasser igjen</span>
+      <span class='workshop-full'>(Ingen plasser igjen, og du er IKKE påmeldt!)</span>
       """.html_safe
     else
       button_to 'Meld deg på', workshop_participant_index_path(:talk_id => talk.id),
