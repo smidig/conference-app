@@ -2,7 +2,7 @@
   .workshop-participation{:id => "talk_wsp_#{talk.id}"}
     
     .admin
-      - if talk.users.include?(current_user) || current_user.admin
+      - if talk.users.include?(current_user) || talk.user == current_user || current_user.admin
         Til nå er det 
         = conditional_link_to_participant_list(talk)
 
