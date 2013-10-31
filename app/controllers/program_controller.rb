@@ -5,7 +5,7 @@ class ProgramController < ApplicationController
   def index
     @program = get_program_hash
     @talk_category = TalkCategory.all
-    @rooms = Room.find(Roomslot.joins(:room, :talks).uniq.pluck(:room_id))
+    @rooms = Room.find(Roomslot.joins(:room, :talks).pluck(:room_id)).uniq.sort_by{:priority}
 
     respond_to do |format|
       format.html # index.html.erb
