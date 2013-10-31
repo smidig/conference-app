@@ -92,4 +92,4 @@
                       , #{talk.users.map { |u| u.name }.join(', ')}
                   .description
                     =simple_format(talk.description)
-                    // render 'workshop_participant/participate', :talk => talk
+                    = render 'workshop_participant/participate', :talk => talk
