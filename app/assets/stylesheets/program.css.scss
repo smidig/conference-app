@@ -8,6 +8,56 @@
 	border: 0px solid #000;
 }
 
+
+.toggle-filter {
+	margin-bottom: 10px;
+}
+
+.location-explanation {
+	color: white;
+    background-color: #662d91;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    padding: 5px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    display: none;
+
+    @media (max-width: 767px) {
+		display: block;
+    }
+
+	.location {
+		.room-name {
+	    	margin-right: 5px;
+	    	padding: 3px;
+	    }	
+	}
+
+    .time {
+		margin-top: 5px;
+    }
+}
+
+.filter {
+	display: none;
+
+	.toggle-workshops {
+		margin: 10px 0;
+
+		@media (max-width: 767px) {
+			margin-bottom: 30px;
+
+			.switch-toggle {
+				float: right;
+			}
+		}
+	}
+}
+
 .smidig {
 	.content-wrapper {
 		.timeslot-time {
@@ -65,8 +115,7 @@
 		}
 
 		.filtered-out {
-			// Needed due to override of bootstraps visible classes
-			display: none !important;
+			opacity: 0.5;
 		}
 
 		.no-talks {
@@ -99,6 +148,7 @@
 						padding: 5px 5px 5px 0px;
 						background-color: #662d91;
 						display: inline-block;
+						white-space: nowrap;
 					}
 				}
 
