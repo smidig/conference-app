@@ -1,11 +1,13 @@
+.location-explanation
+  .span12
+    .location
+      - @rooms.each do |r|
+        %span.room-name{:style => ("background-color: " + r.color.to_s + ";")}
+          =r.name
+    .time
+
 %h1
   Program 
-
-.toggle-workshops
-  %span
-    Vis workshops
-  .make-switch.switch-mini.switch-toggle{:data => { :"on-label" => "ja", :"off-label" => "nei", :on => "success",  :off => "danger", :toggle => ".workshop"}}
-    %input{:type => "checkbox", :checked => "checked"}
 
 %dl.talk-types
   %dt
@@ -21,16 +23,27 @@
   %dd
     Workshop
 
-- @talk_category.each_slice(@talk_category.length / 4) do |tcg|
-  %ul.talk-categories
-    - tcg.each do |tc|
-      %li
-        .talk-category
-          %span.label.pull-left{:class => t("label." + tc.name, default: ''), :title => tc.name}
-            =t("label." + tc.name, default: tc.name.slice(0,2)).upcase
-          .make-switch.switch-mini.switch-toggle{:data => { :"on-label" => "ja", :"off-label" => "nei", :on => "success",  :off => "danger", :toggle => (".talk_category_" + tc.id.to_s)}}
-            %input{:type => "checkbox", :checked => "checked"}
-          =tc.name
+.btn.toggle-filter
+  %i.icon-filter
+  %span.text
+    Vis filter
+.filter
+  .toggle-workshops
+    %span
+      Vis workshops
+    .make-switch.switch-mini.switch-toggle{:data => { :"on-label" => "ja", :"off-label" => "nei", :on => "success",  :off => "danger", :toggle => ".workshop"}}
+      %input{:type => "checkbox", :checked => "checked"}
+
+  - @talk_category.each_slice(@talk_category.length / 3) do |tcg|
+    %ul.talk-categories
+      - tcg.each do |tc|
+        %li
+          .talk-category
+            %span.label.pull-left{:class => t("label." + tc.name, default: ''), :title => tc.name}
+              =t("label." + tc.name, default: tc.name.slice(0,2)).upcase
+            .make-switch.switch-mini.switch-toggle{:data => { :"on-label" => "ja", :"off-label" => "nei", :on => "success",  :off => "danger", :toggle => (".talk_category_" + tc.id.to_s)}}
+              %input{:type => "checkbox", :checked => "checked"}
+            =tc.name
 
 - @program[:days].each do |day|
   .row-fluid.day
