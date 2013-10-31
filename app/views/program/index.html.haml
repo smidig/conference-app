@@ -27,6 +27,7 @@
   %i.icon-filter
   %span.text
     Vis filter
+
 .filter
   .toggle-workshops
     %span
@@ -34,7 +35,7 @@
     .make-switch.switch-mini.switch-toggle{:data => { :"on-label" => "ja", :"off-label" => "nei", :on => "success",  :off => "danger", :toggle => ".workshop"}}
       %input{:type => "checkbox", :checked => "checked"}
 
-  - @talk_category.each_slice(@talk_category.length / 3) do |tcg|
+  - @talk_category.each_slice((@talk_category.length.to_f / 3).ceil) do |tcg|
     %ul.talk-categories
       - tcg.each do |tc|
         %li
