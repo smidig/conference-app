@@ -53,13 +53,14 @@
 
 
     .span3
-      .boxed.dinner-question
-        .title
-          %i.icon-question-sign
-          Skal du på konferansemiddagen?
-        .content
-          = link_to "Ja", {:action => "dinner_registration", :dinner => "yes"}, :class => 'btn btn-primary', :remote => true
-          = link_to "Nei", {:action => "dinner_registration", :dinner => "no"}, :remote => true
+      - if @user.includes_dinner == nil
+        .boxed.dinner-question
+          .title
+            %i.icon-question-sign
+            Skal du på konferansemiddagen?
+          .content
+            = link_to "Ja", {:action => "dinner_registration", :dinner => "yes"}, :class => 'btn btn-primary', :remote => true
+            = link_to "Nei", {:action => "dinner_registration", :dinner => "no"}, :remote => true
 
       .boxed.speaker
         .title
