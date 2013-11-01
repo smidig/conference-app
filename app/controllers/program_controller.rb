@@ -4,10 +4,12 @@ class ProgramController < ApplicationController
 
   def index
     @program = get_program_hash
+    @talk_category = TalkCategory.all
+    @rooms = Room.find(Roomslot.joins(:room, :talks).pluck(:room_id)).uniq.sort_by{:priority}
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @program }
+      format.json { render @program, @talk_category, @rooms }
     end
   end
 
