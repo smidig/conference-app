@@ -96,11 +96,16 @@
                         %i.icon-comment
                       %div.duration
                         #{talk.talk_type.duration} min
+                    - if user_signed_in? and current_user.admin
+                      #{talk.id} -
                     =sanitize(talk.title)
                   %em.author
                     =sanitize(talk.user.name)
                     - if talk.users.length > 0
                       , #{talk.users.map { |u| u.name }.join(', ')}
+                  - if user_signed_in? and current_user.admin and talk.presentation.original_filename
+                    %br
+                      = link_to "Last ned abstract", talk.presentation.url
                   .description
                     =simple_format(talk.description)
                     = render 'workshop_participant/participate', :talk => talk
