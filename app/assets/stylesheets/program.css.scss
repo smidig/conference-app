@@ -32,9 +32,13 @@
 
 	.location {
 		.room-name {
-	    	margin-right: 5px;
+	    	margin-left: 3px;
 	    	padding: 3px;
 	    	font-size: 10px;
+
+			&:first-child {
+				margin-left: 0;
+			}
 	    }	
 	}
 
