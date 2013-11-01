@@ -50,6 +50,7 @@ ConferenceApp::Application.routes.draw do
   get "info/sponsor/request"
   get "info/david", to: redirect('/info/keynote')
   get "info/keynote"
+  get "info/sosialt"
   post "info/sponsor"
 
   #twitter stuff
