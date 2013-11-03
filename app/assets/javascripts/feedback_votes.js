@@ -81,6 +81,8 @@ smidig.voter = (function($) {
 
 //Document on load!
 $(function() {
+  
+  /*
   $(".talk").each(function() {
     var talk_id = $(this).data("talkid"); 
       if(talk_id) {
@@ -89,7 +91,9 @@ $(function() {
         $(this).find(".description").append(voteTmpl);
         smidig.voter.init(voteTmpl, talk_id);
       }
-  }); 
+  });
+
+  */ 
 });
 
 
