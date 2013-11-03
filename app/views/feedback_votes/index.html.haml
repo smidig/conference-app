@@ -1,11 +1,11 @@
 %h1 Listing feedback_votes
 
-%table.table.table-striped.table-bordered
-  - @talks_feedbacks_count.each do |element|
-    %tr
-      %td{:colspan => "2"}
-        = element.talk.try(:title)
 
+- @talks_feedbacks_count.each do |element|
+  
+  %h4= element.talk.try(:title)
+
+  %table.table.table-bordered{:style => "background: white;"}
     - element.feedbacks.each do |vote|
       %tr
         %td= vote.comment
