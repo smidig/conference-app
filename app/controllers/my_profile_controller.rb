@@ -4,6 +4,7 @@ class MyProfileController < ApplicationController
   def index
     @user = current_user
     @order = current_user.order
+    @workshops = WorkshopParticipant.where(:user_id => current_user.id)
   end
 
   def receipt

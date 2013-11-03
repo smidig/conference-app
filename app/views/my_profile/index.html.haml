@@ -40,15 +40,27 @@
               = link_to({:controller => "orders", :action => "show", :id => @order.id}) do
                 %i.icon-th-list
                 #{@order.completed ? "Se" : "Fullfør"} din bestilling
+      .boxed
+        .title
+          %i.icon-wrench
+          Workshoper du skal på
+        .content
+          - if @workshops.length == 0
+            Ingen registrert
+          %ul
+            - for workshop in @workshops
+              %li= link_to workshop.talk.title, workshop.talk
+
 
     .span3
-      .boxed.dinner-question
-        .title
-          %i.icon-question-sign
-          Skal du på konferansemiddagen?
-        .content
-          = link_to "Ja", {:action => "dinner_registration", :dinner => "yes"}, :class => 'btn btn-primary', :remote => true
-          = link_to "Nei", {:action => "dinner_registration", :dinner => "no"}, :remote => true
+      - if @user.includes_dinner == nil
+        .boxed.dinner-question
+          .title
+            %i.icon-question-sign
+            Skal du på konferansemiddagen?
+          .content
+            = link_to "Ja", {:action => "dinner_registration", :dinner => "yes"}, :class => 'btn btn-primary', :remote => true
+            = link_to "Nei", {:action => "dinner_registration", :dinner => "no"}, :remote => true
 
       .boxed.speaker
         .title
