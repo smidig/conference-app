@@ -1,0 +1,15 @@
+%h1 Listing feedback_votes
+
+
+- @talks_feedbacks_count.each do |element|
+  
+  %h4= element.talk.try(:title)
+
+  %table.table.table-bordered{:style => "background: white;"}
+    - element.feedbacks.each do |vote|
+      %tr
+        %td= vote.comment
+        %td= vote.vote
+    %tr 
+      %td Snitt:
+      %td= element.avg

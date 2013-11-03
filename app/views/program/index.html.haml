@@ -83,7 +83,7 @@
                     %p
                       = r.description
               - r.talks.each do |talk|
-                .talk{:class => ("talk_category_" + talk.talk_category.id.to_s)}
+                .talk{:class => ("talk_category_" + talk.talk_category.id.to_s), :data => {"talkid" => "#{talk.id}"}}
                   %h4.title
                     %span.meta.pull-right
                       %span.pull-right.label.label-small{:class => t("label." + talk.talk_category.name), :title => talk.talk_category.name}

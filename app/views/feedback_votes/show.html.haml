@@ -1,0 +1,30 @@
+= link_to "Tilbake til foredrag",  @talk 
+
+- if @talk.users.include?(current_user)|| current_user.admin 
+  %ul
+    %li Min score: 1
+    %li Max score: 6
+    %li Konferansesnitt: #{@total_avg} 
+
+  - sum=0.0; count=0.0; 
+
+  %table.table{:style => "background: white;"}
+    %tr
+      %td{:colspan=>"2"}
+        %h2= @talk.try(:title)
+
+    - for vote in @feedbacks
+      - sum += vote.vote;count +=1;
+      %tr
+        %td= vote.comment
+        %td.text-right= vote.vote
+    
+    %tr{:style => "background: yellow;"}
+      %td Ditt snitt:
+      %td.text-right= sum/count
+    
+    %tr
+      %td Snitt for konferansen:
+      %td.text-right= @total_avg
+- else 
+  Du har ikke tilgang!

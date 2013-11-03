@@ -1,5 +1,8 @@
 ConferenceApp::Application.routes.draw do
 
+  resources :feedback_votes
+
+
   get "roomslots/add_talk"
   get "roomslots/remove_talk"
   resources :talk_comments

@@ -1,0 +1,19 @@
+<script id="tmplVote" type="text/x-jquery-tmpl">
+  <form class="feedback_vote form" action="/feedback_votes">
+    <strong>Tilbakemelding:</strong>
+    <div class="control-group">
+      <input name="feedback_vote[talk_id]" type="hidden" value="${talk_id}">
+      <input name="feedback_vote[vote]" type="radio" class="star" value="1" />
+      <input name="feedback_vote[vote]" type="radio" class="star" value="2"/>
+      <input name="feedback_vote[vote]" type="radio" class="star" value="3"/>
+      <input name="feedback_vote[vote]" type="radio" class="star" value="4"/>
+      <input name="feedback_vote[vote]" type="radio" class="star" value="5"/>
+      <input name="feedback_vote[vote]" type="radio" class="star" value="6"/>
+    </div>
+    <div class="control-group">
+      <input name="feedback_vote[comment]" type="text" placeholder="frivillig kommentar">
+      <input name="commit" type="button" value="Lagre" class="btn">
+      <span class="ajaxloader" style="visibility:hidden;" />
+    </div>
+  </form>
+</script>
