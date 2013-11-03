@@ -5,7 +5,7 @@ class WorkshopParticipantController < ApplicationController
   def index
     @talk = Talk.find(params[:talk_id])
     
-    if @talk.user_ids.include?(current_user.id) || current_user.admin
+    if @talk.users.include?(current_user) || @talk.user_id == current_user.id || current_user.admin
       @participants = @talk.workshop_participants.collect {|p| p.user }
       respond_to do |format|
         format.html # index.html.erb
@@ -13,7 +13,7 @@ class WorkshopParticipantController < ApplicationController
       end
     else
       flash[:error] = "Access Denied"
-      redirect_to new_user_path
+      redirect_to "/"
     end
   end
 

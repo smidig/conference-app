@@ -1,11 +1,47 @@
-%h1
-  Program 
+.location-explanation
+  .span12
+    .location
+      - @rooms.each do |r|
+        %span.room-name{:style => ("background-color: " + r.color.to_s + ";")}
+          =r.name
+    .time
 
-.toggle-workshops
-  %span
-    Vis workshops
-  .make-switch.switch-small.switch-toggle{:data => { :"on-label" => "ja", :"off-label" => "nei", :on => "success",  :off => "danger", :toggle => ".workshop"}}
-    %input{:type => "checkbox", :checked => "checked"}
+%dl.talk-types
+  %dt
+    %i.icon-bolt
+  %dd
+    Lyntale
+  %dt
+    %i.icon-comment
+  %dd
+    Foredrag
+  %dt
+    %i.icon-wrench
+  %dd
+    Workshop
+
+.btn.toggle-filter
+  %i.icon-filter
+  %span.text
+    Vis filter
+
+.filter
+  .toggle-workshops
+    %span
+      Vis workshops
+    .make-switch.switch-mini.switch-toggle{:data => { :"on-label" => "ja", :"off-label" => "nei", :on => "success",  :off => "danger", :toggle => ".workshop"}}
+      %input{:type => "checkbox", :checked => "checked"}
+
+  - @talk_category.each_slice((@talk_category.length.to_f / 3).ceil) do |tcg|
+    %ul.talk-categories
+      - tcg.each do |tc|
+        %li
+          .talk-category
+            %span.label.pull-left{:class => t("label." + tc.name, default: ''), :title => tc.name}
+              =t("label." + tc.name, default: tc.name.slice(0,2)).upcase
+            .make-switch.switch-mini.switch-toggle{:data => { :"on-label" => "ja", :"off-label" => "nei", :on => "success",  :off => "danger", :toggle => (".talk_category_" + tc.id.to_s)}}
+              %input{:type => "checkbox", :checked => "checked"}
+            =tc.name
 
 - @program[:days].each do |day|
   .row-fluid.day
@@ -47,7 +83,7 @@
                     %p
                       = r.description
               - r.talks.each do |talk|
-                .talk{:data => {"talkid" => "#{talk.id}"}}
+                .talk{:class => ("talk_category_" + talk.talk_category.id.to_s), :data => {"talkid" => "#{talk.id}"}}
                   %h4.title
                     %span.meta.pull-right
                       %span.pull-right.label.label-small{:class => t("label." + talk.talk_category.name), :title => talk.talk_category.name}
@@ -60,14 +96,23 @@
                         %i.icon-comment
                       %div.duration
                         #{talk.talk_type.duration} min
+                    - if user_signed_in? and current_user.admin
+                      #{talk.id} -
                     =sanitize(talk.title)
                   %em.author
                     =sanitize(talk.user.name)
                     - if talk.users.length > 0
                       , #{talk.users.map { |u| u.name }.join(', ')}
+                  - if user_signed_in? and current_user.admin and talk.presentation.original_filename
+                    %br
+                      = link_to "Last ned abstract", talk.presentation.url
                   .description
                     =simple_format(talk.description)
+<<<<<<< HEAD
                     // render 'workshop_participant/participate', :talk => talk
 
 
 = render 'feedback_votes/template' 
+=======
+                    = render 'workshop_participant/participate', :talk => talk
+>>>>>>> master

@@ -40,16 +40,53 @@ $(function() {
     $('.header-nav').slideToggle();
   });
 
+  $('.toggle-filter').on('tap click', function() {
+    var $filter = $('.filter'),
+        $this = $(this);
+    $filter.slideToggle('fast', function() {
+      if($filter.is(':visible')) {
+        $this.find('.text').html('Skjul filter');
+      } else {
+        $this.find('.text').html('Vis filter');
+      }
+    });
+  });
+
+  var timer = null;
+  $(window).on("scroll resize", function(){
+    if(timer !== null) {
+      clearTimeout(timer);        
+    }
+    timer = setTimeout(function() {
+      var pos = $('.location-explanation .time').offset();
+      if(!pos) {
+        return;
+      }
+
+      $('.timeslot-start').each(function(){
+        var $this = $(this);
+        
+        if(pos.top >= $this.offset().top) {
+          $('.location-explanation .time').html($this.html());
+          return;
+        }
+      });
+    }, 50);
+  });
+
   $("#main").on("click", ".talk .title", function() {
     $(this).closest(".talk").find(".description").slideToggle('fast');
   }).on('switch-change', ".switch-toggle", function (data) {
-    ga('send', 'event', 'Swicth', 'click', 'workshop-filter');
+    ga('send', 'event', 'Switch', 'click', 'workshop-filter');
 
-    $($(this).data("toggle")).toggle();
-  
-    var visibleRoomCount = 0;
+    $($(this).data("toggle")).toggleClass("filtered-out");
+
+    var rooms,
+        visibleRoomCount = 0;
+        
     $(".timeslot").not(".single-room").each(function() {
-      roomCount = $(this).find(".room:visible").size();
+      rooms = $(this).find(".room:visible");
+      roomCount = rooms.size();
       if(roomCount > visibleRoomCount) {
         visibleRoomCount = roomCount;
       }
