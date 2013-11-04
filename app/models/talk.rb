@@ -22,7 +22,7 @@ class Talk < ActiveRecord::Base
   has_many :feedback_votes
 
   has_attached_file :presentation, PAPERCLIP_CONFIG
-  validates_attachment_size :presentation, :less_than => 10.megabytes
+  validates_attachment_size :presentation, :less_than => 50.megabytes
 
   validates :status, :inclusion => {:in => STATUS_OPTIONS}, :allow_nil => true
 
