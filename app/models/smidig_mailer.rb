@@ -103,4 +103,11 @@ class SmidigMailer < ActionMailer::Base
          :subject => "Ditt bidrag \"#{talk.title}\" har ikke kommet med")
   end
 
+  def talk_vote_feedback(talk)
+    @talk = talk
+    @speaker = talk.user
+    mail(:to => talk.user.email,
+         :subject => "Feedback på ditt foredrag er klar")
+  end
+
 end
