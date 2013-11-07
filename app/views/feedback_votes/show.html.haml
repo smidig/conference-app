@@ -1,6 +1,6 @@
 = link_to "Tilbake til foredrag",  @talk 
 
-- if @talk.users.include?(current_user)|| current_user.admin 
+- if @talk.users.include?(current_user) || @talk.user == current_user ||  current_user.admin 
   %ul
     %li Min score: 1
     %li Max score: 6
