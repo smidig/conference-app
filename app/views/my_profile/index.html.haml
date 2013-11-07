@@ -72,8 +72,11 @@
               %li
                 = link_to talk.title, edit_talk_path(talk)
                 = " [#{talk.status}]"
+                = link_to({:controller => "feedback_votes", :action => "show", :id => talk.id}, {:title => "Tilbakemelding"}) do
+                  %i.icon-exclamation-sign
             - for talk in @user.talks
               %li
                 = talk.title
                 = " [#{talk.status}]"
+
           //= link_to "Opprett foredrag", new_talk_path, :class => 'btn btn-sucess'
