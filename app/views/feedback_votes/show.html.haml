@@ -3,18 +3,15 @@
 
 - if @talk.users.include?(current_user) || @talk.user == current_user ||  current_user.admin 
   %ul
+    %li Konferansesnitt: #{@total_avg} 
     %li 
-      Konferansesnitt: 
-      = number_with_precision @total_avg, :precision => 2 
-    %li 
-      %strong 
-        Ditt snitt:
-        = number_with_precision @avg, :precision => 2
+      %strong Ditt snitt: #{@avg}
 
   %h4 Kommentarer:
   %ul
   - for v in @comments
-    %li= v.try(:comment)
+    - unless v.comment.blank?
+      %li= v.comment
 
 
   #container
