@@ -15,6 +15,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//= require highcharts
+//= require highcharts/modules/data
 //
 // These are located in vendor/assets/javascripts:
 //

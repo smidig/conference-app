@@ -1,30 +1,35 @@
 = link_to "Tilbake til foredrag",  @talk 
 
+%h2= @talk.try(:title)
+
 - if @talk.users.include?(current_user)|| current_user.admin 
   %ul
-    %li Min score: 1
-    %li Max score: 6
     %li Konferansesnitt: #{@total_avg} 
+    %li 
+      %strong Ditt snitt: #{@avg}
 
-  - sum=0.0; count=0.0; 
+  %h4 Kommentarer:
+  %ul
+  - for v in @comments
+    %li= v.try(:comment)
 
-  %table.table{:style => "background: white;"}
+
+  #container
+  %br
+
+  %table.table.datatable{:style => "background: white;"}
     %tr
-      %td{:colspan=>"2"}
-        %h2= @talk.try(:title)
-
-    - for vote in @feedbacks
-      - sum += vote.vote;count +=1;
+      %th Katakter
+      %th.text-right Antall
+    - for vote in @votes
       %tr
-        %td= vote.comment
-        %td.text-right= vote.vote
-    
-    %tr{:style => "background: yellow;"}
-      %td Ditt snitt:
-      %td.text-right= sum/count
-    
-    %tr
-      %td Snitt for konferansen:
-      %td.text-right= @total_avg
+        %td #{vote}
+        %td.text-right
+          - if @feedbacks[vote]
+            = @feedbacks[vote].length
+          - else 
+            0
+  
+
 - else 
   Du har ikke tilgang!

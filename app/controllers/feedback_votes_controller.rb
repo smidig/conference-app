@@ -32,14 +32,17 @@ class FeedbackVotesController < ApplicationController
   # GET /feedback_votes/1
   # GET /feedback_votes/1.json
   def show
-    @feedbacks = FeedbackVote.find(:all, :conditions => {:talk_id => params[:id]})
+    @count = FeedbackVote.where(:talk_id => params[:id]).count
+    @sum = FeedbackVote.where(:talk_id => params[:id]).sum("vote")
+    @avg = @sum/@count
 
-    sum = 0.0
-    FeedbackVote.find(:all).each do |f|
-      sum += f.vote
-    end
-    @total_avg = sum/FeedbackVote.all.count
+    @comments = FeedbackVote.where(:talk_id => params[:id]).where("comment is not NULL").select("comment")
+    @feedbacks = FeedbackVote.where(:talk_id => params[:id]).select("vote, id").order("vote").group_by(&:vote)
+    @votes = [1,2,3,4,5,6]
 
+    total_sum = FeedbackVote.sum("vote")
+    total_count = FeedbackVote.count
+    @total_avg = total_sum/total_count
 
     @talk = Talk.find(params[:id])
 
