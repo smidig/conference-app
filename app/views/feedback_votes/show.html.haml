@@ -1,8 +1,7 @@
 = link_to "Tilbake til foredrag",  @talk 
-
 %h2= @talk.try(:title)
 
-- if @talk.users.include?(current_user)|| current_user.admin 
+- if @talk.users.include?(current_user) || @talk.user == current_user ||  current_user.admin 
   %ul
     %li Konferansesnitt: #{@total_avg} 
     %li 
