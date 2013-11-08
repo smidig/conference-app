@@ -3,7 +3,10 @@
 
 - @talks_feedbacks_count.each do |element|
   
-  %h4= element.talk.try(:title)
+  %h4
+    = link_to({:controller => "feedback_votes", :action => "show", :id => element.talk.id}) do
+      = element.talk.id
+      = element.talk.try(:title)
 
   %table.table.table-bordered{:style => "background: white;"}
     - element.feedbacks.each do |vote|
