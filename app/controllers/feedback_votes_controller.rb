@@ -34,7 +34,7 @@ class FeedbackVotesController < ApplicationController
   def show
     @count = FeedbackVote.where(:talk_id => params[:id]).count
     @sum = FeedbackVote.where(:talk_id => params[:id]).sum("vote")
-    @avg = @sum/@count
+    @avg = @sum.to_f/@count.to_f
 
     @comments = FeedbackVote.where(:talk_id => params[:id]).where("comment is not NULL").select("comment")
     @feedbacks = FeedbackVote.where(:talk_id => params[:id]).select("vote, id").order("vote").group_by(&:vote)
@@ -42,7 +42,7 @@ class FeedbackVotesController < ApplicationController
 
     total_sum = FeedbackVote.sum("vote")
     total_count = FeedbackVote.count
-    @total_avg = total_sum/total_count
+    @total_avg = total_sum.to_f/total_count.to_f
 
     @talk = Talk.find(params[:id])
 
