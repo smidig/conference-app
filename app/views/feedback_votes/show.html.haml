@@ -3,9 +3,13 @@
 
 - if @talk.users.include?(current_user) || @talk.user == current_user ||  current_user.admin 
   %ul
-    %li Konferansesnitt: #{@total_avg} 
     %li 
-      %strong Ditt snitt: #{@avg}
+      Konferansesnitt: 
+      = number_with_precision @total_avg, :precision => 2 
+    %li 
+      %strong 
+        Ditt snitt:
+        = number_with_precision @avg, :precision => 2
 
   %h4 Kommentarer:
   %ul
