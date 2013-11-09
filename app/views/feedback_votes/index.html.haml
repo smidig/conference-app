@@ -1,18 +1,14 @@
-%h1 Listing feedback_votes
+%h1 Alle foredrag sortert på score
 
+- i = 1
 
-- @talks_feedbacks_count.each do |element|
-  
-  %h4
-    = link_to({:controller => "feedback_votes", :action => "show", :id => element.talk.id}) do
-      = element.talk.id
-      = element.talk.try(:title)
-
-  %table.table.table-bordered{:style => "background: white;"}
-    - element.feedbacks.each do |vote|
-      %tr
-        %td= vote.comment
-        %td= vote.vote
-    %tr 
-      %td Snitt:
-      %td= element.avg
+%ul
+  - @talks_feedbacks_count.each do |element|
+    %li
+      %strong
+        = link_to({:controller => "feedback_votes", :action => "show", :id => element.talk.id}) do
+          #{'#'+i.to_s}
+          #{element.talk.title} - #{element.talk.user.name}  (#{element.talk.id})
+      %br
+      #{element.feedbacks.length} / #{element.avg}
+    - i = i +1
