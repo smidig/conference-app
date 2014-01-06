@@ -54,6 +54,7 @@ ConferenceApp::Application.routes.draw do
   get "info/david", to: redirect('/info/keynote')
   get "info/keynote"
   get "info/sosialt"
+  get "info/arsmote"
   post "info/sponsor"
 
   #twitter stuff
