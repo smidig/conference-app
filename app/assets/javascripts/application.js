@@ -27,7 +27,6 @@
 //= require jquery.tablesorter.widgets
 //= require jquery.tmpl.min
 //= require jquery.form
-//= require jquery.MetaData
 //= require jquery.rating_modified
 //
 // These are our scripts:
