@@ -55,6 +55,7 @@ ConferenceApp::Application.routes.draw do
   get "info/keynote"
   get "info/sosialt"
   get "info/arsmote"
+  get "info/smidig_offentlig"
   post "info/sponsor"
 
   #twitter stuff
