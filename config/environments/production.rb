@@ -67,6 +67,6 @@ ConferenceApp::Application.configure do
 
   config.assets.initialize_on_precompile = false
 
-  config.action_mailer.default_url_options = { :host => 'smidig2013.no' }
+  config.action_mailer.default_url_options = { :host => '2014.smidig.no' }
 
 end
