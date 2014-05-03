@@ -1,9 +1,9 @@
 # encoding: UTF-8
 
 class SmidigMailer < ActionMailer::Base
-  default_url_options[:host] = "2013.smidig.no"
-  FROM_EMAIL = 'Smidig 2013 <kontakt@smidig.no>'
-  SUBJECT_PREFIX = "[Smidig 2013]"
+  default_url_options[:host] = "2014.smidig.no"
+  FROM_EMAIL = 'Smidig 2014 <kontakt@smidig.no>'
+  SUBJECT_PREFIX = "[Smidig 2014]"
 
   default :from => FROM_EMAIL
 
