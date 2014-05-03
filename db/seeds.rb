@@ -10,17 +10,15 @@ Ticket.create(name: 'Speaker', price: 0, active: true, visible: false, ticket_ty
 
 # This will seed administrators with their appropriate names and email addresses. Their password is 'password'.
 administrators = [
-    {:name => "Jonas Amundsen",      :email => "jonasba@gmail.com"},
     {:name => "Ivar Conradi Østhus", :email => "ivarconr@gmail.com"},
     {:name => "Edward Grönroos", :email => "edward@gronroos.se"},
-    {:name => "Trude Martinsen", :email => "trude.martinsen@gmail.com"}
 ]
 
 administrators.each do |user_data|
   user_data.merge!({
       :tlf => "12345678",
       :password => 'password',
-      :password_confirmation => 'password',
+      :password_confirmation => 'password1234',
       :accepted_privacy => "1",
       :ticket_id => organizer.id,
       :company => 'Smidig 2014',
@@ -84,77 +82,77 @@ vampyr = Room.create(name: "Vampyr", color: "blue")
 resturant = Room.create(name: "Resturant", color: "gray")
 
 
-t1 = Timeslot.create(start: "2014-27-10 08:00:00", end: "2014-27-10 08:45:00")
+t1 = Timeslot.create(start: "2014-10-27 08:00:00", end: "2014-10-27 08:45:00")
 Roomslot.create(:room_id => foaje.id, :timeslot_id => t1.id)
 
-t2 = Timeslot.create(start: "2014-27-10 08:45:00", end: "2014-27-10 09:00:00")
+t2 = Timeslot.create(start: "2014-10-27 08:45:00", end: "2014-10-27 09:00:00")
 Roomslot.create(:room_id => olympia.id, :timeslot_id => t2.id)
 
-t3 = Timeslot.create(start: "2014-27-10 09:00:00", end: "2014-27-10 10:00:00")
+t3 = Timeslot.create(start: "2014-10-27 09:00:00", end: "2014-10-27 10:00:00")
 Roomslot.create(:room_id => olympia.id, :timeslot_id => t3.id)
 
-t4 = Timeslot.create(start: "2014-27-10 10:15:00", end: "2014-27-10 11:00:00")
+t4 = Timeslot.create(start: "2014-10-27 10:15:00", end: "2014-10-27 11:00:00")
 Roomslot.create(:room_id => olympia.id, :timeslot_id => t4.id)
 Roomslot.create(:room_id => film.id, :timeslot_id => t4.id)
 Roomslot.create(:room_id => kunst.id, :timeslot_id => t4.id)
 
-t5 = Timeslot.create(start: "2014-27-10 10:15:00", end: "2014-27-10 12:00:00", is_workshop_slot: true)
+t5 = Timeslot.create(start: "2014-10-27 10:15:00", end: "2014-10-27 12:00:00", is_workshop_slot: true)
 Roomslot.create(:room_id => madonna.id, :timeslot_id => t5.id)
 Roomslot.create(:room_id => vampyr.id, :timeslot_id => t5.id)
 
-t6 = Timeslot.create(start: "2014-27-10 11:15:00", end: "2014-27-10 12:00:00")
+t6 = Timeslot.create(start: "2014-10-27 11:15:00", end: "2014-10-27 12:00:00")
 Roomslot.create(:room_id => olympia.id, :timeslot_id => t6.id)
 Roomslot.create(:room_id => film.id, :timeslot_id => t6.id)
 Roomslot.create(:room_id => kunst.id, :timeslot_id => t6.id)
 
-t7 = Timeslot.create(start: "2014-27-10 12:00:00", end: "2014-27-10 13:15:00")
+t7 = Timeslot.create(start: "2014-10-27 12:00:00", end: "2014-10-27 13:15:00")
 Roomslot.create(:room_id => foaje.id, :timeslot_id => t7.id)
 
-t8 = Timeslot.create(start: "2014-27-10 13:15:00", end: "2014-27-10 14:00:00")
+t8 = Timeslot.create(start: "2014-10-27 13:15:00", end: "2014-10-27 14:00:00")
 Roomslot.create(:room_id => olympia.id, :timeslot_id => t8.id)
 Roomslot.create(:room_id => film.id, :timeslot_id => t8.id)
 Roomslot.create(:room_id => kunst.id, :timeslot_id => t8.id)
 
-t9 = Timeslot.create(start: "2014-27-10 14:15:00", end: "2014-27-10 16:30:00")
+t9 = Timeslot.create(start: "2014-10-27 14:15:00", end: "2014-10-27 16:30:00")
 Roomslot.create(:room_id => alle.id, :timeslot_id => t9.id)
 
-t10 = Timeslot.create(start: "2014-27-10 17:00:00", end: "2014-27-10 19:30:00")
+t10 = Timeslot.create(start: "2014-10-27 17:00:00", end: "2014-10-27 19:30:00")
 Roomslot.create(:room_id => foaje.id, :timeslot_id => t10.id)
 
 
 # dag 2
-t11 = Timeslot.create(start: "2014-28-10 08:30:00", end: "2014-28-10 09:00:00")
+t11 = Timeslot.create(start: "2014-10-28 08:30:00", end: "2014-10-28 09:00:00")
 Roomslot.create(:room_id => foaje.id, :timeslot_id => t11.id)
 
-t12 = Timeslot.create(start: "2014-28-10 09:00:00", end: "2014-28-10 10:00:00")
+t12 = Timeslot.create(start: "2014-10-28 09:00:00", end: "2014-10-28 10:00:00")
 Roomslot.create(:room_id => olympia.id, :timeslot_id => t12.id)
 
-t13 = Timeslot.create(start: "2014-28-10 10:15:00", end: "2014-28-10 11:00:00")
+t13 = Timeslot.create(start: "2014-10-28 10:15:00", end: "2014-10-28 11:00:00")
 Roomslot.create(:room_id => olympia.id, :timeslot_id => t13.id)
 Roomslot.create(:room_id => film.id, :timeslot_id => t13.id)
 Roomslot.create(:room_id => kunst.id, :timeslot_id => t13.id)
 
-t14 = Timeslot.create(start: "2014-28-10 10:15:00", end: "2014-28-10 14:00:00", is_workshop_slot: true)
+t14 = Timeslot.create(start: "2014-10-28 10:15:00", end: "2014-10-28 14:00:00", is_workshop_slot: true)
 Roomslot.create(:room_id => madonna.id, :timeslot_id => t14.id)
 
-t15 = Timeslot.create(start: "2014-28-10 10:15:00", end: "2014-28-10 12:00:00", is_workshop_slot: true)
+t15 = Timeslot.create(start: "2014-10-28 10:15:00", end: "2014-10-28 12:00:00", is_workshop_slot: true)
 Roomslot.create(:room_id => vampyr.id, :timeslot_id => t15.id)
 
-t16 = Timeslot.create(start: "2014-28-10 11:15:00", end: "2014-28-10 12:00:00")
+t16 = Timeslot.create(start: "2014-10-28 11:15:00", end: "2014-10-28 12:00:00")
 Roomslot.create(:room_id => olympia.id, :timeslot_id => t16.id)
 Roomslot.create(:room_id => film.id, :timeslot_id => t16.id)
 Roomslot.create(:room_id => kunst.id, :timeslot_id => t16.id)
 
-t17 = Timeslot.create(start: "2014-28-10 12:00:00", end: "2014-28-10 13:15:00")
+t17 = Timeslot.create(start: "2014-10-28 12:00:00", end: "2014-10-28 13:15:00")
 Roomslot.create(:room_id => foaje.id, :timeslot_id => t17.id)
 
-t18 = Timeslot.create(start: "2014-28-10 13:15:00", end: "2014-28-10 14:00:00")
+t18 = Timeslot.create(start: "2014-10-28 13:15:00", end: "2014-10-28 14:00:00")
 Roomslot.create(:room_id => olympia.id, :timeslot_id => t18.id)
 Roomslot.create(:room_id => film.id, :timeslot_id => t18.id)
 Roomslot.create(:room_id => kunst.id, :timeslot_id => t18.id)
 
-t19 = Timeslot.create(start: "2014-28-10 14:15:00", end: "2014-28-10 16:30:00")
+t19 = Timeslot.create(start: "2014-10-28 14:15:00", end: "2014-10-28 16:30:00")
 Roomslot.create(:room_id => alle.id, :timeslot_id => t19.id)
 
-t20 = Timeslot.create(start: "2014-28-10 16:30:00", end: "2014-28-10 16:30:00")
+t20 = Timeslot.create(start: "2014-10-28 16:30:00", end: "2014-10-28 16:30:00")
 Roomslot.create(:room_id => alle.id, :timeslot_id => t20.id)
