@@ -8,7 +8,7 @@
         .span10.offset1.menu-row
           %header.header
             %a.brand{:href=>"/"}
-              Smidig 2013
+              Smidig 2014
             = render 'layouts/navigation'
             = render 'layouts/messages' unless flash.empty?
       - if current_page?('/')
@@ -48,6 +48,7 @@
               .widget.history
                 %h4.heading.history-icon
                   Tidligere konferanser
+                %a{:href => "http://2013.smidig.no"} 2013.smidig.no,
                 %a{:href => "http://smidig2012.no"} smidig2012.no,
                 %a{:href => "http://smidig2011.no"} smidig2011.no,
                 %a{:href => "http://smidig2010.no"} smidig2010.no,
