@@ -3,6 +3,7 @@ require 'spec_helper'
 describe "my_profile/index" do
   before(:each) do
     @user = assign(:user, FactoryGirl.build(:user))
+    @workshops = []
     render
   end
 
