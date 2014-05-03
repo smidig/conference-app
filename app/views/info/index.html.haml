@@ -23,6 +23,18 @@
 //  
 .row-fluid.news
   .span6
+    %article
+
+      :markdown
+        ## Seminar: Smidig i offentlig sektor
+
+        Smidigkonferansen ønsker å bidra til at smidig blir tatt i bruk i større grad gjennom å støtte seminaret Smidig digitalisering av offentlig sektor den 3.juni på Holbergs Terrasse i Oslo. Programmet er fantastisk spennende!
+
+      %a.pull-right(href="#{info_smidig_offentlig_path}")
+        Les mer om seminaret her
+
+
+  .span6
     %article 
       :markdown
         ## Gruppepåmelding
@@ -33,11 +45,12 @@
       %a(href="#{info_gruppepaamelding_path}")
         Les mer om gruppepåmelding
 
+.row-fluid.news
   .span6
     %article
 
       :markdown
-        ## Sponse smidig?
+        ## Sponse Smidig 2014?
 
         Konferansen finansieres av deltakeravgift og sponsormidler.
         Å være sponsor for Smidig 2014 er et sterkt signal om at selskapet stiller seg
@@ -47,7 +60,6 @@
       %a.pull-right(href="#{info_sponsor_path}")
         Les mer om å sponse årets Smidigkonferanse
 
-.row-fluid.news
   .span6
     %article 
       :markdown
@@ -58,6 +70,7 @@
       %a(href="http://vimeopro.com/smidig/smidig-2013")
         Se fjorårets foredrag
 
+.row-fluid.news
   .span6
     %article 
       :markdown
