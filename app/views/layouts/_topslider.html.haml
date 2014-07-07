@@ -1,15 +1,7 @@
 .flex-container.top-slider
   .flexslider
     %ul.slides
-      %li
-        %a(href="#{info_keynote_path}")
-          %img{:src => "#{image_path "jim_Benson.jpg"}"}
-          .row-fluid
-            .caption.span5.offset1
-              %h5.title
-                Keynote dag 1: Jim Benson
-              %p.text
-                Jim is the creator of Personal Kanban, a pioneer in the field of Lean Management....
+
       %li
         %a(href="#{new_user_registration_path}")
           %img{:src => "#{image_path "vi_planlegger.jpg"}"}
@@ -19,6 +11,26 @@
                 Meld deg på Smidig 2014
               %p.text
                 Vi har startet påmeldingen til Smidig 2014. 
+
+      %li
+        %a(href="#{info_keynote_path}")
+          %img{:src => "#{image_path "jim_Benson.jpg"}"}
+          .row-fluid
+            .caption.span5.offset1
+              %h5.title
+                Keynote dag 1: Jim Benson
+              %p.text
+                Jim is the creator of Personal Kanban, a pioneer in the field of Lean Management....
+
+      %li
+        %a(href="#{info_keynote_path}")
+          %img{:src => "#{image_path "henrik_kniberg.jpg"}"}
+          .row-fluid
+            .caption.span5.offset1
+              %h5.title
+                Keynote dag 2: Henrik Kniberg
+              %p.text
+                Henrik is an Agile/Lean coach at Crisp in Stockholm, working primarily with Spotify...
 
       %li
         %a(href="#{new_talk_path}")
