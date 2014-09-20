@@ -220,6 +220,7 @@ class TalksController < ApplicationController
     if not current_user
       session[:return_to] = request.fullpath
       flash[:notice] = "Du må opprette en bruker før du kan registrere en lyntale eller workshop. " +
+                       "Etter utfylling av din brukerinformasjon vil du få anledning til å angi innhold i foredraget ditt. " +
                        "Dersom du allerede har en bruker kan du logge inn via \"Min Profil\"."
       redirect_to new_user_registration_path(:ticket_name=>"Speaker")
       return false
