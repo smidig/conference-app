@@ -48,26 +48,27 @@ group :tools do
   gem 'guard-test'
 end
 
-group :development do
+group :development, :test do
   gem 'sqlite3'
+  gem 'database_cleaner'
+end
+
+group :development do
   gem 'guard'
   gem 'guard-rspec'
   gem 'guard-spork'
   gem 'guard-migrate'
   gem 'spork'
   gem 'spork-testunit'
-  gem 'database_cleaner'
 end
 
 group :test do
-  gem 'sqlite3'
   gem 'webmock'
   gem 'mocha'
   gem 'rspec-rails'
   gem 'factory_girl_rails', :require => false
   gem 'cucumber-rails'
   gem 'launchy'
-  gem 'database_cleaner'
   gem 'webrat'
 end
 
