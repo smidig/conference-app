@@ -33,6 +33,10 @@ $btnPrimaryBackgroundHighlight:#4d009a;
 	box-shadow:0px 0px 20px 1px #777777;
 }
 
+.smidig .alert {
+  margin-bottom: 20px;
+}
+
 .alert-alert {
   @extend .alert-error
 }
