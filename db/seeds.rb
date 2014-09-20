@@ -19,7 +19,7 @@ administrators.each do |user_data|
   user_data.merge!({
       :tlf => "12345678",
       :password => 'password',
-      :password_confirmation => 'password1234',
+      :password_confirmation => 'password',
       :accepted_privacy => "1",
       :ticket_id => organizer.id,
       :company => 'Smidig 2014',
