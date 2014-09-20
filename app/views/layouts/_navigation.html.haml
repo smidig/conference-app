@@ -17,7 +17,7 @@
     {:class=>current_page?(my_profile_index_path) ? "active" : "", :title => "Min profil"})
   - if user_signed_in?
     %li
-      = link_to('Logout', destroy_user_session_path, :method=>'delete')
+      = link_to('Logg ut', destroy_user_session_path, :method=>'delete')
   - else
     %li
       = link_to('Meld deg på!', new_user_registration_path, 
