@@ -67,7 +67,7 @@ group :test do
   gem 'mocha'
   gem 'rspec-rails'
   gem 'factory_girl_rails', :require => false
-  gem 'cucumber-rails'
+  gem 'cucumber-rails', :require => false
   gem 'launchy'
   gem 'webrat'
 end
