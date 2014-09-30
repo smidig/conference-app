@@ -4,6 +4,17 @@
 .row-fluid.news
   .span6
     %article
+      :markdown
+        ## Utvidet Call for Speakers
+
+        Fristen for å levere forslag til foredrag har nå blitt
+        utvidet én uke. Ny frist er derfor #{l talk_suggestion_deadline, :format => '%-d. %B'}.
+
+      %a(href="#{new_talk_path}")
+        Foreslå lyntale eller workshop
+
+  .span6
+    %article
 
       :markdown
         ##  Call for Speakers
@@ -12,17 +23,6 @@
          åpner nå opp for innsending av abstracts for konferansen, 
          og kommer til å vurdere forslagene fortløpende. Fristen
          for å sende inn forslag er #{l talk_suggestion_deadline, :format => '%-d. %B'}.
-
-      %a(href="#{new_talk_path}")
-        Foreslå lyntale eller workshop
-
-  .span6
-    %article
-      :markdown
-        ## Utvidet Call for Speakers
-
-        Fristen for å levere forslag til foredrag har nå blitt
-        utvidet én uke. Ny frist er derfor #{l talk_suggestion_deadline, :format => '%-d. %B'}.
 
       %a(href="#{new_talk_path}")
         Foreslå lyntale eller workshop
