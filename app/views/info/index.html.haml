@@ -28,15 +28,14 @@
 
 .row-fluid.news
   .span6
-    %article 
+    %article
       :markdown
-        ## Gruppepåmelding
+        ## Foreløpig godkjente foredrag
 
-        Også i år tilbyr Smidigkonferansen gruppepåmelding. Dette forenkler påmelding og betaling for 
-        bedrifter som ønsker å sende flere deltakere
+        Vi godkjenner foreslåtte foredrag fortløpende frem mot konferansen.
 
-      %a(href="#{info_gruppepaamelding_path}")
-        Les mer om gruppepåmelding
+      %a(href="#{talks_list_path}")
+        Se godkjente foredrag
 
   .span6
     %article
@@ -56,12 +55,13 @@
   .span6
     %article 
       :markdown
-        ## Det beste fra Smidigkonferansen
+        ## Gruppepåmelding
 
-        Trenger du inspirasjon? Alle foredragene fra tidligere konferanser finner du på Vimeo
+        Også i år tilbyr Smidigkonferansen gruppepåmelding. Dette forenkler påmelding og betaling for
+        bedrifter som ønsker å sende flere deltakere
 
-      %a(href="http://vimeopro.com/smidig/smidig-2013")
-        Se fjorårets foredrag
+      %a(href="#{info_gruppepaamelding_path}")
+        Les mer om gruppepåmelding
 
   .span6
     %article 
@@ -73,3 +73,13 @@
 
       %a.pull-right(href="#{info_about_path}")
         Les mer om Smidigkonferansen
+.row-fluid.news
+  .span6
+    %article
+      :markdown
+        ## Det beste fra Smidigkonferansen
+
+        Trenger du inspirasjon? Alle foredragene fra tidligere konferanser finner du på Vimeo
+
+      %a(href="http://vimeopro.com/smidig/smidig-2013")
+        Se fjorårets foredrag
