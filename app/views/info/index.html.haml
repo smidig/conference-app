@@ -19,12 +19,13 @@
   .span6
     %article
       :markdown
-        ## Keynotes på Smidig 2014 
+        ## Utvidet Call for Speakers
 
-        Smidigkonferansen er stolte av å kunne annonsere at både Jim Benson og Henrik Kniberg har blitt booket som keynote-speakers på konferansen.
+        Fristen for å levere forslag til foredrag har nå blitt
+        utvidet én uke. Ny frist er derfor #{l talk_suggestion_deadline, :format => '%-d. %B'}.
 
-      %a.pull-right(href="#{info_keynote_path}")
-        Les mer om foredragsholderene
+      %a(href="#{new_talk_path}")
+        Foreslå lyntale eller workshop
 
 .row-fluid.news
   .span6
@@ -36,6 +37,28 @@
 
       %a(href="#{talks_list_path}")
         Se godkjente foredrag
+
+  .span6
+    %article
+      :markdown
+        ## Keynotes på Smidig 2014
+
+        Smidigkonferansen er stolte av å kunne annonsere at både Jim Benson og Henrik Kniberg har blitt booket som keynote-speakers på konferansen.
+
+      %a.pull-right(href="#{info_keynote_path}")
+        Les mer om foredragsholderene
+
+.row-fluid.news
+  .span6
+    %article 
+      :markdown
+        ## Gruppepåmelding
+
+        Også i år tilbyr Smidigkonferansen gruppepåmelding. Dette forenkler påmelding og betaling for
+        bedrifter som ønsker å sende flere deltakere
+
+      %a(href="#{info_gruppepaamelding_path}")
+        Les mer om gruppepåmelding
 
   .span6
     %article
@@ -53,28 +76,6 @@
 
 .row-fluid.news
   .span6
-    %article 
-      :markdown
-        ## Gruppepåmelding
-
-        Også i år tilbyr Smidigkonferansen gruppepåmelding. Dette forenkler påmelding og betaling for
-        bedrifter som ønsker å sende flere deltakere
-
-      %a(href="#{info_gruppepaamelding_path}")
-        Les mer om gruppepåmelding
-
-  .span6
-    %article 
-      :markdown
-        ## Om konferansen
-
-        Smidigkonferansen er en årlig konferanse for og av fagmiljøet selv. Her får du høre hvordan andre
-        prosjektdeltakere som deg takler hverdagen i sine smidige og kanskje ikke så smidige prosjekter.
-
-      %a.pull-right(href="#{info_about_path}")
-        Les mer om Smidigkonferansen
-.row-fluid.news
-  .span6
     %article
       :markdown
         ## Det beste fra Smidigkonferansen
@@ -83,3 +84,14 @@
 
       %a(href="http://vimeopro.com/smidig/smidig-2013")
         Se fjorårets foredrag
+
+  .span6
+    %article
+      :markdown
+        ## Om konferansen
+
+        Smidigkonferansen er en årlig konferanse for og av fagmiljøet selv. Her får du høre hvordan andre
+        prosjektdeltakere som deg takler hverdagen i sine smidige og kanskje ikke så smidige prosjekter.
+
+      %a.pull-right(href="#{info_about_path}")
+        Les mer om Smidigkonferansen
