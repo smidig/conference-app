@@ -60,6 +60,7 @@ group :development do
   gem 'guard-migrate'
   gem 'spork'
   gem 'spork-testunit'
+  gem 'letter_opener'
 end
 
 group :test do
