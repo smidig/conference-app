@@ -169,4 +169,6 @@ $(function() {
     $(this).tooltip('hide');
   });
 
+  $('#tip-a-friend').tooltip();
+
 });

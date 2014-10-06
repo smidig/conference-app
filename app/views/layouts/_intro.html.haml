@@ -12,4 +12,8 @@
 
     = link_to('Meld deg på Smidig 2014!', new_user_registration_path, {:class => "btn pull-right"})
 
+    = form_for TippedUser.new, :html => { :id => 'tip-a-friend', :class => "pull-right", :'data-title' => 'Vet du om noen som burde delta på årets Smidigkonferanse? Oppgi epostadresse her og vi sender en mail med informasjon.' } do |f|
+      = f.email_field :email, :placeholder => 'E-post'
+      = f.submit :class => 'btn btn-primary', :value => 'Tips en venn'
+
 .fb-like{"data-href" => "http://www.facebook.com/smidig", "data-send" => "true", "data-show-faces" => "true", "data-width" => "900"}
