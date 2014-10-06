@@ -110,4 +110,9 @@ class SmidigMailer < ActionMailer::Base
          :subject => "Feedback på ditt foredrag er klar")
   end
 
+  def tip_a_friend(email)
+    mail :to => email,
+         :subject => "Det er noen som vil tipse deg om årets Smidigkonferanse!"
+  end
+
 end

@@ -98,4 +98,6 @@ ConferenceApp::Application.routes.draw do
   get "users/speaker"
   resources :users
   get "users/delete/:id" => "users#delete"
+
+  resources :tipped_users, :only => :create
 end
