@@ -73,14 +73,14 @@ for i in 0..10
 end
 
 # rooms
-foaje = Room.create(name: "Foajé", color: "gray")
-alle = Room.create(name: "Alle", color: "gray")
-olympia = Room.create(name: "Olympia", color: "#F90")
-film = Room.create(name: "Film", color: "#C00")
-kunst = Room.create(name: "Kunst", color: "#090")
-madonna = Room.create(name: "Madonna", color: "silver")
-vampyr = Room.create(name: "Vampyr", color: "blue")
-resturant = Room.create(name: "Resturant", color: "gray")
+foaje = Room.create(name: "Foajé", color: "gray", size: 20)
+alle = Room.create(name: "Alle", color: "gray", size: 20)
+olympia = Room.create(name: "Olympia", color: "#F90", size: 20)
+film = Room.create(name: "Film", color: "#C00", size: 20)
+kunst = Room.create(name: "Kunst", color: "#090", size: 20)
+madonna = Room.create(name: "Madonna", color: "silver", size: 20)
+vampyr = Room.create(name: "Vampyr", color: "blue", size: 20)
+resturant = Room.create(name: "Resturant", color: "gray", size: 20)
 
 
 t1 = Timeslot.create(start: "2014-10-27 08:00:00", end: "2014-10-27 08:45:00")

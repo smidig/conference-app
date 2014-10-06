@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131026115856) do
+ActiveRecord::Schema.define(:version => 20140924174535) do
 
   create_table "feedback_votes", :force => true do |t|
     t.integer  "talk_id"
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(:version => 20131026115856) do
     t.datetime "updated_at",                :null => false
     t.string   "color"
     t.integer  "priority",   :default => 0
+    t.integer  "size",       :default => 0
   end
 
   create_table "roomslots", :force => true do |t|

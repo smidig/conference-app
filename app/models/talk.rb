@@ -7,7 +7,7 @@ class Talk < ActiveRecord::Base
 
   STATUS_OPTIONS = %w(approved_and_confirmed approved rejected pending)
 
-  MAX_WS_PARTICIPANTS = 20
+  DEFAULT_MAX_WS_PARTICIPANTS = 20
 
   belongs_to :talk_type
   belongs_to :talk_category
@@ -72,11 +72,15 @@ class Talk < ActiveRecord::Base
   end
 
   def ws_full?
-    workshop_participant_ids.count >= MAX_WS_PARTICIPANTS
+    workshop_participant_ids.count >= max_participants
   end
 
   def ws_free_places
-    MAX_WS_PARTICIPANTS - workshop_participant_ids.count 
+    max_participants - workshop_participant_ids.count
+  end
+
+  def max_participants
+    roomslot.try(:room).try(:size) || DEFAULT_MAX_WS_PARTICIPANTS
   end
 
 end
