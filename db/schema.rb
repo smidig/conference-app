@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140924174535) do
+ActiveRecord::Schema.define(:version => 20141001142322) do
 
   create_table "feedback_votes", :force => true do |t|
     t.integer  "talk_id"
@@ -146,6 +146,12 @@ ActiveRecord::Schema.define(:version => 20140924174535) do
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
     t.boolean  "is_workshop_slot"
+  end
+
+  create_table "tipped_users", :force => true do |t|
+    t.string   "email"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|

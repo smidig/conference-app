@@ -1,4 +1,5 @@
-- flash.each do |type, message|
-  %div{ :class => "alert alert-#{type}" }
-    %a.close{ :"data-dismiss" => "alert" } &times;
-    = message
+#flash
+  - flash.each do |type, message|
+    %div{ :class => "alert alert-#{type}" }
+      %a.close{ :"data-dismiss" => "alert" } &times;
+      = message

@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   authorize_admin!
 
+  no_authorization! :only => :tip
+
   layout "fullwidth"
 
   # GET /users
@@ -98,5 +100,17 @@ class UsersController < ApplicationController
 
   def delete
     @user = User.find(params[:id])
+  end
+
+  def tip
+    tipped_user = TippedUser.new params[:tipped_user]
+
+    if tipped_user.save
+      SmidigMailer.tip_a_friend(params[:email]).deliver
+
+      render :nothing => true
+    else
+      render :json => tipped_user.errors
+    end
   end
 end
