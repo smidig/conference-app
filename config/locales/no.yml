@@ -92,6 +92,13 @@
     Realisering av verdi: "RAV"
     Lean startup: "LS"
     Smidig programmering: "SP"
+    Smidig og offshoring: "SO"
+    Smidig risikostyring: "SR"
+    Verdiskapning: "VS"
+    Erfaringsrapporter: "ER"
+    Systemtenkning: "SY"
+    Lean: "LN"
+    Kontinuerlig forbedring: "KF"
   general:
     register: "Påmelding til Smidig 2014"
     manual_payment:
