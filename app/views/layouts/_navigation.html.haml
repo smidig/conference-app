@@ -21,7 +21,8 @@
     %li
       = link_to('Meld deg på!', new_user_registration_path, 
       {:class=>current_page?(new_user_registration_path) && !suggesting_talk? ? "active" : "", :title => "Meld deg på"})
-      - unless talk_suggestion_deadline.past?
+    - unless talk_suggestion_deadline.past?
+      %li
         = link_to('Foreslå foredrag!', new_talk_path,
         {:class=>current_page?(new_user_registration_path) && suggesting_talk? ? "active" : "", :title => "Foreslå foredrag"})
   - if user_signed_in? and current_user.admin
