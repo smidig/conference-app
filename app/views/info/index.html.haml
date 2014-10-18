@@ -2,50 +2,13 @@
   .span6
     %article
       :markdown
-        ## Utvidet Call for Speakers
-
-        Fristen for å levere forslag til foredrag har nå blitt
-        utvidet én uke. Ny frist er derfor #{l talk_suggestion_deadline, :format => '%-d. %B'}.
-
-      %a(href="#{new_talk_path}")
-        Foreslå lyntale eller workshop
-
-  .span6
-    %article
-
-      :markdown
-        ##  Call for Speakers
-
-         Ønsker du å holde foredrag selv på Smidig 2014? Vi 
-         åpner nå opp for innsending av abstracts for konferansen, 
-         og kommer til å vurdere forslagene fortløpende. Fristen
-         for å sende inn forslag er #{l talk_suggestion_deadline, :format => '%-d. %B'}.
-
-      %a.pull-right(href="#{new_talk_path}")
-        Foreslå lyntale eller workshop
-
-.row-fluid.news
-  .span6
-    %article
-      :markdown
-        ## Foreløpig godkjente foredrag
-
-        Vi godkjenner foreslåtte foredrag fortløpende frem mot konferansen.
-
-      %a(href="#{talks_list_path}")
-        Se godkjente foredrag
-
-  .span6
-    %article
-      :markdown
         ## Keynotes på Smidig 2014
 
         Smidigkonferansen er stolte av å kunne annonsere at både Jim Benson og Henrik Kniberg har blitt booket som keynote-speakers på konferansen.
 
-      %a.pull-right(href="#{info_keynote_path}")
+      %a(href="#{info_keynote_path}")
         Les mer om foredragsholderene
 
-.row-fluid.news
   .span6
     %article 
       :markdown
@@ -54,9 +17,10 @@
         Også i år tilbyr Smidigkonferansen gruppepåmelding. Dette forenkler påmelding og betaling for
         bedrifter som ønsker å sende flere deltakere
 
-      %a(href="#{info_gruppepaamelding_path}")
+      %a.pull-right(href="#{info_gruppepaamelding_path}")
         Les mer om gruppepåmelding
 
+.row-fluid.news
   .span6
     %article
 
@@ -68,10 +32,9 @@
         bak bevegelsen for smidige metoder og støtter opp under det frivillige initiativet som er
         drivkraften bak arrangement.
 
-      %a.pull-right(href="#{info_sponsor_path}")
+      %a(href="#{info_sponsor_path}")
         Les mer om å sponse årets Smidigkonferanse
 
-.row-fluid.news
   .span6
     %article
       :markdown
@@ -79,9 +42,10 @@
 
         Trenger du inspirasjon? Alle foredragene fra tidligere konferanser finner du på Vimeo
 
-      %a(href="http://vimeopro.com/smidig/smidig-2013")
+      %a.pull-right(href="http://vimeopro.com/smidig/smidig-2013")
         Se fjorårets foredrag
 
+.row-fluid.news
   .span6
     %article
       :markdown
@@ -90,5 +54,5 @@
         Smidigkonferansen er en årlig konferanse for og av fagmiljøet selv. Her får du høre hvordan andre
         prosjektdeltakere som deg takler hverdagen i sine smidige og kanskje ikke så smidige prosjekter.
 
-      %a.pull-right(href="#{info_about_path}")
+      %a(href="#{info_about_path}")
         Les mer om Smidigkonferansen
