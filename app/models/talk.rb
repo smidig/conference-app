@@ -1,6 +1,6 @@
 class Talk < ActiveRecord::Base
   attr_accessible :title, :description, :accepted_license, :talk_type, :talk_type_id, :talk_category, :talk_category_id, :users, :presentation, :as => [ :default, :admin ]
-  attr_accessible :status, :user, :new_user, :user_ids, :as => :admin
+  attr_accessible :status, :user, :new_user, :user_ids, :registrations_open_at, :as => :admin
   attr_accessor :new_user
 
   acts_as_votable

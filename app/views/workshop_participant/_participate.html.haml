@@ -1,18 +1,26 @@
 - if  talk.talk_type.workshop
   .workshop-participation{:id => "talk_wsp_#{talk.id}"}
-    
-    .admin
-      - if current_user
-        - if talk.users.include?(current_user) || talk.user == current_user || current_user.admin
-          Det er 
-          = conditional_link_to_participant_list(talk)
+    - if talk.registrations_open_at.nil?
+      %p
+        %em
+          Påmeldingen har ikke åpnet enda.
+    - elsif !talk.registrations_open_at.past?
+      %p
+        %em
+          Påmeldingen åpner #{l talk.registrations_open_at, :format => '%-d. %B kl. %H:%M'}.
+    - else
+      .admin
+        - if current_user
+          - if talk.users.include?(current_user) || talk.user == current_user || current_user.admin
+            Det er 
+            = conditional_link_to_participant_list(talk)
 
-    .action
-      - if current_user 
-        = workshop_participation_link(talk, current_user) 
-      - else
-        (logg inn for å melde deg av/på)
+      .action
+        - if current_user
+          = workshop_participation_link(talk, current_user)
+        - else
+          (logg inn for å melde deg av/på)
 
-    .capacity
-      - if !talk.ws_full?  
-        #{talk.ws_free_places} plasser igjen!
+      .capacity
+        - if !talk.ws_full?
+          #{talk.ws_free_places} plasser igjen!
