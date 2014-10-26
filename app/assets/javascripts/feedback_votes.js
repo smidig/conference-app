@@ -80,9 +80,6 @@ smidig.voter = (function($) {
 
 
 //Document on load!
-
-/*
-Commented out to disable more voting!
 $(function() {
   $(".talk").each(function() {
     var talk_id = $(this).data("talkid"); 
@@ -94,7 +91,7 @@ $(function() {
       }
   });
 });
-*/
+
 
 
 
