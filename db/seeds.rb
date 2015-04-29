@@ -1,7 +1,9 @@
 # encoding: utf-8
 
-DatabaseCleaner.strategy = :truncation
-DatabaseCleaner.clean
+unless Rails.env.production?
+  DatabaseCleaner.strategy = :truncation
+  DatabaseCleaner.clean
+end
 
 Ticket.create(name: 'Early Bird', price: 1750, active: true, visible: true, ticket_type: 'regular')
 organizer = Ticket.create(name: 'Organizer', price: 0, active: true, visible: false, ticket_type: 'free')
@@ -18,13 +20,13 @@ administrators = [
 
 administrators.each do |user_data|
   user_data.merge!({
-      :tlf => "12345678",
-      :password => 'password',
-      :password_confirmation => 'password',
-      :accepted_privacy => "1",
-      :ticket_id => organizer.id,
-      :company => 'Smidig 2014',
-  })
+                       :tlf => "12345678",
+                       :password => 'password',
+                       :password_confirmation => 'password',
+                       :accepted_privacy => "1",
+                       :ticket_id => organizer.id,
+                       :company => 'Smidig 2014',
+                   })
 
   user = User.new user_data
   user.admin = true
@@ -39,35 +41,35 @@ TalkCategory.create(name: 'Annet')
 TalkCategory.create(name: 'Smidig programmering')
 TalkCategory.create(name: 'Lean startup')
 
-Sponsor.create(name: "Smidig 2014", 
-  url: "http://2014.smidig.no/info/sponsor", 
-  imageUrl: "https://googledrive.com/host/0Bxbse3ziIO6GUmYwQ0VxME1TRUE/sponsor.png")
-Sponsor.create(name: "Smidig 2014", 
-  url: "http://2014.smidig.no/info/sponsor", 
-  imageUrl: "https://googledrive.com/host/0Bxbse3ziIO6GUmYwQ0VxME1TRUE/sponsor.png")
-Sponsor.create(name: "Smidig 2014", 
-  url: "http://2014.smidig.no/info/sponsor", 
-  imageUrl: "https://googledrive.com/host/0Bxbse3ziIO6GUmYwQ0VxME1TRUE/sponsor.png")
-Sponsor.create(name: "Itera", 
-  url: "http://2014.smidig.no/info/sponsor", 
-  imageUrl: "http://2014.smidig.no/assets/sponsors/itera.png")
-Sponsor.create(name: "BEKK", 
-  url: "http://2014.smidig.no/info/sponsor", 
-  imageUrl: "http://2014.smidig.no/assets/sponsors/bekk.png")
-Sponsor.create(name: "Miles", 
-  url: "http://2014.smidig.no/info/sponsor", 
-  imageUrl: "http://2014.smidig.no/assets/sponsors/miles.png")
-Sponsor.create(name: "Webstep", 
-  url: "http://2014.smidig.no/info/sponsor", 
-  imageUrl: "http://2014.smidig.no/assets/sponsors/webstep.png")
+Sponsor.create(name: "Smidig 2014",
+               url: "http://2014.smidig.no/info/sponsor",
+               imageUrl: "https://googledrive.com/host/0Bxbse3ziIO6GUmYwQ0VxME1TRUE/sponsor.png")
+Sponsor.create(name: "Smidig 2014",
+               url: "http://2014.smidig.no/info/sponsor",
+               imageUrl: "https://googledrive.com/host/0Bxbse3ziIO6GUmYwQ0VxME1TRUE/sponsor.png")
+Sponsor.create(name: "Smidig 2014",
+               url: "http://2014.smidig.no/info/sponsor",
+               imageUrl: "https://googledrive.com/host/0Bxbse3ziIO6GUmYwQ0VxME1TRUE/sponsor.png")
+Sponsor.create(name: "Itera",
+               url: "http://2014.smidig.no/info/sponsor",
+               imageUrl: "http://2014.smidig.no/assets/sponsors/itera.png")
+Sponsor.create(name: "BEKK",
+               url: "http://2014.smidig.no/info/sponsor",
+               imageUrl: "http://2014.smidig.no/assets/sponsors/bekk.png")
+Sponsor.create(name: "Miles",
+               url: "http://2014.smidig.no/info/sponsor",
+               imageUrl: "http://2014.smidig.no/assets/sponsors/miles.png")
+Sponsor.create(name: "Webstep",
+               url: "http://2014.smidig.no/info/sponsor",
+               imageUrl: "http://2014.smidig.no/assets/sponsors/webstep.png")
 
 # Approved talks:
 for i in 0..10
   t = Talk.create(
-    title: "Lorem ipsum test " + i.to_s, 
-    description: "Lorem ipusm...", 
-    talk_type_id: lyntale.id,
-    talk_category_id: TalkCategory.all.first.id)
+      title: "Lorem ipsum test " + i.to_s,
+      description: "Lorem ipusm...",
+      talk_type_id: lyntale.id,
+      talk_category_id: TalkCategory.all.first.id)
   t.status = "approved_and_confirmed";
   t.user = User.all.first
   t.save!
