@@ -13,6 +13,7 @@ administrators = [
     {:name => "Ivar Conradi Østhus", :email => "ivarconr@gmail.com"},
     {:name => "Edward Grönroos", :email => "edward@gronroos.se"},
     {:name => "Jonas Amundsen", :email => "jonasba@gmail.com"},
+    {:name => "Chris Searle", :email => "chris@chrissearle.org"},
 ]
 
 administrators.each do |user_data|

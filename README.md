@@ -136,12 +136,14 @@ How to merge locally:
 ## Heroku
 Start by installing heroku toolbelt: https://toolbelt.herokuapp.com/
 
-We have two version over at heroku, testsmidig and smidig2013. To add heroku remotes:
+We have a test version and several production verions over at heroku. To add heroku remotes:
 
     git remote add testsmidig git@heroku.com:testsmidig.git
     git remote add smidig2013 git@heroku.com:smidig2013.git
+    git remote add smidig2014 git@heroku.com:smidig2014.git
+    git remote add smidig2015 git@heroku.com:smidig2015.git
 
-Then you can push to testsmidig/smidig2013 with the following command:
+Then you can push to them with the following command (e.g. testsmidig):
 
     git push testsmidig master
 
