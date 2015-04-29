@@ -8,8 +8,8 @@ The conference-app
 * Rails: rails-3.2.13
 
 ### Ruby Version Manager (RVM)
-We expects all the user's to use rvm to handle their ruby version, rails and gems. Check out
-[https://rvm.io](https://rvm.io) for all the details. 
+We expect all developers to use rvm to handle their ruby version, rails and gems. Check out
+[https://rvm.io](https://rvm.io) for all the details.
 
 #### Installation of rvm
 The easy way to set up rvm with correct ruby and rails:
@@ -24,12 +24,13 @@ following commands:
     $ $ rvm gemset create smidig
     $ rvm gemset use smidig
 
-After creating the gemset you can qickly select correct ruby and gemset with the following command:
+After creating the gemset you can quickly select the correct ruby and gemset with the following command:
 
     $ rvm use 1.9.3@smidig
 
 #### Known issues
-Som may experience problems with dependencies required by rvm, rails or ruby.
+
+Some developers may experience problems with dependencies required by rvm, rails or ruby.
 
 *Ex: "cannot load such file -- openssl"*
 Read more: [https://rvm.io/packages/openssl](https://rvm.io/packages/openssl)
@@ -45,6 +46,7 @@ Solution:
 ## Getting Started
 
 ### Checkout the project from github:
+
 Start in the folder where you want to checkout the code to. Clone the project from GitHub:
 
     $ git clone git@github.com:smidig/conference-app.git
