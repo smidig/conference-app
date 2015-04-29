@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-unless Rails.env.production?
+unless (Rails.env.staging? || Rails.env.production?)
   DatabaseCleaner.strategy = :truncation
   DatabaseCleaner.clean
 end
