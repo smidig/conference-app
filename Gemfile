@@ -17,11 +17,13 @@ gem 'dalli'
 gem 'memcachier'
 gem 'prawn', '= 0.6.3'
 gem 'prawnto'
+gem 'unicorn'
+
+gem 'foreman', :require => false
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
 
@@ -32,6 +34,7 @@ end
 
 group :production do
   gem 'pg'
+  gem 'rails_12factor'
 end
 
 group :linux_development do
