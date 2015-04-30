@@ -1,24 +1,18 @@
 .content-wrapper
   %article.intro
     .date-time
-      .location Oslo 2014
-      .date 27. - 28. oktober 
-      .small Radisson Blu Plaza Hotel
+      .location Oslo 2015
+      .date 2. - 3. oktober 
+      .small
 
-    %h1 Takk for i år!
+    %h1 Velkommen til Smidig 2015!
     %p.preface
-      Vi ønsker å takke alle deltakere, sponsorer og bidragsytere for Smidig 2014. Sammen med dere
-      har vi fått til inspirerende presentasjoner og gode diskusjoner.
+      Billettsalget for konferansen er nå i gang. Billetter koster 3 400 kr og er tilgjengelig helt frem til konferansen.
 
-    -#
-      %h1 Påmelding til Smidig 2014
-      %p.preface
-        Billettsalget for konferansen er nå i gang. Billetter koster 3 400 kr og er tilgjengelig helt frem til konferansen.
+    = link_to('Meld deg på Smidig 2015!', new_user_registration_path, {:class => "btn pull-right"})
 
-      = link_to('Meld deg på Smidig 2014!', new_user_registration_path, {:class => "btn pull-right"})
-
-      = form_for TippedUser.new, :html => { :id => 'tip-a-friend', :class => "pull-right", :'data-title' => 'Vet du om noen som burde delta på årets Smidigkonferanse? Oppgi epostadresse her og vi sender en mail med informasjon.' } do |f|
-        = f.email_field :email, :placeholder => 'E-post'
-        = f.submit :class => 'btn btn-primary', :value => 'Tips en venn'
+    = form_for TippedUser.new, :html => { :id => 'tip-a-friend', :class => "pull-right", :'data-title' => 'Vet du om noen som burde delta på årets Smidigkonferanse? Oppgi epostadresse her og vi sender en mail med informasjon.' } do |f|
+      = f.email_field :email, :placeholder => 'E-post'
+      = f.submit :class => 'btn btn-primary', :value => 'Tips en venn'
 
 .fb-like{"data-href" => "http://www.facebook.com/smidig", "data-send" => "true", "data-show-faces" => "true", "data-width" => "900"}
