@@ -1,5 +1,8 @@
-The conference-app
-==============
+# The conference-app
+
+## Status
+
+[![Build Status](https://travis-ci.org/smidig/conference-app.svg?branch=2015)](https://travis-ci.org/smidig/conference-app)
 
 ## Development setup
 
