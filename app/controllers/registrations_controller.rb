@@ -42,6 +42,7 @@ class RegistrationsController < Devise::RegistrationsController
   def set_up_default_tickets
     @tickets = Ticket.visible
     @ticket_default = Ticket.default
+    @all_tickets = Ticket.all
 
     # Enable override of special tickets from param
     if params[:ticket_name]
