@@ -1,13 +1,19 @@
 .row-fluid
   .span12
     %h2
-      =t("general.register")
+      =t('general.register')
     %p
       Velkommene til årets smidigkonferanse.
 
     %ul
-      %li Early Bird billett koster NOK 2.250,- inklusive mva.
-      %li Vanlig billett koster NOK 3.400,- inklusive mva.
+      %li
+        Early Bird billett koster
+        = ticket_price(ticket_for_name(@all_tickets, 'Early Bird 2015'))
+        inklusive mva.
+      %li
+        Vanlig billett koster
+        = ticket_price(ticket_for_name(@all_tickets, 'Regular 2015'))
+        inklusive mva.
       %li
         Foredragsholdere slipper inn  <strong>gratis</strong>, forutsatt at foredraget godkjennes. <br />
         //= link_to "Trykk her hvis du skal registrere lyntale eller workshop", new_registration_path(resource_name, :ticket_name=>"Speaker")

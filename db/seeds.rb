@@ -5,10 +5,12 @@ unless (Rails.env.staging? || Rails.env.production?)
   DatabaseCleaner.clean
 end
 
-Ticket.create(name: 'Early Bird', price: 1750, active: true, visible: true, ticket_type: 'regular')
+Ticket.create(name: 'Early Bird 2015', price: 2250, active: true, visible: true, ticket_type: 'regular')
+Ticket.create(name: 'Regular 2015', price: 3400, active: true, visible: false, ticket_type: 'regular')
 organizer = Ticket.create(name: 'Organizer', price: 0, active: true, visible: false, ticket_type: 'free')
 Ticket.create(name: 'Sponsor', price: 0, active: true, visible: false, ticket_type: 'free')
 Ticket.create(name: 'Speaker', price: 0, active: true, visible: false, ticket_type: 'speaker')
+Ticket.create(name: 'Volunteer', price: 0, active: true, visible: false, ticket_type: 'free')
 
 # This will seed administrators with their appropriate names and email addresses. Their password is 'password'.
 administrators = [
@@ -160,3 +162,5 @@ Roomslot.create(:room_id => alle.id, :timeslot_id => t19.id)
 
 t20 = Timeslot.create(start: "2014-10-28 16:30:00", end: "2014-10-28 16:30:00")
 Roomslot.create(:room_id => alle.id, :timeslot_id => t20.id)
+
+puts 'Database updated'
