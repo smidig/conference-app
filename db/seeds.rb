@@ -42,27 +42,27 @@ TalkCategory.create(name: 'Annet')
 TalkCategory.create(name: 'Smidig programmering')
 TalkCategory.create(name: 'Lean startup')
 
-Sponsor.create(name: "Smidig 2015",
-               url: "http://2015.smidig.no/info/sponsor",
-               imageUrl: "https://googledrive.com/host/0Bxbse3ziIO6GUmYwQ0VxME1TRUE/sponsor.png")
-Sponsor.create(name: "Smidig 2015",
-               url: "http://2015.smidig.no/info/sponsor",
-               imageUrl: "https://googledrive.com/host/0Bxbse3ziIO6GUmYwQ0VxME1TRUE/sponsor.png")
-Sponsor.create(name: "Smidig 2015",
-               url: "http://2015.smidig.no/info/sponsor",
-               imageUrl: "https://googledrive.com/host/0Bxbse3ziIO6GUmYwQ0VxME1TRUE/sponsor.png")
-Sponsor.create(name: "Itera",
-               url: "http://2015.smidig.no/info/sponsor",
-               imageUrl: "http://2014.smidig.no/assets/sponsors/itera.png")
-Sponsor.create(name: "BEKK",
-               url: "http://2015.smidig.no/info/sponsor",
-               imageUrl: "http://2014.smidig.no/assets/sponsors/bekk.png")
-Sponsor.create(name: "Miles",
-               url: "http://2015.smidig.no/info/sponsor",
-               imageUrl: "http://2014.smidig.no/assets/sponsors/miles.png")
-Sponsor.create(name: "Webstep",
-               url: "http://2015.smidig.no/info/sponsor",
-               imageUrl: "http://2014.smidig.no/assets/sponsors/webstep.png")
+Sponsor.create(name: 'Smidig 2015',
+               url: 'http://2015.smidig.no/info/sponsor',
+               imageUrl: 'https://googledrive.com/host/0Bxbse3ziIO6GUmYwQ0VxME1TRUE/sponsor.png')
+Sponsor.create(name: 'Smidig 2015',
+               url: 'http://2015.smidig.no/info/sponsor',
+               imageUrl: 'https://googledrive.com/host/0Bxbse3ziIO6GUmYwQ0VxME1TRUE/sponsor.png')
+Sponsor.create(name: 'Smidig 2015',
+               url: 'http://2015.smidig.no/info/sponsor',
+               imageUrl: 'https://googledrive.com/host/0Bxbse3ziIO6GUmYwQ0VxME1TRUE/sponsor.png')
+Sponsor.create(name: 'Itera',
+               url: 'http://2015.smidig.no/info/sponsor',
+               imageUrl: 'http://2014.smidig.no/assets/sponsors/itera.png')
+Sponsor.create(name: 'BEKK',
+               url: 'http://2015.smidig.no/info/sponsor',
+               imageUrl: 'http://2014.smidig.no/assets/sponsors/bekk.png')
+Sponsor.create(name: 'Miles',
+               url: 'http://2015.smidig.no/info/sponsor',
+               imageUrl: 'http://2014.smidig.no/assets/sponsors/miles.png')
+Sponsor.create(name: 'Webstep',
+               url: 'http://2015.smidig.no/info/sponsor',
+               imageUrl: 'http://2014.smidig.no/assets/sponsors/webstep.png')
 
 # Approved talks:
 for i in 0..10
@@ -87,79 +87,79 @@ vampyr = Room.create(name: "Vampyr", color: "blue", size: 20)
 resturant = Room.create(name: "Resturant", color: "gray", size: 20)
 
 
-t1 = Timeslot.create(start: "2015-10-02 08:00:00", end: "2015-10-02 08:45:00")
+t1 = Timeslot.create(start: "2015-11-02 08:00:00", end: "2015-11-02 08:45:00")
 Roomslot.create(:room_id => foaje.id, :timeslot_id => t1.id)
 
-t2 = Timeslot.create(start: "2015-10-02 08:45:00", end: "2015-10-02 09:00:00")
+t2 = Timeslot.create(start: "2015-11-02 08:45:00", end: "2015-11-02 09:00:00")
 Roomslot.create(:room_id => olympia.id, :timeslot_id => t2.id)
 
-t3 = Timeslot.create(start: "2015-10-02 09:00:00", end: "2015-10-02 10:00:00")
+t3 = Timeslot.create(start: "2015-11-02 09:00:00", end: "2015-11-02 10:00:00")
 Roomslot.create(:room_id => olympia.id, :timeslot_id => t3.id)
 
-t4 = Timeslot.create(start: "2015-10-02 10:15:00", end: "2015-10-02 11:00:00")
+t4 = Timeslot.create(start: "2015-11-02 10:15:00", end: "2015-11-02 11:00:00")
 Roomslot.create(:room_id => olympia.id, :timeslot_id => t4.id)
 Roomslot.create(:room_id => film.id, :timeslot_id => t4.id)
 Roomslot.create(:room_id => kunst.id, :timeslot_id => t4.id)
 
-t5 = Timeslot.create(start: "2015-10-02 10:15:00", end: "2015-10-02 12:00:00", is_workshop_slot: true)
+t5 = Timeslot.create(start: "2015-11-02 10:15:00", end: "2015-11-02 12:00:00", is_workshop_slot: true)
 Roomslot.create(:room_id => madonna.id, :timeslot_id => t5.id)
 Roomslot.create(:room_id => vampyr.id, :timeslot_id => t5.id)
 
-t6 = Timeslot.create(start: "2015-10-02 11:15:00", end: "2015-10-02 12:00:00")
+t6 = Timeslot.create(start: "2015-11-02 11:15:00", end: "2015-11-02 12:00:00")
 Roomslot.create(:room_id => olympia.id, :timeslot_id => t6.id)
 Roomslot.create(:room_id => film.id, :timeslot_id => t6.id)
 Roomslot.create(:room_id => kunst.id, :timeslot_id => t6.id)
 
-t7 = Timeslot.create(start: "2015-10-02 12:00:00", end: "2015-10-02 13:15:00")
+t7 = Timeslot.create(start: "2015-11-02 12:00:00", end: "2015-11-02 13:15:00")
 Roomslot.create(:room_id => foaje.id, :timeslot_id => t7.id)
 
-t8 = Timeslot.create(start: "2015-10-02 13:15:00", end: "2015-10-02 14:00:00")
+t8 = Timeslot.create(start: "2015-11-02 13:15:00", end: "2015-11-02 14:00:00")
 Roomslot.create(:room_id => olympia.id, :timeslot_id => t8.id)
 Roomslot.create(:room_id => film.id, :timeslot_id => t8.id)
 Roomslot.create(:room_id => kunst.id, :timeslot_id => t8.id)
 
-t9 = Timeslot.create(start: "2015-10-02 14:15:00", end: "2015-10-02 16:30:00")
+t9 = Timeslot.create(start: "2015-11-02 14:15:00", end: "2015-11-02 16:30:00")
 Roomslot.create(:room_id => alle.id, :timeslot_id => t9.id)
 
-t10 = Timeslot.create(start: "2015-10-02 17:00:00", end: "2015-10-02 19:30:00")
+t10 = Timeslot.create(start: "2015-11-02 17:00:00", end: "2015-11-02 19:30:00")
 Roomslot.create(:room_id => foaje.id, :timeslot_id => t10.id)
 
 
 # dag 2
-t11 = Timeslot.create(start: "2015-10-03 08:30:00", end: "2015-10-03 09:00:00")
+t11 = Timeslot.create(start: "2015-11-03 08:30:00", end: "2015-11-03 09:00:00")
 Roomslot.create(:room_id => foaje.id, :timeslot_id => t11.id)
 
-t12 = Timeslot.create(start: "2015-10-03 09:00:00", end: "2015-10-03 10:00:00")
+t12 = Timeslot.create(start: "2015-11-03 09:00:00", end: "2015-11-03 10:00:00")
 Roomslot.create(:room_id => olympia.id, :timeslot_id => t12.id)
 
-t13 = Timeslot.create(start: "2015-10-03 10:15:00", end: "2015-10-03 11:00:00")
+t13 = Timeslot.create(start: "2015-11-03 10:15:00", end: "2015-11-03 11:00:00")
 Roomslot.create(:room_id => olympia.id, :timeslot_id => t13.id)
 Roomslot.create(:room_id => film.id, :timeslot_id => t13.id)
 Roomslot.create(:room_id => kunst.id, :timeslot_id => t13.id)
 
-t14 = Timeslot.create(start: "2015-10-03 10:15:00", end: "2015-10-03 14:00:00", is_workshop_slot: true)
+t14 = Timeslot.create(start: "2015-11-03 10:15:00", end: "2015-11-03 14:00:00", is_workshop_slot: true)
 Roomslot.create(:room_id => madonna.id, :timeslot_id => t14.id)
 
-t15 = Timeslot.create(start: "2015-10-03 10:15:00", end: "2015-10-03 12:00:00", is_workshop_slot: true)
+t15 = Timeslot.create(start: "2015-11-03 10:15:00", end: "2015-11-03 12:00:00", is_workshop_slot: true)
 Roomslot.create(:room_id => vampyr.id, :timeslot_id => t15.id)
 
-t16 = Timeslot.create(start: "2015-10-03 11:15:00", end: "2015-10-03 12:00:00")
+t16 = Timeslot.create(start: "2015-11-03 11:15:00", end: "2015-11-03 12:00:00")
 Roomslot.create(:room_id => olympia.id, :timeslot_id => t16.id)
 Roomslot.create(:room_id => film.id, :timeslot_id => t16.id)
 Roomslot.create(:room_id => kunst.id, :timeslot_id => t16.id)
 
-t17 = Timeslot.create(start: "2015-10-03 12:00:00", end: "2015-10-03 13:15:00")
+t17 = Timeslot.create(start: "2015-11-03 12:00:00", end: "2015-11-03 13:15:00")
 Roomslot.create(:room_id => foaje.id, :timeslot_id => t17.id)
 
-t18 = Timeslot.create(start: "2015-10-03 13:15:00", end: "2015-10-03 14:00:00")
+t18 = Timeslot.create(start: "2015-11-03 13:15:00", end: "2015-11-03 14:00:00")
 Roomslot.create(:room_id => olympia.id, :timeslot_id => t18.id)
 Roomslot.create(:room_id => film.id, :timeslot_id => t18.id)
 Roomslot.create(:room_id => kunst.id, :timeslot_id => t18.id)
 
-t19 = Timeslot.create(start: "2015-10-03 14:15:00", end: "2015-10-03 16:30:00")
+t19 = Timeslot.create(start: "2015-11-03 14:15:00", end: "2015-11-03 16:30:00")
 Roomslot.create(:room_id => alle.id, :timeslot_id => t19.id)
 
-t20 = Timeslot.create(start: "2015-10-03 16:30:00", end: "2015-10-03 16:30:00")
+t20 = Timeslot.create(start: "2015-11-03 16:30:00", end: "2015-11-03 16:30:00")
 Roomslot.create(:room_id => alle.id, :timeslot_id => t20.id)
 
 puts 'Database updated'
