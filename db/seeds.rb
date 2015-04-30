@@ -54,15 +54,15 @@ Sponsor.create(name: 'Smidig 2015',
 Sponsor.create(name: 'Itera',
                url: 'http://2015.smidig.no/info/sponsor',
                imageUrl: 'http://2014.smidig.no/assets/sponsors/itera.png')
-Sponsor.create(name: 'BEKK',
+Sponsor.create(name: 'Smidig 2015',
                url: 'http://2015.smidig.no/info/sponsor',
-               imageUrl: 'http://2014.smidig.no/assets/sponsors/bekk.png')
-Sponsor.create(name: 'Miles',
+               imageUrl: 'https://googledrive.com/host/0Bxbse3ziIO6GUmYwQ0VxME1TRUE/sponsor.png')
+Sponsor.create(name: 'Smidig 2015',
                url: 'http://2015.smidig.no/info/sponsor',
-               imageUrl: 'http://2014.smidig.no/assets/sponsors/miles.png')
-Sponsor.create(name: 'Webstep',
+               imageUrl: 'https://googledrive.com/host/0Bxbse3ziIO6GUmYwQ0VxME1TRUE/sponsor.png')
+Sponsor.create(name: 'Smidig 2015',
                url: 'http://2015.smidig.no/info/sponsor',
-               imageUrl: 'http://2014.smidig.no/assets/sponsors/webstep.png')
+               imageUrl: 'https://googledrive.com/host/0Bxbse3ziIO6GUmYwQ0VxME1TRUE/sponsor.png')
 
 # Approved talks:
 for i in 0..10
