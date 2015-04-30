@@ -11,7 +11,7 @@
 
     = link_to('Meld deg på Smidig 2015!', new_user_registration_path, {:class => "btn pull-right"})
 
-    = form_for TippedUser.new, :html => { :id => 'tip-a-friend', :'data-title' => 'Vet du om noen som burde delta på årets Smidigkonferanse? Oppgi epostadresse her og vi sender en mail med informasjon.' } do |f|
+    = form_for TippedUser.new, :html => { :id => 'tip-a-friend', :class => "pull-left" :'data-title' => 'Vet du om noen som burde delta på årets Smidigkonferanse? Oppgi epostadresse her og vi sender en mail med informasjon.' } do |f|
       %label= "Tips en venn om Smidig"
       = f.email_field :email, :placeholder => 'E-post'
       = f.submit :class => 'btn btn-primary', :value => 'Tips en venn'
