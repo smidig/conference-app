@@ -8,9 +8,10 @@
   %li
     = link_to('Sponsor', info_sponsor_path, 
     {:class=>current_page?(info_sponsor_path) ? "active" : "", :title => "Sponsor"})
-  %li
-    = link_to('Program', program_path,
-    {:class=>current_page?(program_path) ? "active" : "", :title => "Programmet"})
+  -#
+    %li
+      = link_to('Program', program_path,
+      {:class=>current_page?(program_path) ? "active" : "", :title => "Programmet"})
   %li
     = link_to('Min profil', my_profile_index_path, 
     {:class=>current_page?(my_profile_index_path) ? "active" : "", :title => "Min profil"})
