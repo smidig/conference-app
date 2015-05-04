@@ -4,6 +4,6 @@ module TalksHelper
   end
 
   def talk_suggestion_deadline
-    Date.parse '2014-10-07'
+    Date.parse '2015-10-07'
   end
 end
