@@ -53,10 +53,10 @@ Sponsor.create(name: 'Smidig 2015',
                imageUrl: 'http://2015.smidig.no/img/sponsor_logo.png')
 Sponsor.create(name: 'Itera',
                url: 'http://www.itera.no',
-               imageUrl: 'http://2014.smidig.no/assets/sponsors/itera.png')
+               imageUrl: 'http://2015.smidig.no/img/itera.png')
 Sponsor.create(name: 'Embriq',
                url: 'http://www.embriq.no',
-               imageUrl: 'https://510e256763915a33470ddba533147c182528f7c9.googledrive.com/host/0Bxbse3ziIO6GUmYwQ0VxME1TRUE/Logo_Embriq_finale-u-payoff.png')
+               imageUrl: 'http://2015.smidig.no/img/embriq.png')
 Sponsor.create(name: 'Smidig 2015',
                url: 'http://2015.smidig.no/info/sponsor',
                imageUrl: 'http://2015.smidig.no/img/sponsor_logo.png')
