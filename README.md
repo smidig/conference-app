@@ -103,7 +103,6 @@ We have chosen to have a *stable master* approach. This means that all new devel
 branch, and be merged back to master when they are complete. This means that the master branch is always safe to deploy
 from or to create new branches off.
 
-
 ### Start working on new feature
 Create a new branch (assuming you are on master branch):
 
@@ -139,6 +138,7 @@ How to merge locally:
 
 
 ## Heroku
+
 Start by installing heroku toolbelt: https://toolbelt.herokuapp.com/
 
 We have a test version and several production verions over at heroku. To add heroku remotes:
@@ -155,6 +155,28 @@ Then you can push to them with the following command (e.g. testsmidig):
 If you change the database you typically have to run migration:
 
     heroku run rake db:migrate --app testsmidig
+    
+    
+### Deployment links
+
+Any heroku site is available on instancename.herokuapp.com. We also have some shortcuts - [test.smidig.no](http://test.smidig.no)
+points to [testsmidig.herokuapp.no](http://testsmidig.herokuapp.no). We also point YEAR.smidig.no to smidigYEAR.herokuapp.no.
+
+### Heroku/Github integration
+
+We have heroku/github integration enabled for several instances.
+
+The latest production site (current year) is connected to master branch. Autodeployment is turned _off_ so you have to
+login to heroku and hit the deploy button.
+
+The working branch for the current year is connected to the test.smidig.no isntance. This is also connected to Travis-CI.
+Any pushes to this branch will start a Travis-CI build - and if/when that turns green - heroku will automatically deploy
+to test.smidig.no.
+
+Note that heroku deployment does not run db migration - so if the db has changed then you will need to run the following when
+deployment is complete:
+
+    heroku run rake db:migrate
 
 ## Issue tracker
 
