@@ -160,7 +160,7 @@ If you change the database you typically have to run migration:
 ### Deployment links
 
 Any heroku site is available on instancename.herokuapp.com. We also have some shortcuts - [test.smidig.no](http://test.smidig.no)
-points to [testsmidig.herokuapp.no](http://testsmidig.herokuapp.no). We also point YEAR.smidig.no to smidigYEAR.herokuapp.no.
+points to [testsmidig.herokuapp.com](http://testsmidig.herokuapp.com). We also point YEAR.smidig.no to smidigYEAR.herokuapp.com.
 
 ### Heroku/Github integration
 
