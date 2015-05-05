@@ -511,6 +511,7 @@ a:hover {
         .sponsor {
           min-height: 70px;
           line-height: 70px;
+          text-align: center;
 
           @include breakpoint('phones-to-tablets') {
             margin-bottom: 10px;
