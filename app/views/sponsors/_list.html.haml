@@ -10,5 +10,5 @@
             .sponsor-row.row-fluid
               - sponsor_row.each do |sponsor|
                 .sponsor.span3
-                  %a{:href => "#{sponsor.url}", :title => "#{sponsor.name}"}
+                  %a{:href => "#{sponsor.url}", :target => "_blank", :title => "#{sponsor.name}"}
                     %img{:src => "#{sponsor.imageUrl}"}
