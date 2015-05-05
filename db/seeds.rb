@@ -44,13 +44,13 @@ TalkCategory.create(name: 'Lean startup')
 
 Sponsor.create(name: 'Smidig 2015',
                url: 'http://2015.smidig.no/info/sponsor',
-               imageUrl: 'https://googledrive.com/host/0Bxbse3ziIO6GUmYwQ0VxME1TRUE/sponsor.png')
+               imageUrl: 'http://2015.smidig.no/img/sponsor_logo.png')
 Sponsor.create(name: 'Smidig 2015',
                url: 'http://2015.smidig.no/info/sponsor',
-               imageUrl: 'https://googledrive.com/host/0Bxbse3ziIO6GUmYwQ0VxME1TRUE/sponsor.png')
+               imageUrl: 'http://2015.smidig.no/img/sponsor_logo.png')
 Sponsor.create(name: 'Smidig 2015',
                url: 'http://2015.smidig.no/info/sponsor',
-               imageUrl: 'https://googledrive.com/host/0Bxbse3ziIO6GUmYwQ0VxME1TRUE/sponsor.png')
+               imageUrl: 'http://2015.smidig.no/img/sponsor_logo.png')
 Sponsor.create(name: 'Itera',
                url: 'http://www.itera.no',
                imageUrl: 'http://2014.smidig.no/assets/sponsors/itera.png')
@@ -59,10 +59,10 @@ Sponsor.create(name: 'Embriq',
                imageUrl: 'https://510e256763915a33470ddba533147c182528f7c9.googledrive.com/host/0Bxbse3ziIO6GUmYwQ0VxME1TRUE/Logo_Embriq_finale-u-payoff.png')
 Sponsor.create(name: 'Smidig 2015',
                url: 'http://2015.smidig.no/info/sponsor',
-               imageUrl: 'https://googledrive.com/host/0Bxbse3ziIO6GUmYwQ0VxME1TRUE/sponsor.png')
+               imageUrl: 'http://2015.smidig.no/img/sponsor_logo.png')
 Sponsor.create(name: 'Smidig 2015',
                url: 'http://2015.smidig.no/info/sponsor',
-               imageUrl: 'https://googledrive.com/host/0Bxbse3ziIO6GUmYwQ0VxME1TRUE/sponsor.png')
+               imageUrl: 'http://2015.smidig.no/img/sponsor_logo.png')
 
 # Approved talks:
 for i in 0..10
