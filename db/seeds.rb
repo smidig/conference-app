@@ -57,9 +57,9 @@ Sponsor.create(name: 'Itera',
 Sponsor.create(name: 'Embriq',
                url: 'http://www.embriq.no',
                imageUrl: 'http://2015.smidig.no/img/embriq.png')
-Sponsor.create(name: 'Smidig 2015',
-               url: 'http://2015.smidig.no/info/sponsor',
-               imageUrl: 'http://2015.smidig.no/img/sponsor_logo.png')
+Sponsor.create(name: 'Sopra Steria',
+               url: 'http://www.soprasteria.no/',
+               imageUrl: 'http://2015.smidig.no/img/soprasteria.png')
 Sponsor.create(name: 'Smidig 2015',
                url: 'http://2015.smidig.no/info/sponsor',
                imageUrl: 'http://2015.smidig.no/img/sponsor_logo.png')
