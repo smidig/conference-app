@@ -34,6 +34,9 @@ administrators.each do |user_data|
   user.save!
 end
 
+
+Setting.create(key: 'early-bird-available', val: true)
+
 lyntale = TalkType.create(name: 'Lyntale', duration: 10, visible: true)
 TalkType.create(name: 'Kort workshop', duration: 45, visible: true)
 TalkType.create(name: 'Lang workshop', duration: 90, visible: true)

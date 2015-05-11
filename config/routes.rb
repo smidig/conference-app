@@ -73,6 +73,7 @@ ConferenceApp::Application.routes.draw do
 
   resources :tickets
 
+  resources :settings
 
   resources :payment_notifications
 

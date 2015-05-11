@@ -7,9 +7,17 @@
 
     %h1 Velkommen til Smidig 2015!
     %p.preface
-      Billettsalget for konferansen er nå i gang. Billetter koster
-      = regular_ticket_price()
-      og er tilgjengelig helt frem til konferansen.
+      Billettsalget for konferansen er nå i gang.
+
+      - if setting_for('early-bird-available')
+        De som er tidlig ute vil kunne sikre seg billetter til en svært god pris,
+        Early Bird billetter er tilgjengelig og koster
+        = early_bird_ticket_price()
+        \.
+      - else
+        Billetter koster
+        = regular_ticket_price()
+        og er tilgjengelig helt frem til konferansen.
 
     = link_to('Meld deg på Smidig 2015!', new_user_registration_path, {:class => "btn pull-right"})
 

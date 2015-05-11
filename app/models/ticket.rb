@@ -26,4 +26,24 @@ class Ticket < ActiveRecord::Base
   def display
     name.to_s + " - (kr " + price.to_s + ",-)"
   end
+
+  def self.toggle_early_bird(early_bird_available)
+    eb = self.where( :name => 'Early Bird 2015').first
+    reg = self.where( :name => 'Regular 2015').first
+
+    if early_bird_available
+      eb.active = true
+      eb.visible = true
+      reg.active = false
+      reg.visible = false
+    else
+      eb.active = false
+      eb.visible = false
+      reg.active = true
+      reg.visible = true
+    end
+
+    eb.save
+    reg.save
+  end
 end
