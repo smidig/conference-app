@@ -51,9 +51,9 @@ Sponsor.create(name: 'Smidig 2015',
 Sponsor.create(name: 'Smidig 2015',
                url: 'http://2015.smidig.no/info/sponsor',
                imageUrl: 'http://2015.smidig.no/img/sponsor_logo.png')
-Sponsor.create(name: 'Smidig 2015',
-               url: 'http://2015.smidig.no/info/sponsor',
-               imageUrl: 'http://2015.smidig.no/img/sponsor_logo.png')
+Sponsor.create(name: 'Bouvet',
+               url: 'http://www.bouvet.no/',
+               imageUrl: 'http://2015.smidig.no/img/bouvet.png')
 Sponsor.create(name: 'Itera',
                url: 'http://www.itera.no',
                imageUrl: 'http://2015.smidig.no/img/itera.png')
