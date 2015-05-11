@@ -6,10 +6,11 @@
       Velkommene til årets smidigkonferanse.
 
     %ul
-      %li
-        Early Bird billett koster
-        = ticket_price(ticket_for_name(@all_tickets, 'Early Bird 2015'))
-        inklusive mva.
+      - if setting_for('early-bird-available')
+        %li
+          Early Bird billett koster
+          = ticket_price(ticket_for_name(@all_tickets, 'Early Bird 2015'))
+          inklusive mva.
       %li
         Vanlig billett koster
         = ticket_price(ticket_for_name(@all_tickets, 'Regular 2015'))

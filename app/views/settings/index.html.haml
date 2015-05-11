@@ -1,0 +1,19 @@
+%h1 Configuration Settings
+
+%table.table.table-striped
+  %thead
+    %tr
+      %th= 'Name'
+      %th= 'Value'
+  %tbody
+    - for setting in @settings
+      %tr
+        %td= setting.key
+        %td
+          - if [true, false].include? setting.val
+            = simple_form_for setting, :html => { :class => 'form-horizontal' } do |f|
+              = f.check_box :val, {}, "true", "false"
+              = f.submit 'update', :class => 'btn'
+          - else
+            = setting.val
+            Unable to manage via admin - set in database
