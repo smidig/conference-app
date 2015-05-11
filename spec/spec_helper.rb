@@ -1,6 +1,7 @@
 require 'spork'
 require 'factory_girl_rails'
 require 'webmock/rspec'
+require 'mocha/api'
 
 #uncomment the following line to use spork with the debugger
 #require 'spork/ext/ruby-debug'

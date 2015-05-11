@@ -68,7 +68,7 @@ end
 
 group :test do
   gem 'webmock'
-  gem 'mocha'
+  gem 'mocha', :require => false
   gem 'rspec-rails'
   gem 'factory_girl_rails', :require => false
   gem 'cucumber-rails', :require => false
