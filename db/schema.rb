@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150511075633) do
+ActiveRecord::Schema.define(:version => 20150511111138) do
 
   create_table "feedback_votes", :force => true do |t|
     t.integer  "talk_id"
@@ -78,8 +78,9 @@ ActiveRecord::Schema.define(:version => 20150511075633) do
   create_table "settings", :force => true do |t|
     t.string   "key"
     t.string   "value"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.string   "setting_type"
   end
 
   create_table "sponsors", :force => true do |t|

@@ -1,5 +1,7 @@
 class Setting < ActiveRecord::Base
-  attr_accessible :key, :val
+  attr_accessible :key, :val, :setting_type
+
+  validates_presence_of :key, :value, :setting_type
 
   def val=(value)
     self.value = JSON.generate("value" => value)

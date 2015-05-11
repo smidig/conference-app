@@ -4,16 +4,19 @@
   %thead
     %tr
       %th= 'Name'
-      %th= 'Value'
+      %th.text-right= 'Value'
   %tbody
     - for setting in @settings
       %tr
         %td= setting.key
-        %td
-          - if [true, false].include? setting.val
+        %td.text-right
+          - if setting.setting_type == 'boolean'
             = simple_form_for setting, :html => { :class => 'form-horizontal' } do |f|
-              = f.check_box :val, {}, "true", "false"
+              = f.check_box :val
+              = f.submit 'update', :class => 'btn'
+          - elsif setting.setting_type == 'string'
+            = simple_form_for setting, :html => { :class => 'form-horizontal' } do |f|
+              = f.input_field :val
               = f.submit 'update', :class => 'btn'
           - else
             = setting.val
-            Unable to manage via admin - set in database

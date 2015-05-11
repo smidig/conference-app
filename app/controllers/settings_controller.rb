@@ -11,15 +11,11 @@ class SettingsController < ApplicationController
 
     val = params[:setting][:val]
 
-    # Meh - hack around checkbox HTML handling
-    case val
-      when "true"
-        setting.val = true
-      when "false"
-        setting.val = false
-      else
-        setting.val = val
+    if setting.setting_type == 'boolean'
+      val = (val == '1')
     end
+
+    setting.val = val
 
     if setting.save
       update_based_on_key(setting)
