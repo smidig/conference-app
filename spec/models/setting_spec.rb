@@ -26,5 +26,20 @@ describe Setting do
       setting.valid?.should be_true
       Setting.find(setting.id).should eq(setting)
     end
+
+    it 'should cope with true booleans' do
+      setting = Setting.new(:val => true)
+      setting.val.should be_true
+    end
+
+    it 'should cope with false booleans' do
+      setting = Setting.new(:val => false)
+      setting.val.should be_false
+    end
+
+    it 'should cope with strings' do
+      setting = Setting.new(:val => 'test')
+      setting.val.should eq('test')
+    end
   end
 end
