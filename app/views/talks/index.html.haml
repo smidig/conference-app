@@ -6,6 +6,8 @@
   %h1
     Foredrag
 
+  %p= link_to 'Foreslå ny foredrag', new_talk_url
+
 %dl.dl-horizontal
   - for c in @talk_type_count
     %dt
