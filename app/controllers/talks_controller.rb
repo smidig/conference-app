@@ -1,7 +1,7 @@
 # encoding: UTF-8
 class TalksController < ApplicationController
   layout "fullwidth", :only => :index
-  
+
   no_authorization! :only => [:new, :show, :list]
 
   authorize_admin! :only => [:index, :vote, :destroy, :status]
@@ -30,7 +30,7 @@ class TalksController < ApplicationController
     respond_to do |format|
       format.html # index.html.haml
       format.json { render json: @talks }
-      format.csv  {
+      format.csv {
         @filename = "Smidig_foredrag_#{Date.today.to_formatted_s(:db)}.csv"
       }
     end
@@ -73,7 +73,7 @@ class TalksController < ApplicationController
     if current_user.admin
       @talk_types = TalkType.all
     else
-      @talk_types = TalkType.find(:all, :conditions => { :visible => true})
+      @talk_types = TalkType.find(:all, :conditions => {:visible => true})
     end
 
     @talk = Talk.find(params[:id])
@@ -102,7 +102,7 @@ class TalksController < ApplicationController
 
 
     respond_to do |format|
-      if @talk.update_attributes(params[:talk], :as => (admin? || @talk.user == current_user)? :admin : :default)
+      if @talk.update_attributes(params[:talk], :as => (admin? || @talk.user == current_user) ? :admin : :default)
         # Change to be set on e-mail request insted of directly from edit form
         if @new_user
           @talk.users << @new_user
@@ -111,12 +111,12 @@ class TalksController < ApplicationController
 
         format.html { redirect_to :back, notice: "Talk was successfully updated." }
         format.json { head :no_content }
-        format.js { 
+        format.js {
           render "update",
-          :locals => {
-            :id => params[:id], 
-            :talk => @talk
-          } 
+                 :locals => {
+                     :id => params[:id],
+                     :talk => @talk
+                 }
         }
       else
         format.html { render action: "edit" }
@@ -147,12 +147,12 @@ class TalksController < ApplicationController
     respond_to do |format|
       format.html { redirect_to talks_url }
       format.json { head :no_content }
-      format.js { 
+      format.js {
         render "update",
-        :locals => {
-          :id => params[:id], 
-          :talk => @talk
-        } 
+               :locals => {
+                   :id => params[:id],
+                   :talk => @talk
+               }
       }
     end
   end
@@ -166,7 +166,7 @@ class TalksController < ApplicationController
       @talk.status = @status
       @talk.save
 
-      if(@status == "approved_and_confirmed")
+      if (@status == "approved_and_confirmed")
         SmidigMailer.talk_acceptance_confirmation(@talk).deliver
 
         # Confirm user as speaker if talk gets approved
@@ -175,7 +175,7 @@ class TalksController < ApplicationController
           @talk.user.save
         end
 
-      elsif(@status == "rejected")
+      elsif (@status == "rejected")
         SmidigMailer.talk_refusation_confirmation(@talk).deliver
       end
     end
@@ -183,12 +183,12 @@ class TalksController < ApplicationController
     respond_to do |format|
       format.html { redirect_to talks_url }
       format.json { head :no_content }
-      format.js { 
+      format.js {
         render "update",
-        :locals => {
-          :id => params[:id], 
-          :talk => @talk
-        } 
+               :locals => {
+                   :id => params[:id],
+                   :talk => @talk
+               }
       }
     end
   end
@@ -199,7 +199,7 @@ class TalksController < ApplicationController
     if current_user.admin
       @talk_types = TalkType.all
     else
-      @talk_types = TalkType.find(:all, :conditions => { :visible => true})
+      @talk_types = TalkType.find(:all, :conditions => {:visible => true})
     end
     return @talk_types
   end
@@ -207,11 +207,17 @@ class TalksController < ApplicationController
   def get_voters(talk)
     voters = "";
     total_length = talk.upvotes.length - 1
-    talk.upvotes.each_with_index do |vote, index| 
-      voters = voters + " " + vote.voter.name
+    talk.upvotes.each_with_index do |vote, index|
+      if vote.voter
+        voters = voters + " " + vote.voter.name
+      else
+        voters = voters + "?(#{vote.id})"
+      end
+      
       if index < total_length
         voters = voters + ","
       end
+
     end
     return voters
   end
@@ -220,9 +226,9 @@ class TalksController < ApplicationController
     if not current_user
       session[:return_to] = request.fullpath
       flash[:notice] = "Du må opprette en bruker før du kan registrere en lyntale eller workshop. " +
-                       "Etter utfylling av din brukerinformasjon vil du få anledning til å angi innhold i foredraget ditt. " +
-                       "Dersom du allerede har en bruker kan du logge inn via \"Min Profil\"."
-      redirect_to new_user_registration_path(:ticket_name=>"Speaker")
+          "Etter utfylling av din brukerinformasjon vil du få anledning til å angi innhold i foredraget ditt. " +
+          "Dersom du allerede har en bruker kan du logge inn via \"Min Profil\"."
+      redirect_to new_user_registration_path(:ticket_name => "Speaker")
       return false
     end
   end
