@@ -10,3 +10,4 @@ script:
 notifications:
   slack:
     secure: B6DA4MSbt69bvBTMoIjfuL+Itl4qlCqRqevGrs3nMHPXoro1EAvAcdGi7mTlkmRu/Zc9dFXokDHvVA8Rtgg6nnfF7IgL7XyBkKdPssN7QOBJpU/7v7UulN6RjZwdWL5EXQhJODJLCExYBMqNQOWJ/qCISozmsY4MvkZdBQ3utBM=
+sudo: false
