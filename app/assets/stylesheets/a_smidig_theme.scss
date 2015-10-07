@@ -458,6 +458,9 @@ a:hover {
       &:first-child {
         margin-top: 0;
       }
+      a, a:hover, a:active, a:visited {
+        color: $secondary-text-color;
+      }
     }
 
     .image {
