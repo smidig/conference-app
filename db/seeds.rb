@@ -36,6 +36,7 @@ end
 
 
 Setting.create(key: 'early-bird-available', val: true, setting_type: 'boolean')
+Setting.create(key: 'talk-deadline-passed', val: '2015-10-07', setting_type: 'string')
 
 lyntale = TalkType.create(name: 'Lyntale', duration: 10, visible: true)
 TalkType.create(name: 'Kort workshop', duration: 45, visible: true)
