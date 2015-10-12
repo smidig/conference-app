@@ -2,6 +2,15 @@
   .flexslider
     %ul.slides
       %li
+        %a(href="#{new_talk_path}")
+          %img{:src => "#{image_path "slide_fish.jpg"}"}
+          .row-fluid
+            .caption.span5.offset1
+              %h5.title
+                Call for Speaker
+              %p.text
+                Siste frist for å sende inn ditt forslag er #{l talk_suggestion_deadline, :format => '%-d. %B'}!!
+      %li
         %a(href="#{new_user_registration_path}")
           %img{:src => "#{image_path "vi_planlegger.jpg"}"}
           .row-fluid
@@ -10,15 +19,6 @@
                 Vi har startet påmeldingen til Smidig 2015
               %p.text
                 Meld deg på i dag!
-      %li
-        %a(href="#{new_talk_path}")
-          %img{:src => "#{image_path "slide_fish.jpg"}"}
-          .row-fluid
-            .caption.span5.offset1
-              %h5.title
-                Call for Speaker
-              %p.text
-                Vil du holde lyntale på Smidig 2015? Registrer deg her..
       -#
         %li
           %a(href="http://vimeo.com/album/3107510")
