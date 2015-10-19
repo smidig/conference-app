@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150511111138) do
+ActiveRecord::Schema.define(:version => 20151019063916) do
 
   create_table "feedback_votes", :force => true do |t|
     t.integer  "talk_id"
