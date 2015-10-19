@@ -8,7 +8,7 @@
   %li
     = link_to('Sponsor', info_sponsor_path, 
     {:class=>current_page?(info_sponsor_path) ? "active" : "", :title => "Sponsor"})
-  -#
+  - if setting_for('program-available')
     %li
       = link_to('Program', program_path,
       {:class=>current_page?(program_path) ? "active" : "", :title => "Programmet"})
