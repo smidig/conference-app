@@ -5,11 +5,11 @@
     %th Name
     %th
 
-  - @talk_categories.each do |talk_category|
+  - @talk_categories.each do |item|
     %tr
-      %td= talk_category.name
+      %td= item.name
       %td.text-right
-        = render 'shared/showedit', :target => talk_category
-        = render 'shared/destroy', :target => talk_category
+        = render 'shared/showedit', :target => item
+        = render 'shared/destroy', :target => item
 
 = render 'shared/buttonrow', :new => true

@@ -1,25 +1,24 @@
-%h1 Available tickets
+= render 'shared/indextitle'
 
 %table.table.table-striped
   %thead
     %tr
-      %th= 'Navn'
-      %th= 'Price'
-      %th= 'Active'
-      %th= 'Visible'
-      %th= 'Type'
+      %th Navn
+      %th Price
+      %th Active
+      %th Visible
+      %th Type
       %th
   %tbody
-    - for ticket in @tickets
+    - @tickets.each do |item|
       %tr
-        %td= ticket.name
-        %td= ticket.price
-        %td= ticket.active
-        %td= ticket.visible
-        %td= ticket.ticket_type
+        %td= item.name
+        %td= item.price
+        %td= item.active
+        %td= item.visible
+        %td= item.ticket_type
         %td.text-right
-          = link_to 'Show', ticket, :class => 'btn btn-primary'
-          = link_to 'Edit', edit_ticket_path(ticket), :class => 'btn btn-default'
-          = link_to 'Delete', ticket, :confirm =>"Are you sure", :method=>:delete, :class => 'btn btn-danger'
+          = render 'shared/showedit', :target => item
+          = render 'shared/destroy', :target => item
 
-= link_to 'New Ticket', new_ticket_path, :class => 'btn btn-default'
+= render 'shared/buttonrow', :new => true

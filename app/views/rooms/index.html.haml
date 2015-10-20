@@ -9,16 +9,16 @@
       %th
 
   %tbody
-    - @rooms.each do |room|
+    - @rooms.each do |item|
       %tr
-        %td= room.name
-        %td= room.details
+        %td= item.name
+        %td= item.details
         %td.text-right
-          = render 'shared/showedit', :target => room
+          = render 'shared/showedit', :target => item
         %td.text-right
-          - if room.can_delete?
-            = link_to 'Delete', room, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn btn-danger'
+          - if item.can_delete?
+            = link_to 'Delete', item, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn btn-danger'
           - else
-            = pluralize(room.talk_count, 'talk')
+            = pluralize(item.talk_count, 'talk')
 
 = render 'shared/buttonrow', :new => true
