@@ -8,6 +8,6 @@ module ApplicationHelper
   end
 
   def name_for_controller
-    params[:controller].singularize.humanize.downcase
+    controller_name.singularize.humanize.downcase
   end
 end
