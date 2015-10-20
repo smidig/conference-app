@@ -1,6 +1,6 @@
 = simple_form_for @roomslot, :html => { :class => 'form-horizontal' } do |f|
   = f.association :room
-  = f.association :timeslot
+  = f.association :timeslot, :label_method => :description
   = f.input :title
   = f.input :description
 
