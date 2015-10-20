@@ -1,21 +1,27 @@
 %h1 Listing rooms
 
-%table
-  %tr
-    %th Name
-    %th Details
-    %th
-    %th
-    %th
-
-  - @rooms.each do |room|
+%table.table.table-striped
+  %thead
     %tr
-      %td= room.name
-      %td= room.details
-      %td= link_to 'Show', room
-      %td= link_to 'Edit', edit_room_path(room)
-      %td= link_to 'Destroy', room, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %th Name
+      %th Details
+      %th
+      %th
+
+  %tbody
+    - @rooms.each do |room|
+      %tr
+        %td= room.name
+        %td= room.details
+        %td.text-right
+          = link_to 'Show', room, :class => 'btn btn-primary'
+          = link_to 'Edit', edit_room_path(room), :class => 'btn btn-default'
+        %td.text-right
+          - if room.can_delete?
+            = link_to 'Delete', room, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn btn-danger'
+          - else
+            = pluralize(room.talk_count, 'talk')
 
 %br
 
-= link_to 'New Room', new_room_path
+= link_to 'New Room', new_room_path, :class => 'btn btn-default'

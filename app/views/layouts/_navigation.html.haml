@@ -32,25 +32,15 @@
       %a
         Admin
       %ul
-        %li
-          %a{:href => "#{users_path}"} Deltakere
-        %li
-          %a{:href => "#{orders_path}"} Bestillinger
-        %li
-          %a{:href => "#{payments_path}"} Betalinger
-        %li
-          %a{:href => "#{tickets_path}"} Billetter
-        %li
-          %a{:href => "#{talks_path}"} Foredrag
-        %li
-          %a{:href => "#{talk_types_path}"} Foredragstyper
-        %li
-          %a{:href => "#{sponsors_path}"} Sponsorer
-        %li
-          %a{:href => "#{talk_categories_path}"} Foredragskategorier
-        %li
-          %a{:href => "#{timeslots_path}"} Program Admin
-        %li
-          %a{:href => "#{settings_path}"} App Konfigurasjon
-        %li
-          = link_to("Statistikk", administration_statistics_path)
+        %li= link_to 'Deltakere', users_path
+        %li= link_to 'Bestillinger', orders_path
+        %li= link_to 'Betalinger', payments_path
+        %li= link_to 'Billetter', tickets_path
+        %li= link_to 'Sal', rooms_path
+        %li= link_to 'Foredrag', talks_path
+        %li= link_to 'Foredragstyper',talk_types_path
+        %li= link_to 'Sponsorer', sponsors_path
+        %li= link_to 'Foredragskategorier', talk_categories_path
+        %li= link_to 'Program Admin',  timeslots_path
+        %li= link_to 'App Konfigurasjon', settings_path
+        %li= link_to 'Statistikk', administration_statistics_path

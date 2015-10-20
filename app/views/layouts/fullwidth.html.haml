@@ -10,9 +10,9 @@
             %a.brand{:href=>"/"}
               Smidig 2015
             = render 'layouts/navigation'
-            = render 'layouts/messages' unless flash.empty?
     #main.content-wrapper
       .row-fluid
         .span12
+          = render 'layouts/messages' unless flash.empty?
           = yield
     = render :partial => 'sponsors/list'

@@ -1,3 +1,5 @@
+%h1 Room
+
 %p#notice= notice
 
 %p
@@ -7,6 +9,6 @@
   %b Details:
   = @room.details
 
-= link_to 'Edit', edit_room_path(@room)
+= link_to 'Edit', edit_room_path(@room), :class => 'btn btn-primary'
 \|
-= link_to 'Back', rooms_path
+= link_to 'Back', rooms_path, :class => 'btn btn-default'
