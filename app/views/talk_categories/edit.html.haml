@@ -1,5 +1,4 @@
-%h1 Editing talk_category
+= render 'shared/title', :prefix => 'Edit'
 
-= link_to 'Back', talk_categories_path
-
-= render 'form'
+= render 'form', :talk_category => @talk_category
+= render 'shared/buttonrow', :show => true, :target => @talk_category

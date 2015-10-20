@@ -1,9 +1,9 @@
+= render 'shared/title', :prefix => 'Show'
+
 %p#notice= notice
 
 %p
   %b Name:
   = @talk_category.name
 
-= link_to 'Edit', edit_talk_category_path(@talk_category)
-\|
-= link_to 'Back', talk_categories_path
+= render 'shared/buttonrow', :edit => true, :target => @talk_category
