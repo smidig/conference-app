@@ -8,9 +8,7 @@
       %th= 'Active'
       %th= 'Visible'
       %th= 'Type'
-      %th= ''
-      %th= ''
-      %th= ''
+      %th
   %tbody
     - for ticket in @tickets
       %tr
@@ -19,8 +17,9 @@
         %td= ticket.active
         %td= ticket.visible
         %td= ticket.ticket_type
-        %td= link_to 'Show', ticket
-        %td= link_to 'Edit', edit_ticket_path(ticket)
-        %td= link_to 'Delete', ticket, :confirm =>"Are you sure", :method=>:delete, :class => 'btn btn-danger'
+        %td.text-right
+          = link_to 'Show', ticket, :class => 'btn btn-primary'
+          = link_to 'Edit', edit_ticket_path(ticket), :class => 'btn btn-default'
+          = link_to 'Delete', ticket, :confirm =>"Are you sure", :method=>:delete, :class => 'btn btn-danger'
 
-= link_to 'New Ticket', new_ticket_path
+= link_to 'New Ticket', new_ticket_path, :class => 'btn btn-default'
