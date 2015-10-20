@@ -1,5 +1,6 @@
 class RoomslotsController < ApplicationController
   authorize_admin!
+  layout 'fullwidth'
 
   # GET /roomslots
   # GET /roomslots.json

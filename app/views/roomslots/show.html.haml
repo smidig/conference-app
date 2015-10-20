@@ -1,7 +1,8 @@
+= render 'shared/title', :prefix => 'Show'
+
 %p#notice= notice
 
-#{@roomslot.room.name}: #{@roomslot.timeslot.start} - #{@roomslot.timeslot.end}
+%p
+  = "#{@roomslot.room.name}: #{@roomslot.timeslot.start} - #{@roomslot.timeslot.end}"
 
-= link_to 'Edit', edit_roomslot_path(@roomslot)
-\|
-= link_to 'Back', roomslots_path
+= render 'shared/buttonrow', :edit => true, :target => @roomslot

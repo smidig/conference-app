@@ -15,4 +15,5 @@
   - btnclass = 'btn-default'
 
 - if action_name != 'index'
-  = link_to 'Back', url_for(:controller => controller_name, :action => 'index'), :class => 'btn btn-default'
+  - path = local_assigns.has_key?(:backlink) ? backlink : controller_name
+  = link_to 'Back', url_for(:controller => path, :action => 'index'), :class => 'btn btn-default'
