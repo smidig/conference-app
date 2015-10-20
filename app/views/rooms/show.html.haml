@@ -9,6 +9,4 @@
   %b Details:
   = @room.details
 
-= link_to 'Edit', edit_room_path(@room), :class => 'btn btn-primary'
-\|
-= link_to 'Back', rooms_path, :class => 'btn btn-default'
+= render 'shared/buttonrow', :edit => true, :target => @room

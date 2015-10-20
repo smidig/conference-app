@@ -1,25 +1,8 @@
-= form_for @room do |f|
-  - if @room.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@room.errors.count, "error")} prohibited this room from being saved:"
-      %ul
-        - @room.errors.full_messages.each do |msg|
-          %li= msg
+= simple_form_for room, :html => { :class => 'form-horizontal' } do |f|
+  = f.input :name
+  = f.input :color
+  = f.input :details
+  = f.input :priority
+  = f.input :size
 
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :color
-    = f.text_field :color
-  .field
-    = f.label :details
-    = f.text_field :details
-  .field
-    = f.label :priority
-    = f.number_field :priority
-  .field
-    = f.label :size
-    = f.number_field :size
-  .actions
-    = f.submit 'Save'
+  = render 'shared/formactions', :f => f

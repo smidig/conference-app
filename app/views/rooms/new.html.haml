@@ -1,5 +1,4 @@
-%h1 New room
+= render 'shared/title', :prefix => 'New'
 
-= render 'form'
-
-= link_to 'Back', rooms_path
+= render 'form', :room => @room
+= render 'shared/buttonrow'
