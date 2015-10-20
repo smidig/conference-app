@@ -1,19 +1,15 @@
-%h1 Listing talk_categories
+= render 'shared/indextitle'
 
 %table.table.table-striped
   %tr
     %th Name
     %th
-    %th
-    %th
 
   - @talk_categories.each do |talk_category|
     %tr
       %td= talk_category.name
-      %td= link_to 'Show', talk_category
-      %td= link_to 'Edit', edit_talk_category_path(talk_category)
-      %td= link_to 'Destroy', talk_category, method: :delete, data: { confirm: 'Are you sure?' }
+      %td.text-right
+        = render 'shared/showedit', :target => talk_category
+        = render 'shared/destroy', :target => talk_category
 
-%br
-
-= link_to 'New Talk category', new_talk_category_path
+= render 'shared/buttonrow', :new => true
