@@ -1,7 +1,4 @@
-%h1 Editing timeslot
+= render 'shared/title', :prefix => 'Edit'
 
-= render 'form'
-
-= link_to 'Show', @timeslot
-\|
-= link_to 'Back', timeslots_path
+= render 'form', :target => @timeslot
+= render 'shared/buttonrow', :show => true, :target => @timeslot

@@ -1,14 +1,13 @@
-.row-fluid.program-admin
+.program-admin
   .span9
     %h1 Tidsslotter:
     - @timeslots.each do |timeslot|
       = render 'timeslot', :timeslot => timeslot
 
     %p
-      = link_to new_timeslot_path, :class => "btn" do
+      = link_to new_timeslot_path, :class => 'btn btn-default' do
         %i.icon-plus
         Legg til timeslot
-
 
   .span3
     .available-talks-container
