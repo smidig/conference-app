@@ -20,7 +20,6 @@
 //
 // These are located in vendor/assets/javascripts:
 //
-//= require jquery.tweet
 //= require jquery.flexslider
 //= require jquery.metadata
 //= require jquery.tablesorter
