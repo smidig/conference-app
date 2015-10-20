@@ -1,4 +1,6 @@
-p#notice= notice
+= render 'shared/title', :prefix => 'Show'
+
+%p#notice= notice
 
 %p
   %b Start:
@@ -7,6 +9,4 @@ p#notice= notice
   %b End:
   = @timeslot.end
 
-= link_to 'Edit', edit_timeslot_path(@timeslot)
-\|
-= link_to 'Back', timeslots_path
+= render 'shared/buttonrow', :edit => true, :target => @ticket

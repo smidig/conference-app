@@ -1,8 +1,6 @@
-
-= simple_form_for @timeslot, :html => { :class => 'form-horizontal' } do |f|
+= simple_form_for target, :html => { :class => 'form-horizontal' } do |f|
   = f.input :start
   = f.input :end
   = f.input :is_workshop_slot
 
-  .actions
-    = f.button :submit, :class => 'btn-primary'
+  = render 'shared/formactions', :f => f

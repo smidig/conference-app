@@ -1,6 +1,6 @@
-%li.talk{:draggable => "true", :title => "Dra meg til et rom", :data => {:talk_id=>talk.id}} 
+%li.talk{:draggable => 'true', :title => 'Dra meg til et rom', :data => {:talk_id=>talk.id}}
   #{talk.id}: #{talk.title}
   %em #{talk.user.name}
   (#{talk.talk_type.name}, #{talk.talk_category.name})
-  %a.remove{:href=>"delete_talk"}
+  %a.remove{:href=>'delete_talk'}
     %i.icon-remove
