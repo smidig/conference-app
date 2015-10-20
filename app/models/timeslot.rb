@@ -3,4 +3,7 @@ class Timeslot < ActiveRecord::Base
   has_many :roomslot
   default_scope order('timeslots.start ASC, timeslots.end ASC')
 
+  def description
+    "#{self.start} - #{self.end} - #{self.is_workshop_slot? ? 'Workshop' : 'Not Workshop'}"
+  end
 end
