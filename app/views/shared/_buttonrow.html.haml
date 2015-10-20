@@ -3,16 +3,16 @@
 - btnclass = 'btn-primary'
 
 - if local_assigns.has_key?(:new)
-  = link_to "New #{params[:controller].singularize.humanize.downcase}", url_for(:controller => params[:controller], :action => 'new'), :class => "btn #{btnclass}"
+  = link_to "New #{name_for_controller}", url_for(:controller => controller_name, :action => 'new'), :class => "btn #{btnclass}"
   - btnclass = 'btn-default'
 
 - if local_assigns.has_key?(:edit)
-  = link_to 'Edit', url_for(:controller => params[:controller], :id => target.id, :action => 'edit'), :class => "btn #{btnclass}"
+  = link_to 'Edit', url_for(:controller => controller_name, :id => target.id, :action => 'edit'), :class => "btn #{btnclass}"
   - btnclass = 'btn-default'
 
 - if local_assigns.has_key?(:show)
-  = link_to 'Show', url_for(:controller => params[:controller], :id => target.id, :action => 'show'), :class => "btn #{btnclass}"
+  = link_to 'Show', url_for(:controller => controller_name, :id => target.id, :action => 'show'), :class => "btn #{btnclass}"
   - btnclass = 'btn-default'
 
-- if params[:action] != 'index'
-  = link_to 'Back', url_for(:controller => params[:controller], :action => 'index'), :class => 'btn btn-default'
+- if action_name != 'index'
+  = link_to 'Back', url_for(:controller => controller_name, :action => 'index'), :class => 'btn btn-default'
