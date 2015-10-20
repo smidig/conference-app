@@ -9,12 +9,12 @@
       %th
 
   %tbody
-    - @roomslots.each do |roomslot|
+    - @roomslots.each do |item|
       %tr
         %td
-          #{roomslot.room.name}: #{roomslot.timeslot.start} - #{roomslot.timeslot.end}
+          #{item.room.name}: #{item.timeslot.start} - #{item.timeslot.end}
         %td.text-right
-          = render 'shared/showedit', :target => roomslot
-          = render 'shared/destroy', :target => roomslot
+          = render 'shared/showedit', :target => item
+          = render 'shared/destroy', :target => item
 
 = render 'shared/buttonrow', :new => true

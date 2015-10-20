@@ -1,3 +1,5 @@
+= render 'shared/title', :prefix => 'Show'
+
 %p
   %b Name:
   = @ticket.name
@@ -11,7 +13,4 @@
   %b Visible:
   = @ticket.visible
 
-
-= link_to 'Edit', edit_ticket_path(@ticket), :class => 'btn btn-primary'
-|
-= link_to 'Back', tickets_path, :class => 'btn btn-default'
+= render 'shared/buttonrow', :edit => true, :target => @ticket
