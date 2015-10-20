@@ -1,5 +1,4 @@
-%h1 Editing roomslot
+= render 'shared/title', :prefix => 'Edit'
 
-= render 'form'
-
-= link_to 'Back', timeslots_path
+= render 'form', :roomslot => @roomslot
+= render 'shared/buttonrow', :show => true, :target => @roomslot, :backlink => timeslots_path
