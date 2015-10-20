@@ -1,5 +1,4 @@
-%h1 New talk_type
+= render 'shared/title', :prefix => 'New'
 
-= render 'form'
-
-= link_to 'Back', talk_types_path
+= render 'form', :talk_type => @talk_type
+= render 'shared/buttonrow'

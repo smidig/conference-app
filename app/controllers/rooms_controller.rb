@@ -1,6 +1,7 @@
 class RoomsController < ApplicationController
   authorize_admin!
-  
+  layout 'fullwidth'
+
   # GET /rooms
   # GET /rooms.json
   def index

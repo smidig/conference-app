@@ -1,19 +1,6 @@
-= form_for @talk_type do |f|
-  - if @talk_type.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@talk_type.errors.count, "error")} prohibited this talk_type from being saved:"
-      %ul
-        - @talk_type.errors.full_messages.each do |msg|
-          %li= msg
+= simple_form_for talk_type, :html => { :class => 'form-horizontal' } do |f|
+  = f.input :name
+  = f.input :duration
+  = f.input :visible
 
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :duration
-    = f.number_field :duration
-  .field
-    = f.label :visible
-    = f.check_box :visible
-  .actions
-    = f.submit 'Save'
+  = render 'shared/formactions', :f => f

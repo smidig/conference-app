@@ -1,3 +1,5 @@
+= render 'shared/title', :prefix => 'Show'
+
 %p#notice= notice
 
 %p
@@ -10,6 +12,4 @@
   %b Visible:
   = @talk_type.visible
 
-= link_to 'Edit', edit_talk_type_path(@talk_type)
-\|
-= link_to 'Back', talk_types_path
+= render 'shared/buttonrow', :edit => true, :target => @talk_type

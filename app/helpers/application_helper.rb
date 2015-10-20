@@ -6,4 +6,8 @@ module ApplicationHelper
   def setting_for key
     Setting.setting_for(key).val
   end
+
+  def name_for_controller
+    params[:controller].singularize.humanize.downcase
+  end
 end

@@ -1,7 +1,4 @@
-%h1 Editing room
+= render 'shared/title', :prefix => 'Edit'
 
-= render 'form'
-
-= link_to 'Show', @room, :class => 'btn btn-primary'
-\|
-= link_to 'Back', rooms_path, :class => 'btn btn-default'
+= render 'form', :room => @room
+= render 'shared/buttonrow', :show => true, :target => @room
