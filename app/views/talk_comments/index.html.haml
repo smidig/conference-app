@@ -1,12 +1,10 @@
-%h1 Listing talk_comments
+= render 'shared/indextitle'
 
-%table.table
+%table.table.table-striped
   %tr
     %th Content
     %th User
     %th Title
-    %th 
-    %th
     %th
 
   - @talk_comments.each do |talk_comment|
@@ -14,10 +12,8 @@
       %td= talk_comment.content
       %td= talk_comment.user.name if talk_comment.user
       %td= talk_comment.talk.title if talk_comment.talk
-      %td= link_to 'Show', talk_comment
-      %td= link_to 'Edit', edit_talk_comment_path(talk_comment)
-      %td= link_to 'Destroy', talk_comment, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %td.text-right
+        = render 'shared/showedit', :target => talk_comment
+        = render 'shared/destroy', :target => talk_comment
 
-%br
-
-= link_to 'New Talk comment', new_talk_comment_path
+= render 'shared/buttonrow', :new => true

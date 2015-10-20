@@ -1,5 +1,6 @@
 class TalkCommentsController < ApplicationController
    authorize_admin!
+   layout 'fullwidth'
 
   # GET /talk_comments
   # GET /talk_comments.json
