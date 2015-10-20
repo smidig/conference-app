@@ -1,5 +1,4 @@
-%h1 New talk_comment
+= render 'shared/title', :prefix => 'New'
 
-= render 'form'
-
-= link_to 'Back', talk_comments_path
+= render 'form', :talk_comment => @talk_comment
+= render 'shared/buttonrow'
