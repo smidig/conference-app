@@ -76,7 +76,7 @@ describe SponsorsController, :type => :controller do
 
       it "redirects to the created sponsor" do
         post :create, {:sponsor => valid_attributes}
-        response.should redirect_to(Sponsor.last)
+        response.should redirect_to :action => :index
       end
     end
 
@@ -118,7 +118,7 @@ describe SponsorsController, :type => :controller do
       it "redirects to the sponsor" do
         sponsor = Sponsor.create! valid_attributes
         put :update, {:id => sponsor.to_param, :sponsor => valid_attributes}
-        response.should redirect_to(sponsor)
+        response.should redirect_to :action => :index
       end
     end
 
