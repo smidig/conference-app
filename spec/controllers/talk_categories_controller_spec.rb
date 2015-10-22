@@ -24,7 +24,7 @@ describe TalkCategoriesController, :type => :controller do
   # TalkCategory. As you add validations to TalkCategory, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    { "name" => "MyString" }
+    { "name" => "MyString", "colour" => "#000000", "abbreviation" => "MS" }
   end
 
   login_admin
