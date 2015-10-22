@@ -2,6 +2,25 @@
   .flexslider
     %ul.slides
       %li
+        %a(href="#{program_path}")
+          %img{:src => "#{image_path "takk-for-oss-4.jpg"}"}
+          .row-fluid
+            .caption.span5.offset1
+              %h5.title
+                Nå nærmer det seg Smidig 2015
+              %p.text
+                Se programmet!
+      %li
+        %a(href="#{new_user_registration_path}")
+          %img{:src => "#{image_path "vi_planlegger.jpg"}"}
+          .row-fluid
+            .caption.span5.offset1
+              %h5.title
+                Nå nærmer det seg Smidig 2015
+              %p.text
+                Fortsatt ledige biletter!
+    -#
+      %li
         %a(href="#{new_talk_path}")
           %img{:src => "#{image_path "slide_fish.jpg"}"}
           .row-fluid
@@ -19,7 +38,6 @@
                 Vi har startet påmeldingen til Smidig 2015
               %p.text
                 Meld deg på i dag!
-      -#
         %li
           %a(href="http://vimeo.com/album/3107510")
             %img{:src => "#{image_path "takk-for-oss-1.jpg"}"}
