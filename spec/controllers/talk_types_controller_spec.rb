@@ -76,7 +76,7 @@ describe TalkTypesController do
 
       it "redirects to the created talk_type" do
         post :create, {:talk_type => valid_attributes}
-        response.should redirect_to(TalkType.last)
+        response.should redirect_to :action => :index
       end
     end
 
@@ -118,7 +118,7 @@ describe TalkTypesController do
       it "redirects to the talk_type" do
         talk_type = TalkType.create! valid_attributes
         put :update, {:id => talk_type.to_param, :talk_type => valid_attributes}
-        response.should redirect_to(talk_type)
+        response.should redirect_to :action => :index
       end
     end
 
