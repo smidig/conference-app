@@ -47,7 +47,8 @@ class TalkCommentsController < ApplicationController
 
     respond_to do |format|
       if @talk_comment.save
-        format.html { redirect_to @talk_comment, notice: 'Talk comment was successfully created.' }
+        flash[:notice] = 'Talk comment was successfully created.'
+        format.html { redirect_to :action => :index }
         format.json { render json: @talk_comment, status: :created, location: @talk_comment }
       else
         format.html { render action: "new" }
@@ -63,7 +64,8 @@ class TalkCommentsController < ApplicationController
 
     respond_to do |format|
       if @talk_comment.update_attributes(params[:talk_comment])
-        format.html { redirect_to @talk_comment, notice: 'Talk comment was successfully updated.' }
+        flash[:notice] = 'Talk comment was successfully updated.'
+        format.html { redirect_to :action => :index }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
