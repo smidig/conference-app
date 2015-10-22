@@ -6,4 +6,12 @@
   %b Name:
   = @talk_category.name
 
+%p
+  %b Abbreviation:
+  = @talk_category.abbreviation
+
+%p{:style => "background-color: #{@talk_category.colour}"}
+  %b Colour:
+  = @talk_category.colour
+
 = render 'shared/buttonrow', :edit => true, :target => @talk_category
