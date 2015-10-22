@@ -43,9 +43,9 @@ lyntale = TalkType.create(name: 'Lyntale', duration: 10, visible: true)
 TalkType.create(name: 'Kort workshop', duration: 45, visible: true)
 TalkType.create(name: 'Lang workshop', duration: 90, visible: true)
 
-TalkCategory.create(name: 'Annet')
-TalkCategory.create(name: 'Smidig programmering')
-TalkCategory.create(name: 'Lean startup')
+TalkCategory.create(name: 'Annet', :abbreviation => 'AN', :colour => '#000000')
+TalkCategory.create(name: 'Smidig programmering', :abbreviation => 'SP', :colour => '#000000')
+TalkCategory.create(name: 'Lean startup', :abbreviation => 'LS', :colour => '#000000')
 
 Sponsor.create(name: 'Smidig 2015',
                url: 'http://2015.smidig.no/info/sponsor',
