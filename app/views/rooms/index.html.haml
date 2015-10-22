@@ -5,6 +5,9 @@
     %tr
       %th Name
       %th Details
+      %th Size
+      %th Colour
+      %th Priority
       %th
       %th
 
@@ -13,6 +16,9 @@
       %tr
         %td= item.name
         %td= item.details
+        %td= item.size
+        %td{:style => "background-color: #{item.color}"}= item.color
+        %td= item.priority
         %td.text-right
           = render 'shared/showedit', :target => item
         %td.text-right
