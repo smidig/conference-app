@@ -40,8 +40,8 @@
         - tcg.each do |tc|
           %li
             .talk-category
-              %span.label.pull-left{:class => t("label." + tc.name, default: ''), :title => tc.name}
-                =t("label." + tc.name, default: tc.name.slice(0,2)).upcase
+              %span.label.pull-left{:style => "background-color: #{tc.colour}"}
+                = tc.abbreviation
               .make-switch.switch-mini.switch-toggle{:data => { :"on-label" => "ja", :"off-label" => "nei", :on => "success",  :off => "danger", :toggle => (".talk_category_" + tc.id.to_s)}}
                 %input{:type => "checkbox", :checked => "checked"}
               =tc.name
@@ -89,8 +89,8 @@
                   .talk{:class => ("talk_category_" + talk.talk_category.id.to_s), :data => {"talkid" => "#{talk.id}"}}
                     %h4.title
                       %span.meta.pull-right
-                        %span.pull-right.label.label-small{:class => t("label." + talk.talk_category.name), :title => talk.talk_category.name}
-                          =t("label." + talk.talk_category.name)
+                        %span.pull-right.label.label-small{:style => "background-color: #{talk.talk_category.colour}", :title => talk.talk_category.name}
+                          = talk.talk_category.abbreviation
                         - if talk.talk_type.name == "Lyntale"
                           %i.icon-bolt
                         - if talk.talk_type.name == "Kort workshop" or talk.talk_type.name == "Lang workshop"

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20151019063916) do
+ActiveRecord::Schema.define(:version => 20151022070540) do
 
   create_table "feedback_votes", :force => true do |t|
     t.integer  "talk_id"
@@ -94,9 +94,13 @@ ActiveRecord::Schema.define(:version => 20151019063916) do
 
   create_table "talk_categories", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
+    t.string   "abbreviation",                        :null => false
+    t.string   "colour",       :default => "#999999", :null => false
   end
+
+  add_index "talk_categories", ["abbreviation"], :name => "index_talk_categories_on_abbreviation", :unique => true
 
   create_table "talk_comments", :force => true do |t|
     t.text     "content"
