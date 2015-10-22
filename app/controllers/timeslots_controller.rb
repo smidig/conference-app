@@ -49,7 +49,8 @@ class TimeslotsController < ApplicationController
 
     respond_to do |format|
       if @timeslot.save
-        format.html { redirect_to @timeslot, notice: 'Timeslot was successfully created.' }
+        flash[:notice] = 'Timeslot was successfully created.'
+        format.html { redirect_to :action => :index }
         format.json { render json: @timeslot, status: :created, location: @timeslot }
       else
         format.html { render action: "new" }
@@ -65,7 +66,8 @@ class TimeslotsController < ApplicationController
 
     respond_to do |format|
       if @timeslot.update_attributes(params[:timeslot])
-        format.html { redirect_to @timeslot, notice: 'Timeslot was successfully updated.' }
+        flash[:notice] = 'Timeslot was successfully updated.'
+        format.html { redirect_to :action => :index }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

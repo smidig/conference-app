@@ -1,25 +1,23 @@
-%h1 Listing sponsors
+= render 'shared/indextitle'
 
 %table.table.table-striped
-  %tr
-    %th Name
-    %th Url
-    %th Imageurl
-    %th Description
-    %th
-    %th
-    %th
-
-  - @sponsors.each do |sponsor|
+  %thead
     %tr
-      %td= sponsor.name
-      %td= sponsor.url
-      %td= sponsor.imageUrl
-      %td= sponsor.description
-      %td= link_to 'Show', sponsor
-      %td= link_to 'Edit', edit_sponsor_path(sponsor)
-      %td= link_to 'Destroy', sponsor, method: :delete, data: { confirm: 'Are you sure?' }
+      %th Name
+      %th Url
+      %th Imageurl
+      %th Description
+      %th
 
-%br
+  %tbody
+    - @sponsors.each do |item|
+      %tr
+        %td= item.name
+        %td= item.url
+        %td= item.imageUrl
+        %td= item.description
+        %td.text-right
+          = render 'shared/showedit', :target => item
+          = render 'shared/destroy', :target => item
 
-= link_to 'New Sponsor', new_sponsor_path
+= render 'shared/buttonrow'

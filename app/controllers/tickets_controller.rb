@@ -64,7 +64,7 @@ class TicketsController < ApplicationController
 
     respond_to do |format|
       if @ticket.update_attributes(params[:ticket])
-        flash[:notice] = 'Ticket was successfully created.'
+        flash[:notice] = 'Ticket was successfully updated.'
         format.html { redirect_to :action => :index }
         format.json { head :no_content }
       else

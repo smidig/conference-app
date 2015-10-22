@@ -1,7 +1,4 @@
-%h1 Editing sponsor
+= render 'shared/title', :prefix => 'Edit'
 
-= render 'form'
-
-= link_to 'Show', @sponsor
-\|
-= link_to 'Back', sponsors_path
+= render 'form', :target => @sponsor
+= render 'shared/buttonrow', :target => @sponsor

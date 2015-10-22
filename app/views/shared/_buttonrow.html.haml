@@ -2,16 +2,8 @@
 
 - btnclass = 'btn-primary'
 
-- if local_assigns.has_key?(:new)
+- if action_name == 'index'
   = link_to "New #{name_for_controller}", url_for(:controller => controller_name, :action => 'new'), :class => "btn #{btnclass}"
-  - btnclass = 'btn-default'
-
-- if local_assigns.has_key?(:edit)
-  = link_to 'Edit', url_for(:controller => controller_name, :id => target.id, :action => 'edit'), :class => "btn #{btnclass}"
-  - btnclass = 'btn-default'
-
-- if local_assigns.has_key?(:show)
-  = link_to 'Show', url_for(:controller => controller_name, :id => target.id, :action => 'show'), :class => "btn #{btnclass}"
   - btnclass = 'btn-default'
 
 - if action_name != 'index'

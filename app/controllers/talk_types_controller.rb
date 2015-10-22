@@ -47,7 +47,8 @@ class TalkTypesController < ApplicationController
 
     respond_to do |format|
       if @talk_type.save
-        format.html { redirect_to @talk_type, notice: 'Talk type was successfully created.' }
+        flash[:notice] = 'Talk type was successfully created.'
+        format.html { redirect_to :action => :index }
         format.json { render json: @talk_type, status: :created, location: @talk_type }
       else
         format.html { render action: "new" }
@@ -63,7 +64,8 @@ class TalkTypesController < ApplicationController
 
     respond_to do |format|
       if @talk_type.update_attributes(params[:talk_type])
-        format.html { redirect_to @talk_type, notice: 'Talk type was successfully updated.' }
+        flash[:notice] = 'Talk type was successfully updated.'
+        format.html { redirect_to :action => :index }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

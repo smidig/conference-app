@@ -1,8 +1,11 @@
+= render 'shared/title', :prefix => 'Show'
+
 %p#notice= notice
 
 %p
   %b Name:
   = @sponsor.name
+
 %p
   %b Url:
   = @sponsor.url
@@ -13,6 +16,4 @@
   %b Description:
   = @sponsor.description
 
-= link_to 'Edit', edit_sponsor_path(@sponsor)
-\|
-= link_to 'Back', sponsors_path
+= render 'shared/buttonrow', :target => @sponsor

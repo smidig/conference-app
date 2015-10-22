@@ -1,19 +1,21 @@
 = render 'shared/indextitle'
 
 %table.table.table-striped
-  %tr
-    %th Content
-    %th User
-    %th Title
-    %th
-
-  - @talk_comments.each do |item|
+  %thead
     %tr
-      %td= item.content
-      %td= item.user.name if item.user
-      %td= item.talk.title if item.talk
-      %td.text-right
-        = render 'shared/showedit', :target => item
-        = render 'shared/destroy', :target => item
+      %th Content
+      %th User
+      %th Title
+      %th
 
-= render 'shared/buttonrow', :new => true
+  %tbody
+    - @talk_comments.each do |item|
+      %tr
+        %td= item.content
+        %td= item.user.name if item.user
+        %td= item.talk.title if item.talk
+        %td.text-right
+          = render 'shared/showedit', :target => item
+          = render 'shared/destroy', :target => item
+
+= render 'shared/buttonrow'
