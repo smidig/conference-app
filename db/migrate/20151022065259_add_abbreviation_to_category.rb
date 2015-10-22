@@ -1,6 +1,7 @@
 class AddAbbreviationToCategory < ActiveRecord::Migration
   def self.up
     add_column :talk_categories, :abbreviation, :string
+    add_column :talk_categories, :colour, :string, :null => false, :default => '#999999'
 
     TalkCategory.reset_column_information
 
