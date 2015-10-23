@@ -1,8 +1,10 @@
 language: ruby
 rvm:
 - 1.9.3
-env:
-- DB=sqlite
+addons:
+  postgresql: "9.4"
+before_script:
+  - psql -c 'create database smidig_test;' -U postgres
 script:
 - RAILS_ENV=test bundle exec rake db:migrate --trace
 - RAILS_ENV=test bundle exec rake spec

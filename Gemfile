@@ -21,6 +21,8 @@ gem 'unicorn'
 
 gem 'foreman', :require => false
 
+gem 'pg'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -33,7 +35,6 @@ group :assets do
 end
 
 group :production do
-  gem 'pg'
   gem 'rails_12factor'
 end
 
@@ -52,7 +53,6 @@ group :tools do
 end
 
 group :development, :test do
-  gem 'sqlite3'
   gem 'database_cleaner'
 end
 
