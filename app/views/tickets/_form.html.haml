@@ -3,6 +3,8 @@
   = f.input :price
   = f.input :active
   = f.input :visible
+  = f.input :printflag, :hint => 'Include in nametag printout'
+  = f.input :printname, :hint => 'Use this text for nametag type - if empty then don\'t show'
   = f.input :ticket_type, :collection => Ticket::TICKET_TYPES
 
   = render 'shared/formactions', :f => f

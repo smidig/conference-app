@@ -8,6 +8,8 @@
       %th Active
       %th Visible
       %th Type
+      %th Nametag?
+      %th Nametag Type
       %th
   %tbody
     - @tickets.each do |item|
@@ -17,6 +19,8 @@
         %td= item.active
         %td= item.visible
         %td= item.ticket_type
+        %td= item.printflag ? 'true' : 'false'
+        %td= item.printname
         %td.text-right
           = render 'shared/showedit', :target => item
           = render 'shared/destroy', :target => item

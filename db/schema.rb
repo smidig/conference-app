@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20151022065259) do
+ActiveRecord::Schema.define(:version => 20151028132347) do
 
   create_table "feedback_votes", :force => true do |t|
     t.integer  "talk_id"
@@ -148,9 +148,11 @@ ActiveRecord::Schema.define(:version => 20151022065259) do
     t.integer  "price"
     t.boolean  "active"
     t.boolean  "visible"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
     t.string   "ticket_type"
+    t.boolean  "printflag",   :default => true, :null => false
+    t.string   "printname"
   end
 
   create_table "timeslots", :force => true do |t|

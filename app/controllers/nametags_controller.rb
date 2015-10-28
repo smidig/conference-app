@@ -5,7 +5,7 @@ class NametagsController < ApplicationController
 
   def index
     start_id = params[:start_id] || "0";
-    @registrations = User.find(:all, :conditions => 'id >= ' +start_id)
+    @registrations = User.includes(:ticket).find(:all, :conditions => 'id >= ' +start_id).select{|u| u.ticket.printflag == true}
     @registrations += @registrations if params.has_key? "double"
     @registrations.sort! { |a, b| a.name <=> b.name }
 

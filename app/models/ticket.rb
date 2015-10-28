@@ -1,5 +1,5 @@
 class Ticket < ActiveRecord::Base
-  attr_accessible :active, :name, :price, :visible, :ticket_type
+  attr_accessible :active, :name, :price, :visible, :ticket_type, :printflag, :printname
   has_many :users
 
   TICKET_TYPES = %w(free speaker regular)

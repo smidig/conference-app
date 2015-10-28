@@ -21,31 +21,9 @@ name = registration.name
 company = registration.company
 
 
-if (registration.ticket.name == 'Organizer' || registration.ticket.name == 'Volunteer') and company.downcase == 'cisco'
-  p_pdf.text 'Filmcrew',
+unless registration.ticket.printname.blank?
+  p_pdf.text registration.ticket.printname,
       :at => [189,20],
-      :size => 36
-elsif registration.ticket.name == 'Organizer'
-  p_pdf.text 'Arrangør',
-      :at => [190,20],
-      :size => 36
-elsif registration.ticket.name == 'Volunteer'
-  p_pdf.text 'Frivillig',
-      :at => [203,20],
-      :size => 36
-elsif registration.ticket.name == 'Speaker'
-  p_pdf.text 'Speaker',
-      :at => [203,20],
-      :size => 36
-elsif registration.ticket.name == 'guest'
-  p_pdf.fill_color '0000cc'
-  p_pdf.text 'Begrenset tilgang',
-      :at => [100,20],
-      :size => 36
-elsif registration.ticket.name == 'Sponsor'
-  p_pdf.fill_color '0000cc'
-  p_pdf.text 'Sponsor',
-      :at => [200,20],
       :size => 36
 end
 
