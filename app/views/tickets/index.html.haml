@@ -16,10 +16,10 @@
       %tr
         %td= item.name
         %td= item.price
-        %td= item.active
-        %td= item.visible
+        %td= boolean_value item.active
+        %td= boolean_value item.visible
         %td= item.ticket_type
-        %td= item.printflag ? 'true' : 'false'
+        %td= boolean_value item.printflag
         %td= item.printname
         %td.text-right
           = render 'shared/showedit', :target => item

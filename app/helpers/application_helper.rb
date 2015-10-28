@@ -10,4 +10,11 @@ module ApplicationHelper
   def name_for_controller
     controller_name.singularize.humanize.downcase
   end
+
+  def boolean_value(val)
+    content_tag(
+        :a,
+        content_tag(:i, "", class: "icon-#{val ? 'check' : 'ban-circle'}"),
+        class: "btn btn-xs #{val ? 'btn-info' : 'btn-danger'} disabled")
+  end
 end

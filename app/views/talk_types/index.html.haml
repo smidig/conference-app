@@ -13,7 +13,7 @@
       %tr
         %td= item.name
         %td= item.duration
-        %td= item.visible
+        %td= boolean_value item.visible
         %td.text-right
           = render 'shared/showedit', :target => item
           = render 'shared/destroy', :target => item

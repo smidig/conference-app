@@ -12,8 +12,9 @@
     - @talk_categories.each do |item|
       %tr
         %td= item.name
-        %td= item.abbreviation
-        %td{ :style => "background-color: #{item.colour}"}= item.colour
+        %td
+          %span.label{:style => "background-color: #{item.colour}"}= item.abbreviation
+        %td= item.colour
         %td.text-right
           = render 'shared/showedit', :target => item
           = render 'shared/destroy', :target => item

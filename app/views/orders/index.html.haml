@@ -22,7 +22,7 @@
         %td= order.owner.email if order.owner
         %td= order.price
         %td= order.comment
-        %td= order.completed ? "J" : "N"
+        %td= boolean_value order.completed
         %td= link_to '#'+order.payment.id.to_s, {:controller => :payments, :action => 'show', :id => order.payment.id} if order.payment
         %td= order.status
         %td= link_to 'Show', orders_show_path(:id => order.id)
