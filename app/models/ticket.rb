@@ -28,8 +28,8 @@ class Ticket < ActiveRecord::Base
   end
 
   def self.toggle_early_bird(early_bird_available)
-    eb = self.where( :name => 'Early Bird 2015').first
-    reg = self.where( :name => 'Regular 2015').first
+    eb = self.where( :name => 'Early Bird 2016').first
+    reg = self.where( :name => 'Regular 2016').first
 
     if early_bird_available
       eb.active = true

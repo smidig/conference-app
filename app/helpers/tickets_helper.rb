@@ -8,10 +8,10 @@ module TicketsHelper
   end
 
   def early_bird_ticket_price
-    ticket_price(Ticket.where( :name => 'Early Bird 2015').first)
+    ticket_price(Ticket.where( :name => 'Early Bird 2016').first)
   end
 
   def regular_ticket_price
-    ticket_price(Ticket.where( :name => 'Regular 2015').first)
+    ticket_price(Ticket.where( :name => 'Regular 2016').first)
   end
 end

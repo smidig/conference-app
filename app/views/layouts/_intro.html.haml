@@ -8,7 +8,7 @@
     %a(href="https://vimeo.com/album/3642046")
       Se alle vidoene her
   -#
-    %h1 Velkommen til Smidig 2015!
+    %h1 Velkommen til Smidig 2016!
     %p.preface
       Billettsalget for konferansen er nå i gang.
 
@@ -22,7 +22,7 @@
         = regular_ticket_price()
         og er tilgjengelig helt frem til konferansen.
 
-    = link_to('Meld deg på Smidig 2015!', new_user_registration_path, {:class => "btn pull-right"})
+    = link_to('Meld deg på Smidig 2016!', new_user_registration_path, {:class => "btn pull-right"})
 
     = form_for TippedUser.new, :html => { :id => 'tip-a-friend', :class => "pull-left", :'data-title' => 'Vet du om noen som burde delta på årets Smidigkonferanse? Oppgi epostadresse her og vi sender en mail med informasjon.' } do |f|
       %label= "Tips en venn om Smidig"

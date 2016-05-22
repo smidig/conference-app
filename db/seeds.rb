@@ -5,8 +5,8 @@ unless (Rails.env.staging? || Rails.env.production?)
   DatabaseCleaner.clean
 end
 
-Ticket.create(name: 'Early Bird 2015', price: 2500, active: true, visible: true, ticket_type: 'regular')
-Ticket.create(name: 'Regular 2015', price: 3750, active: true, visible: false, ticket_type: 'regular')
+Ticket.create(name: 'Early Bird 2016', price: 2500, active: true, visible: true, ticket_type: 'regular')
+Ticket.create(name: 'Regular 2016', price: 3750, active: true, visible: false, ticket_type: 'regular')
 organizer = Ticket.create(name: 'Organizer', price: 0, active: true, visible: false, ticket_type: 'free')
 Ticket.create(name: 'Sponsor', price: 0, active: true, visible: false, ticket_type: 'free')
 Ticket.create(name: 'Speaker', price: 0, active: true, visible: false, ticket_type: 'speaker')
@@ -36,7 +36,7 @@ end
 
 
 Setting.create(key: 'early-bird-available', val: true, setting_type: 'boolean')
-Setting.create(key: 'talk-deadline-passed', val: '2015-10-07', setting_type: 'string')
+Setting.create(key: 'talk-deadline-passed', val: '2016-10-07', setting_type: 'string')
 Setting.create(key: 'program-available', val: false, setting_type: 'boolean')
 
 lyntale = TalkType.create(name: 'Lyntale', duration: 10, visible: true)
@@ -47,11 +47,11 @@ TalkCategory.create(name: 'Annet', :abbreviation => 'AN', :colour => '#000000')
 TalkCategory.create(name: 'Smidig programmering', :abbreviation => 'SP', :colour => '#000000')
 TalkCategory.create(name: 'Lean startup', :abbreviation => 'LS', :colour => '#000000')
 
-Sponsor.create(name: 'Smidig 2015',
-               url: 'http://2015.smidig.no/info/sponsor',
+Sponsor.create(name: 'Smidig 2016',
+               url: 'http://2016.smidig.no/info/sponsor',
                imageUrl: 'http://2015.smidig.no/img/sponsor_logo.png')
-Sponsor.create(name: 'Smidig 2015',
-               url: 'http://2015.smidig.no/info/sponsor',
+Sponsor.create(name: 'Smidig 2016',
+               url: 'http://2016.smidig.no/info/sponsor',
                imageUrl: 'http://2015.smidig.no/img/sponsor_logo.png')
 Sponsor.create(name: 'Bouvet',
                url: 'http://www.bouvet.no/',
@@ -65,8 +65,8 @@ Sponsor.create(name: 'Embriq',
 Sponsor.create(name: 'Sopra Steria',
                url: 'http://www.soprasteria.no/',
                imageUrl: 'http://2015.smidig.no/img/soprasteria.png')
-Sponsor.create(name: 'Smidig 2015',
-               url: 'http://2015.smidig.no/info/sponsor',
+Sponsor.create(name: 'Smidig 2016',
+               url: 'http://2016.smidig.no/info/sponsor',
                imageUrl: 'http://2015.smidig.no/img/sponsor_logo.png')
 
 # Approved talks:

@@ -19,3 +19,7 @@ pickle-email-*.html
 .ruby-version
 notes.txt
 latest.dump
+
+.powrc
+
+.rvmrc
