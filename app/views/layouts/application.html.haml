@@ -8,26 +8,47 @@
         .span10.offset1.menu-row
           %header.header
             %a.brand{:href=>"/"}
-              Smidig 2015
+              Smidig 2016
             = render 'layouts/navigation'
       - if current_page?('/')
         .row-fluid
-          .span12
-            = render :partial => "layouts/topslider"
-        .row-fluid
-          .span10.offset1
-            = render :partial => "layouts/intro"            
-    - if current_page?('/')
-      = render :partial => 'sponsors/list'
+          .span10.offset1.content-wrapper
+            - if setting_for('program-available')
+              %p
+                = link_to('Program', program_path,
+                {:title => "Programmet"})
+              %p
+                = link_to('Din smidigprofil', my_profile_index_path,
+                {:title => "Din smidigprofil"})
+            - if not user_signed_in?
+              %p
+                = link_to('Meld deg på!', new_user_registration_path,
+                {:title => "Meld deg på"})
+              %p
+                = link_to('Gruppepåmelding', info_gruppepaamelding_path,
+                {:title => "Gruppepåmelding"})
+            - unless talk_suggestion_deadline.past?
+              %p
+                = link_to('Foreslå foredrag!', new_talk_path,
+                {:title => "Foreslå foredrag"})
+        -#
+          .row-fluid
+            .span12
+              = render :partial => "layouts/topslider"
+          .row-fluid
+            .span10.offset1
+              = render :partial => "layouts/intro"
+    -#
     #main.container
       .row-fluid
         .span10.offset1.content-wrapper
           = render 'layouts/messages' unless flash.empty?
           = yield
-    - if !current_page?('/')
-      = render :partial => 'sponsors/list'
 
     #footer.container
+      - if current_page?('/')
+        = render :partial => 'sponsors/list'
+    -#
       .row-fluid
         .span10.offset1
           .row-fluid.footer-wrapper
