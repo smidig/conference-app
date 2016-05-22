@@ -1,20 +1,21 @@
 %span.toggle-menu
   MENY
 %ul.header-nav
-  %li
-    %a{:href => "#{info_about_path}", :class=>current_page?(info_about_path) ? "active" : "", 
-    :title => "Om konferansen"}
-      Om konferansen
-  %li
-    = link_to('Sponsor', info_sponsor_path, 
-    {:class=>current_page?(info_sponsor_path) ? "active" : "", :title => "Sponsor"})
+  -#
+    %li
+      %a{:href => "#{info_about_path}", :class=>current_page?(info_about_path) ? "active" : "", 
+      :title => "Om konferansen"}
+        Om konferansen
+    %li
+      = link_to('Sponsor', info_sponsor_path, 
+      {:class=>current_page?(info_sponsor_path) ? "active" : "", :title => "Sponsor"})
   - if setting_for('program-available')
     %li
       = link_to('Program', program_path,
       {:class=>current_page?(program_path) ? "active" : "", :title => "Programmet"})
   %li
-    = link_to('Min profil', my_profile_index_path, 
-    {:class=>current_page?(my_profile_index_path) ? "active" : "", :title => "Min profil"})
+    = link_to('Din smidigprofil', my_profile_index_path, 
+    {:class=>current_page?(my_profile_index_path) ? "active" : "", :title => "Din smidigprofil"})
   - if user_signed_in?
     %li
       = link_to('Logg ut', destroy_user_session_path, :method=>'delete')
