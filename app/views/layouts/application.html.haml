@@ -23,7 +23,7 @@
         .span10.offset1.content-wrapper
           = render 'layouts/messages' unless flash.empty?
           = yield
-
+  -#
     #footer.container
       - if current_page?('/')
         = render :partial => 'sponsors/list'
