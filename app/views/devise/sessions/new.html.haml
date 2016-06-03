@@ -3,6 +3,10 @@
 = simple_form_for resource, :as => resource_name, :url => session_path(resource_name), :html => { :class => 'form-inline' } do |f|
   = f.input :email, :autofocus => true
   = f.input :password
-  = f.input :remember_me, :class => 'form-inline', :collection=> [["", "1"]], :as => :check_boxes
+  = f.input :remember_me, :class => 'form-inline active', :collection=> [["", "1"]], :as => :check_boxes
   = f.button :submit, :class => 'btn btn-large btn-primary', :value => "Logg på"
+  %br
+  = link_to "Glemt passord?", new_password_path(resource_name)
 =render "devise/shared/links"
+
+

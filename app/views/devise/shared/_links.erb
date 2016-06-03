@@ -9,10 +9,6 @@
   <!--<%= link_to "Meld deg på Smidig 2016 som foredragsholder", new_registration_path(resource_name, :ticket_name=>"Speaker")  %><br /> -->
 <% end -%>
 
-<%- if devise_mapping.recoverable? && controller_name != 'passwords' %>
-  <%= link_to "Glemt passord?", new_password_path(resource_name) %><br />
-<% end -%>
-
 <!-- NOT IN USE -->
 <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
   <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name) %><br />
