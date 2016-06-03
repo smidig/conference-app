@@ -10,13 +10,14 @@
             %a.brand{:href=>"/"}
               Smidig 2016
             = render 'layouts/navigation'
-      - if current_page?('/')
+      - if current_page?('/') || current_page?('/users/sign_in')
         .row-fluid
           .span10.offset1.content-wrapper
             - if setting_for('program-available')
               %p
                 = link_to('Program', program_path,
                 {:title => "Programmet"})
+            - if user_signed_in?
               %p
                 = link_to('Din smidigprofil', my_profile_index_path,
                 {:title => "Din smidigprofil"})

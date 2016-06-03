@@ -100,7 +100,5 @@ ConferenceApp::Application.routes.draw do
 
   resources :tipped_users, :only => :create
 
-  devise_scope :user do
-    root :to => "sessions#new"
-  end
+  root :to => "my_profile#index"
 end
