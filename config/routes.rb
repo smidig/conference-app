@@ -12,8 +12,6 @@ ConferenceApp::Application.routes.draw do
 
   resources :workshop_participant
 
-  root :to => "info#index"
-
   #MyProfile
   get "my_profile/dinner_registration" => "my_profile#dinner_registration"
   get "my_profile/receipt" => "my_profile#receipt"
@@ -101,4 +99,8 @@ ConferenceApp::Application.routes.draw do
   get "users/delete/:id" => "users#delete"
 
   resources :tipped_users, :only => :create
+
+  devise_scope :user do
+    root :to => "sessions#new"
+  end
 end
