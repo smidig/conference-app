@@ -3,8 +3,14 @@ module ApplicationHelper
     "#{request.protocol}#{request.host_with_port}#{asset_path(asset)}"
   end
 
-  def setting_for key
-    Setting.setting_for(key).val
+  def setting_for(key, default_value = nil)
+    setting = Setting.setting_for(key)
+
+    if setting
+      setting.val
+    else
+      default_value
+    end
   end
 
   def name_for_controller
