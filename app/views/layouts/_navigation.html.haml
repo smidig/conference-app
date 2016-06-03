@@ -1,32 +1,25 @@
 %span.toggle-menu
   MENY
 %ul.header-nav
-  -#
+  - if user_signed_in?
     %li
-      %a{:href => "#{info_about_path}", :class=>current_page?(info_about_path) ? "active" : "", 
-      :title => "Om konferansen"}
-        Om konferansen
-    %li
-      = link_to('Sponsor', info_sponsor_path, 
-      {:class=>current_page?(info_sponsor_path) ? "active" : "", :title => "Sponsor"})
+      %a{:href => "/", :class=>current_page?("/") ? "active" : "", :title => "Din smidigprofil"}
+        Din smidigprofil
   - if setting_for('program-available')
     %li
       = link_to('Program', program_path,
       {:class=>current_page?(program_path) ? "active" : "", :title => "Programmet"})
-  %li
-    = link_to('Din smidigprofil', my_profile_index_path, 
-    {:class=>current_page?(my_profile_index_path) ? "active" : "", :title => "Din smidigprofil"})
+  - unless talk_suggestion_deadline.past?
+    %li
+      = link_to('Foreslå foredrag', new_talk_path,
+      {:class=>current_page?(new_user_registration_path) && suggesting_talk? ? "active" : "", :title => "Foreslå foredrag"})
   - if user_signed_in?
     %li
       = link_to('Logg ut', destroy_user_session_path, :method=>'delete')
   - else
     %li
-      = link_to('Meld deg på!', new_user_registration_path, 
+      = link_to('Meld deg på', new_user_registration_path, 
       {:class=>current_page?(new_user_registration_path) && !suggesting_talk? ? "active" : "", :title => "Meld deg på"})
-  - unless talk_suggestion_deadline.past?
-    %li
-      = link_to('Foreslå foredrag!', new_talk_path,
-      {:class=>current_page?(new_user_registration_path) && suggesting_talk? ? "active" : "", :title => "Foreslå foredrag"})
   - if user_signed_in? and current_user.admin
 
     %li

@@ -1,6 +1,6 @@
 # encoding: UTF-8
 class TalksController < ApplicationController
-  layout "fullwidth", :only => :index
+  layout "fullwidth"
 
   no_authorization! :only => [:new, :show, :list]
 

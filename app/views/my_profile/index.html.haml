@@ -1,4 +1,7 @@
-.profile  
+.profile
+  - if setting_for('program-available')
+    = link_to "Se årets program", program_path, :class => 'btn btn-sucess'
+
   %h2 Hei #{@user.name}
   %p
     Velkommen til Smidigkonferansen. Dette er din personlige profil registrert hos oss.
@@ -50,6 +53,8 @@
           %ul
             - for workshop in @workshops
               %li= link_to workshop.talk.title, workshop.talk
+        - if setting_for('program-available')
+          = link_to "Meld deg på workshops", program_path, :class => 'btn btn-sucess'
 
 
     .span3
@@ -65,7 +70,7 @@
       .boxed.speaker
         .title
           %i.icon-bullhorn
-          Dine taler
+          Dine foredrag
         .content
           %ul
             - for talk in Talk.where(:user_id => @user.id)
@@ -78,5 +83,5 @@
               %li
                 = talk.title
                 = " [#{talk.status}]"
-
-          //= link_to "Opprett foredrag", new_talk_path, :class => 'btn btn-sucess'
+          - unless talk_suggestion_deadline.past?
+            = link_to "Foreslå nytt foredrag", new_talk_path, :class => 'btn btn-sucess'
