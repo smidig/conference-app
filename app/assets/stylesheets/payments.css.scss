@@ -1,3 +1,8 @@
 input.manual_invoice_id {
   width: 90px;
 }
+
+div.missing_order {
+  font-weight: bold;
+  color: orangered;
+}

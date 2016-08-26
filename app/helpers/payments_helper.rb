@@ -2,7 +2,7 @@ module PaymentsHelper
   def manual_address(payment)
     content_tag(:div) do
       if payment.manual_company_email
-          payment.manual_company_email
+        payment.manual_company_email
       else
         concat payment.manual_company_name
         concat tag(:br)
@@ -12,7 +12,12 @@ module PaymentsHelper
       end
     end
   end
+
   def participants(payment)
+    unless payment.order
+      return content_tag(:div, 'WARNING - NO ORDER FOUND', class: 'missing_order')
+    end
+
     content_tag(:div) do
       payment.order.users.each do |user|
         concat user.name
