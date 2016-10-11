@@ -1,0 +1,13 @@
+%h1 Caches
+
+%p The following caches are in use
+
+%ul
+  %li Sponsor.all
+  %li Talk.all
+  %li Talk.approved
+  %li Talk.talk_type_count
+
+%p They are all auto-generated and can be cleared if needed. If cleared then the next request that needs them will populate them.
+
+%p= link_to 'Empty caches', administration_clear_caches_url, method: :post

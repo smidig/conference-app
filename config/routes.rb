@@ -28,6 +28,8 @@ ConferenceApp::Application.routes.draw do
   get "administration/registrations"
   get "administration/send_mail"
   get "administration/statistics"
+  get "administration/caches"
+  post "administration/clear_caches"
 
   # program stuff
   get "program" => "program#index"
